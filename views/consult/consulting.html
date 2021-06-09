@@ -1,0 +1,76 @@
+{% include "../layout/subpage_top.html" %}
+{% include "../layout/subpage_consult_navi.html" %}
+
+<!--menu_contents start-->
+<div class="menu_contents">
+    <div class="mc_title">
+        지원하기
+    </div>
+    <div class="mc_content">
+        <div class="personal_ag_div">
+            <ul>
+                <li>
+                    <p>개인정보취급방침</p>
+                </li>
+                <li><textarea name="personal" id="personal" cols="30" rows="10">개인정보 동의 어쩌구</textarea></li>
+                <li>
+                    <span>
+                        <input type="radio" name="personal_agreement" id="disagree"><label for="disagree">동의하지않음</label>
+                    </span>
+                    <span>
+                        <input type="radio" name="personal_agreement" id="agree" checked><label for="agree">동의함</label>
+                    </span>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="consult_information">
+        <p>상담정보</p>
+        <table>
+            <colgroup>
+                <col width="12%">
+                <col width="*">
+            </colgroup>
+            <form class="consult_form" action="/consult/consulting_submit" method="post">
+                <tbody>
+                    <tr>
+                        <th>이름 *</th>
+                        <td>
+                            <input type="text" name="name" class="consult_input consult_input_name" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>나이 *</th>
+                        <td>
+                            <input type="number" name="age" class="consult_input consult_input_age" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>전화번호 *</th>
+                        <td>
+                            <input type="text" id="phoneNum" class="consult_input consult_input_tel" name="tel"
+                                maxlength="13" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>상담내용</th>
+                        <td>
+                            <textarea name="content" cols="30" rows="10" class="consult_input consult_input_text"
+                                required></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+        <div class="consultBtn_div">
+            <button class="submitBtn consult_submitBtn">상담신청하기</button>
+            <button class="cancelBtn consult_cancleBtn" type="button">취소</button>
+        </div>
+        </form>
+    </div>
+</div>
+<!--menu_contents end-->
+
+
+{% include "../layout/subpage_bottom.html" %}

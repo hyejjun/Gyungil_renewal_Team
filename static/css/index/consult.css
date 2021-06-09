@@ -1,0 +1,38 @@
+#consult{
+    height: 200px;
+    background: rgb(108, 129, 173);
+}
+
+.consultInnerWrap{
+    width: 100%;
+    height: 100%;
+    padding: 70px 0;
+    box-sizing: border-box;
+}
+.consultText{
+    float: left;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+.typing{
+    color: #daebf1b0;
+}
+
+.consultBtn{
+    width: 250px;
+    height: 58px;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -.36px;
+    border-radius: 30px;
+    border: none;
+    color: #36f;
+    background: white;
+    display: block;
+    text-align: center;
+    padding: 14px 0;
+    box-sizing: border-box;
+    float: right;
+    line-height: 33px;
+}

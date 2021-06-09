@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Godo';
+    font-style: normal;
+    font-weight: 400;
+    font-weight: 700;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+  }
+html{
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: 'NanumSquareRound';
+    /*font-family: 'Godo', sans-serif;*/
+}
+
+ul,li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+image{
+    display: block;
+    line-height: 0px;
+}
+
+.w100{
+    width: 100%;
+}
+
+.w1200{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}

@@ -1,0 +1,64 @@
+/*개인정보 취급방침 start*/
+#personal{
+    width: 98%;
+    height: 90px;
+}
+
+.personal_ag_div > ul > li:nth-child(1)>p,
+.consult_information>p
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.personal_ag_div > ul > li:nth-child(2){
+    margin: 0 0 20px 0;
+}
+
+.personal_ag_div > ul > li:nth-child(3){
+    text-align: right;
+    padding: 0 20px;
+}
+.personal_ag_div > ul > li:nth-child(3) > span:nth-child(1){
+    margin-right: 20px;
+}
+
+/*개인정보 취급방침 end*/
+
+/*상담정보 start*/
+.consult_information{
+    height: 400px;
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+.consult_input_text{
+    margin: 0px;
+    width: 818px;
+    height: 233px;
+}
+
+.consultBtn_div{
+    text-align: right;
+    padding: 6px 60px;
+}
+.submitBtn{
+    width: 130px;
+    height: 40px;
+    background: #6060d0de;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+}
+
+.cancelBtn{
+    width: 75px;
+    height: 40px;
+    background: white;
+    border: 1px solid #6060d0de;
+    border-radius: 7px;
+    color: #6060d0de;
+    cursor: pointer;
+}

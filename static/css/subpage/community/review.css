@@ -1,0 +1,35 @@
+/*review_write start*/
+#review_title{
+    width: 800px;
+}
+
+#review_content{
+    width: 920px;
+    height: 330px;
+}
+.reviewBtn_div{
+    text-align: right;
+    padding-right: 25px;
+}
+
+#review_submit{
+    width: 100px;
+    float: right;
+}
+.cancelBtn_review{
+    width: 75px;
+    height: 40px;
+    background: white;
+    border: 1px solid #6060d0de;
+    border-radius: 7px;
+    color: #6060d0de;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 13px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: 7px;
+}
+
+/*review_write end*/

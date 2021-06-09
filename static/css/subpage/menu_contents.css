@@ -1,0 +1,12 @@
+.menu_contents{
+    float: right;
+    background: #64c582;
+    width: 83%;
+    height: 100%;
+}
+.mc_content{
+    height: 240px;
+    padding: 40px 0px;
+    box-sizing: border-box;
+}
+

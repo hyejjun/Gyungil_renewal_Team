@@ -1,0 +1,15 @@
+/*reviews start*/
+#reviews{
+    height: 400px;
+    background: #7f95bb;
+    padding: 30px 0;
+}
+.reviews_title{
+    text-align: center;
+}
+
+.reviews_sub_title{
+    text-align: center;
+}
+/*reviews end*/
+

@@ -1,0 +1,22 @@
+{% include "../layout/subpage_top.html" %}
+{% include "../layout/subpage_community_navi.html" %}
+
+<!--menu_contents start-->
+<div class="menu_contents">
+    <div class="mc_title">
+        수강후기
+    </div>
+    <div class="mc_content">
+        <div>
+            {{review_title}}
+            {{review_writer}}
+            {{review_content}}
+        </div>
+
+        <a href="/community/review">목록</a>    
+    </div>
+</div>
+<!--menu_contents end-->
+
+
+{% include "../layout/subpage_bottom.html" %}

@@ -1,0 +1,10 @@
+.sub_bottom{
+    height: 850px;
+}
+
+.sub_navi{
+    float: left;
+    height: 200px;
+    background: rgb(42, 126, 91);
+    
+}

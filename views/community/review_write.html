@@ -1,0 +1,45 @@
+{% include "../layout/subpage_top.html" %}
+{% include "../layout/subpage_community_navi.html" %}
+
+<!--menu_contents start-->
+<div class="menu_contents">
+    <div class="mc_title">
+        수강후기
+    </div>
+    <div class="mc_content">
+        <div>
+            <table>
+                <form action="/community/review_insert" method="post">
+                    <tbody>
+                        <tr>
+                            <th>제목</th>
+                            <td>
+                                <input type="text" name="review_title" id="review_title">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>작성자</th>
+                            <td>
+                                <input type="text" name="review_writer" id="review_writer">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>내용</th>
+                            <td>
+                                <textarea name="review_content" id="review_content" cols="30" rows="10"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+            <div class="reviewBtn_div">
+                <a href="/community/review" class="cancelBtn_review">취소</a>
+                <input type="submit" value="작성" id="review_submit" class="submitBtn">
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--menu_contents end-->
+
+
+{% include "../layout/subpage_bottom.html" %}
