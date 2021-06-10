@@ -10,10 +10,9 @@
     box-sizing: border-box;
 }
 .footer_logo{
-    width: 20%;
+    width: 155px;
     height: 100%;
     float: left;
-    background: rgb(137, 207, 137);
 }
 
 .footer_copyright{

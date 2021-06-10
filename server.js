@@ -2,6 +2,8 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
 const router = require('./routers');
+const PORT = 3000;
+const errorController = require("./routers/errorController");
 
 const app = express();
 
@@ -16,6 +18,9 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use('/',router)
 
-app.listen(3000,()=>{
-    console.log('server start port 3000')
+app.use(errorController.pageNotFoundError);
+app.use(errorController.respondInternalError);
+
+app.listen(PORT,()=>{
+    console.log(`server start port ${PORT}`)
 })

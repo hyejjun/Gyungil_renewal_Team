@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     z-index: 10;
-    background: #a3f1a3;
+    background: white;
 }
 
 .header{
@@ -13,15 +13,16 @@
     height: 100%;
 }
 .logo{
+    width: 200px;
     height: 100%;
     float: left;
-    padding: 25px 0;
+    padding: 8px 0;
     box-sizing: border-box;
 }
 .gnb{
+    width: 1000px;
     height: 100%;
     float: right;
-    width: 90%;
     text-align: right;
     padding: 25px 37px;
     box-sizing: border-box;
@@ -31,9 +32,13 @@
     float: right;
 }
 .gnb_ul>a>li{
-    width: 125px;
+    width: 130px;
     float: left;
     text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    color: #1565C0;
 }
 .gnb_ul>a{
     display: inline-block;

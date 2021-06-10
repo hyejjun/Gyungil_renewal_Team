@@ -73,5 +73,6 @@ consult_submitBtn.addEventListener('click', () => {
         consult_input_text.focus();
         return;
     }
+    alert('상담 내용이 성공적으로 접수 되었습니다.')
     consult_form.submit()
 })

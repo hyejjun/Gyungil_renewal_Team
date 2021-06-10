@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Godo';
+    font-style: normal;
+    font-weight: 400;
+    font-weight: 700;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+  }
+.div_404{
+    font-family: 'Godo', sans-serif;
+    text-align: center;
+}
+.div_404 > p:nth-child(1){
+    font-size: 110px;
+}
+
+.div_404>p:nth-child(2){
+    height: 60px;
+    font-size: 30px;
+}
