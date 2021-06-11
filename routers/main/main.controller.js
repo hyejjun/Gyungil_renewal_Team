@@ -1,5 +1,7 @@
 let main = (req, res)=>{
-    res.render('./index')
+    let {msg} = req.query;
+    let {userid} = req.cookies;
+    res.render('./index',{msg,userid})
 }
 
 module.exports = {

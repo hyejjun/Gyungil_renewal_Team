@@ -57,14 +57,14 @@
     text-align: center;
     padding: 10px 0;
     box-sizing: border-box;
-    width: 55%;
-    left: 540px;
+    width: 58%;
+    left: 504px;
 }
 .submenu_inner_wrap{
     float: right;
 }
 .submenu_ul{
-    width: 130px;
+    width: 139px;
     height: 120px;
     float: left;
     cursor: pointer;
@@ -73,3 +73,23 @@
     height: 50px;
 }
 /*submenu end*/
+
+
+/*userinfo start*/
+.userinfo{
+    width: 300px;
+    height: 80px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 27px 0;
+    /* background: red; */
+    box-sizing: border-box;
+}
+.before_login{
+    display: block;
+}
+.after_login{
+    display: none;
+}
+/*userinfo end*/

@@ -98,6 +98,23 @@
 
     <script src="/js/submenu.js"></script>
     <script src="/js/typing.js"></script>
+    
+    {% if msg != undefined %}
+    <script>
+        alert('{{msg}}')
+
+        const userinfo = document.querySelector('.userinfo');
+        const before_login = document.querySelector('.before_login');
+        const after_login = document.querySelector('.after_login');
+        const after_login_span = document.querySelector('.after_login_span');
+
+        before_login.style.display = 'none';
+
+        after_login_span.innerHTML = '{{userid}}님 환영해요';
+        after_login.style.display = 'block';
+    </script>
+    {% endif %}
+
 </body>
 
 </html>
