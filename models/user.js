@@ -16,7 +16,15 @@ module.exports = class User extends Sequelize.Model{
                 type : Sequelize.STRING(10),
                 allowNull : false,
             },
+            useremail : {
+                type : Sequelize.STRING(30),
+                allowNull : false,
+            },
             user_birthday : {
+                type :Sequelize.STRING(20),
+                allowNull : false,
+            },
+            user_tel :{
                 type :Sequelize.STRING(20),
                 allowNull : false,
             },

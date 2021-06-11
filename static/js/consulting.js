@@ -30,10 +30,19 @@ let autoHypenPhone = function (str) {
 
 
 let phoneNum = document.getElementById('phoneNum');
-
 phoneNum.onkeyup = function () {
-    console.log(this.value);
+    //console.log(this.value);
     this.value = autoHypenPhone(this.value);
+}
+
+let modify_tel = document.querySelector('#modify_tel');
+modify_tel.onkeyup = function () {
+    this.value = autoHypenPhone(this.value)
+}
+
+let user_tel = document.querySelector('#user_tel');
+user_tel.onkeyup = function () {
+    this.value = autoHypenPhone(this.value)
 }
 
 
@@ -49,7 +58,7 @@ console.log(disagree);
 
 //console.log(consult_input);
 consult_submitBtn.addEventListener('click', () => {
-    if(disagree.checked){
+    if (disagree.checked) {
         alert('개인정보 약관에 동의해주세요');
         return;
     }

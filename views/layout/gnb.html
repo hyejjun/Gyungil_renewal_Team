@@ -1,5 +1,5 @@
 <div id="gnb_wrap" class="w100">
-    <div class="w1200">
+    <div class="w1200 header_wrap">
         <div class="header">
             <div class="logo">
                 <a href="/">
@@ -24,6 +24,16 @@
                         <li>상담신청</li>
                     </a>
                 </ul>
+            </div>
+            <div class="userinfo">
+                <div class="before_login">
+                    <a href="/user/login">로그인</a>
+                    <a href="/user/join">회원가입</a>
+                </div>
+                <div class="after_login">
+                   <a href="/user/info"><span class="after_login_span">{{userid}}님</span></a>
+                   <a href="/user/logout"><span class="logout">로그아웃</span></a>
+                </div>
             </div>
         </div>
         <div class="submenu">
@@ -87,17 +97,6 @@
                     </a>
                 </ul>
             </div>
-        </div>
-    </div>
-
-    <div class="userinfo">
-        <div class="before_login">
-            <a href="/user/login">로그인</a>
-            <a href="/user/join">회원가입</a>
-        </div>
-        <div class="after_login">
-           <span class="after_login_span">{{userid}}님 환영해요</span>
-           <a href="/user/logout"><span class="logout">로그아웃</span></a>
         </div>
     </div>
 </div>

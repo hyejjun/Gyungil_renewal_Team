@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="ui_wrap">
+        <div>
+            <p>내 정보</p>
+            <div>
+                <ul>
+                    <li>
+                        <span>이름</span>
+                        <span>{{result.username}}</span>
+                    </li>
+                    <li>
+                        <span>아이디</span>
+                        <span>{{result.userid}}</span>
+                    </li>
+                    <li>
+                        <span>수강중인 과목</span>
+                        <span>{{classname}}</span>
+                    </li>
+                    <li>
+                        <span>전화번호</span>
+                        <span>{{result.user_tel}}</span>
+                    </li>
+                    <li>
+                        <span>생일</span>
+                        <span>{{result.user_birthday}}</span>
+                    </li>
+                    <li>
+                        <span>이메일</span>
+                        <span>{{result.useremail}}</span>
+                    </li>
+                </ul>
+            </div>
+            <a href="/user/modify">내 정보 수정</a>
+            <a href="/">메인</a>
+        </div>
+    </div>
+    {% if msg != undefiend %}
+    <script>
+        alert('{{msg}}')
+    </script>
+    {% endif %}
+</body>
+</html>

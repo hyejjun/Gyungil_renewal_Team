@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="um_modify">
+        <div>
+            <p>회원정보 수정</p>
+            <p>{{result.userid}}님의 회원정보</p>
+            <form action="/user/modify_submit" method="post">
+            <ul>
+                <li>전화번호</li>
+                <li><input type="text" name="user_tel" value="{{result.user_tel}}" id="modify_tel"></li>
+            </ul>
+            <ul>
+                <li>이메일</li>
+                <li><input type="text" name="useremail" value="{{result.useremail}}"></li>
+            </ul>
+            <!-- 값을 받아와서 뿌려주고 수정해주게 함-->
+            <input type="submit" value="수정">
+            </form>
+        </div>
+    </div>
+    <script src="/js/consulting.js"></script>
+</body>
+</html>
