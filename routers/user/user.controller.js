@@ -29,7 +29,7 @@ let join_success = async (req, res) => {
 }
 
 let login_check = async(req,res)=>{
-    console.log(req.body);
+    //console.log(req.body);
     let {userid, userpw} = req.body;
 
     let Cuserpw = jwtPW(userpw)
@@ -54,9 +54,16 @@ let login_check = async(req,res)=>{
    
 }
 
+let logout = (req,res) =>{
+    res.clearCookie('AccessToken')
+    res.clearCookie('userid')
+    res.redirect('/?msg=로그아웃 되었습니다')
+}
+
 module.exports = {
     join,
     login,
     join_success,
-    login_check
+    login_check,
+    logout
 }

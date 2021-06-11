@@ -89,14 +89,15 @@
             </div>
         </div>
     </div>
+
     <div class="userinfo">
         <div class="before_login">
             <a href="/user/login">로그인</a>
             <a href="/user/join">회원가입</a>
         </div>
         <div class="after_login">
-           <span class="after_login_span"></span>
-           <span>로그아웃</span>
+           <span class="after_login_span">{{userid}}님 환영해요</span>
+           <a href="/user/logout"><span class="logout">로그아웃</span></a>
         </div>
     </div>
 </div>

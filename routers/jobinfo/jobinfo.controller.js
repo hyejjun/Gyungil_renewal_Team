@@ -1,13 +1,16 @@
 let jobinfo = (req,res)=>{
-    res.render('./jobinfo/interview');
+    let {userid} = req.cookies;
+    res.render('./jobinfo/interview',{userid});
 }
 
 let recruit = (req,res)=>{
-    res.render('./jobinfo/recruit')
+    let {userid} = req.cookies;
+    res.render('./jobinfo/recruit',{userid})
 }
 
 let portfolio = (req,res)=>{
-    res.render('./jobinfo/portfolio')
+    let {userid} = req.cookies;
+    res.render('./jobinfo/portfolio',{userid})
 }
 
 module.exports = {

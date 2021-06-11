@@ -1,5 +1,6 @@
 let curriculum = (req,res)=>{
-    res.render('./curriculum/curriculum');
+    let {userid} = req.cookies;
+    res.render('./curriculum/curriculum',{userid});
 }
 
 module.exports = {

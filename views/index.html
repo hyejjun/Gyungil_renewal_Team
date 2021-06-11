@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="/css/index/consult.css">
     <link rel="stylesheet" href="/css/index/footer.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/hiphop5782/js@0.0.6/typing/hakademy-typing.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/hiphop5782/js@0.0.6/typing/hakademy-typing.css">
     <script src="https://cdn.jsdelivr.net/gh/hiphop5782/js@0.0.6/typing/hakademy-typing.js"></script>
 </head>
 
@@ -66,7 +67,7 @@
                     <em class="link">
                         <a href="javascript:void(0);"
                             onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-                
+
                         </a>
                     </em>
                 </p>
@@ -85,7 +86,9 @@
                         <span class="typing"></span>
                         을 시작하세요.
                     </div>
-                    <a href="/consult/consulting"><div class="consultBtn">지원하기</div></a>
+                    <a href="/consult/consulting">
+                        <div class="consultBtn">지원하기</div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -98,19 +101,21 @@
 
     <script src="/js/submenu.js"></script>
     <script src="/js/typing.js"></script>
-    
-    {% if msg != undefined %}
+
+    {% if msg != undefiend %}
     <script>
         alert('{{msg}}')
+    </script>
+    {% endif %}
 
+    {% if userid != undefined %}
+    <script>
         const userinfo = document.querySelector('.userinfo');
         const before_login = document.querySelector('.before_login');
         const after_login = document.querySelector('.after_login');
         const after_login_span = document.querySelector('.after_login_span');
 
         before_login.style.display = 'none';
-
-        after_login_span.innerHTML = '{{userid}}님 환영해요';
         after_login.style.display = 'block';
     </script>
     {% endif %}

@@ -1,21 +1,26 @@
 let introduction = (req,res)=>{
-    res.render('./college/introduction');
+    let {userid} = req.cookies;
+    res.render('./college/introduction',{userid});
 }
 
 let history = (req,res)=>{
-    res.render('./college/history');
+    let {userid} = req.cookies;
+    res.render('./college/history',{userid});
 }
 
 let teachers = (req,res)=>{
-    res.render('./college/teachers');
+    let {userid} = req.cookies;
+    res.render('./college/teachers',{userid});
 }
 
 let interior = (req,res)=>{
-    res.render('./college/interior');
+    let {userid} = req.cookies;
+    res.render('./college/interior',{userid});
 }
 
 let location = (req,res)=>{
-    res.render('./college/location');
+    let {userid} = req.cookies;
+    res.render('./college/location',{userid});
 }
 
 module.exports = {

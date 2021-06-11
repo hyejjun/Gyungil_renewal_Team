@@ -1,13 +1,15 @@
 let consulting = (req,res)=>{
-    res.render('./consult/consulting');
+    let {userid} = req.cookies;
+    res.render('./consult/consulting',{userid});
 }
 let faq = (req,res)=>{
-    res.render('./consult/faq');
+    let {userid} = req.cookies;
+    res.render('./consult/faq',{userid});
 }
 
 let consulting_submit = (req,res)=>{
     //TODO : DB에 상담정보 넣는 부분 여기에 작성하기
-    console.log(req.body);
+    //console.log(req.body);
     
     res.redirect('/consult/consulting');
 }
