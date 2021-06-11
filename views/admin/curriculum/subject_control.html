@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "../layout/curr_snb.html" %}
+      
+      <div id="main">
+
+         <div>
+          <form action="/admin/curriculum/subject/modify" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="{{result.id}}">
+            과목명: <input type="text" name="name"  value='{{result.name}}' required><br>
+            내용: <textarea name="content" id="" cols="30" rows="10" required>{{resutl.content}}</textarea><br>
+            이미지:<input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);"><br>
+            <div id="thumbnail">
+              <img src="http://localhost:3000/{{result.image}}"alt="과목이미지">
+            </div>
+            <input type="hidden" name ="origin_image" value="{{result.image}}">
+            <input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);"><br>
+            
+            <input type="submit" value="수정">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script src="/admin/js/thumbnail.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<div>
+  {% for item in curr %}
+  <div>
+    <label for="curr{{item.id}}">{{item.name}}</label>  
+    <input type="radio" name="curriculum" value="{{item.id}}" id="curr{{item.id}}" checked>
+  </div>
+  {% endfor %}
+</div>
+

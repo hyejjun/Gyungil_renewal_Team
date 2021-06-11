@@ -4,6 +4,8 @@ const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+const initModels = require('./init-models');
+
 const User = require('./user');
 const Portfolio = require('./portfolio');
 
@@ -14,6 +16,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+let models = initModels(sequelize);
 
 db.User = User;
 db.Portfolio = Portfolio;
@@ -23,5 +26,20 @@ Portfolio.init(sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.board = models.board;
+db.consult = models.consult;
+db.history = models.history;
+db.teacher = models.teacher;
+db.curriculum = models.curriculum;
+db.subject = models.subject;
+db.sboard = models.sboard;
+db.intro = models.intro;
+db.sboard = models.sboard;
+db.curr_sbj = models.curr_sbj;
+
+
+// curr_faq,
+// curr_rv,
+// main_rv,
 
 module.exports = db;

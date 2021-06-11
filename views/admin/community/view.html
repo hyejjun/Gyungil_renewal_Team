@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<script type="text/javascript">
+  window.addEventListener('DOMContentLoaded',()=>{
+  const content = document.querySelector('#content');
+  const pre = document.querySelector('#pre');
+    pre.innerHTML = `${content.value}`; 
+  })
+</script>
+<body>
+
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./community_snb.html" %}
+      <div id="main">
+        <div>
+          <h2>{{result.subject}}</h2>
+          작성자<span>{{result.writer}}</span>
+          등록일<span>{{result.date}}</span>
+          조회수<span>{{result.hit}}</span>
+          <pre id ='pre'></pre>
+          <input type="hidden" id ='content' value="{{result.content}}">
+          <a href="/admin/community/{{board_name}}/modify?id={{result.id}}">수정하기</a>
+          <a href="/admin/community/{{board_name}}/destroy?id={{result.id}}">삭제하기</a>
+         
+        </div>
+       
+
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

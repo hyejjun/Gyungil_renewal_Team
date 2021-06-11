@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인삿말</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./info_snb.html" %}
+      <div id="main">
+        <form action="/admin/info/create_teacher" method="post" enctype="multipart/form-data">
+          이름:<input type="text" name="name" required><br>
+          직위:<input type="text" name="position" required><br>
+          제목:<textarea name="title" id="" cols="30" rows="10" required></textarea><br>
+          경력:<textarea name="career" id="" cols="30" rows="10" required></textarea><br>
+          내용:<textarea name="content" id="" cols="30" rows="10" required></textarea><br>
+          <div id="thumbnail"></div>
+          이미지:<input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);" required><br>
+          
+          <input type="submit" value="등록">
+        </form>
+        
+
+      </div>
+    </div>
+  </div>
+
+ 
+  <script>
+    function setThumbnail(event) {
+      let reader = new FileReader();
+      reader.onload =  (event)=> {
+        let thumbnail = document.querySelector("#thumbnail");
+        while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }
+        let img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        thumbnail.appendChild(img);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+
+
+  
+</body>
+</html>
+

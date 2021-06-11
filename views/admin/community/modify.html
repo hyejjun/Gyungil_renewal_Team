@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+  <title>{{result.subject}} 수정</title>
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded',()=>{
+    const content = document.querySelector('#content');
+    const pre = document.querySelector('#summernote');
+      pre.innerHTML = `${content.value}`; 
+    })
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./community_snb.html" %}
+      <div id="main">
+
+        <div>
+          <div>{{result.subject}} 수정</div>
+          <form id='form' action="/admin/community/{{board_name}}/modify" method="post">
+            <input type="hidden" name='id'  value="{{result.id}}">
+            제목:<input type="text" name='subject' value="{{result.subject}}">
+            {% include "./summernote_modify.html" %}
+          </form>
+        </div>
+          
+    
+
+
+      </div>
+    </div>
+  </div>
+
+  
+  
+  
+  
+</body>
+</html>

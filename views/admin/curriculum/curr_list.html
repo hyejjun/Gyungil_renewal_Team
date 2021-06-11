@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "../layout/curr_snb.html" %}
+      <div id="main">
+        <div>
+          <table>
+            <thead>
+              <td>커리큘럼 이름</td>
+              <td>삭제</td>
+            </thead>
+            <tbody class="tbody">
+              {% for item in resultArr%}
+              <tr>
+                <td><a href="/admin/curriculum/curr/control?id={{item.id}}">{{item.name}}</a></td>
+                <td><input type="button" value="삭제" data-idx="{{item.id}}" onclick="destroy_curr();"></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          
+
+          <a href="/admin/curriculum/curr/add">커리큘럼 추가</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script src="/admin/js/curr.js" type="text/javascript"></script>
+  
+</body>
+</html>

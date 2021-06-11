@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./consult_snb.html" %}
+      <div id="main">
+
+       <table>
+         <thead>
+           <td></td>
+           <td>자주 묻는 질문</td>
+         </thead>
+         <tbody>
+           {% for item in result %}
+          <tr>
+            <td>Q</td>
+            <td>{{item.subject}}</td>
+            <td rowspan="2">
+              <a href="/admin/consult/faq/modify?id={{item.id}}">수정</a><br
+              ><a href="/admin/consult/faq/destroy?id={{item.id}}">삭제</a></td>
+          </tr>
+          <tr>
+            <td>A</td>
+            <td>{{item.content}}</td>
+          </tr>
+           {% endfor %}
+         </tbody>
+       </table>
+
+       <a href="/admin/consult/faq/write">faq 작성</a>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>

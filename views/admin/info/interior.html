@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./info_snb.html" %}
+      <div id="main">
+        <div>
+          <ul id="interior_box">
+            {% for item in resultArr %}
+            <li>
+              <input type="hidden" value="{{item.id}}">
+              <div><img src="http://localhost:3000/{{item.content}}"alt="슬라이드 이미지"></div>
+              {% if item.show==1 %}
+              <div><input type="checkbox" checked onclick="check()"></div>
+              {% else %}
+              <div><input type="checkbox" onclick="check()"></div>
+              {% endif %}
+              <div>
+                <input type="button" value="삭제" onclick="destroy()">
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <a href="/admin/info/interior/add">시설소개 이미지 추가</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/admin/js/interior.js" type="text/javascript"></script>
+
+ 
+</body>
+</html>

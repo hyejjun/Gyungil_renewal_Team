@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./info_snb.html" %}
+      <div id="main">
+        <form action="/admin/info/location/modify" method="post">
+        지도에 표시할 주소: <input type="text" name="subject" value="{{result.subject}}">
+        오시는 길 설명:  <textarea name="content" id="" cols="30" rows="10">{{result.content}}</textarea>
+        <input type="submit" value="수정">
+      </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <script src="/admin/js/.js" type="text/javascript"></script> -->
+
+ 
+</body>
+</html>

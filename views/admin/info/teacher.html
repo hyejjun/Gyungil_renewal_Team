@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인삿말</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./info_snb.html" %}
+      <div id="main">
+        <table>
+          <thead>
+            <td>이름</td>
+            <td>직위</td>
+            <td>헤드라인</td>
+            <td>경력</td>
+            <td>내용</td>
+            <td>이미지</td>
+            <td>공개/비공개</td>
+            <td>수정</td>
+            <td>삭제</td>
+          </thead>
+          <tbody>
+            {% for item in result%}
+            <tr>
+              <td>{{item.name}}</td>
+              <td>{{item.position}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.career}}</td>
+              <td>{{item.content}}</td>
+              <td><img src="http://localhost:3000/{{item.image}}"alt="교직원 이미지"></td>
+              <td>
+                {% if item.show=='0' %}
+                <input type="button" value="공개" name="{{item.id}}">
+                {% else %}
+                <input type="button" value="비공개" name="{{item.id}}">
+                {% endif %}
+              </td>
+              <td>
+                <a href="/admin/info/teacher/modify?id={{item.id}}">수정</a>
+              </td>
+              <td>
+                <a href="/admin/info/teacher/destroy?id={{item.id}}">삭제</a>
+              </td>
+            </tr>
+            
+            {% endfor %}
+          </tbody>
+        </table>
+    
+        
+        <a href="/admin/info/teacher/add">교직원 추가</a>
+        
+
+      </div>
+    </div>
+  </div>
+
+ 
+
+  
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "../layout/curr_snb.html" %}
+      <div id="main">
+        <form action="/admin/curriculum/curr/add" method="post" enctype="multipart/form-data">
+          교육과정명: <input type="text" name="name" required><br>
+          교육과정 소개: <input type="text" name="info" required><br>
+          교육기간: <input type="text" name='term' required><br>
+          교육 시작시간: <input type="time" name="start_time" value="09:00" required><br>
+          교육 종료시간: <input type="time" name="end_time" value="18:00" required ><br>
+          교육장소: <input type="text" name="location" required><br>
+          수강료: <input type="text" name="tuition" required><br>
+          자격 요건: <input type="text" name="qual" required><br>
+          이미지:<input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);" required><br>
+          <div id="thumbnail"></div>
+          <input type="submit" value="등록">
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  <script>
+    function setThumbnail(event) {
+      let reader = new FileReader();
+      reader.onload =  (event)=> {
+        let thumbnail = document.querySelector("#thumbnail");
+        while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }
+        let img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        thumbnail.appendChild(img);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+ 
+
+  
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/curr.css">
+  <script src="/admin/js/thumbnail.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "../layout/curr_snb.html" %}
+      <div id="main">
+        <form  id ="form" action="/admin/curriculum/curr/control" method="post" enctype="multipart/form-data">
+          <div id="curr_spec">
+            <h3>교육과정 기본</h3>
+            <input type="hidden" name='id' value="{{spec.id}}">
+            교육과정명: <input type="text" name="name" value="{{spec.name}}" required><br>
+            교육과정 소개: <input type="text" name="info" value="{{spec.info}}" required><br>
+            교육기간: <input type="text" name='term' value="{{spec.term}}" required><br>
+            교육 시작시간: <input type="time" name="start_time" value="{{spec.start_time}}" required><br>
+            교육 종료시간: <input type="time" name="end_time" value="{{spec.end_time}}" required><br>
+            교육장소: <input type="text" name="location" value="{{spec.location}}" required><br>
+            수강료: <input type="text" name="tuition" value="{{spec.tuition}}" required><br>
+            자격 요건: <input type="text" name="qual" value="{{spec.qual}}" required><br>
+            이미지:
+            <div id="thumbnail">
+              <img src="http://localhost:3000/{{spec.image}}"alt="교육과정 대표 이미지">
+            </div>
+            <input type="file" accept="image/*" name="img" onchange="setThumbnail(event);"><br>
+            <input type="hidden" name="origin_image" value="{{spec.image}}">
+            <div id="thumbnail"></div>
+          </div>
+
+
+          <div id="curr_sub">
+            <h3>교육과정 교과목 설정</h3>
+            <div id="now_subbox">
+              <span>{{spec.name}} 교과목</span>
+              <ul id="now_sub">
+                {% for item in sorted %}
+                {% if item.show==1 %}
+                <li style="display: block;" id="selected{{item.id}}">
+                  <input type="hidden" value="{{item.id}}">
+                  <div class="show_subname">
+                    <pre>{{item.name}}</pre>
+                  </div>
+                  <div class="updownBox">
+                    <input type="button" value="▲" onclick="upList();">
+                    <input type="button" value="▼" onclick="downList();">
+                  </div>
+                  <div class="dlt_sub">
+                    <input type="button" value="삭제" onclick="dltSub();">
+                  </div>
+                </li>
+                {% else %}
+                <li style="display: none;" id="selected{{item.id}}">
+                  <input type="hidden" value="{{item.id}}">
+                  <div class="show_subname">
+                    <pre>{{item.name}}</pre>
+                  </div>
+                  <div class="updownBox">
+                    <input type="button" value="▲" onclick="upList();">
+                    <input type="button" value="▼" onclick="downList();">
+                  </div>
+                  <div class="dlt_sub">
+                    <input type="button" value="삭제" onclick="dltSub();">
+                  </div>
+                </li>
+
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+
+            <div id="all_subbox">
+              <span>전체 교과목</span>
+              <ul id="all_sub">
+                {% for item in originsbj %}
+                <li style="display: block;">
+                  <input type="hidden" id="sub_id" value="{{item.id}}">
+                  <input type="hidden" id="sub_content" value="{{item.content}}">
+                  <div class="show_subname">
+                    <pre onclick="showdetail()">{{item.name}}</pre>
+                  </div>
+                  <div class="add_sub">
+                    <input type="button" value="추가" onclick="showdetail();addSub()">
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+              <div id="detail_box">
+                <span>자세히 보기</span>
+                <pre id="detail_name"></pre>
+                <pre id="detail"></pre>
+              </div>
+            </div>
+          </div>
+
+
+          <div>
+            <h3>교육과정 수강후기 설정</h3>
+          </div>
+
+
+          <input type="button" value="등록" onclick="postcurr()">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="/admin/js/curr.js" type="text/javascript"></script>
+</body>
+
+</html>

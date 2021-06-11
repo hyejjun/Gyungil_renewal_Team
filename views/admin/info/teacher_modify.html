@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인삿말</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./info_snb.html" %}
+      <div id="main">
+        <form action="/admin/info/teacher/modify" method="post" enctype="multipart/form-data">
+          <input type="hidden" name ="id" value="{{result.id}}">
+          이름:<input type="text" name="name" value="{{result.name}}" required><br>
+          직위:<input type="text" name="position"value="{{result.position}}" required><br>
+          제목:<textarea name="title" id="" cols="30" rows="10" required>{{result.title}}</textarea><br>
+          경력:<textarea name="career" id="" cols="30" rows="10" required>{{result.career}}</textarea><br>
+          내용:<textarea name="content" id="" cols="30" rows="10" required>{{result.content}}</textarea><br>
+          이미지:
+
+          <div id="thumbnail">
+            <img src="http://localhost:3000/{{result.image}}"alt="교직원 이미지">
+          </div>
+          <input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);"><br>
+          <input type="hidden" name ="origin_image" value="{{result.image}}">
+          
+          <input type="submit" value="수정">
+        </form>
+        
+
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function setThumbnail(event) {
+      let reader = new FileReader();
+      reader.onload =  (event)=> {
+        let thumbnail = document.querySelector("#thumbnail");
+        while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }
+        let img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        document.querySelector("#thumbnail").appendChild(img);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+ 
+
+  
+</body>
+</html>
+

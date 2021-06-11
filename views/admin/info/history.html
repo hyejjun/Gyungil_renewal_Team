@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인삿말</title>
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./info_snb.html" %}
+      <div id="main">
+        <table >
+          <thead>
+            <td>연도</td>
+            <td>내용</td>
+            <td>수정</td>
+            <td>삭제</td>
+          </thead>
+          <tbody id = "tbody">
+            {% if result %}
+            {% for item in result %}
+            <tr>
+              <td>{{item.year}}</td>
+              <td>{{item.content}}</td>
+              <td>
+                <input type="button" value="수정" id='update_btn' name = "{{item.id}}"  required>
+              </td>
+              <td>        
+                  <input type="button" value="삭제" id='destroy_btn' name = "{{item.id}}" required>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </tbody>
+          
+        </table>
+      
+        <div>
+          
+          <form action="/admin/info/addhistory" method="post">
+            연도:<input type="text" name="year" id="year" required>
+            내용:<input type="text" name="content" id="content" required>
+            <input type="submit" value="등록" id='add_btn'>
+          </form>
+            
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script type="text/javascript">
+    let flag = true; 
+    const tbody= document.querySelector('#tbody');
+    const destroy_btn = document.querySelectorAll('#destroy_btn');
+    const update_btn = document.querySelectorAll('#update_btn');
+    
+    destroy_btn.forEach(v=>{
+      v.addEventListener('click',destroy_history); 
+    })
+    
+    update_btn.forEach(v=>{
+      v.addEventListener('click',update_history); 
+    })
+    
+
+
+    async function update_history(){
+      let year = this.parentNode.parentNode.childNodes[1];
+      let content = this.parentNode.parentNode.childNodes[3]; 
+      if(this.value=="수정"){
+        this.value ="등록"
+      let tmpyear = `<input type="text"  id="update_year" value = "${year.innerHTML}">`; 
+      let tmpcontent = `<input type="text"  id="update_content" value = "${content.innerHTML}">`; 
+      year.innerHTML = tmpyear;
+      content.innerHTML = tmpcontent; 
+      }
+      else if(this.value=="등록"){ 
+        let id= this.name;
+        let update_year = document.querySelector('#update_year').value;
+        let update_content = document.querySelector('#update_content').value;
+        let url = 'http://localhost:3000/admin/info/updatehistory'
+        let options = {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            id,
+            year:update_year,
+            content:update_content,
+          }),
+        }
+        let response = await fetch(url, options);
+        console.log(response.ok);
+        if(response.ok){
+          this.value ="수정"
+          year.innerHTML = update_year;
+          content.innerHTML = update_content;
+          window.location.reload(); 
+        }
+      }
+      
+    }
+    
+    
+    
+    
+    
+    async function destroy_history(){
+      let id = this.name;
+      let target =this.parentNode.parentNode; 
+      let url = 'http://localhost:3000/admin/info/dlthistory'
+      let options = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                id,
+            }),
+        }
+        let response = await fetch(url, options);
+      tbody.removeChild(target);  
+    }
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>
