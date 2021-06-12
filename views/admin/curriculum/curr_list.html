@@ -12,7 +12,7 @@
   <div id = "wrap">
     <div id="container1900">
       {% include "../layout/gnb.html" %}
-      {% include "../layout/curr_snb.html" %}
+      {% include "./curr_snb.html" %}
       <div id="main">
         <div>
           <table>
@@ -21,7 +21,7 @@
               <td>삭제</td>
             </thead>
             <tbody class="tbody">
-              {% for item in resultArr%}
+              {% for item in result%}
               <tr>
                 <td><a href="/admin/curriculum/curr/control?id={{item.id}}">{{item.name}}</a></td>
                 <td><input type="button" value="삭제" data-idx="{{item.id}}" onclick="destroy_curr();"></td>

@@ -12,7 +12,7 @@
   <div id = "wrap">
     <div id="container1900">
       {% include "../layout/gnb.html" %}
-      {% include "../layout/curr_snb.html" %}
+      {% include "./curr_snb.html" %}
       <div id="main">
         <table>
           <thead>
@@ -23,7 +23,7 @@
             <td>삭제</td>
           </thead>
           <tbody>
-            {% for item in resultArr %}
+            {% for item in result %}
             <tr>
               <td>{{item.name}}</td>
               <td>{{item.content}}</td>

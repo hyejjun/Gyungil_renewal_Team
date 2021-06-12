@@ -8,9 +8,10 @@ var _curriculum = require("./curriculum");
 var _history = require("./history");
 var _intro = require("./intro");
 var _main_rv = require("./main_rv");
-var _sboard = require("./sboard");
+var _portfolio = require("./portfolio");
 var _subject = require("./subject");
 var _teacher = require("./teacher");
+var _users = require("./users");
 
 function initModels(sequelize) {
   var board = _board(sequelize, DataTypes);
@@ -22,12 +23,15 @@ function initModels(sequelize) {
   var history = _history(sequelize, DataTypes);
   var intro = _intro(sequelize, DataTypes);
   var main_rv = _main_rv(sequelize, DataTypes);
-  var sboard = _sboard(sequelize, DataTypes);
+  var portfolio = _portfolio(sequelize, DataTypes);
   var subject = _subject(sequelize, DataTypes);
   var teacher = _teacher(sequelize, DataTypes);
+  var users = _users(sequelize, DataTypes);
 
   curr_faq.belongsTo(board, { as: "board", foreignKey: "board_id"});
   board.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "board_id"});
+  curr_rv.belongsTo(board, { as: "board", foreignKey: "board_id"});
+  board.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "board_id"});
   main_rv.belongsTo(board, { as: "rv", foreignKey: "rv_id"});
   board.hasMany(main_rv, { as: "main_rvs", foreignKey: "rv_id"});
   curr_faq.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
@@ -36,10 +40,10 @@ function initModels(sequelize) {
   curriculum.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "curr_id"});
   curr_sbj.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
   curriculum.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "curr_id"});
-  curr_rv.belongsTo(sboard, { as: "rv", foreignKey: "rv_id"});
-  sboard.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "rv_id"});
   curr_sbj.belongsTo(subject, { as: "sbj", foreignKey: "sbj_id"});
   subject.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "sbj_id"});
+  board.belongsTo(users, { as: "writer_user", foreignKey: "writer"});
+  users.hasMany(board, { as: "boards", foreignKey: "writer"});
 
   return {
     board,
@@ -51,9 +55,10 @@ function initModels(sequelize) {
     history,
     intro,
     main_rv,
-    sboard,
+    portfolio,
     subject,
     teacher,
+    users,
   };
 }
 module.exports = initModels;

@@ -7,7 +7,9 @@
         연혁
     </div>
     <div class="mc_content">
-        mc content
+        {% for item in result %}
+        {{item.year}} {{item.content}}<br>
+        {% endfor %}
     </div>
 </div>
 <!--menu_contents end-->

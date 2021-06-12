@@ -4,10 +4,15 @@
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
-        공지사항
+        {{title}}
     </div>
     <div class="mc_content">
-        mc content
+        {% for item in result %}
+          {{item.num}}
+          {{item.writer}}
+          <a href="/community/{{board_name}}/view?id={{item.id}}">{{item.subject}}</a>
+          {{item.date}}
+        {% endfor %}
     </div>
 </div>
 <!--menu_contents end-->

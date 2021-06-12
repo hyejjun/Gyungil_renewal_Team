@@ -7,7 +7,9 @@
         시설소개
     </div>
     <div class="mc_content">
-        mc content
+        {% for item in result %}
+        <img src="http://localhost:3000/{{item.content}}" alt="교육과정이미지">
+        {% endfor %}
     </div>
 </div>
 <!--menu_contents end-->

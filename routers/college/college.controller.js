@@ -1,26 +1,49 @@
-let introduction = (req,res)=>{
-    let {userid} = req.cookies;
-    res.render('./college/introduction',{userid});
+const { History, intro, board, teacher } = require("../../models");
+const { Op } = require("sequelize");
+
+
+let introduction = async (req, res) => {
+    let { userid } = req.cookies;
+    let result = await board.findOne({
+        where: { id: 1, }
+    })
+    res.render('./college/introduction', { userid, result });
 }
 
-let history = (req,res)=>{
-    let {userid} = req.cookies;
-    res.render('./college/history',{userid});
+let history = async (req, res) => {
+    let { userid } = req.cookies;
+    let result = await History.findAll({
+        order: [['year', 'ASC']]
+    });
+    // 연도 한번만 뽑으려면 아래 함수 사용. 
+    //result = dlt_year(result);
+    res.render('./college/history', { userid, result });
 }
 
-let teachers = (req,res)=>{
-    let {userid} = req.cookies;
-    res.render('./college/teachers',{userid});
+let teachers = async (req, res) => {
+    let { userid } = req.cookies;
+    let result = await teacher.findAll({
+        where: { show: 1, }
+    })
+    res.render('./college/teachers', { userid, result });
 }
 
-let interior = (req,res)=>{
-    let {userid} = req.cookies;
-    res.render('./college/interior',{userid});
+let interior = async (req, res) => {
+    let { userid } = req.cookies;
+    let result = await intro.findAll({
+        where: {
+            [Op.and]: [{ type: '0' }, { show: '1' }],
+        },
+    })
+    res.render('./college/interior', { userid, result });
 }
 
-let location = (req,res)=>{
-    let {userid} = req.cookies;
-    res.render('./college/location',{userid});
+let location = async (req, res) => {
+    let { userid } = req.cookies;
+    let result = await board.findOne({
+        where: { id: 2, }
+    })
+    res.render('./college/location', { userid, result });
 }
 
 module.exports = {
@@ -29,4 +52,16 @@ module.exports = {
     teachers,
     interior,
     location
+}
+
+
+function dlt_year(arr) {
+    let temp = [];
+    for (let i = arr.length - 1; i > 0; i--) {
+        if (arr[i].dataValues.year === arr[i - 1].dataValues.year) {
+            arr[i].dataValues.year = null;
+        }
+        temp.unshift(arr[i].dataValues);
+    }
+    return temp;
 }

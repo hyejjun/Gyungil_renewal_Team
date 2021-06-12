@@ -29,7 +29,9 @@
           조회수<span>{{result.hit}}</span>
           <pre id ='pre'></pre>
           <input type="hidden" id ='content' value="{{result.content}}">
+          {% if authority %}
           <a href="/admin/community/{{board_name}}/modify?id={{result.id}}">수정하기</a>
+          {% endif %}
           <a href="/admin/community/{{board_name}}/destroy?id={{result.id}}">삭제하기</a>
          
         </div>

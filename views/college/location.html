@@ -5,6 +5,7 @@
 <div class="menu_contents">
     <div class="mc_title">
         오시는 길
+        <input id ="address" type="hidden" value="{{result.subject}}">
     </div>
     <div class="mc_content">
         <p style="margin-top:-12px">
@@ -17,6 +18,9 @@
         </p>
         <div id="map" style="width:996px;height:500px; top:100px"></div>
         {% include "../layout/map.html" %}
+        <div style="margin-top:100px">
+            {{result.content}}
+        </div>
     </div>
 </div>
 <!--menu_contents end-->

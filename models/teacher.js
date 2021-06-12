@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
     show: {
       type: DataTypes.TINYINT.UNSIGNED,
       allowNull: true,
-      defaultValue: 0
+      defaultValue: 1
     }
   }, {
     sequelize,

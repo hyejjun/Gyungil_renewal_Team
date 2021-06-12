@@ -6,7 +6,6 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 const initModels = require('./init-models');
 
-const User = require('./user');
 const Portfolio = require('./portfolio');
 
 let sequelize;
@@ -18,23 +17,23 @@ if (config.use_env_variable) {
 
 let models = initModels(sequelize);
 
-db.User = User;
-db.Portfolio = Portfolio;
 
-User.init(sequelize);
-Portfolio.init(sequelize);
+// db.Portfolio = Portfolio;
+
+
+// Portfolio.init(sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.board = models.board;
 db.consult = models.consult;
-db.history = models.history;
+db.History = models.history;
 db.teacher = models.teacher;
 db.curriculum = models.curriculum;
 db.subject = models.subject;
 db.sboard = models.sboard;
 db.intro = models.intro;
-db.sboard = models.sboard;
+db.User = models.users;
 db.curr_sbj = models.curr_sbj;
 
 

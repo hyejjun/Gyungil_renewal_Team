@@ -1,4 +1,4 @@
-const { board, teacher, history, intro } = require("../../../models");
+const { board, teacher, History, intro } = require("../../../models");
 
 const intro_type = [];
 
@@ -51,22 +51,19 @@ let update_intro = async (req, res) => {
 
 ////////////////////////////////////////////연혁
 let get_history = async (req, res) => {
-  let result = await history.findAll({
+  let result = await History.findAll({
     order: [['year', 'ASC']]
   });
-  let resultArr = [];
-  result.forEach(ele => {
-    resultArr.push(ele.dataValues);
-  });
+
   res.render('./admin/info/history', {
-    result: resultArr
+    result,
   })
 }
 
 
 let add_history = async (req, res) => {
   let { year, content } = req.body;
-  await history.create({
+  await History.create({
     year,
     content,
   });
@@ -80,26 +77,23 @@ let add_history = async (req, res) => {
 let dlt_history = async (req, res) => {
   let { id } = req.body;
 
-  await history.destroy({
+  await History.destroy({
     where: { id, }
   })
 
-  let result = await history.findAll({
+  let result = await History.findAll({
     order: [['year', 'ASC']]
   })
-  let resultArr = [];
-  result.forEach(ele => {
-    resultArr.push(ele.dataValues);
-  });
+
   res.render('./admin/info/history', {
-    result: resultArr,
+    result,
   });
 }
 
 let update_history = async (req, res) => {
   let { id, year, content } = req.body;
 
-  let result = await history.update({
+  let result = await History.update({
     year,
     content,
   }, {

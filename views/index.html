@@ -28,6 +28,11 @@
 
         <!--visual start-->
         <div id="visual" class="w100">
+            <ul>
+                {% for item in visual %}
+                    <li><img src="http://localhost:3000/{{item.content}}" alt="메인비주얼 이미지"></li>
+                {% endfor %}
+            </ul>
 
         </div>
         <!--visual end-->
@@ -39,12 +44,13 @@
                 <div class="program_sub_title">당신도 할 수 있어요</div>
                 <div class="program_list">
                     <ul>
-                        <li class="card">a</li>
-                        <li class="card">a</li>
-                        <li class="card">a</li>
-                        <li class="card">a</li>
-                        <li class="card">a</li>
-                        <li class="card">a</li>
+                        {% for item in curr %}
+                        <li class="card">
+                            <img src="http://localhost:3000/{{item.image}}" alt="교육과정이미지">
+                            <a href="#">{{item.name}}</a>
+                        </li>
+                        {% endfor %}
+                       
                     </ul>
                 </div>
             </div>

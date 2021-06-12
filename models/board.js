@@ -8,8 +8,12 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     writer: {
-      type: DataTypes.STRING(50),
-      allowNull: false
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'userid'
+      }
     },
     date: {
       type: DataTypes.DATEONLY,
@@ -49,6 +53,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "FK_board_users",
+        using: "BTREE",
+        fields: [
+          { name: "writer" },
         ]
       },
     ]

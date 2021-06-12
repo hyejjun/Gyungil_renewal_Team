@@ -1,25 +1,24 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('curr_rv', {
-    id: {
-      autoIncrement: true,
+    int: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     curr_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'curriculum',
         key: 'id'
       }
     },
-    rv_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+    board_id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
       references: {
-        model: 'sboard',
+        model: 'board',
         key: 'id'
       }
     }
@@ -33,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id" },
+          { name: "int" },
         ]
       },
       {
@@ -44,10 +43,10 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "FK__sboard",
+        name: "FK__board",
         using: "BTREE",
         fields: [
-          { name: "rv_id" },
+          { name: "board_id" },
         ]
       },
     ]
