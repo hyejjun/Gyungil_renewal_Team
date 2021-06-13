@@ -10,9 +10,9 @@
 </head>
 <script type="text/javascript">
   window.addEventListener('DOMContentLoaded',()=>{
+  const hidden_content = document.querySelector('#hidden_content');
   const content = document.querySelector('#content');
-  const pre = document.querySelector('#pre');
-    pre.innerHTML = `${content.value}`; 
+    content.innerHTML = `${hidden_content.value}`; 
   })
 </script>
 <body>
@@ -29,11 +29,10 @@
           작성자<span>{{result.writer}}</span><br>
           등록일<span>{{result.date}}</span><br>
           조회수<span>{{result.hit}}</span><br>
-          수료한 교육과정 <span>{{result.class_code}}</span><br>
-          <pre id ='pre'></pre>
-          <input type="hidden" id ='content' value="{{result.content}}">
-          <a href="/admin/job/{{title1}}/modify?id={{result.id}}">수정하기</a>
-          <a href="/admin/job/{{title1}}/destroy?id={{result.id}}">삭제하기</a>
+          <div id ='content'></div>
+          <input type="hidden" id ='hidden_content' value="{{result.content}}">
+          <a href="/admin/job/{{board_name}}/modify?id={{result.id}}">수정하기</a>
+          <a href="/admin/job/{{board_name}}/destroy?id={{result.id}}">삭제하기</a>
          
         </div>
        

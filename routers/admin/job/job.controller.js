@@ -1,146 +1,109 @@
-const { sboard, curriculum } = require("../../../models")
+const { board, curriculum } = require("../../../models")
 
-let temp = {
-  'interview': ['취업자인터뷰', '2'],
-  'portfolio': ['포트폴리오', '3']
+let boardType = {
+  'interview': ['취업자인터뷰', '6'],
+  'portfolio': ['포트폴리오', '7']
 }
 
 let show_list = async (req, res) => {
-  let title1 = req.params.params1;
-  let title2 = temp[title1][0];
-  let type = temp[title1][1];
-  let resultArr = await sboard.findAll({
+  let board_name = req.params.board_name;
+  console.log(board_name);
+  let title = boardType[board_name][0];
+  let type = boardType[board_name][1];
+  let result = await board.findAll({
     where: { type, }
   });
 
-  let result = [];
-  resultArr.forEach(ele => {
-    result.push(ele.dataValues);
-  })
 
   result = number_set(result);
 
-  result.forEach(v => {
-    console.log(v.type)
-  })
-
   res.render('./admin/job/list', {
-    title1,
-    title2,
+    board_name,
+    title,
     result,
   })
 }
 
 let show_write = async (req, res) => {
-  let title1 = req.params.params1;
-  let title2 = temp[title1][0];
-
-  let result = await curriculum.findAll({
-    attributes: ['id', 'name'],
-  })
-  let curr = [];
-
-  result.forEach(ele => {
-    curr.push(ele.dataValues);
-  })
+  let board_name = req.params.board_name;
+  let title = boardType[board_name][0];
 
   res.render('./admin/job/write', {
-    title1, title2, curr
+    board_name, title,
   })
 }
 
 let create_article = async (req, res) => {
-  let title1 = req.params.params1;
-  let type = temp[title1][1];
-  let writer = "관리자"
-  let { curriculum, subject, content } = req.body;
+  let board_name = req.params.board_name;
+  let type = boardType[board_name][1];
+  let writer = "admin"
+  let { subject, content } = req.body;
 
-  let resutlt = await sboard.create({
+  let resutlt = await board.create({
     subject, content, writer, type,
-    class_code: curriculum,
+
   })
 
   let id = resutlt.dataValues.id;
-  res.redirect(`/admin/job/${title1}/view?id=${id}`);
+  res.redirect(`/admin/job/${board_name}/view?id=${id}`);
 }
 
 
 
 let show_article = async (req, res) => {
-  let title1 = req.params.params1;
+  let board_name = req.params.board_name;
   let { id } = req.query;
 
-  let result = await sboard.findOne({
+  let result = await board.findOne({
     where: { id, }
   })
 
-  result = result.dataValues;
-
-  let curr = await curriculum.findOne({
-    where: { id: result.class_code }
-  })
-
-  console.log(curr.dataValues.name);
-
-  result.class_code = curr.dataValues.name;
-
   res.render('./admin/job/view', {
-    result, title1,
+    result, board_name
   })
 
 }
 
 
 let show_modify = async (req, res) => {
-  let title1 = req.params.params1;
+  let board_name = req.params.board_name;
   let { id } = req.query;
 
-  let result = await sboard.findOne({
+  let result = await board.findOne({
     where: { id, }
   })
 
-  result = result.dataValues;
-
-  let currArr = await curriculum.findAll({
-    attributes: ['id', 'name'],
-  })
-  let curr = [];
-
-  currArr.forEach(ele => {
-    curr.push(ele.dataValues);
-  })
-  console.log(result);
   res.render('./admin/job/modify', {
-    curr, result, title1,
+    result, board_name,
   })
 
 }
 
 let update_article = async (req, res) => {
-  let title1 = req.params.params1;
-  console.log(req.body);
-  let { curriculum, subject, content, id } = req.body;
+  let board_name = req.params.board_name;
+
+  let { subject, content, id } = req.body;
   let date = new Date();
 
-  let result = await sboard.update({
-    subject, content, class_code: curriculum, date,
+  let result = await board.update({
+    subject, content, date,
   }, {
     where: { id, }
   })
 
-  res.redirect(`/admin/job/${title1}/view?id=${id}`);
+  res.redirect(`/admin/job/${board_name}/view?id=${id}`);
 }
 
 
 
 let destroy_article = async (req, res) => {
-  let title1 = req.params.params1;
+  let board_name = req.params.board_name;
   let { id } = req.query;
 
-  let result = await sboard.destroy({
+  let result = await board.destroy({
     where: { id, }
   })
-  res.redirect(`/admin/job/${title1}`);
+  res.redirect(`/admin/job/${board_name}`);
 
 }
 

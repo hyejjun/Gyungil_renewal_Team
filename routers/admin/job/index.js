@@ -3,13 +3,13 @@ const router = express.Router();
 const jobController = require('./job.controller')
 
 
-router.get('/:params1',jobController.show_list);
-router.get('/:params1/write',jobController.show_write);
-router.post('/:params1/write',jobController.create_article);
-router.get('/:params1/view',jobController.show_article);
-router.get('/:params1/modify',jobController.show_modify);
-router.post('/:params1/modify',jobController.update_article);
-router.get('/:params1/destroy',jobController.destroy_article);
+router.get('/:board_name', jobController.show_list);
+router.get('/:board_name/write', jobController.show_write);
+router.post('/:board_name/write', jobController.create_article);
+router.get('/:board_name/view', jobController.show_article);
+router.get('/:board_name/modify', jobController.show_modify);
+router.post('/:board_name/modify', jobController.update_article);
+router.get('/:board_name/destroy', jobController.destroy_article);
 
 
 

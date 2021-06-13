@@ -9,9 +9,9 @@
   <title>{{result.subject}} 수정</title>
   <script type="text/javascript">
     window.addEventListener('DOMContentLoaded',()=>{
-    const content = document.querySelector('#content');
-    const pre = document.querySelector('#summernote');
-      pre.innerHTML = `${content.value}`; 
+    const hidden_content = document.querySelector('#hidden_content');
+    const content = document.querySelector('#summernote');
+      content.innerHTML = `${hidden_content.value}`; 
     })
   </script>
 </head>
@@ -24,17 +24,12 @@
 
         <div>
           <div>{{result.subject}} 수정</div>
-          <form id="form" action="/admin/job/{{title1}}/modify" method="post">
-          <input type="hidden" id="code" value="{{result.class_code}}">
+          <form id="form" action="/admin/job/{{board_name}}/modify" method="post">
           <div>
-            {% for item in curr %}
-            <div>
-              <label for="curr{{item.id}}">{{item.name}}</label>  
-              <input type="radio" name="curriculum" value="{{item.id}}" id="curr{{item.id}}">
-            </div>
-            {% endfor %}
+  
           </div>
             <input type="hidden" name='id'  value="{{result.id}}">
+            <!-- 작성자 이름 쓰는 곳 추가하기. -->
             제목:<input type="text" name='subject'  value="{{result.subject}}">
             {% include "./summernote_modify.html" %}
           </form>

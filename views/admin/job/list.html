@@ -18,7 +18,7 @@
       <div id="main">
 
         <div>
-          <h2>{{title2}}</h2>
+          <h2>{{title}}</h2>
           <table>
             <thead>
               <td>글번호</td>
@@ -32,7 +32,7 @@
               <tr>
                 <td>{{item.num}}</td>
                 <td>
-                  <a href="/admin/job/{{title1}}/view?id={{item.id}}">{{item.subject}}</a>
+                  <a href="/admin/job/{{board_name}}/view?id={{item.id}}">{{item.subject}}</a>
                 </td>
                 <td>{{item.date}}</td>
                 <td>{{item.writer}}</td>
@@ -43,7 +43,7 @@
           </table>
 
 
-          <a href="/admin/job/{{title1}}/write">글 작성</a>
+          <a href="/admin/job/{{board_name}}/write">글 작성</a>
         </div>
 
 

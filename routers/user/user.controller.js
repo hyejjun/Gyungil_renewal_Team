@@ -1,11 +1,15 @@
-const { sequelize, User } = require('../../models');
+const { sequelize, User, curriculum } = require('../../models');
 const auth = require('../../middleware/auth');
 const ctoken = require('../../jwt');
 const jwtPW = require('../../jwtPw');
 const crypto = require('crypto');
 
-let join = (req, res) => {
-    res.render('./user/join')
+let join = async (req, res) => {
+    let curr = await curriculum.findAll({
+        attribute: ['id', 'name']
+    });
+
+    res.render('./user/join', { curr })
 }
 let login = (req, res) => {
     let { msg, flag } = req.query;
@@ -80,8 +84,8 @@ let id_check = async (req, res) => {
 }
 
 let info = async (req, res) => {
-    let {msg} = req.query;
-    
+    let { msg } = req.query;
+
     let { userid } = req.cookies;
     let result = await User.findOne({
         where: { userid }
@@ -105,7 +109,7 @@ let info = async (req, res) => {
             break;
     }
     //console.log(classname);
-    res.render('./user/user_info', { result,classname,msg });
+    res.render('./user/user_info', { result, classname, msg });
 }
 
 let modify = async (req, res) => {
@@ -114,7 +118,7 @@ let modify = async (req, res) => {
     let result = await User.findOne({
         where: { userid }
     })
-    
+
     res.render('./user/user_modify', { result, msg });
 }
 

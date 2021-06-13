@@ -19,9 +19,8 @@
 
  
           <div >
-            <div>{{title2}} 작성</div>
-            <form id="form" action="/admin/job/{{title1}}/write" method="POST">
-              {% include "./curr_radio.html" %}
+            <div>{{title}} 작성</div>
+            <form id="form" action="/admin/job/{{board_name}}/write" method="POST">
               제목:<input type="text" name='subject' id="subject">
               {% include "./summernote.html" %}
             </form>

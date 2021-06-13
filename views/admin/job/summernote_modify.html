@@ -18,7 +18,7 @@
 
 <body>
     <div id="summernote"></div>
-    <input type="hidden" id="content" value="{{result.content}}">
+    <input type="hidden" id="hidden_content" value="{{result.content}}">
 
 
     <div class="row">
@@ -28,10 +28,10 @@
 
     <script>
         $(document).ready(function () {
-            let content = document.querySelector('#content').value; 
+            let hidden_content = document.querySelector('#hidden_content').value; 
             
             //썸머노트에 값넣기
-            $('#summernote').summernote('code', content);
+            $('#summernote').summernote('code', hidden_content);
 
             //위와 같이 값을 먼저 넣어준 후 초기화를 시킨다. 그럼 아래와 같이 입력이 된다.
             //초기화

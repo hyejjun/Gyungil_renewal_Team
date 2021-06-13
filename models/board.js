@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define('board', {
     id: {
       autoIncrement: true,
@@ -40,7 +40,7 @@ module.exports = function(sequelize, DataTypes) {
     show: {
       type: DataTypes.TINYINT.UNSIGNED,
       allowNull: true,
-      defaultValue: 0
+      defaultValue: 1
     }
   }, {
     sequelize,

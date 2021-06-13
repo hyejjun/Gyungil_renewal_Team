@@ -18,6 +18,10 @@
                     <input type="text" name="username" id="username" placeholder="이름을 입력해주세요" required>
                 </li>
                 <li>
+                    <label for="username">이름 :</label>
+                    <input type="text" name="username" id="username" placeholder="이름을 입력해주세요" required>
+                </li>
+                <li>
                     <label for="useremail">이메일 :</label>
                     <input type="email" name="useremail" id="useremail" placeholder="이메일을 입력해주세요" required>
                 </li>
@@ -45,17 +49,13 @@
                 </li>
                 <li>
                     <p> 과목 코드 : </p>
-                    <label for="VR_AR">VR/AR</label>
-                    <input type="radio" name="class_code" value="1" id="VR_AR" required>
+                    {% for item in curr %}
+                    <label for="curr{{item.id}}">{{item.name}}</label>
+                    <input type="radio" name="class_code" value="{{item.id}}" id="curr{{item.id}}" required>
 
-                    <label for="blockchain">블록체인</label>
-                    <input type="radio" name="class_code" value="2" id="blockchain">
+                    {% endfor %}
 
-                    <label for="game_designer">게임 기획자</label>
-                    <input type="radio" name="class_code" value="3" id="game_designer">
-
-                    <label for="game_programing">게임 프로그래밍</label>
-                    <input type="radio" name="class_code" value="4" id="game_programing">
+                    
                 </li>
             </ul>
         </div>
