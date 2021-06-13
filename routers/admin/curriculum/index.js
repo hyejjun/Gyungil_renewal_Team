@@ -23,11 +23,11 @@ router.post('/curr/destroy', currController.destroy_curr);
 router.get('/subject/add', currController.add_sub);
 router.post('/curr/add', upload.single('img'), currController.create_curr);
 router.post('/subject/add', upload.single('img'), currController.create_sub);
-router.get('/subject/modify',currController.modify_sub); 
-router.post('/subject/modify',upload.single('img'),currController.update_sub); 
-router.get('/subject/destroy',currController.destroy_sub); 
-router.get('/curr/control',upload.single('img'),currController.control_curr)
-router.post('/curr/control',upload.single('img'),currController.update_curr)
+router.get('/subject/modify', currController.modify_sub);
+router.post('/subject/modify', upload.single('img'), currController.update_sub);
+router.get('/subject/destroy', currController.destroy_sub);
+router.get('/curr/control', upload.single('img'), currController.control_curr)
+router.post('/curr/control', upload.single('img'), currController.update_curr)
 
 
 module.exports = router;

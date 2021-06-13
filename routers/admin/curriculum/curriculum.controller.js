@@ -1,4 +1,4 @@
-const { curriculum, subject, curr_sbj } = require("../../../models");
+const { curriculum, subject, curr_sbj, User, board } = require("../../../models");
 
 
 
@@ -134,10 +134,8 @@ let control_curr = async (req, res) => {
 
   let sorted = [];
   sortLi.forEach(v => {
-    console.log(v);
     for (let i = 0; i < sbj.length; i++) {
       if (v == sbj[i].id) {
-        console.log(v, '----', sbj[i].id);
         sbj[i]["show"] = 1;
         sorted.push(sbj[i]);
         sbj.splice(i, 1);
@@ -151,7 +149,17 @@ let control_curr = async (req, res) => {
   })
 
   sorted = sorted.concat(sbj);
-  console.log(sorted);
+
+  //해당 수강후기 갖고오는 부분 내일 만들기. 
+  let review = await board.findAll({
+    include: [{
+      model: User,
+      as: 'writer_user',
+      where: { class_code: '1' }
+    }]
+  })
+
+
 
   res.render('./admin/curriculum/curr_control', {
     spec, sorted, originsbj

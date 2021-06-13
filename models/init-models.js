@@ -28,22 +28,22 @@ function initModels(sequelize) {
   var teacher = _teacher(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
 
-  curr_faq.belongsTo(board, { as: "board", foreignKey: "board_id"});
-  board.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "board_id"});
-  curr_rv.belongsTo(board, { as: "board", foreignKey: "board_id"});
-  board.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "board_id"});
-  main_rv.belongsTo(board, { as: "rv", foreignKey: "rv_id"});
-  board.hasMany(main_rv, { as: "main_rvs", foreignKey: "rv_id"});
-  curr_faq.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
-  curriculum.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "curr_id"});
-  curr_rv.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
-  curriculum.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "curr_id"});
-  curr_sbj.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
-  curriculum.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "curr_id"});
-  curr_sbj.belongsTo(subject, { as: "sbj", foreignKey: "sbj_id"});
-  subject.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "sbj_id"});
-  board.belongsTo(users, { as: "writer_user", foreignKey: "writer"});
-  users.hasMany(board, { as: "boards", foreignKey: "writer"});
+  curr_faq.belongsTo(board, { as: "board", foreignKey: "board_id" });
+  board.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "board_id" });
+  curr_rv.belongsTo(board, { as: "board", foreignKey: "board_id" });
+  board.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "board_id" });
+  main_rv.belongsTo(board, { as: "rv", foreignKey: "rv_id" });
+  board.hasMany(main_rv, { as: "main_rvs", foreignKey: "rv_id" });
+  curr_faq.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id" });
+  curriculum.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "curr_id" });
+  curr_rv.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id" });
+  curriculum.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "curr_id" });
+  curr_sbj.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id" });
+  curriculum.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "curr_id" });
+  curr_sbj.belongsTo(subject, { as: "sbj", foreignKey: "sbj_id" });
+  subject.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "sbj_id" });
+  users.hasMany(board, { as: "boards", foreignKey: "writer", sourceKey: 'userid' });
+  board.belongsTo(users, { as: "writer_user", foreignKey: "writer", targetKey: 'userid' });
 
   return {
     board,
