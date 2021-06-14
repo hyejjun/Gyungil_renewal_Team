@@ -1,15 +1,15 @@
 const { board } = require('../../models');
 const jwtId = require('../../jwtId')
 
-const article_count = 10; 
+const article_count = 10;
 let boardType = {
     'interview': ['취업자인터뷰', '6'],
     'portfolio': ['포트폴리오', '7']
-  }
+}
 
 
-<<<<<<< HEAD
-let list = async(req, res) => {
+
+let list = async (req, res) => {
     let { AccessToken } = req.cookies;
     let page = req.query.page;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
@@ -39,8 +39,8 @@ let list = async(req, res) => {
     pageblock[0] = [];
     let block = 0;
     let p = 1;
-    let nowblock=0;
-    let nowpageblock = []; 
+    let nowblock = 0;
+    let nowpageblock = [];
     while (count > 0) {
         count -= article_count;
         pageblock[block].push(p)
@@ -61,7 +61,7 @@ let list = async(req, res) => {
     if (nowblock == 0) {
         prev = false;
     } else {
-        prev = pageblock[nowblock - 1][article_count-1];
+        prev = pageblock[nowblock - 1][article_count - 1];
     }
 
     if (nowblock == pageblock.length - 1) {
@@ -71,17 +71,14 @@ let list = async(req, res) => {
     }
 
     res.render(`./jobinfo/list`, {
-        result, title, board_name, userid, nowpageblock, start, end, prev, next,page,
+        result, title, board_name, userid, nowpageblock, start, end, prev, next, page,
     })
 }
 
 
 
-let view = async(req,res)=>{
+let view = async (req, res) => {
     console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-=======
-let portfolio = (req, res) => {
->>>>>>> 72421c97e3cab9af56349df33bb681cb7a0d6edc
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let id = req.query.id;
@@ -93,9 +90,9 @@ let portfolio = (req, res) => {
         where: { id, },
     });
 
-    console.log(result); 
+    console.log(result);
     res.render('./jobinfo/view', {
-        result, title, board_name, userid,page,
+        result, title, board_name, userid, page,
     })
 
 }
@@ -105,10 +102,9 @@ let portfolio = (req, res) => {
 
 
 module.exports = {
-<<<<<<< HEAD
     list,
     view,
-    
+
 }
 
 
@@ -122,10 +118,4 @@ function number_set(x, N) {
         N--;
     });
     return arr;
-=======
-    jobinfo,
-    portfolio,
-    portfolio_submit,
-    portfolio_submit_success
->>>>>>> 72421c97e3cab9af56349df33bb681cb7a0d6edc
 }
