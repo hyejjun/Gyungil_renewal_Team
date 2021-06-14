@@ -189,7 +189,6 @@ let review_insert = async (req, res) => {
 
     })
 
-    //리다이렉트로 바꾸기 
     res.redirect(`/community/review_view?id=${result.id}&page=1`)
     
 }
