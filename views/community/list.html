@@ -7,13 +7,33 @@
         {{title}}
     </div>
     <div class="mc_content">
-        {% for item in result %}
-          {{item.num}}
-          {{item.writer}}
-          <a href="/community/{{board_name}}/view?id={{item.id}}">{{item.subject}}</a>
-          {{item.date}}
-          {{item.hit}}
-        {% endfor %}
+        <ul>
+            {% for item in result %}
+            <li>
+            {{item.num}}
+            {{item.writer}}
+            <a href="/community/{{board_name}}/view?id={{item.id}}">{{item.subject}}</a>
+            {{item.date}}
+            {{item.hit}}
+        </li>
+          {% endfor %}
+        </ul>
+
+        <div>
+            <a href="/community/{{board_name}}/list?page={{start}}">처음</a>
+            {% if prev %}
+            <a href="/community/{{board_name}}/list?page={{prev}}">이전</a>
+            {% endif %}
+            {% for item in nowpageblock %}
+            <a href="/community/{{board_name}}/list?page={{item}}">{{item}}</a>
+            {% endfor %}
+            {% if next %}
+            <a href="/community/{{board_name}}/list?page={{next}}">다음</a>
+            {% endif %}
+            <a href="/community/{{board_name}}/list?page={{end}}">끝</a>
+
+        </div>
+        
     </div>
 </div>
 <!--menu_contents end-->
