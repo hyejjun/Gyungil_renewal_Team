@@ -1,4 +1,6 @@
 const { board } = require("../../models");
+const article_count = 10; 
+
 
 let boardType = {
     'notice': ['공지사항', '1'],
@@ -10,19 +12,72 @@ let boardType = {
 
 let list = async (req, res) => {
     let { userid } = req.cookies;
+    let page = req.query.page; 
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
     let type = boardType[board_name][1];
+    let count = await board.count({
+        where: { type, },
+    });
+
+    
+
+
+
+    let start = 1; 
+    let end = Math.ceil(count/article_count); 
+
     let result = await board.findAll({
+        offset:article_count*(page-1), 
+        limit:article_count, 
         attributes: ['id', 'writer', 'subject', 'date', 'hit'],
         order: [['id', 'DESC']],
         where: { type, },
     })
+    let N = count-article_count*(page-1); 
+    result = number_set(result,N);
 
-    result = number_set(result);
+    let pageblock = []; 
+    pageblock[0]=[]; 
+    let block =0;
+    let p =1;  
+    let nowblock; 
+    while(count>0){
+        count-=article_count; 
+       pageblock[block].push(p)
+       if(p==page){
+           nowpageblock = pageblock[block]; 
+        nowblock = block; 
+        }
+       p++;
+       
+       if(p>10*(block+1)){
+           pageblock.push([]);
+           block++;
+       } 
+    }
+
+    let prev; 
+    let next; 
+    if(nowblock==0){
+        prev=false; 
+    }else{
+        prev=pageblock[nowblock-1][9]; 
+    }
+
+    if(nowblock==pageblock.length-1){
+        next=false; 
+    }else{
+        next=pageblock[nowblock+1][0]; 
+
+    }
+
+
+
+   
 
     res.render(`./community/list`, {
-        result, title, board_name, userid,
+        result, title, board_name, userid, nowpageblock,start,end,prev,next
     })
 }
 
@@ -97,8 +152,8 @@ module.exports = {
 }
 
 //글번호생성 함수 
-function number_set(x) {
-    let N = x.length;
+function number_set(x,N) {
+    
     let arr = [];
     x.forEach(ele => {
         ele.dataValues['num'] = N;

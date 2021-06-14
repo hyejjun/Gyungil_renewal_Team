@@ -7,7 +7,10 @@
         faq
     </div>
     <div class="mc_content">
-        mc content
+       {% for item in result %}
+       {{item.subject}} 
+       {{item.content}} 
+       {% endfor %}
     </div>
 </div>
 <!--menu_contents end-->
