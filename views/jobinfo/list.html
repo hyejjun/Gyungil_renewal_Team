@@ -1,10 +1,10 @@
 {% include "../layout/subpage_top.html" %}
-{% include "../layout/subpage_community_navi.html" %}
+{% include "../layout/subpage_jobinfo_navi.html" %}
 
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
-        수강후기
+         {{title}}
     </div>
     <div class="mc_content">
 
@@ -13,7 +13,7 @@
             <li>
             {{item.num}}
             {{item.writer}}
-            <a href="/community/review/view?page={{page}}&id={{item.id}}">{{item.subject}}</a>
+            <a href="/jobinfo/{{board_name}}/view?id={{item.id}}&page={{page}}">{{item.subject}}</a>
             {{item.date}}
             {{item.hit}}
         </li>
@@ -21,25 +21,19 @@
         </ul>
 
         <div>
-            <a href="/community/review?page=1">처음</a>
+            <a href="/jobinfo/{{board_name}}?page=1">처음</a>
             {% if prev %}
-            <a href="/community/review?page={{prev}}">이전</a>
+            <a href="/jobinfo/{{board_name}}?page={{prev}}">이전</a>
             {% endif %}
             {% for item in nowpageblock %}
-            <a href="/community/review?page={{item}}">{{item}}</a>
+            <a href="/jobinfo/{{board_name}}?page={{item}}">{{item}}</a>
             {% endfor %}
             {% if next %}
-            <a href="/community/review?page={{next}}">다음</a>
+            <a href="/jobinfo/{{board_name}}?page={{next}}">다음</a>
             {% endif %}
-            <a href="/community/review?page={{end}}">끝</a>
+            <a href="/jobinfo/{{board_name}}?page={{end}}">끝</a>
 
         </div>
-
-        {% if userid != undefined%}
-        <div>
-            <a href="/community/review_write">작성하기</a>
-        </div>
-        {% endif %}
             
     </div>
 </div>

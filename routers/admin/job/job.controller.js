@@ -1,4 +1,4 @@
-const { board, curriculum } = require("../../../models")
+const { board, curriculum, User } = require("../../../models")
 
 let boardType = {
   'interview': ['취업자인터뷰', '6'],
@@ -7,20 +7,69 @@ let boardType = {
 
 let show_list = async (req, res) => {
   let board_name = req.params.board_name;
-  console.log(board_name);
+  let page = req.query.page;
+
   let title = boardType[board_name][0];
   let type = boardType[board_name][1];
   let result = await board.findAll({
-    where: { type, }
+    offset: article_count * (page - 1),
+    limit: article_count,
+    attributes: ['id', 'writer', 'subject', 'date', 'hit'],
+    order: [['id', 'DESC']],
+    where: { type, },
+  })
+
+  let count = await board.count({
+    where: { type, },
   });
 
+  let start = 1;
+  let end = Math.ceil(count / article_count);
+  let N = count - article_count * (page - 1);
+  result = number_set(result, N);
 
-  result = number_set(result);
+  let pageblock = [];
+  pageblock[0] = [];
+  let block = 0;
+  let p = 1;
+  let nowblock;
+  while (count > 0) {
+    count -= article_count;
+    pageblock[block].push(p)
+    if (p == page) {
+      nowpageblock = pageblock[block];
+      nowblock = block;
+    }
+    p++;
+
+    if (p > 10 * (block + 1)) {
+      pageblock.push([]);
+      block++;
+    }
+  }
+
+  let prev;
+  let next;
+  if (nowblock == 0) {
+    prev = false;
+  } else {
+    prev = pageblock[nowblock - 1][9];
+  }
+
+  if (nowblock == pageblock.length - 1) {
+    next = false;
+  } else {
+    next = pageblock[nowblock + 1][0];
+  }
 
   res.render('./admin/job/list', {
     board_name,
     title,
     result,
+    nowpageblock,
+    end,
+    prev,
+    next
   })
 }
 
@@ -28,16 +77,25 @@ let show_write = async (req, res) => {
   let board_name = req.params.board_name;
   let title = boardType[board_name][0];
 
+  let user = await User.findAll({
+    include: [{
+      model: curriculum,
+      as: 'code',
+    }]
+  })
+
+  console.log(user);
+
   res.render('./admin/job/write', {
-    board_name, title,
+    board_name, title, user,
   })
 }
 
 let create_article = async (req, res) => {
   let board_name = req.params.board_name;
   let type = boardType[board_name][1];
-  let writer = "admin"
-  let { subject, content } = req.body;
+
+  let { subject, content, writer } = req.body;
 
   let resutlt = await board.create({
     subject, content, writer, type,

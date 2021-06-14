@@ -12,7 +12,7 @@
             <li>
             {{item.num}}
             {{item.writer}}
-            <a href="/community/{{board_name}}/view?id={{item.id}}">{{item.subject}}</a>
+            <a href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}">{{item.subject}}</a>
             {{item.date}}
             {{item.hit}}
         </li>
@@ -20,7 +20,7 @@
         </ul>
 
         <div>
-            <a href="/community/{{board_name}}/list?page={{start}}">처음</a>
+            <a href="/community/{{board_name}}/list?page=1">처음</a>
             {% if prev %}
             <a href="/community/{{board_name}}/list?page={{prev}}">이전</a>
             {% endif %}

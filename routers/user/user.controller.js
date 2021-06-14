@@ -9,6 +9,7 @@ let join = async (req, res) => {
     let curr = await curriculum.findAll({
         attribute: ['id', 'name']
     });
+    curr.shift(); 
 
     res.render('./user/join', { curr })
 }

@@ -1,45 +1,120 @@
-const { Portfolio } = require('../../models');
+const { board } = require('../../models');
 const jwtId = require('../../jwtId')
 
-let jobinfo = (req, res) => {
+const article_count = 10; 
+let boardType = {
+    'interview': ['취업자인터뷰', '6'],
+    'portfolio': ['포트폴리오', '7']
+  }
+
+
+let list = async(req, res) => {
     let { AccessToken } = req.cookies;
+    let page = req.query.page;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    res.render('./jobinfo/interview', { userid });
-}
+    let board_name = req.params.board_name;
+    let title = boardType[board_name][0];
+    let type = boardType[board_name][1];
 
-let recruit = (req, res) => {
-    let { AccessToken } = req.cookies;
-    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    res.render('./jobinfo/recruit', { userid })
-}
 
-let portfolio = (req, res) => {
-    let { AccessToken } = req.cookies;
-    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    res.render('./jobinfo/portfolio', { userid })
-}
-let portfolio_submit = (req, res) => {
-    res.render('./jobinfo/portfolio_submit');
-}
+    let result = await board.findAll({
+        offset: article_count * (page - 1),
+        limit: article_count,
+        attributes: ['id', 'writer', 'subject', 'date', 'hit'],
+        order: [['id', 'DESC']],
+        where: { type, },
+    })
 
-let portfolio_submit_success = async (req, res) => {
-    console.log(req.body);
-    let { portfolio_explanation } = req.body;
-    console.log(req.file);
-    let portfolio_file = req.file == undefined ? '' : req.file.path;
-
-    await Portfolio.create({
-        explanation: portfolio_explanation,
-        file: portfolio_file
+    let count = await board.count({
+        where: { type, },
     });
-    res.redirect('/jobinfo/portfolio')
+
+    let start = 1;
+    let end = Math.ceil(count / article_count);
+    let N = count - article_count * (page - 1);
+    result = number_set(result, N);
+
+    let pageblock = [];
+    pageblock[0] = [];
+    let block = 0;
+    let p = 1;
+    let nowblock=0;
+    let nowpageblock = []; 
+    while (count > 0) {
+        count -= article_count;
+        pageblock[block].push(p)
+        if (p == page) {
+            nowpageblock = pageblock[block];
+            nowblock = block;
+        }
+        p++;
+
+        if (p > 10 * (block + 1)) {
+            pageblock.push([]);
+            block++;
+        }
+    }
+
+    let prev;
+    let next;
+    if (nowblock == 0) {
+        prev = false;
+    } else {
+        prev = pageblock[nowblock - 1][article_count-1];
+    }
+
+    if (nowblock == pageblock.length - 1) {
+        next = false;
+    } else {
+        next = pageblock[nowblock + 1][0];
+    }
+
+    res.render(`./jobinfo/list`, {
+        result, title, board_name, userid, nowpageblock, start, end, prev, next,page,
+    })
+}
+
+
+
+let view = async(req,res)=>{
+    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let id = req.query.id;
+    let page = req.query.page;
+    let board_name = req.params.board_name;
+    let title = boardType[board_name][0];
+    let result = await board.findOne({
+        attributes: ['writer', 'subject', 'content', 'date', 'hit'],
+        where: { id, },
+    });
+
+    console.log(result); 
+    res.render('./jobinfo/view', {
+        result, title, board_name, userid,page,
+    })
 
 }
+
+
+
+
 
 module.exports = {
-    jobinfo,
-    recruit,
-    portfolio,
-    portfolio_submit,
-    portfolio_submit_success
+    list,
+    view,
+    
+}
+
+
+//글번호생성 함수 
+function number_set(x, N) {
+
+    let arr = [];
+    x.forEach(ele => {
+        ele.dataValues['num'] = N;
+        arr.push(ele.dataValues)
+        N--;
+    });
+    return arr;
 }

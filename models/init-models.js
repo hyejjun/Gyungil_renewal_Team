@@ -44,6 +44,8 @@ function initModels(sequelize) {
   subject.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "sbj_id" });
   users.hasMany(board, { as: "boards", foreignKey: "writer", sourceKey: 'userid' });
   board.belongsTo(users, { as: "writer_user", foreignKey: "writer", targetKey: 'userid' });
+  users.belongsTo(curriculum, { as: "code", foreignKey: "class_code",sourceKey:"id" });
+curriculum.hasMany(users, { as: "users", foreignKey: "class_code", targetKey:"id"});
 
   return {
     board,
@@ -64,3 +66,5 @@ function initModels(sequelize) {
 module.exports = initModels;
 module.exports.initModels = initModels;
 module.exports.default = initModels;
+
+

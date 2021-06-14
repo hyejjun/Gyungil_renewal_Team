@@ -15,7 +15,7 @@ let show_faqList = async (req, res) => {
   let result = await board.findAll({
     where: { type, }
   })
-
+ 
   res.render('./admin/consult/faq', {
     result,
   })

@@ -1,0 +1,33 @@
+{% include "../layout/subpage_top.html" %}
+{% include "../layout/subpage_jobinfo_navi.html" %}
+
+<!--menu_contents start-->
+<div class="menu_contents">
+    <div class="mc_title">
+        {{title}}
+    </div>
+    <div class="mc_content">
+        <div>
+            <input type="hidden" id='hidden_content' value="{{result.content}}">
+              {{result.subject}}
+              {{result.writer}}
+              {{result.date}}
+              {{result.hit}}
+              <div id="content"></div>
+            
+          </div>
+
+        <a href="/jobinfo/{{board_name}}/list?page={{page}}">목록</a>    
+    </div>
+</div>
+<!--menu_contents end-->
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded',()=>{
+    const hidden_content = document.querySelector('#hidden_content');
+    const content = document.querySelector('#content');
+      content.innerHTML = `${hidden_content.value}`; 
+    })
+  </script>
+
+
+{% include "../layout/subpage_bottom.html" %}

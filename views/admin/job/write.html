@@ -21,6 +21,33 @@
           <div >
             <div>{{title}} 작성</div>
             <form id="form" action="/admin/job/{{board_name}}/write" method="POST">
+              <div>
+                <span>인터뷰 대상자</span>
+                <span id="interviewee"></span>
+                <table>
+                  <thead>
+                    <th>이름</th>
+                    <th>아이디</th>
+                    <th>생일</th>
+                    <th>교육과정</th>
+                    <th>선택</th>
+                  </thead>
+                  <tbody>
+                    {% for item in user %}
+                    <tr>
+                      <td><label for="{{item.userid}}">{{item.username}}</label></td>
+                      <td><label for="{{item.userid}}">{{item.userid}}</label></td>
+                      <td><label for="{{item.userid}}">{{item.user_birthday}}</label></td>
+                      <td><label for="{{item.userid}}">{{item.code.name}}</label></td>
+                      <td><input type="radio" name="writer" value="{{item.userid}}" id="{{item.userid}}" onclick="showname()"></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              
+              
+              
               제목:<input type="text" name='subject' id="subject">
               {% include "./summernote.html" %}
             </form>
@@ -34,6 +61,14 @@
     </div>
   </div>
 
+  <script>
+
+function showname(){
+  let interviewee = document.querySelector('#interviewee'); 
+  interviewee.innerHTML = event.path[2].childNodes[1].childNodes[0].innerHTML;
+}
+
+  </script>
 
 
 

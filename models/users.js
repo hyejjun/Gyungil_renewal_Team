@@ -33,8 +33,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     class_code: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: true
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      references: {
+        model: 'curriculum',
+        key: 'id'
+      }
     },
     quit: {
       type: DataTypes.TINYINT,
@@ -50,8 +55,6 @@ module.exports = function(sequelize, DataTypes) {
     sequelize,
     tableName: 'users',
     timestamps: false,
-    charset: "utf8mb4",
-    collate: "utf8mb4_general_ci",
     indexes: [
       {
         name: "PRIMARY",
@@ -67,6 +70,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "userid" },
+        ]
+      },
+      {
+        name: "FK_users_curriculum",
+        using: "BTREE",
+        fields: [
+          { name: "class_code" },
         ]
       },
     ]

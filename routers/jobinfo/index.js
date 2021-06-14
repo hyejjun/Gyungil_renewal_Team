@@ -15,11 +15,7 @@ const upload = multer({
     }),
 })
 
-router.get('/interview',controller.jobinfo);
-router.get('/recruit',controller.recruit);
-router.get('/portfolio',controller.portfolio);
-router.get('/portfolio_submit',controller.portfolio_submit);
-
-router.post('/portfolio_submit_success',upload.single('img'),controller.portfolio_submit_success);
+router.get('/:board_name/list',controller.list);
+router.get('/:board_name/view',controller.view);
 
 module.exports = router;
