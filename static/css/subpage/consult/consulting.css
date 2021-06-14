@@ -1,4 +1,9 @@
 /*개인정보 취급방침 start*/
+.menu_contents {
+    background-color: #fff;
+}
+
+
 #personal{
     width: 98%;
     height: 90px;
@@ -23,18 +28,63 @@
 .personal_ag_div > ul > li:nth-child(3) > span:nth-child(1){
     margin-right: 20px;
 }
+.check input {display: none;}
+.check span {display:inline-block;vertical-align:middle;}
+.check .icon {width: 20px;height: 20px;background-color: transparent;border: 2px solid #000;border-radius: 5px;position: relative;cursor: pointer;}
+.check .icon::before, .check .icon::after {content:'';display:inline-block;width: 3px;height: 0;background-color: #ff1100;position: absolute;transform-origin:left top;border-radius:5px;}
+.check .icon::before {top: 8px;left: 2px;transform: rotate(-45deg);}
+.check .icon::after {top: 16px;left: 10px;transform: rotate(-135deg);}
 
+.check input:checked ~ .icon {border-color: #ff1100;}
+.check input:checked ~ .icon::before {height: 10px;transition:all .3s ease;}
+.check input:checked ~ .icon::after {height: 24px;transition:all .3s ease .3s;}
 /*개인정보 취급방침 end*/
 
 /*상담정보 start*/
+.consult_input:focus{
+    border-color: dodgerblue;
+    box-shadow:20px dodgerblue;
+}
+
+
+.consult_input{
+    width: 400px;
+    border-radius: 15px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 4px 11px;
+    margin: 15px 0 0 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    border: 2px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all .3s;
+    font-weight: 500;
+    outline: dodgerblue;
+}
+
+.consult_table>tr:nth-child(4)>th{
+    padding: 0 13px 200px 0px;
+}
+
+.mc_title{
+    font-size: 35px;
+    font-weight: bold;
+    border-bottom: 3px solid #d9d9d9;
+    padding: 31px 0;
+    width: 98%;
+}
+
 .consult_information{
     height: 400px;
     padding: 30px 0;
     box-sizing: border-box;
+    font: #333;
 }
 
 .consult_input_text{
-    margin: 0px;
     width: 818px;
     height: 233px;
 }

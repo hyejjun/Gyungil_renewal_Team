@@ -4,42 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/user_etc.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <div id="ui_wrap">
         <div>
-            <p>내 정보</p>
-            <div>
-                <ul>
-                    <li>
-                        <span>이름</span>
+            <div class="l-form">
+                <ul class="form">
+                    <h1>내 정보</h1>
+                    <li class="inputWithIcon">
+                        <span class="fonts">이름 :</span>
                         <span>{{result.username}}</span>
                     </li>
                     <li>
-                        <span>아이디</span>
+                        <span class="fonts">아이디 :</span>
                         <span>{{result.userid}}</span>
                     </li>
                     <li>
-                        <span>수강중인 과목</span>
+                        <span class="fonts">수강중인 과목 :</span>
                         <span>{{classname}}</span>
                     </li>
                     <li>
-                        <span>전화번호</span>
+                        <span class="fonts">전화번호 :</span>
                         <span>{{result.user_tel}}</span>
                     </li>
                     <li>
-                        <span>생일</span>
+                        <span class="fonts">생일 :</span>
                         <span>{{result.user_birthday}}</span>
                     </li>
                     <li>
-                        <span>이메일</span>
+                        <span class="fonts">이메일 :</span>
                         <span>{{result.useremail}}</span>
                     </li>
+                    <a href="/">메인</a>
+                    <a href="/user/modify">내 정보 수정</a>
                 </ul>
             </div>
-            <a href="/user/modify">내 정보 수정</a>
-            <a href="/">메인</a>
+            
         </div>
     </div>
     {% if msg != undefiend %}

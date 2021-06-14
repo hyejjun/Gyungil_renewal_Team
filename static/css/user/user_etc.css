@@ -1,6 +1,14 @@
 
 li{
     list-style:none;
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
     }
 
   .l-form{
@@ -140,3 +148,96 @@ li{
       to {transform: scale(1, 1);}
   }
 
+/* user_info css*/
+
+.fonts{
+font-size: large;
+font-weight: bold;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body:before{
+  content:'';
+  height:100%;
+  display:inline-block;
+  vertical-align:middle;
+}
+a{
+  background:dodgerBlue;
+  color:#fff;
+  position:relative;
+  height:40px;
+  float: right;
+  border-radius: 15px;
+  font-size:1.3em;
+  padding:0 2em;
+  margin: 0 3px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  text-decoration-line: none;
+}
+a:hover{
+  background:#fff;
+  color:dodgerBlue;
+}
+a:before,a:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: dodgerBlue;
+  transition:400ms ease all;
+}
+a:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+a:hover:before,a:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+.button{
+  background:dodgerBlue;
+  color:#fff;
+  position:relative;
+  height:40px;
+  float: right;
+  border-radius: 15px;
+  font-size:1.3em;
+  padding:0 2em;
+  margin: 0 3px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  text-decoration-line: none;
+}
+.button:hover{
+  background:#fff;
+  color:dodgerBlue;
+}
+.button:before,a:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: dodgerBlue;
+  transition:400ms ease all;
+}
+.button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.button:hover:before,a:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}

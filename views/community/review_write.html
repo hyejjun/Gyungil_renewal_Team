@@ -10,23 +10,23 @@
         <div>
             <table>
                 <form action="/community/review_insert" method="post">
-                    <tbody>
+                    <tbody class="review_content">
                         <tr>
                             <th>제목</th>
                             <td>
-                                <input type="text" name="review_title" id="review_title">
+                                <input type="text" name="review_title" class="review_input" id="review_title">
                             </td>
                         </tr>
                         <tr>
                             <th>작성자</th>
                             <td>
-                                <input type="text" name="review_writer" id="review_writer" value="{{userid}}" readonly>
+                                <input type="text" name="review_writer" class="review_input" id="review_writer" value="{{userid}}"  readonly>
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="review_content" id="review_content" cols="30" rows="10"></textarea>
+                                <textarea name="review_content" class="review_input" id="review_content" cols="30" rows="10"></textarea>
                             </td>
                         </tr>
                     </tbody>

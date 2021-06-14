@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/user_etc.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <div id="um_modify">
-        <div>
-            <p>회원정보 수정</p>
-            <p>{{result.userid}}님의 회원정보</p>
+    <div id="um_modify"  class="l-form">
+        <div class="form">
+            <h1>회원정보 수정</h1>
+            <h2>{{result.userid}}님의 회원정보</h2>
             <form action="/user/modify_submit" method="post">
+            <!-- <ul>
+                비밀번호
+                <li><input type="text" name="userpw" value="{{result.userpw}}"></li>
+            </ul> -->
             <ul>
-                <li>전화번호</li>
+                전화번호
                 <li><input type="text" name="user_tel" value="{{result.user_tel}}" id="modify_tel"></li>
             </ul>
             <ul>
-                <li>이메일</li>
+                이메일
                 <li><input type="text" name="useremail" value="{{result.useremail}}"></li>
             </ul>
+
             <!-- 값을 받아와서 뿌려주고 수정해주게 함-->
-            <input type="submit" value="수정">
+            <input type="submit" class="form__button button" value="수정">
             </form>
         </div>
     </div>
