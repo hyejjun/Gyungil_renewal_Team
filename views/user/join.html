@@ -65,13 +65,14 @@
                     <label for="user_tel"></label>
                     <input type="tel" name="user_tel" id="user_tel" placeholder="핸드폰번호를 입력해주세요" required>
                     <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
-        
+
                 </li>
                 <li class="class_code_li">
                     <p> 과목 코드 : <i class="fab fa-get-pocket fa-lg fa-fw"></i> </p>
                     {% for item in curr %}
                     <label class="checkbox" for="curr{{item.id}}">
-                        <input type="radio" name="class_code" value="{{item.id}}" id="curr{{item.id}}" required>
+                        <input type="radio" class="class_code_input" name="class_code" value="{{item.id}}"
+                            id="curr{{item.id}}">
                         <span class="icon"></span> {{item.name}} </br>
                     </label>
                     {% endfor %}
@@ -130,18 +131,21 @@
             pw_check();
         })
 
-        
+
         // 교직원 학생 구분
-        userlevel_student.addEventListener('change',()=>{
-            if(userlevel_student.checked){
+        userlevel_student.addEventListener('change', () => {
+            let class_code_input = document.querySelector('.class_code_input');
+            if (userlevel_student.checked) {
                 class_code_li.style.display = 'block'
+                class_code_input.setAttribute('required', 'required')
             }
         })
-        userlevel_teacher.addEventListener('change',()=>{
-            if(userlevel_teacher.checked){
+        userlevel_teacher.addEventListener('change', () => {
+            if (userlevel_teacher.checked) {
                 class_code_li.style.display = 'none'
             }
         })
+
 
     </script>
 

@@ -18,16 +18,23 @@
 }
 
 .program_list{
-    margin: 45px 0 0 0;
-    width: 1400px;
+   
 }
 
 .card{
-    width: 45%;
+    width: 47%;
     height: 100%;
-    display: inline-block;
+    display: inline-flex;
     background: #a78b8b;
-    margin: 30px 24px 0 0;
+    flex-direction: column;
+    text-align: center;
+}
+
+.card > img{
+    width: 50%;
+    height: 220px;
+    display: block;
+    margin: 0px auto;
 }
 
 
