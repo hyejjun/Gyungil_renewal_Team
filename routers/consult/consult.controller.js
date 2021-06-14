@@ -15,6 +15,7 @@ let faq = async (req, res) => {
     })
     res.render('./consult/faq', { userid, result, });
 }
+<<<<<<< HEAD
 
 let consulting_submit = async (req, res) => {
     //TODO : DB에 상담정보 넣는 부분 여기에 작성하기
@@ -22,6 +23,14 @@ let consulting_submit = async (req, res) => {
     await consult.create({
         name, age, tel, content
     });
+=======
+    let consulting_submit = async (req, res) => {
+        //TODO : DB에 상담정보 넣는 부분 여기에 작성하기
+        let { name, age, tel, content } = req.body;
+        await consult.create({
+            name, age, tel, content
+        });
+>>>>>>> 72421c97e3cab9af56349df33bb681cb7a0d6edc
 
     res.redirect('/consult/consulting');
 }

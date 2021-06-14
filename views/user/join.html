@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/user/join.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
 
 <body>
-    
-    <form action="/user/join_success" method="post" >
+
+    <form action="/user/join_success" method="post">
         <div class="l-form">
             <ul class="form">
                 <h1>경일아카테미 가입하기</h1>
@@ -22,14 +23,14 @@
                     <label for="username"></label>
                     <input type="text" name="username" id="username" placeholder="이름을 입력해주세요" required>
                     <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
-        
+
                 </li>
                 <li class="inputWithIcon">
                     <label for="useremail"></label>
                     <input type="email" name="useremail" id="useremail" placeholder="이메일을 입력해주세요" required>
                     <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
-        
                 </li>
+                
                 <li class="inputWithIcon inputIconBg">
                     <label for="userid"></label>
                     <input type="text" name="userid" id="userid" placeholder="사용할 아이디를 입력해주세요" required>
@@ -40,43 +41,45 @@
                     <label for="userpw"></label>
                     <input type="password" name="userpw" id="userpw" placeholder="사용할 비밀번호를 입력해주세요" required>
                     <i class="fas fa-key fa-lg fa-fw"></i>
-        
+
                     <p id="userpw_msg"></p>
                 </li>
                 <li class="inputWithIcon inputIconBg">
                     <label for="userpw"></label>
                     <input type="password" name="userpw_check" id="userpw_check" placeholder="비밀번호를 재입력해주세요" required>
                     <i class="fas fa-key fa-lg fa-fw"></i>
-        
+
                 </li>
                 <li class="inputWithIcon">
                     <label for="user_birthday"></label>
                     <input type="date" name="user_birthday" id="user_birthday" required>
                     <i class="fas fa-birthday-cake fa-lg fa-fw"></i>
-        
+
                 </li>
-<<<<<<< HEAD
-                <li>
-                    <label for="user_tel">전화번호 :</label>
-                    <input type="tel" name="user_tel" id="user_tel" required>
-=======
                 <li class="inputWithIcon inputIconBg">
                     <label for="user_tel"></label>
                     <input type="tel" name="user_tel" id="user_tel" placeholder="핸드폰번호를 입력해주세요" required>
                     <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
-        
->>>>>>> 7a1b279e89b92923b5a5285d43a1379d51353936
                 </li>
-                <li>
-                    <p> 과목 코드 : <i class="fab fa-get-pocket fa-lg fa-fw" ></i> </p>
+                <li class="userlevel_li">
+                    <label for="userlevel_teacher" class="checkbox">교직원
+                        <input type="radio" name="userlevel" id="userlevel_teacher" value="2" required>
+                        <span class="icon"></span>
+                    </label>
+                    <label for="userlevel_student" class="checkbox">학생
+                        <input type="radio" name="userlevel" id="userlevel_student" value="3">
+                        <span class="icon"></span>
+                    </label>
+                </li>
+                <li class="class_code_li">
+                    <p> 과목 코드 : <i class="fab fa-get-pocket fa-lg fa-fw"></i> </p>
                     {% for item in curr %}
                     <label class="checkbox" for="curr{{item.id}}">
-                    <input type="radio" name="class_code" value="{{item.id}}" id="curr{{item.id}}" required>
-                    <span class="icon"></span> {{item.name}} </br>
+                        <input type="radio" class="class_code_input" name="class_code" value="{{item.id}}"
+                            id="curr{{item.id}}">
+                        <span class="icon"></span> {{item.name}} </br>
                     </label>
                     {% endfor %}
-
-                    
                 </li>
             </ul>
         </div>
@@ -91,6 +94,10 @@
         const userpw_check = document.querySelector('#userpw_check');
         const userpw_msg = document.querySelector('#userpw_msg');
         const useremail = document.querySelector('#useremail');
+        const userlevel_li = document.querySelector('.userlevel_li');
+        const class_code_li = document.querySelector('.class_code_li');
+        const userlevel_teacher = document.querySelector('#userlevel_teacher');
+        const userlevel_student = document.querySelector('#userlevel_student');
 
         //아이디 중복
         async function userid_check() {
@@ -127,6 +134,23 @@
         userpw_check.addEventListener('focusout', () => {
             pw_check();
         })
+
+
+        // 교직원 학생 구분
+        userlevel_student.addEventListener('change', () => {
+            let class_code_input = document.querySelector('.class_code_input');
+            if (userlevel_student.checked) {
+                class_code_li.style.display = 'block'
+                class_code_input.setAttribute('required', 'required')
+            }
+        })
+        userlevel_teacher.addEventListener('change', () => {
+            if (userlevel_teacher.checked) {
+                class_code_li.style.display = 'none'
+            }
+        })
+
+
     </script>
 
 </body>

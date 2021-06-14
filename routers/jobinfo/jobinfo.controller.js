@@ -8,6 +8,7 @@ let boardType = {
   }
 
 
+<<<<<<< HEAD
 let list = async(req, res) => {
     let { AccessToken } = req.cookies;
     let page = req.query.page;
@@ -78,6 +79,9 @@ let list = async(req, res) => {
 
 let view = async(req,res)=>{
     console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+=======
+let portfolio = (req, res) => {
+>>>>>>> 72421c97e3cab9af56349df33bb681cb7a0d6edc
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let id = req.query.id;
@@ -101,6 +105,7 @@ let view = async(req,res)=>{
 
 
 module.exports = {
+<<<<<<< HEAD
     list,
     view,
     
@@ -117,4 +122,10 @@ function number_set(x, N) {
         N--;
     });
     return arr;
+=======
+    jobinfo,
+    portfolio,
+    portfolio_submit,
+    portfolio_submit_success
+>>>>>>> 72421c97e3cab9af56349df33bb681cb7a0d6edc
 }

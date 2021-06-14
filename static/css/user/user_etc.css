@@ -176,6 +176,7 @@ a{
   transition:800ms ease all;
   outline:none;
   text-decoration-line: none;
+  line-height: 40px;
 }
 a:hover{
   background:#fff;
@@ -221,7 +222,7 @@ a:hover:before,a:hover:after{
   background:#fff;
   color:dodgerBlue;
 }
-.button:before,a:after{
+.button:before,.button:after{
   content:'';
   position:absolute;
   top:0;
@@ -237,7 +238,11 @@ a:hover:before,a:hover:after{
   left:0;
   bottom:0;
 }
-.button:hover:before,a:hover:after{
+.button:hover:before,.button:hover:after{
   width:100%;
   transition:800ms ease all;
+}
+
+.button_mody{
+  width: 18%;
 }

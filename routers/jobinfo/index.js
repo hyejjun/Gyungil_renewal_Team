@@ -15,7 +15,15 @@ const upload = multer({
     }),
 })
 
+<<<<<<< HEAD
 router.get('/:board_name/list',controller.list);
 router.get('/:board_name/view',controller.view);
+=======
+router.get('/interview',controller.jobinfo);
+router.get('/portfolio',controller.portfolio);
+router.get('/portfolio_submit',controller.portfolio_submit);
+
+router.post('/portfolio_submit_success',upload.single('img'),controller.portfolio_submit_success);
+>>>>>>> 72421c97e3cab9af56349df33bb681cb7a0d6edc
 
 module.exports = router;
