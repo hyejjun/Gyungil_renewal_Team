@@ -5,57 +5,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="/css/user/join.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <title>Document</title>
 </head>
 
 <body>
-    <form action="/user/join_success" method="post">
-        <div>
+    <form action="/user/join_success" method="post" >
+        <div class="l-form">
             <ul>
-                <li>
-                    <label for="username">이름 :</label>
+                <li class="inputWithIcon inputIconBg">
+                    <label for="username"></label>
                     <input type="text" name="username" id="username" placeholder="이름을 입력해주세요" required>
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+        
                 </li>
-                <li>
-                    <label for="useremail">이메일 :</label>
+                <li class="inputWithIcon">
+                    <label for="useremail"></label>
                     <input type="email" name="useremail" id="useremail" placeholder="이메일을 입력해주세요" required>
+                    <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+        
                 </li>
-                <li>
-                    <label for="userid">아이디 :</label>
+                <li class="inputWithIcon inputIconBg">
+                    <label for="userid"></label>
                     <input type="text" name="userid" id="userid" placeholder="사용할 아이디를 입력해주세요" required>
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                     <p id="userid_msg"></p>
                 </li>
-                <li>
-                    <label for="userpw">비밀번호 :</label>
+                <li class="inputWithIcon">
+                    <label for="userpw"></label>
                     <input type="password" name="userpw" id="userpw" placeholder="사용할 비밀번호를 입력해주세요" required>
+                    <i class="fas fa-key fa-lg fa-fw"></i>
+        
                     <p id="userpw_msg"></p>
                 </li>
-                <li>
-                    <label for="userpw">비밀번호 확인 :</label>
+                <li class="inputWithIcon inputIconBg">
+                    <label for="userpw"></label>
                     <input type="password" name="userpw_check" id="userpw_check" placeholder="비밀번호를 재입력해주세요" required>
+                    <i class="fas fa-key fa-lg fa-fw"></i>
+        
                 </li>
-                <li>
-                    <label for="user_birthday">생일 :</label>
+                <li class="inputWithIcon">
+                    <label for="user_birthday"></label>
                     <input type="date" name="user_birthday" id="user_birthday" required>
+                    <i class="fas fa-birthday-cake fa-lg fa-fw"></i>
+        
+                </li>
+                <li class="inputWithIcon inputIconBg">
+                    <label for="user_tel"></label>
+                    <input type="text" name="user_tel" id="user_tel" placeholder="핸드폰번호를 입력해주세요" required>
+                    <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+        
                 </li>
                 <li>
-                    <label for="user_tel">전화번호 :</label>
-                    <input type="text" name="user_tel" id="user_tel" required>
-                </li>
-                <li>
-                    <p> 과목 코드 : </p>
+                    <p> 과목 코드 : <i class="fab fa-get-pocket fa-lg fa-fw" ></i> </p>
                     {% for item in curr %}
-                    <label for="curr{{item.id}}">{{item.name}}</label>
+                    <label class="checkbox" for="curr{{item.id}}">
                     <input type="radio" name="class_code" value="{{item.id}}" id="curr{{item.id}}" required>
-
+                    <span class="icon"></span> {{item.name}} </br>
+                    </label>
                     {% endfor %}
 
                     
                 </li>
             </ul>
         </div>
-        <input type="submit" value="가입">
+        <input type="submit" class="form__button btn-primary" value="회원가입">
     </form>
     <script src="/js/consulting.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
@@ -103,6 +119,7 @@
             pw_check();
         })
     </script>
+
 </body>
 
 </html>

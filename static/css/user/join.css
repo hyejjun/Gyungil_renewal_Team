@@ -110,6 +110,8 @@ li{
     cursor: pointer;
     transition: .3s;
     border: 1px solid dodgerBlue;
+    margin: 50px auto;
+    width: 25%;
   }
   .form__button:hover{
     box-shadow: 0 10px 36px rgba(0,0,0,.15);
