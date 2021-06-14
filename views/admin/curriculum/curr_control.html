@@ -95,17 +95,51 @@
                 </li>
                 {% endfor %}
               </ul>
-              <div id="detail_box">
+              <div id="sbj_detail_box">
                 <span>자세히 보기</span>
-                <pre id="detail_name"></pre>
-                <pre id="detail"></pre>
+                <div id="sbj_detail_name"></div>
+                <div id="sbj_detail"></div>
               </div>
             </div>
           </div>
 
 
-          <div>
+          <div id ='curr_rv'>
             <h3>교육과정 수강후기 설정</h3>
+            <table>
+              <thead>
+                <td> 제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+                <td>조회수</td>
+              </thead>
+              <tbody>
+                <input type="hidden" value="{{select_rv}}" id="select_review">
+                  {% for item in review %}
+                  <tr>
+                    <input type="hidden" value="{{item.content}}">  
+                    <td class="td_subject">
+                      {{item.subject}}
+                    </td>
+                    <td>{{item.writer_user.username}}</td>
+                    <td>{{item.date}}</td>
+                    <td>{{item.hit}}</td>
+                    {% if item.check %}
+                    <td><input class="select_rv" type="checkbox" value="{{item.id}}" checked></td>
+                    {% else %}
+                    <td><input class="select_rv" type="checkbox" value="{{item.id}}" ></td>
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <div id="rv_detail_box">
+                <span>자세히 보기</span>
+                <div id="rv_detail_subject"></div>
+                <div id="rv_detail_name"></div>
+                <div id="rv_detail"></div>
+              </div>
+            
           </div>
 
 
