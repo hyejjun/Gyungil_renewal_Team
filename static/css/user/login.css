@@ -77,17 +77,17 @@ h1{
   transition: .3s;
 }
 .form__button{
-  display: block;
-  margin-left: auto;
+  display: inline;
   padding: .75rem 2rem;
   outline: none;
   border: none;
   background-color: var(--first-color);
   color: #fff;
   font-size: var(--normal-font-size);
-  border-radius: .5rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: .3s;
+  margin-left: 82px;
 }
 .form__button:hover{
   box-shadow: 0 10px 36px rgba(0,0,0,.15);
@@ -115,4 +115,45 @@ h1{
 /*Input focus*/
 .form__input:focus{
   border: 1.5px solid var(--first-color);
+}
+
+
+a{
+  background:#1a73e8;
+  color:#fff;
+  position:relative;
+  height:45.8px;
+  border-radius: 10px;
+  font-size:1em;
+  padding:12px 2em;
+  margin: 0 0 0 0;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  text-decoration-line: none;
+  line-height: 47px;
+}
+a:hover{
+  background:#fff;
+  color:dodgerBlue;
+}
+a:before,a:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: dodgerBlue;
+  transition:400ms ease all;
+}
+a:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+a:hover:before,a:hover:after{
+  width:100%;
+  transition:800ms ease all;
 }
