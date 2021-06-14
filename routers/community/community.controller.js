@@ -13,11 +13,7 @@ let boardType = {
 
 let list = async (req, res) => {
     let { AccessToken } = req.cookies;
-<<<<<<< HEAD
-    let page = req.query.page;
-=======
     let {page} = req.query
->>>>>>> 72421c97e3cab9af56349df33bb681cb7a0d6edc
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
