@@ -1,9 +1,10 @@
 
 #curr_spec{
   width: 1250px;
-  height: 500px;
+  height: 700px;
   margin: 0 auto;
 }
+
 
 
 #curr_sub{
@@ -75,13 +76,29 @@
   height: 30px;
 }
 
-#detail_box{
+#sbj_detail_box{
   margin-top: 50px;
 }
 
-#detail{ 
+#sbj_detail{ 
   width: 510px;
   height: 150px;
   background-color: cadetblue;
 }
 
+
+#curr_rv{
+  width: 1250px;
+  height: 800px;
+  margin: 0 auto;
+}
+
+#rv_detail{
+  width: 1250px;
+  height: auto; 
+  overflow: hidden;
+}
+
+.td_subject{
+  cursor: pointer;
+}

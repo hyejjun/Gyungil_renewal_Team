@@ -1,4 +1,4 @@
-const { curriculum, subject, curr_sbj, User, board } = require("../../../models");
+const { curriculum, subject, curr_sbj, User, board ,curr_rv} = require("../../../models");
 
 
 
@@ -55,7 +55,12 @@ let destroy_curr = async (req, res) => {
 
 let create_sub = async (req, res) => {
   let { name, content } = req.body;
-  let image = req.file.filename;
+  let image; 
+  if(req.file==undefined){
+    image = ''; 
+  }else{
+    image = req.file.filename;
+  }
 
   let result = await subject.create({
     name, content, image,
@@ -155,14 +160,37 @@ let control_curr = async (req, res) => {
     include: [{
       model: User,
       as: 'writer_user',
-      where: { class_code: '1' }
+      where: { class_code: id, }
     }]
   })
+  
+  let select_rv = await curr_rv.findAll({
+    attributes:['board_id']
+  },
+    {
+    where: { curr_id: id, }
+  })
 
+  
+
+  review.forEach(v=>{
+      v['check'] = false; 
+    })
+
+  if(select_rv.length>0){
+
+    select_rv.forEach(rv=>{
+      review.forEach(v=>{
+        if(rv.board_id==v.id){
+          v['check'] = true; 
+        }
+      })
+    })
+  }
 
 
   res.render('./admin/curriculum/curr_control', {
-    spec, sorted, originsbj
+    spec, sorted, originsbj,review, select_rv
   });
 }
 
@@ -176,17 +204,31 @@ let update_curr = async (req, res) => {
   } else {
     image = req.file.filename;
   }
-  let { id, name, info, term, start_time, end_time, location, tuition, qual, subsort } = req.body;
+  let { id, name, info, term, start_time, end_time, location, tuition, qual, subsort,rv } = req.body;
 
   let reset = await curr_sbj.destroy({
     where: { curr_id: id },
   })
 
+  await curr_rv.destroy({
+    where:{curr_id:id}
+  })
+
+  //교과목 연결
   subsort.split(',').forEach(async (v) => {
     await curr_sbj.create({
       curr_id: id, sbj_id: v,
     })
   })
+
+  //수강후기 연결
+  rv.split(',').forEach(async (v) => {
+    await curr_rv.create({
+      curr_id: id, board_id: v,
+    })
+  })
+
+
 
   await curriculum.update({
     name, info, term, start_time, end_time, location, tuition, qual, image,

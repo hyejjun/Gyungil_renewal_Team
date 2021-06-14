@@ -35,10 +35,10 @@ db.sboard = models.sboard;
 db.intro = models.intro;
 db.User = models.users;
 db.curr_sbj = models.curr_sbj;
+db.curr_rv = models.curr_rv;
 
 
 // curr_faq,
-// curr_rv,
 // main_rv,
 
 module.exports = db;

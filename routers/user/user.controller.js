@@ -2,6 +2,7 @@ const { sequelize, User, curriculum } = require('../../models');
 const auth = require('../../middleware/auth');
 const ctoken = require('../../jwt');
 const jwtPW = require('../../jwtPw');
+const jwtId = require('../../jwtId');
 const crypto = require('crypto');
 
 let join = async (req, res) => {
@@ -51,7 +52,6 @@ let login_check = async (req, res) => {
         let token = ctoken(userid);
         console.log(token)
         res.cookie('AccessToken', token, { httpOnly: true, secure: true });
-        res.cookie('userid', userid);
 
         res.redirect(`/?msg=로그인에 성공했습니다`);
     } else {
@@ -62,7 +62,6 @@ let login_check = async (req, res) => {
 
 let logout = (req, res) => {
     res.clearCookie('AccessToken')
-    res.clearCookie('userid')
     res.redirect('/?msg=로그아웃 되었습니다')
 }
 
@@ -86,7 +85,10 @@ let id_check = async (req, res) => {
 let info = async (req, res) => {
     let { msg } = req.query;
 
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+
     let result = await User.findOne({
         where: { userid }
     })
@@ -114,7 +116,9 @@ let info = async (req, res) => {
 
 let modify = async (req, res) => {
     let { msg } = req.query;
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+
     let result = await User.findOne({
         where: { userid }
     })
@@ -123,7 +127,8 @@ let modify = async (req, res) => {
 }
 
 let modify_submit = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let { user_tel, useremail } = req.body;
     await User.update({
         user_tel: user_tel,

@@ -18,7 +18,10 @@ INSERT INTO `curriculum` (`id`, `name`, `info`, `term`, `start_time`, `end_time`
 
 
 	INSERT INTO `intro` ( `content`, `type`, `show`) VALUES
-	('visual1', 1, 1),
-	('visual2', 1, 1),
-	('visual3', 1, 1),
-	('visual4', 1, 1);
+	('visual1.png', 1, 1),
+	('visual2.png', 1, 1),
+	('visual3.png', 1, 1),
+	('visual4.png', 1, 1);
+
+
+	
