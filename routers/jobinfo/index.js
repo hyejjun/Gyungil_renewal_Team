@@ -16,7 +16,6 @@ const upload = multer({
 })
 
 router.get('/interview',controller.jobinfo);
-router.get('/recruit',controller.recruit);
 router.get('/portfolio',controller.portfolio);
 router.get('/portfolio_submit',controller.portfolio_submit);
 

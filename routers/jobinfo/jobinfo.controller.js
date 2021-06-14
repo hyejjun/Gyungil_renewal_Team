@@ -7,12 +7,6 @@ let jobinfo = (req, res) => {
     res.render('./jobinfo/interview', { userid });
 }
 
-let recruit = (req, res) => {
-    let { AccessToken } = req.cookies;
-    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    res.render('./jobinfo/recruit', { userid })
-}
-
 let portfolio = (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
@@ -38,7 +32,6 @@ let portfolio_submit_success = async (req, res) => {
 
 module.exports = {
     jobinfo,
-    recruit,
     portfolio,
     portfolio_submit,
     portfolio_submit_success
