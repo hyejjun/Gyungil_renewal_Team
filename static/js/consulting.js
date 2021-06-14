@@ -35,7 +35,7 @@ phoneNum.onkeyup = function () {
     this.value = autoHypenPhone(this.value);
 }
 
-let modify_tel = document.querySelector('#modify_tel');
+/*let modify_tel = document.querySelector('#modify_tel');
 modify_tel.onkeyup = function () {
     this.value = autoHypenPhone(this.value)
 }
@@ -43,7 +43,7 @@ modify_tel.onkeyup = function () {
 let user_tel = document.querySelector('#user_tel');
 user_tel.onkeyup = function () {
     this.value = autoHypenPhone(this.value)
-}
+}*/
 
 
 /*공백 예외처리*/
