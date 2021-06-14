@@ -1,9 +1,10 @@
 const { History, intro, board, teacher } = require("../../models");
 const { Op } = require("sequelize");
-
+const jwtId = require('../../jwtId');
 
 let introduction = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let result = await board.findOne({
         where: { id: 1, }
     })
@@ -11,7 +12,8 @@ let introduction = async (req, res) => {
 }
 
 let history = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let result = await History.findAll({
         order: [['year', 'ASC']]
     });
@@ -21,7 +23,8 @@ let history = async (req, res) => {
 }
 
 let teachers = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let result = await teacher.findAll({
         where: { show: 1, }
     })
@@ -29,7 +32,8 @@ let teachers = async (req, res) => {
 }
 
 let interior = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let result = await intro.findAll({
         where: {
             [Op.and]: [{ type: '0' }, { show: '1' }],
@@ -39,7 +43,8 @@ let interior = async (req, res) => {
 }
 
 let location = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let result = await board.findOne({
         where: { id: 2, }
     })

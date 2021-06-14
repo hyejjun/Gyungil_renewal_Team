@@ -1,12 +1,16 @@
 const { consult, } = require('../../models');
-
+const jwtId = require('../../jwtId');
 
 let consulting = (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    
+let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     res.render('./consult/consulting', { userid });
 }
 let faq = (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    
+let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     res.render('./consult/faq', { userid });
 }
 

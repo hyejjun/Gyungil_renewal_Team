@@ -1,4 +1,5 @@
 const { board } = require("../../models");
+const jwtId = require('../../jwtId');
 
 let boardType = {
     'notice': ['공지사항', '1'],
@@ -9,7 +10,9 @@ let boardType = {
 }
 
 let list = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
     let type = boardType[board_name][1];
@@ -27,7 +30,8 @@ let list = async (req, res) => {
 }
 
 let view = async (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let id = req.query.id;
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
@@ -45,19 +49,22 @@ let view = async (req, res) => {
 
 /* 수강후기 */
 let review = (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     res.render('./community/review', { userid });
 }
 
 let review_write = (req, res) => {
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     res.render('./community/review_write', { userid });
 }
 
 let review_insert = async (req, res) => {
     //DB에 insert 해서 뿌려주기
 
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let { review_title, review_content } = req.body;
 
     await board.create({
@@ -79,7 +86,8 @@ let review_insert = async (req, res) => {
 
 let review_view = (req, res) => {
     // 여기서 DB에서 받아와서 값 뿌려주면 됨
-    let { userid } = req.cookies;
+    let { AccessToken } = req.cookies;
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     res.render('./community/review_view', {
         userid
     });
