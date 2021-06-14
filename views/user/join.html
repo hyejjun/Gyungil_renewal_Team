@@ -30,12 +30,7 @@
                     <input type="email" name="useremail" id="useremail" placeholder="이메일을 입력해주세요" required>
                     <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
                 </li>
-                <li class="userlevel_li">
-                    <label for="userlevel_teacher">교직원</label>
-                    <input type="radio" name="userlevel" id="userlevel_teacher" value="2" required>
-                    <label for="userlevel_student">학생</label>
-                    <input type="radio" name="userlevel" id="userlevel_student" value="3">
-                </li>
+                
                 <li class="inputWithIcon inputIconBg">
                     <label for="userid"></label>
                     <input type="text" name="userid" id="userid" placeholder="사용할 아이디를 입력해주세요" required>
@@ -65,7 +60,16 @@
                     <label for="user_tel"></label>
                     <input type="tel" name="user_tel" id="user_tel" placeholder="핸드폰번호를 입력해주세요" required>
                     <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
-
+                </li>
+                <li class="userlevel_li">
+                    <label for="userlevel_teacher" class="checkbox">교직원
+                        <input type="radio" name="userlevel" id="userlevel_teacher" value="2" required>
+                        <span class="icon"></span>
+                    </label>
+                    <label for="userlevel_student" class="checkbox">학생
+                        <input type="radio" name="userlevel" id="userlevel_student" value="3">
+                        <span class="icon"></span>
+                    </label>
                 </li>
                 <li class="class_code_li">
                     <p> 과목 코드 : <i class="fab fa-get-pocket fa-lg fa-fw"></i> </p>
