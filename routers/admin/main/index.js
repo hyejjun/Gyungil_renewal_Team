@@ -26,6 +26,8 @@ router.get('/review',mainController.get_review);
 router.get('/popup',mainController.get_popup); 
 router.get('/mainvisual/add',mainController.add_mainv); 
 router.post('/mainvisual/create',upload.single('img'),mainController.create_mainv); 
+router.post('/review/update',mainController.update_mainrv);
+
 
 
 

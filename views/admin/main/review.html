@@ -20,10 +20,12 @@
         <h3>메인페이지 수강후기 설정</h3>
         <table>
           <thead>
-            <td> 제목</td>
-            <td>작성자</td>
-            <td>작성일</td>
-            <td>조회수</td>
+            <th> 제목</th>
+            <th>작성자 이름</th>
+            <th>작성자 아이디</th>
+            <th>작성일</th>
+            <th>조회수</th>
+            <th>메인페이지 표시</th>
           </thead>
           <tbody>
             <!-- <input type="hidden" value="{{select_rv}}" id="select_review"> -->
@@ -31,15 +33,16 @@
               <tr>
                 <input type="hidden" value="{{item.content}}">  
                 <td class="td_subject">
-                  {{item.subject}}
+                  <label for="check{{item.id}}">{{item.subject}}</label>
                 </td>
                 <td>{{item.writer_user.username}}</td>
+                <td>{{item.writer}}</td>
                 <td>{{item.date}}</td>
                 <td>{{item.hit}}</td>
                 {% if item.check %}
-                <td><input class="select_rv" type="checkbox" value="{{item.id}}" checked></td>
+                <td><input class="select_rv" type="checkbox" value="{{item.id}}" id="check{{item.id}}" checked></td>
                 {% else %}
-                <td><input class="select_rv" type="checkbox" value="{{item.id}}" ></td>
+                <td><input class="select_rv" type="checkbox" value="{{item.id}}" id="check{{item.id}}"></td>
                 {% endif %}
               </tr>
               {% endfor %}
@@ -55,7 +58,7 @@
 
       </div>
      
-        
+        <input type="button" value="적용" onclick="update_mainrv()">
 
         
       </div>

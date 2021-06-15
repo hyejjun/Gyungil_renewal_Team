@@ -1,5 +1,7 @@
 const { board,User } = require('../../models');
 const jwtId = require('../../jwtId')
+const {update_hit} = require('../update_hit'); 
+
 
 const article_count = 10;
 let boardType = {
@@ -85,6 +87,8 @@ let view = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let id = req.query.id;
+    const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
+    update_hit(id,ip);
     let page = req.query.page;
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];

@@ -109,7 +109,8 @@
             <table>
               <thead>
                 <td> 제목</td>
-                <td>작성자</td>
+                <td>작성자 이름</td>
+                <td>작성자 아이디</td>
                 <td>작성일</td>
                 <td>조회수</td>
               </thead>
@@ -122,6 +123,7 @@
                       {{item.subject}}
                     </td>
                     <td>{{item.writer_user.username}}</td>
+                    <td>{{item.writer}}</td>
                     <td>{{item.date}}</td>
                     <td>{{item.hit}}</td>
                     {% if item.check %}

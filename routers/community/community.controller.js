@@ -1,6 +1,7 @@
 const { board,User } = require("../../models");
 const jwtId = require('../../jwtId');
 const article_count = 10;
+const {update_hit} = require('../update_hit'); 
 
 
 let boardType = {
@@ -18,7 +19,6 @@ let list = async (req, res) => {
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
     let type = boardType[board_name][1];
-
 
     let result = await board.findAll({
         offset: article_count * (page - 1),
@@ -90,6 +90,8 @@ let view = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let id = req.query.id;
+    const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
+    update_hit(id,ip);
     let page = req.query.page;
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
@@ -212,6 +214,8 @@ let review_view = async(req, res) => {
     let { AccessToken } = req.cookies;
     let page = req.query.page;
     let id = req.query.id;
+    const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
+    update_hit(id,ip);
     
     let result = await board.findOne({
         attributes: ['writer', 'subject', 'content', 'date', 'hit'],
