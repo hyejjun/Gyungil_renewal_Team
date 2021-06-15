@@ -122,6 +122,8 @@ let modify = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
 
+    
+
     let result = await User.findOne({
         where: { userid }
     })

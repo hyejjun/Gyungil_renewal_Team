@@ -18,10 +18,11 @@ let history = async (req, res) => {
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let result = await History.findAll({
-        order: [['year', 'ASC']]
+        order: [['year', 'DESC']]
     });
+    // console.log(result); 
     // 연도 한번만 뽑으려면 아래 함수 사용. 
-    //result = dlt_year(result);
+    result = dlt_year(result);
     res.render('./college/history', { userid,username, result });
 }
 
@@ -68,11 +69,12 @@ module.exports = {
 
 function dlt_year(arr) {
     let temp = [];
-    for (let i = arr.length - 1; i > 0; i--) {
-        if (arr[i].dataValues.year === arr[i - 1].dataValues.year) {
+    for (let i = 0; i <arr.length-1; i++) {
+        if (arr[i].dataValues.year === arr[i + 1].dataValues.year) {
             arr[i].dataValues.year = null;
         }
         temp.unshift(arr[i].dataValues);
     }
+    temp.unshift(arr[arr.length-1].dataValues);
     return temp;
 }
