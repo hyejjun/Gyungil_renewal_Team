@@ -1,3 +1,6 @@
+use gyungil;
+
+
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `userid`, `userpw`, `username`, `useremail`, `user_birthday`, `user_tel`, `class_code`, `quit`, `type`) VALUES
