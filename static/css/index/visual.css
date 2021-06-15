@@ -4,4 +4,12 @@
   height: 500px;
   background: rgb(141, 141, 202);
 }
+
+.visual_ul{
+  display: flex;
+  overflow: hidden;
+  width: 1900px;
+  height: 100%;
+  margin: 0 auto;
+}
 /*visual end*/
