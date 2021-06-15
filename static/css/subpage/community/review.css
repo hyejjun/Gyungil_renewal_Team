@@ -1,4 +1,8 @@
 /*review_write start*/
+*{
+    margin: 0;
+    padding: 0;
+}
 
 
 #review_content{
@@ -71,3 +75,84 @@
 }
 
 /*review_write end*/
+
+/*board css* start*/
+
+
+table {
+    border-collapse:collapse;
+}
+
+caption {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_list_wrap{
+    padding: 50px;
+    border-top: 3px solid dodgerBlue;
+}
+
+.board_list {
+    width: 100%;
+}
+
+.board_list tr {
+    border-bottom: 1px solid #999;
+}
+
+.board_list th,
+.board_list td{
+    padding: 10px;
+    font-size: 14px;
+}
+
+.board_list td {
+text-align: center;
+}
+
+.board_list .tit {
+text-align: left;
+}
+
+.board_list tbody tr td:nth-child(3) :hover{
+    text-decoration: underline;
+}
+
+.board_list_wrap .paging{
+    margin-top: 20px;
+    font-size: 0;
+    text-align: center;
+}
+
+.board_list_wrap .paging a{
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 10px; 
+    border : 1px solid #000;
+    font-size: 12px;
+    background: #eee;
+    border-radius: 500px;
+}
+
+.board_list_wrap .paging a.sbt{
+    border-radius: 5px;
+    font-weight: 600;
+    background:none;
+}
+
+.board_list_wrap .paging a:first-child{
+    margin-left: 0;
+}
+
+.board_list_wrap .paging a.sbt.on{
+    border-radius: 27px;
+    font-weight: 600;
+}
+.writez{
+    float: right;
+}
