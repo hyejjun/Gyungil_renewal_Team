@@ -145,6 +145,7 @@ let review = async (req, res) => {
     let block = 0;
     let p = 1;
     let nowblock = 0;
+    let nowpageblock; 
     while (count > 0) {
         count -= article_count;
         pageblock[block].push(p)
