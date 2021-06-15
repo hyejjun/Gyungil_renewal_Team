@@ -44,12 +44,12 @@ function initModels(sequelize) {
   curriculum.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "curr_id"});
   curr_sbj.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
   curriculum.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "curr_id"});
-  users.belongsTo(curriculum, { as: "class_code_curriculum", foreignKey: "class_code"});
-  curriculum.hasMany(users, { as: "users", foreignKey: "class_code"});
   curr_sbj.belongsTo(subject, { as: "sbj", foreignKey: "sbj_id"});
   subject.hasMany(curr_sbj, { as: "curr_sbjs", foreignKey: "sbj_id"});
-  board.belongsTo(users, { as: "writer_user", foreignKey: "writer"});
-  users.hasMany(board, { as: "boards", foreignKey: "writer"});
+  users.hasMany(board, { as: "boards", foreignKey: "writer", sourceKey: 'userid' });
+  board.belongsTo(users, { as: "writer_user", foreignKey: "writer", targetKey: 'userid' });
+  users.belongsTo(curriculum, { as: "code", foreignKey: "class_code",sourceKey:"id" });
+curriculum.hasMany(users, { as: "users", foreignKey: "class_code", targetKey:"id"});
 
   return {
     board,
