@@ -36,9 +36,10 @@ db.intro = models.intro;
 db.User = models.users;
 db.curr_sbj = models.curr_sbj;
 db.curr_rv = models.curr_rv;
+db.main_rv = models.main_rv;
+db.hit = models.hit;
 
 
 // curr_faq,
-// main_rv,
 
 module.exports = db;

@@ -20,7 +20,6 @@
             <tbody>
                 {% for item in result %}
                 <tr>
-                    
                     <td>{{item.num}}</td>
                     <td>{{item.writer_user.username}}</td>
                     <td class="tit"><a href="/community/review_view?page={{page}}&id={{item.id}}">{{item.subject}}</a></td>
