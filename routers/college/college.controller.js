@@ -18,7 +18,7 @@ let history = async (req, res) => {
         order: [['year', 'ASC']]
     });
     // 연도 한번만 뽑으려면 아래 함수 사용. 
-    //result = dlt_year(result);
+    // result = dlt_year(result);
     res.render('./college/history', { userid, result });
 }
 
