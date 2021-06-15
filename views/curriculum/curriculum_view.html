@@ -4,10 +4,36 @@
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
-        curriculum
+        {{spec.name}}
     </div>
     <div class="mc_content">
-        curriculum list
+        <img src="http://localhost:3000/{{spec.image}}" alt="">
+        {{spec.info}}
+        {{spec.term}}개월
+        {{spec.start_time}} ~{{spec.end_time}}
+        {{spec.locaion}}
+        {{spec.tuition}}
+        {{spec.qual}}
+
+        <div>커리큘럼</div>
+        <ul>
+        {% for item in subjects %}
+            <li>
+                {{item.name}}
+                {{item.content}}
+            </li>
+            {% endfor %}
+        </ul> 
+
+        <div>수강후기</div>
+        <ul>
+            {% for item in review %}
+            <li>
+                {{item.writer_user.username}}
+                {{item.content}}
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 <!--menu_contents end-->

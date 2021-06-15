@@ -2,16 +2,16 @@
 <div>
   <span>썸네일 설정</span><br>
   <label for="image">이미지 썸네일</label>
-  <input type="radio" name="thumbnailroute" id="image" required>
+  <input type="radio" name="thumbnailroute" value="image" id="image" required>
   <label for="image">유튜브 썸네일</label>
-  <input type="radio" name="thumbnailroute" id="youtube">
+  <input type="radio" name="thumbnailroute"  value="youtube" id="youtube">
   <br>
   <br>
   <div id="image_box" style="display: none;">
-    이미지 파일: <input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);" required><br>    
+    이미지 파일: <input type="file" accept="image/*" id="image_thumbnail" name ="img" onchange="setThumbnail(event);" required><br>    
   </div>
   <div id="youtube_box" style="display: none;">
-    유튜브 링크: <input type="text"  id="youtube_thumbnail" oninput="setYthumnail()" required >
+    유튜브 공유링크: <input type="text"  id="youtube_thumbnail" oninput="setYthumnail()" required >
     <input type="hidden" name="thumbnail" id="y_thumbnail" >
   </div>
   <div id="thumbnail"></div>
@@ -57,8 +57,13 @@ youtube.addEventListener('change',()=>{
 
   function setYthumnail(){
     let temp = document.querySelector('#youtube_thumbnail').value;
-    temp = temp.split('/'); 
-    let id = temp[temp.length-1];  
+    let id=''; 
+    for(let i =temp.length-11;i<=temp.length-1; i++){ 
+      id+=temp.charAt(i); 
+    }
+    console.log(id); 
+    // temp = temp.split('/'); 
+    // let id = temp[temp.length-1];  
     temp = `https://img.youtube.com/vi/${id}/0.jpg`
     let thumbnail = document.querySelector("#thumbnail");
       while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }

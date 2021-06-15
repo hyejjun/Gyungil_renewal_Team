@@ -22,7 +22,11 @@
             <div>{{title}} 작성</div>
             <form id="form" action="/admin/job/{{board_name}}/write" method="POST" enctype="multipart/form-data">
               <div>
-                <span>인터뷰 대상자</span>
+                {% if title=='포트폴리오'%}
+                <span>팀 대표:</span>
+                {% else %}
+                <span>인터뷰 대상자:</span>
+                {% endif %}
                 <span id="interviewee"></span>
                 <table>
                   <thead>

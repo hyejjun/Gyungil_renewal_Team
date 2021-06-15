@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define('thumbnail', {
     id: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    thumbnail: {
+    image: {
       type: DataTypes.STRING(1000),
       allowNull: false
     }
