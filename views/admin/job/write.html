@@ -39,7 +39,7 @@
                       <td><label for="{{item.userid}}">{{item.userid}}</label></td>
                       <td><label for="{{item.userid}}">{{item.user_birthday}}</label></td>
                       <td><label for="{{item.userid}}">{{item.code.name}}</label></td>
-                      <td><input type="radio" name="writer" value="{{item.userid}}" id="{{item.userid}}" onclick="showname()"></td>
+                      <td><input type="radio" name="writer" value="{{item.userid}}" id="{{item.userid}}" onclick="showname()" required></td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -51,7 +51,6 @@
               제목:<input type="text" name='subject' id="subject">
               {% include "./summernote.html" %}
             </form>
-        
           </div>
           
     

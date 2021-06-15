@@ -1,4 +1,5 @@
 const { board, curriculum, User } = require("../../../models")
+const article_count = 10; 
 
 let boardType = {
   'interview': ['취업자인터뷰', '6'],
@@ -12,64 +13,61 @@ let show_list = async (req, res) => {
   let title = boardType[board_name][0];
   let type = boardType[board_name][1];
   let result = await board.findAll({
-    offset: article_count * (page - 1),
-    limit: article_count,
+    // offset: article_count * (page - 1),
+    // limit: article_count,
     attributes: ['id', 'writer', 'subject', 'date', 'hit'],
     order: [['id', 'DESC']],
     where: { type, },
   })
 
-  let count = await board.count({
-    where: { type, },
-  });
+  // let count = await board.count({
+  //   where: { type, },
+  // });
 
-  let start = 1;
-  let end = Math.ceil(count / article_count);
-  let N = count - article_count * (page - 1);
-  result = number_set(result, N);
+  // let start = 1;
+  // let end = Math.ceil(count / article_count);
+  // let N = count - article_count * (page - 1);
+  result = number_set(result);
 
-  let pageblock = [];
-  pageblock[0] = [];
-  let block = 0;
-  let p = 1;
-  let nowblock;
-  while (count > 0) {
-    count -= article_count;
-    pageblock[block].push(p)
-    if (p == page) {
-      nowpageblock = pageblock[block];
-      nowblock = block;
-    }
-    p++;
+  // let pageblock = [];
+  // pageblock[0] = [];
+  // let block = 0;
+  // let p = 1;
+  // let nowblock;
+  // while (count > 0) {
+  //   count -= article_count;
+  //   pageblock[block].push(p)
+  //   if (p == page) {
+  //     nowpageblock = pageblock[block];
+  //     nowblock = block;
+  //   }
+  //   p++;
 
-    if (p > 10 * (block + 1)) {
-      pageblock.push([]);
-      block++;
-    }
-  }
+  //   if (p > 10 * (block + 1)) {
+  //     pageblock.push([]);
+  //     block++;
+  //   }
+  // }
 
-  let prev;
-  let next;
-  if (nowblock == 0) {
-    prev = false;
-  } else {
-    prev = pageblock[nowblock - 1][9];
-  }
+  // let prev;
+  // let next;
+  // if (nowblock == 0) {
+  //   prev = false;
+  // } else {
+  //   prev = pageblock[nowblock - 1][9];
+  // }
 
-  if (nowblock == pageblock.length - 1) {
-    next = false;
-  } else {
-    next = pageblock[nowblock + 1][0];
-  }
+  // if (nowblock == pageblock.length - 1) {
+  //   next = false;
+  // } else {
+  //   next = pageblock[nowblock + 1][0];
+  // }
 
   res.render('./admin/job/list', {
     board_name,
     title,
     result,
-    nowpageblock,
-    end,
-    prev,
-    next
+    
   })
 }
 

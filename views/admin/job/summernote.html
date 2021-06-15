@@ -52,6 +52,8 @@
 
             //값 가져오기
             let summernoteContent = $('#summernote').summernote('code');        //썸머노트(설명)
+            
+            // thumbnail(summernoteContent); 
             sendPost({content:summernoteContent,});
 
         }
@@ -82,9 +84,11 @@ for(let key in params) {
     form.appendChild(hiddenField);
     
   }
-
   form.submit(); 
 }
+
+
+// function thumbnail(summernoteContent); 
 
     </script>
 </body>

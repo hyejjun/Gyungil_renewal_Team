@@ -93,7 +93,8 @@ let view = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
-    let id = req.query.id;
+    let {id, num}  = req.query;
+    
     const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
     update_hit(id,ip);
     let page = req.query.page;
@@ -107,7 +108,7 @@ let view = async (req, res) => {
           }],
         where: { id, },
     });
-
+    result['num']= num; 
     res.render('./community/view', {
         result, title, board_name, userid,page,
     })
@@ -221,7 +222,7 @@ let review_view = async(req, res) => {
     // 여기서 DB에서 받아와서 값 뿌려주면 됨
     let { AccessToken } = req.cookies;
     let page = req.query.page;
-    let id = req.query.id;
+    let {id,num} = req.query;
     const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
     update_hit(id,ip);
     
@@ -236,6 +237,7 @@ let review_view = async(req, res) => {
     
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    result['num']= num; 
     res.render('./community/review_view', {
        userid,username,page,result, 
     });

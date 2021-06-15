@@ -89,7 +89,7 @@ let view = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
-    let id = req.query.id;
+    let {id,num} = req.query;
     const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
     update_hit(id,ip);
     let page = req.query.page;
@@ -103,7 +103,7 @@ let view = async (req, res) => {
           }],
         where: { id, },
     });
-
+    result['num']= num; 
     res.render('./jobinfo/view', {
         result, title, board_name, userid, username, page,
     })
