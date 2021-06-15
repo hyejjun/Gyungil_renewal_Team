@@ -1,0 +1,94 @@
+
+.board_wrap {
+    width: 1000px;
+}
+
+.board_title {
+    margin-bottom: 30px;
+}
+
+.board_title strong {
+    font-size: 2rem;
+}
+
+.board_title p {
+    margin-top: 5px;
+    font-size: 1.4rem;
+}
+
+
+.board_view {
+    width: 100%;
+}
+
+.board_view .title {
+    padding: 30px 15px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 2rem;
+}
+
+.board_view .info {
+    padding: 15px;
+    border-bottom: 1px solid #999;
+    font-size: 0;
+}
+
+.board_view .info dl {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.board_view .info dl:first-child {
+    padding-left: 0;
+}
+
+.board_view .info dl::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 13px;
+    background: #ddd;
+}
+
+.board_view .info dl:first-child::before {
+    display: none;
+}
+
+.board_view .info dl dt,
+.board_view .info dl dd {
+    display: inline-block;
+    font-size: 13px;
+}
+
+.board_view .info dl dd {
+    margin-left: 10px;
+    color: #777;
+}
+
+.board_view .cont {
+    padding: 15px;
+    line-height: 160%;
+    font-size :15px;
+}
+.bt_wrap {
+    text-align: center;
+}
+.bt_wrap a.on {
+    background: dodgerblue;
+    color: #fff;
+}
+
+.bt_wrap a:first-child {
+    margin-left: 0;
+}
+.bt_wrap a {
+    display: inline-block;
+    min-width: 50px;
+    border: 1px solid dodgerblue;
+    border-radius: 2px;
+    font-size: 20px;
+}
