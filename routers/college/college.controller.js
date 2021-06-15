@@ -1,54 +1,60 @@
 const { History, intro, board, teacher } = require("../../models");
 const { Op } = require("sequelize");
 const jwtId = require('../../jwtId');
+const jwtName = require('../../jwtName');
 
 let introduction = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let result = await board.findOne({
         where: { id: 1, }
     })
-    res.render('./college/introduction', { userid, result });
+    res.render('./college/introduction', { userid,username, result });
 }
 
 let history = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let result = await History.findAll({
         order: [['year', 'ASC']]
     });
     // 연도 한번만 뽑으려면 아래 함수 사용. 
     //result = dlt_year(result);
-    res.render('./college/history', { userid, result });
+    res.render('./college/history', { userid,username, result });
 }
 
 let teachers = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let result = await teacher.findAll({
         where: { show: 1, }
     })
-    res.render('./college/teachers', { userid, result });
+    res.render('./college/teachers', { userid, username, result });
 }
 
 let interior = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let result = await intro.findAll({
         where: {
             [Op.and]: [{ type: '0' }, { show: '1' }],
         },
     })
-    res.render('./college/interior', { userid, result });
+    res.render('./college/interior', { userid, username, result });
 }
 
 let location = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let result = await board.findOne({
         where: { id: 2, }
     })
-    res.render('./college/location', { userid, result });
+    res.render('./college/location', { userid, username, result });
 }
 
 module.exports = {
