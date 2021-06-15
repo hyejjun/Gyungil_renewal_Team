@@ -1,4 +1,4 @@
-const {intro} = require("../../../models")
+const {intro,board,User} = require("../../../models");
 
 
 const intro_type = []; 
@@ -63,8 +63,22 @@ let get_curr =(req,res)=>{
   res.render('./admin/main/curriculum.html')
 }
 
-let get_review = (req,res)=>{
-  res.render('./admin/main/review.html');
+//////////////// 리뷰등록 
+let get_review = async(req,res)=>{
+  let rv = await board.findAll({
+    include: [{
+      model: User,
+      as: 'writer_user',
+    }],
+    where:{type:'5', }
+  })
+
+ 
+ 
+
+  res.render('./admin/main/review.html',{
+    rv,
+  });
 }
 
 let get_popup = (req,res)=>{

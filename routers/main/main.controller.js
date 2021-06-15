@@ -25,7 +25,7 @@ let main = async (req, res) => {
     let curr = await curriculum.findAll({
 
     })
-
+    curr.shift(); 
     //수강후기 불러오기
 
     if (AccessToken != undefined) {

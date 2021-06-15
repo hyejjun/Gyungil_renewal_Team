@@ -155,7 +155,6 @@ let control_curr = async (req, res) => {
 
   sorted = sorted.concat(sbj);
 
-  //해당 수강후기 갖고오는 부분 내일 만들기. 
   let review = await board.findAll({
     include: [{
       model: User,

@@ -1,4 +1,4 @@
-const { board } = require("../../models");
+const { board,User } = require("../../models");
 const jwtId = require('../../jwtId');
 const article_count = 10;
 
@@ -25,8 +25,14 @@ let list = async (req, res) => {
         limit: article_count,
         attributes: ['id', 'writer', 'subject', 'date', 'hit'],
         order: [['id', 'DESC']],
+        include: [{
+            model: User,
+            as: 'writer_user',
+          }],
         where: { type, },
     })
+
+  
 
     let count = await board.count({
         where: { type, },
@@ -89,6 +95,10 @@ let view = async (req, res) => {
     let title = boardType[board_name][0];
     let result = await board.findOne({
         attributes: ['writer', 'subject', 'content', 'date', 'hit'],
+        include: [{
+            model: User,
+            as: 'writer_user',
+          }],
         where: { id, },
     });
 
@@ -111,6 +121,10 @@ let review = async (req, res) => {
         limit: article_count,
         attributes: ['id', 'writer', 'subject', 'date', 'hit'],
         order: [['id', 'DESC']],
+        include: [{
+            model: User,
+            as: 'writer_user',
+          }],
         where: { type, },
     })
 
@@ -201,6 +215,10 @@ let review_view = async(req, res) => {
     
     let result = await board.findOne({
         attributes: ['writer', 'subject', 'content', 'date', 'hit'],
+        include: [{
+            model: User,
+            as: 'writer_user',
+          }],
         where: { id, },
     });
     

@@ -1,0 +1,16 @@
+
+#curr_rv{
+  width: 1250px;
+  height: 800px;
+  margin: 0 auto;
+}
+
+#rv_detail{
+  width: 1250px;
+  height: auto; 
+  overflow: hidden;
+}
+
+.td_subject{
+  cursor: pointer;
+}

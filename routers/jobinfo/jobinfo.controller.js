@@ -1,4 +1,4 @@
-const { board } = require('../../models');
+const { board,User } = require('../../models');
 const jwtId = require('../../jwtId')
 
 const article_count = 10;
@@ -23,6 +23,10 @@ let list = async (req, res) => {
         limit: article_count,
         attributes: ['id', 'writer', 'subject', 'date', 'hit'],
         order: [['id', 'DESC']],
+        include: [{
+            model: User,
+            as: 'writer_user',
+          }],
         where: { type, },
     })
 
@@ -78,7 +82,6 @@ let list = async (req, res) => {
 
 
 let view = async (req, res) => {
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let id = req.query.id;
@@ -87,10 +90,13 @@ let view = async (req, res) => {
     let title = boardType[board_name][0];
     let result = await board.findOne({
         attributes: ['writer', 'subject', 'content', 'date', 'hit'],
+        include: [{
+            model: User,
+            as: 'writer_user',
+          }],
         where: { id, },
     });
 
-    console.log(result);
     res.render('./jobinfo/view', {
         result, title, board_name, userid, page,
     })

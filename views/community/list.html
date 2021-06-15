@@ -11,7 +11,7 @@
             {% for item in result %}
             <li>
             {{item.num}}
-            {{item.writer}}
+            {{item.writer_user.username}}
             <a href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}">{{item.subject}}</a>
             {{item.date}}
             {{item.hit}}
