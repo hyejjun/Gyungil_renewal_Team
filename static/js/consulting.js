@@ -1,51 +1,3 @@
-/* 휴대폰 번호 자동 하이픈 처리 */
-let autoHypenPhone = function (str) {
-    str = str.replace(/[^0-9]/g, '');
-    let tmp = '';
-    if (str.length < 4) {
-        return str;
-    } else if (str.length < 7) {
-        tmp += str.substr(0, 3);
-        tmp += '-';
-        tmp += str.substr(3);
-        return tmp;
-    } else if (str.length < 11) {
-        tmp += str.substr(0, 3);
-        tmp += '-';
-        tmp += str.substr(3, 3);
-        tmp += '-';
-        tmp += str.substr(6);
-        return tmp;
-    } else {
-        tmp += str.substr(0, 3);
-        tmp += '-';
-        tmp += str.substr(3, 4);
-        tmp += '-';
-        tmp += str.substr(7);
-        return tmp;
-    }
-
-    return str;
-}
-
-
-let phoneNum = document.getElementById('phoneNum');
-phoneNum.onkeyup = function () {
-    //console.log(this.value);
-    this.value = autoHypenPhone(this.value);
-}
-
-/*let modify_tel = document.querySelector('#modify_tel');
-modify_tel.onkeyup = function () {
-    this.value = autoHypenPhone(this.value)
-}
-
-let user_tel = document.querySelector('#user_tel');
-user_tel.onkeyup = function () {
-    this.value = autoHypenPhone(this.value)
-}*/
-
-
 /*공백 예외처리*/
 const consult_submitBtn = document.querySelector('.consult_submitBtn');
 const consult_input_name = document.querySelector('.consult_input_name');
@@ -54,9 +6,7 @@ const consult_input_tel = document.querySelector('.consult_input_tel');
 const consult_input_text = document.querySelector('.consult_input_text');
 const consult_form = document.querySelector('.consult_form')
 const disagree = document.querySelector('#disagree');
-console.log(disagree);
 
-//console.log(consult_input);
 consult_submitBtn.addEventListener('click', () => {
     if (disagree.checked) {
         alert('개인정보 약관에 동의해주세요');

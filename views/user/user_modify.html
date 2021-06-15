@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/user/user_etc.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <title>Document</title>
 </head>
+
 <body>
-    <div id="um_modify"  class="l-form">
+    <div id="um_modify" class="l-form">
         <div class="form">
             <h1>회원정보 수정</h1>
             <h2>{{result.userid}}님의 회원정보</h2>
             <form action="/user/modify_submit" method="post">
-            <!-- <ul>
+                <!-- <ul>
                 비밀번호
                 <li><input type="text" name="userpw" value="{{result.userpw}}"></li>
             </ul> -->
-            <ul>
-                전화번호
-                <li><input type="text" name="user_tel" value="{{result.user_tel}}" id="modify_tel"></li>
-            </ul>
-            <ul>
-                이메일
-                <li><input type="text" name="useremail" value="{{result.useremail}}"></li>
-            </ul>
+                <ul>
+                    전화번호
+                    <li><input type="text" name="user_tel" value="{{result.user_tel}}" id="modify_tel" maxlength="13">
+                    </li>
+                </ul>
+                <ul>
+                    이메일
+                    <li><input type="text" name="useremail" value="{{result.useremail}}"></li>
+                </ul>
 
-            <!-- 값을 받아와서 뿌려주고 수정해주게 함-->
-            <input type="submit" class="button button_mody" value="수정">
-            <a href="/">메인</a>
+                <!-- 값을 받아와서 뿌려주고 수정해주게 함-->
+                <input type="submit" class="button button_mody" value="수정">
+                <a href="/">메인</a>
             </form>
         </div>
     </div>
-    <script src="/js/consulting.js"></script>
+    <script src="/js/tel_hypen.js"></script>
+    <script>
+        let modify_tel = document.querySelector('#modify_tel');
+        modify_tel.onkeyup = function () {
+            this.value = autoHypenPhone(this.value)
+        }
+    </script>
 </body>
+
 </html>
