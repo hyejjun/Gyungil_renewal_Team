@@ -36,8 +36,8 @@ function initModels(sequelize) {
   board.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "board_id"});
   hit.belongsTo(board, { as: "board", foreignKey: "board_id"});
   board.hasMany(hit, { as: "hits", foreignKey: "board_id"});
-  main_rv.belongsTo(board, { as: "rv", foreignKey: "rv_id"});
-  board.hasMany(main_rv, { as: "main_rvs", foreignKey: "rv_id"});
+  main_rv.belongsTo(board, { as: "rv", foreignKey: "rv_id", targetKey: 'id'});
+  board.hasMany(main_rv, { as: "main_rvs", foreignKey: "rv_id", sourceKey:"id"});
   curr_faq.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
   curriculum.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "curr_id"});
   curr_rv.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
@@ -49,7 +49,7 @@ function initModels(sequelize) {
   users.hasMany(board, { as: "boards", foreignKey: "writer", sourceKey: 'userid' });
   board.belongsTo(users, { as: "writer_user", foreignKey: "writer", targetKey: 'userid' });
   users.belongsTo(curriculum, { as: "code", foreignKey: "class_code",sourceKey:"id" });
-curriculum.hasMany(users, { as: "users", foreignKey: "class_code", targetKey:"id"});
+ curriculum.hasMany(users, { as: "users", foreignKey: "class_code", targetKey:"id"});
 
   return {
     board,
