@@ -1,5 +1,6 @@
 const { board,User } = require("../../models");
 const jwtId = require('../../jwtId');
+const jwtName = require('../../jwtName');
 const article_count = 10;
 const {update_hit} = require('../update_hit'); 
 
@@ -16,6 +17,7 @@ let list = async (req, res) => {
     let { AccessToken } = req.cookies;
     let {page} = req.query
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
     let type = boardType[board_name][1];
@@ -83,13 +85,14 @@ let list = async (req, res) => {
 
 
     res.render(`./community/list`, {
-        result, title, board_name, userid, nowpageblock, start, end, prev, next,page
+        result, title, board_name, userid, username, nowpageblock, start, end, prev, next,page
     })
 }
 
 let view = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let id = req.query.id;
     const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
     update_hit(id,ip);
@@ -116,6 +119,7 @@ let view = async (req, res) => {
 let review = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let type = '5'
     let page = req.query.page;
 
@@ -145,6 +149,7 @@ let review = async (req, res) => {
     let block = 0;
     let p = 1;
     let nowblock = 0;
+    let nowpageblock; 
     while (count > 0) {
         count -= article_count;
         pageblock[block].push(p)
@@ -176,6 +181,7 @@ let review = async (req, res) => {
     console.log(userid); 
     res.render('./community/review', {
         userid,
+        username,
         result,
         nowpageblock,
         end,
@@ -188,7 +194,8 @@ let review = async (req, res) => {
 let review_write = (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    res.render('./community/review_write', { userid });
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    res.render('./community/review_write', { userid, username });
 }
 
 let review_insert = async (req, res) => {
@@ -228,8 +235,9 @@ let review_view = async(req, res) => {
     });
     
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     res.render('./community/review_view', {
-       userid,page,result, 
+       userid,username,page,result, 
     });
 }
 

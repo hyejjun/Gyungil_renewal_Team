@@ -1,19 +1,22 @@
 const { consult, board } = require('../../models');
 const jwtId = require('../../jwtId');
+const jwtName = require('../../jwtName');
 
 let consulting = (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    res.render('./consult/consulting', { userid });
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    res.render('./consult/consulting', { userid, username });
 }
 
 let faq = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let result = await board.findAll({
         where: { type: '8' }
     })
-    res.render('./consult/faq', { userid, result, });
+    res.render('./consult/faq', { userid, username, result, });
 }
 
 let consulting_submit = async (req, res) => {

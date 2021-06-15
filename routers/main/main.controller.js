@@ -1,6 +1,7 @@
 const { intro, curriculum,main_rv ,board, User } = require("../../models");
 const { Op } = require("sequelize");
-const jwtId = require('../../jwtId');
+const jwtId = require('../../jwtId')
+const jwtName = require('../../jwtName')
 
 
 // const intro_type = []; 
@@ -13,7 +14,8 @@ let main = async (req, res) => {
     let { AccessToken } = req.cookies;
 
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+
     //메인비주얼 불러오기
     let visual = await intro.findAll({
         where: {
@@ -39,7 +41,7 @@ let main = async (req, res) => {
 
 
     if (AccessToken != undefined) {
-        res.render('./index', { msg, userid, visual, curr ,review,})
+        res.render('./index', { msg, userid, username, visual, curr })
     } else {
         res.render('./index', { msg, visual, curr, review, })
     }

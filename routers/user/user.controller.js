@@ -4,6 +4,7 @@ const ctoken = require('../../jwt');
 const jwtPW = require('../../jwtPw');
 const jwtId = require('../../jwtId');
 const crypto = require('crypto');
+const jwtName = require('../../jwtName');
 
 let join = async (req, res) => {
     let curr = await curriculum.findAll({
@@ -47,10 +48,11 @@ let login_check = async (req, res) => {
         where: { userid, userpw: Cuserpw }
     })
 
-    console.log(loginResult);
+    //console.log("login result = ",loginResult);
+    let username = loginResult.dataValues.username;
 
     if (loginResult != null) {
-        let token = ctoken(userid);
+        let token = ctoken(userid,username);
         console.log(token)
         res.cookie('AccessToken', token, { httpOnly: true, secure: true });
 
@@ -89,6 +91,7 @@ let info = async (req, res) => {
     let { AccessToken } = req.cookies;
 
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;  
 
     let result = await User.findOne({
         where: { userid }
@@ -111,7 +114,6 @@ let info = async (req, res) => {
         default:
             break;
     }
-    //console.log(classname);
     res.render('./user/user_info', { result, classname, msg });
 }
 
