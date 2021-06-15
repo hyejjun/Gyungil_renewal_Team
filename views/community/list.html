@@ -10,12 +10,12 @@
         <table class="board_list">
             <thead>
                 <tr>
-                    <th style="background-color: #eeeeee; text-align: center;">번호</th>
-                    <th style="background-color: #eeeeee; text-align: center;">작성자</th>
-                    <th style="background-color: #eeeeee; text-align: center;">내용</th>
-                    <th style="background-color: #eeeeee; text-align: center;">날짜</th>
-                    <th style="background-color: #eeeeee; text-align: center;">조회수</th>
-                </tr>
+                    <th>번호</th>
+                    <th>작성자</th>
+                    <th>내용</th>
+                    <th>날짜</th>
+                    <th>조회수</th>
+                </tr> 
             </thead>
             <tbody>
                 {% for item in result %}
@@ -32,17 +32,17 @@
             </tbody>
         </table>
         <div class="paging">
-            <a href="/community/review?page=1">처음</a>
+            <a href="/community/{{board_name}}/list?page=1">처음</a>
             {% if prev %}
-            <a href="/community/review?page={{prev}}">이전</a>
+            <a href="/community/{{board_name}}/list?page={{prev}}">이전</a>
             {% endif %}
             {% for item in nowpageblock %}
-            <a href="/community/review?page={{item}}" class="sbt">{{item}}</a>
+            <a href="/community/{{board_name}}/list?page={{item}}" class="sbt">{{item}}</a>
             {% endfor %}
             {% if next %}
-            <a href="/community/review?page={{next}}">다음</a>
+            <a href="/community/{{board_name}}/list?page={{next}}">다음</a>
             {% endif %}
-            <a href="/community/review?page={{end}}">끝</a>
+            <a href="/community/{{board_name}}/list?page={{end}}">끝</a>
 
         </div>
         
