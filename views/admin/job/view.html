@@ -29,6 +29,7 @@
           작성자<span>{{result.writer}}</span><br>
           등록일<span>{{result.date}}</span><br>
           조회수<span>{{result.hit}}</span><br>
+          썸네일<div><img src="{{thumbnail}}" alt=""></div>
           <div id ='content'></div>
           <input type="hidden" id ='hidden_content' value="{{result.content}}">
           <a href="/admin/job/{{board_name}}/modify?id={{result.id}}">수정하기</a>

@@ -1,0 +1,75 @@
+
+<div>
+  <span>썸네일 설정</span><br>
+  <label for="image">이미지 썸네일</label>
+  <input type="radio" name="thumbnailroute" value="image" id="image" required>
+  <label for="image">유튜브 썸네일</label>
+  <input type="radio" name="thumbnailroute"  value="youtube" id="youtube">
+  <br>
+  <br>
+  <div id="image_box" style="display: none;">
+    이미지 파일: <input type="file" accept="image/*" id="image_thumbnail" name ="img" onchange="setThumbnail(event);" required><br>    
+  </div>
+  <div id="youtube_box" style="display: none;">
+    유튜브 공유링크: <input type="text"  id="youtube_thumbnail" oninput="setYthumnail()" required >
+    <input type="hidden" name="thumbnail" id="y_thumbnail" >
+  </div>
+  <div id="thumbnail"></div>
+
+</div>
+
+
+
+<script>
+
+const image = document.querySelector('#image'); 
+const image_box = document.querySelector('#image_box'); 
+const youtube = document.querySelector('#youtube'); 
+const youtube_box = document.querySelector('#youtube_box'); 
+
+image.addEventListener('change',()=>{
+  if(image.checked){
+    image_box.style.display="block"
+    youtube_box.style.display="none"
+  }  
+})
+
+youtube.addEventListener('change',()=>{
+  if(youtube.checked){
+    image_box.style.display="none"
+    youtube_box.style.display="block"
+  }  
+})
+
+
+  function setThumbnail(event) {
+    let reader = new FileReader();
+    reader.onload =  (event)=> {
+      let thumbnail = document.querySelector("#thumbnail");
+      while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }
+      let img = document.createElement("img");
+      img.setAttribute("src", event.target.result);
+      thumbnail.appendChild(img);
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+
+  function setYthumnail(){
+    let temp = document.querySelector('#youtube_thumbnail').value;
+    let id=''; 
+    for(let i =temp.length-11;i<=temp.length-1; i++){ 
+      id+=temp.charAt(i); 
+    }
+    console.log(id); 
+    // temp = temp.split('/'); 
+    // let id = temp[temp.length-1];  
+    temp = `https://img.youtube.com/vi/${id}/0.jpg`
+    let thumbnail = document.querySelector("#thumbnail");
+      while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }
+      let img = document.createElement("img");
+      img.setAttribute("src", temp);
+      thumbnail.appendChild(img);
+    document.querySelector('#y_thumbnail').value = temp; 
+  }
+</script>

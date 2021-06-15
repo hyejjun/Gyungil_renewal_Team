@@ -1,4 +1,4 @@
-const { curriculum, subject, curr_sbj, User, board ,curr_rv} = require("../../../models");
+const { curriculum, subject, curr_sbj, User, board, curr_rv } = require("../../../models");
 
 
 
@@ -55,10 +55,10 @@ let destroy_curr = async (req, res) => {
 
 let create_sub = async (req, res) => {
   let { name, content } = req.body;
-  let image; 
-  if(req.file==undefined){
-    image = ''; 
-  }else{
+  let image;
+  if (req.file == undefined) {
+    image = '';
+  } else {
     image = req.file.filename;
   }
 
@@ -160,28 +160,30 @@ let control_curr = async (req, res) => {
       model: User,
       as: 'writer_user',
       where: { class_code: id, }
-    }]
+    }],
+    where: { type: '5' }
+
   })
-  
+
   let select_rv = await curr_rv.findAll({
-    attributes:['board_id']
+    attributes: ['board_id']
   },
     {
-    where: { curr_id: id, }
-  })
-
-  
-
-  review.forEach(v=>{
-      v['check'] = false; 
+      where: { curr_id: id, }
     })
 
-  if(select_rv.length>0){
 
-    select_rv.forEach(rv=>{
-      review.forEach(v=>{
-        if(rv.board_id==v.id){
-          v['check'] = true; 
+
+  review.forEach(v => {
+    v['check'] = false;
+  })
+
+  if (select_rv.length > 0) {
+
+    select_rv.forEach(rv => {
+      review.forEach(v => {
+        if (rv.board_id == v.id) {
+          v['check'] = true;
         }
       })
     })
@@ -189,7 +191,7 @@ let control_curr = async (req, res) => {
 
 
   res.render('./admin/curriculum/curr_control', {
-    spec, sorted, originsbj,review, select_rv
+    spec, sorted, originsbj, review, select_rv
   });
 }
 
@@ -203,14 +205,14 @@ let update_curr = async (req, res) => {
   } else {
     image = req.file.filename;
   }
-  let { id, name, info, term, start_time, end_time, location, tuition, qual, subsort,rv } = req.body;
+  let { id, name, info, term, start_time, end_time, location, tuition, qual, subsort, rv } = req.body;
 
   let reset = await curr_sbj.destroy({
     where: { curr_id: id },
   })
 
   await curr_rv.destroy({
-    where:{curr_id:id}
+    where: { curr_id: id }
   })
 
   //교과목 연결

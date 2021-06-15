@@ -1,5 +1,5 @@
-const { board, curriculum, User } = require("../../../models")
-const article_count = 10; 
+const { board, curriculum, User, Thumbnail } = require("../../../models")
+const article_count = 10;
 
 let boardType = {
   'interview': ['취업자인터뷰', '6'],
@@ -67,7 +67,7 @@ let show_list = async (req, res) => {
     board_name,
     title,
     result,
-    
+
   })
 }
 
@@ -79,10 +79,10 @@ let show_write = async (req, res) => {
     include: [{
       model: curriculum,
       as: 'code',
-    }]
+    }],
+    where: { type: '3' }
   })
 
-  console.log(user);
 
   res.render('./admin/job/write', {
     board_name, title, user,
@@ -90,8 +90,16 @@ let show_write = async (req, res) => {
 }
 
 let create_article = async (req, res) => {
+  console.log(req.file);
   let board_name = req.params.board_name;
   let type = boardType[board_name][1];
+  console.log(req.body);
+  let { thumbnailroute } = req.body;
+  if (thumbnailroute == 'image') {
+    thumbnail = 'http://localhost:3000/' + req.file.filename;
+  } else {
+    thumbnail = req.body.thumbnail;
+  }
 
   let { subject, content, writer } = req.body;
 
@@ -101,6 +109,11 @@ let create_article = async (req, res) => {
   })
 
   let id = resutlt.dataValues.id;
+
+  await Thumbnail.create({
+    board_id: id, image: thumbnail,
+  })
+
   res.redirect(`/admin/job/${board_name}/view?id=${id}`);
 }
 
@@ -111,11 +124,17 @@ let show_article = async (req, res) => {
   let { id } = req.query;
 
   let result = await board.findOne({
+    include: [{
+      model: Thumbnail,
+      as: "thumbnails"
+    }],
     where: { id, }
   })
+  let thumbnail = result.thumbnails;
+
 
   res.render('./admin/job/view', {
-    result, board_name
+    result, board_name, thumbnail: thumbnail[0].image,
   })
 
 }
