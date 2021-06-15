@@ -39,8 +39,6 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    charset: "utf8mb4",
-    collate: "utf8mb4_general_ci",
     tableName: 'teacher',
     timestamps: false,
     indexes: [

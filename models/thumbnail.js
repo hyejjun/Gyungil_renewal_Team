@@ -1,28 +1,27 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('intro', {
+  return sequelize.define('thumbnail', {
     id: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       allowNull: false,
       primaryKey: true
     },
-    content: {
-      type: DataTypes.STRING(50),
-      allowNull: false
+    board_id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      references: {
+        model: 'board',
+        key: 'id'
+      }
     },
-    type: {
-      type: DataTypes.TINYINT.UNSIGNED,
+    thumbnail: {
+      type: DataTypes.STRING(1000),
       allowNull: false
-    },
-    show: {
-      type: DataTypes.TINYINT.UNSIGNED,
-      allowNull: true,
-      defaultValue: 1
     }
   }, {
     sequelize,
-    tableName: 'intro',
+    tableName: 'thumbnail',
     timestamps: false,
     indexes: [
       {
@@ -31,6 +30,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "FK__board",
+        using: "BTREE",
+        fields: [
+          { name: "board_id" },
         ]
       },
     ]

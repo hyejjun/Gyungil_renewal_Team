@@ -20,7 +20,7 @@
  
           <div >
             <div>{{title}} 작성</div>
-            <form id="form" action="/admin/job/{{board_name}}/write" method="POST">
+            <form id="form" action="/admin/job/{{board_name}}/write" method="POST" enctype="multipart/form-data">
               <div>
                 <span>인터뷰 대상자</span>
                 <span id="interviewee"></span>
@@ -45,7 +45,7 @@
                   </tbody>
                 </table>
               </div>
-              
+              {% include "../layout/thumbnail.html" %}
               
               
               제목:<input type="text" name='subject' id="subject">

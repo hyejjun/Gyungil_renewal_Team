@@ -1,3 +1,4 @@
+sequelize-auto -o "./models" -d gyungil -h localhost -u root -p 3306 -x 1234 -e mysql
 var DataTypes = require("sequelize").DataTypes;
 var _board = require("./board");
 var _consult = require("./consult");
@@ -12,7 +13,6 @@ var _main_rv = require("./main_rv");
 var _portfolio = require("./portfolio");
 var _subject = require("./subject");
 var _teacher = require("./teacher");
-var _thumbnail = require("./thumbnail");
 var _users = require("./users");
 
 function initModels(sequelize) {
@@ -29,7 +29,6 @@ function initModels(sequelize) {
   var portfolio = _portfolio(sequelize, DataTypes);
   var subject = _subject(sequelize, DataTypes);
   var teacher = _teacher(sequelize, DataTypes);
-  var thumbnail = _thumbnail(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
 
   curr_faq.belongsTo(board, { as: "board", foreignKey: "board_id"});
@@ -38,8 +37,7 @@ function initModels(sequelize) {
   board.hasMany(curr_rv, { as: "curr_rvs", foreignKey: "board_id"});
   hit.belongsTo(board, { as: "board", foreignKey: "board_id"});
   board.hasMany(hit, { as: "hits", foreignKey: "board_id"});
-  thumbnail.belongsTo(board, { as: "board", foreignKey: "board_id"});
-  board.hasMany(thumbnail, { as: "thumbnails", foreignKey: "board_id"});
+ 
   curr_faq.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
   curriculum.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "curr_id"});
   curr_rv.belongsTo(curriculum, { as: "curr", foreignKey: "curr_id"});
@@ -69,7 +67,6 @@ function initModels(sequelize) {
     portfolio,
     subject,
     teacher,
-    thumbnail,
     users,
   };
 }

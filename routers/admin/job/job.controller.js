@@ -1,4 +1,4 @@
-const { board, curriculum, User } = require("../../../models")
+const { board, curriculum, User,Thumbnail } = require("../../../models")
 const article_count = 10; 
 
 let boardType = {
@@ -90,9 +90,16 @@ let show_write = async (req, res) => {
 }
 
 let create_article = async (req, res) => {
+  console.log(req.file);
   let board_name = req.params.board_name;
   let type = boardType[board_name][1];
-
+  console.log(req.body); 
+  let thumbnail;
+  if(req.file===undefined){
+     thumbnail = req.body.thumbnail; 
+  }else{
+     thumbnail = 'http://localhost:3000'+req.file.filename; 
+  }
   let { subject, content, writer } = req.body;
 
   let resutlt = await board.create({
@@ -101,6 +108,11 @@ let create_article = async (req, res) => {
   })
 
   let id = resutlt.dataValues.id;
+
+  await Thumbnail.create({
+    board_id:id, thumbnail, 
+  })
+
   res.redirect(`/admin/job/${board_name}/view?id=${id}`);
 }
 
