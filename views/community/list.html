@@ -32,17 +32,17 @@
             </tbody>
         </table>
         <div class="paging">
-            <a href="/community/review?page=1">처음</a>
+            <a href="/community/{{board_name}}/list?page=1">처음</a>
             {% if prev %}
-            <a href="/community/review?page={{prev}}">이전</a>
+            <a href="/community/{{board_name}}/list?page={{prev}}">이전</a>
             {% endif %}
             {% for item in nowpageblock %}
-            <a href="/community/review?page={{item}}" class="sbt">{{item}}</a>
+            <a href="/community/{{board_name}}/list?page={{item}}" class="sbt">{{item}}</a>
             {% endfor %}
             {% if next %}
-            <a href="/community/review?page={{next}}">다음</a>
+            <a href="/community/{{board_name}}/list?page={{next}}">다음</a>
             {% endif %}
-            <a href="/community/review?page={{end}}">끝</a>
+            <a href="/community/{{board_name}}/list?page={{end}}">끝</a>
 
         </div>
         
