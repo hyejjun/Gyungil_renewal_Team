@@ -61,6 +61,14 @@
         <div id="reviews" class="w100">
             <div class="w1200">
                 <div class="reviews_title">수강생 후기</div>
+
+                {% for item in review %}
+                <div>
+                    {{item.rv.writer_user.username}}
+                    {{item.rv.content}}
+                </div>
+                    {% endfor %}
+
                 <div class="reviews_sub_title">경일게임아카데미 수강생의 생생한 목소리를 들어보세요</div>
             </div>
         </div>

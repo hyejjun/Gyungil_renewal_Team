@@ -12,15 +12,18 @@
                 <li>
                     <p>개인정보취급방침</p>
                 </li>
-                <li><textarea name="personal" id="personal" class="consult_input" cols="30" rows="10">개인정보 동의 어쩌구</textarea></li>
+                <li><textarea name="personal" id="personal" class="consult_input" cols="30"
+                        rows="10">개인정보 동의 어쩌구</textarea></li>
                 <li>
                     <label class="check">
-                        <input type="radio" name="personal_agreement" class="checkbox" id="disagree" ><label for="disagree">동의하지않음</label>
+                        <input type="radio" name="personal_agreement" class="checkbox" id="disagree"><label
+                            for="disagree">동의하지않음</label>
                         <span class="icon"></span>
                     </label>
 
                     <label class="check">
-                        <input type="radio" name="personal_agreement" class="checkbox" id="agree" checked><label for="agree">동의함</label>
+                        <input type="radio" name="personal_agreement" class="checkbox" id="agree" checked><label
+                            for="agree">동의함</label>
                         <span class="icon"></span>
                     </label>
                 </li>
@@ -40,27 +43,29 @@
                     <tr>
                         <th>이름 *</th>
                         <td>
-                            <input type="text" name="name" placeholder="이름을 적어 주세요" class="consult_input consult_input_name" required>
+                            <input type="text" name="name" placeholder="이름을 적어 주세요"
+                                class="consult_input consult_input_name" required>
                         </td>
                     </tr>
                     <tr>
                         <th>나이 *</th>
                         <td>
-                            <input type="number" name="age" placeholder="나이를 적어주세요" class="consult_input consult_input_age" required>
+                            <input type="number" name="age" placeholder="나이를 적어주세요"
+                                class="consult_input consult_input_age" required>
                         </td>
                     </tr>
                     <tr>
                         <th>전화번호 *</th>
                         <td>
-                            <input type="tel" id="phoneNum" placeholder="연락 가능한 번호를 입력" class="consult_input consult_input_tel" name="tel"
-                                maxlength="13" required>
+                            <input type="tel" id="phoneNum" placeholder="연락 가능한 번호를 입력"
+                                class="consult_input consult_input_tel" name="tel" maxlength="13" required>
                         </td>
                     </tr>
                     <tr>
                         <th>상담내용</th>
                         <td>
-                            <textarea name="content" cols="30" placeholder="궁금하신 내용을 적어주세요" rows="10" class="consult_input consult_input_text"
-                                required></textarea>
+                            <textarea name="content" cols="30" placeholder="궁금하신 내용을 적어주세요" rows="10"
+                                class="consult_input consult_input_text" required></textarea>
                         </td>
                     </tr>
                 </tbody>
@@ -73,6 +78,13 @@
     </div>
 </div>
 <!--menu_contents end-->
-
+<script src="/js/tel_hypen.js"></script>
+<script src="/js/consulting.js"></script>
+<script>
+    let phoneNum = document.getElementById('phoneNum');
+    phoneNum.onkeyup = function () {
+        this.value = autoHypenPhone(this.value);
+    }
+</script>
 
 {% include "../layout/subpage_bottom.html" %}

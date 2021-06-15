@@ -53,7 +53,7 @@
                 </li>
                 <li class="inputWithIcon inputIconBg">
                     <label for="user_tel"></label>
-                    <input type="tel" name="user_tel" id="user_tel" placeholder="핸드폰번호를 입력해주세요" required>
+                    <input type="tel" name="user_tel" id="user_tel" placeholder="핸드폰번호를 입력해주세요" maxlength="13" required>
                     <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
                 </li>
                 <li class="userlevel_li">
@@ -80,7 +80,7 @@
         </div>
         <input type="submit" class="form__button btn-primary" value="회원가입">
     </form>
-    <script src="/js/consulting.js"></script>
+    <script src="/js/tel_hypen.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script>
         const userid = document.querySelector('#userid');
@@ -144,6 +144,12 @@
                 class_code_li.style.display = 'none'
             }
         })
+
+
+        let user_tel = document.querySelector('#user_tel');
+        user_tel.onkeyup = function () {
+            this.value = autoHypenPhone(this.value)
+        }
 
 
     </script>
