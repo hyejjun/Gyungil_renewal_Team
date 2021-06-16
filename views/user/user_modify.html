@@ -17,20 +17,16 @@
             <h1>회원정보 수정</h1>
             <h2>{{result.userid}}님의 회원정보</h2>
             <form action="/user/modify_submit" method="post">
-                <!-- <ul>
+                <!-- 
                 비밀번호
-                <li><input type="text" name="userpw" value="{{result.userpw}}"></li>
-            </ul> -->
-                <ul>
+                <input type="text" name="userpw" value="{{result.userpw}}"> -->
+                
                     전화번호
-                    <li><input type="text" name="user_tel" value="{{result.user_tel}}" id="modify_tel" maxlength="13">
-                    </li>
-                </ul>
-                <ul>
+                    <input type="text" name="user_tel" value="{{result.user_tel}}" id="modify_tel" maxlength="13" class="user_modi">
+                   
                     이메일
-                    <li><input type="text" name="useremail" value="{{result.useremail}}"></li>
-                </ul>
-
+                    <input type="text" name="useremail" value="{{result.useremail}}" class="user_modi">
+                
                 <!-- 값을 받아와서 뿌려주고 수정해주게 함-->
                 <input type="submit" class="button button_mody" value="수정">
                 <a href="/">메인</a>
