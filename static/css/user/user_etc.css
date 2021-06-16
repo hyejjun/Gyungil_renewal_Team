@@ -246,3 +246,8 @@ a:hover:before,a:hover:after{
 .button_mody{
   width: 18%;
 }
+
+.user_modi{
+  height: 55px;
+  font-size: 23px;
+}
