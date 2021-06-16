@@ -110,7 +110,7 @@ let view = async (req, res) => {
     });
     result['num'] = num;
     res.render('./community/view', {
-        result, title, board_name, userid, page,
+        result, title, board_name, userid, username, page,
     })
 
 }
