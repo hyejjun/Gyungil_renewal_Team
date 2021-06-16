@@ -1,36 +1,20 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('teacher', {
+  return sequelize.define('main_visual', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    name: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    position: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
-    title: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    career: {
-      type: DataTypes.STRING(500),
-      allowNull: true
-    },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
     image: {
-      type: DataTypes.STRING(1000),
+      type: DataTypes.STRING(255),
       allowNull: false,
       defaultValue: ""
+    },
+    link: {
+      type: DataTypes.STRING(255),
+      allowNull: false
     },
     show: {
       type: DataTypes.TINYINT.UNSIGNED,
@@ -39,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'teacher',
+    tableName: 'main_visual',
     timestamps: false,
     indexes: [
       {

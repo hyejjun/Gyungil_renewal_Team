@@ -1,7 +1,7 @@
-const { intro, curriculum,main_rv ,board, User } = require("../../models");
+const { main_visual, curriculum,main_rv ,board, User } = require("../../models");
 const { Op } = require("sequelize");
 const jwtId = require('../../jwtId')
-const jwtName = require('../../jwtName')
+const jwtName = require('../../jwtName');
 
 
 // const intro_type = []; 
@@ -17,9 +17,8 @@ let main = async (req, res) => {
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
 
     //메인비주얼 불러오기
-    let visual = await intro.findAll({
-        where: {
-            [Op.and]: [{ type: '1' }, { show: '1' }],
+    let visual = await main_visual.findAll({
+        where: { show:1,
         },
     });
 
