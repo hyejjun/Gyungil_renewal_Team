@@ -8,5 +8,7 @@ router.get('/review', controller.review);
 router.get('/review_write', controller.review_write);
 router.get('/review_view', controller.review_view);
 router.post('/review_insert', controller.review_insert);
+router.get('/review_modify', controller.review_modify);
+router.post('/review_modify_submit', controller.review_modify_submit);
 
 module.exports = router;

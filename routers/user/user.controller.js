@@ -49,9 +49,9 @@ let login_check = async (req, res) => {
     })
 
     //console.log("login result = ",loginResult);
-    let username = loginResult.dataValues.username;
-
+    
     if (loginResult != null) {
+        let username = loginResult.dataValues.username;
         let token = ctoken(userid,username);
         console.log(token)
         res.cookie('AccessToken', token, { httpOnly: true, secure: true });
