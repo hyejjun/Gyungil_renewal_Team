@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>인삿말 수정</title>
   <link rel="stylesheet" href="/admin/css/index.css">
-
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded',()=>{
+    const content = document.querySelector('#content');
+    const pre = document.querySelector('#summernote');
+      pre.innerHTML = `${content.value}`; 
+    })
+  </script>
 </head>
 <body>
   <div id = "wrap">
@@ -14,10 +20,11 @@
       {% include "../layout/gnb.html" %}
       {% include "./info_snb.html" %}
       <div id="main">
-        <form action="/admin/info/intro/modify" method="post">
-          제목: <input type="text" name="head" value="{{result.content}}">
-          내용:<textarea name="content" id="" cols="30" rows="10">{{result.content}}</textarea>
-          <input type="submit" value="수정">
+        <h3>인사말 수정</h3>
+        <form id="form" action="/admin/info/intro/modify" method="post">
+    <div id="summernote_wrap">
+      {% include "./summernote_modify.html" %}
+    </div>
         </form>
       </div>
     </div>
