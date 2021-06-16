@@ -9,17 +9,19 @@ let curriculum_list = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
 
     let result = await curriculum.findAll({
         where: { id: { [Op.gt]: 1, } }
     })
-    res.render('./curriculum/curriculum', { userid, username, result });
+    res.render('./curriculum/curriculum', { userid, username, nickname, result });
 }
 
 let curriculum_view = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     let { id } = req.query;
 
     let spec = await curriculum.findOne({
@@ -53,6 +55,7 @@ let curriculum_view = async (req, res) => {
         spec,
         subjects,
         review,
+        nickname
     });
 }
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const mainRouter = require('./main/index');
+const authRouter = require('./auth/index');
 const userRouter = require('./user/index');
 const collegeRouter = require('./college/index');
 const curriculumRouter = require('./curriculum/index');
@@ -11,6 +12,7 @@ const consultRouter = require('./consult/index');
 const adminRouter = require('./admin/index');
 
 router.use('/', mainRouter);
+router.use('/auth', authRouter);
 router.use('/user', userRouter);
 router.use('/college', collegeRouter);
 router.use('/curriculum', curriculumRouter);

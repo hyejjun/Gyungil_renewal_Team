@@ -18,6 +18,7 @@ let list = async (req, res) => {
     let { page } = req.query
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     let board_name = req.params.board_name;
     let title = boardType[board_name][0];
     let type = boardType[board_name][1];
@@ -85,7 +86,7 @@ let list = async (req, res) => {
 
 
     res.render(`./community/list`, {
-        result, title, board_name, userid, username, nowpageblock, start, end, prev, next, page
+        result, title, board_name, userid, username, nickname, nowpageblock, start, end, prev, next, page
     })
 }
 
@@ -93,6 +94,7 @@ let view = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     let { id, num } = req.query;
 
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -110,7 +112,7 @@ let view = async (req, res) => {
     });
     result['num'] = num;
     res.render('./community/view', {
-        result, title, board_name, userid, username, page,
+        result, title, board_name, userid, username, nickname, page,
     })
 
 }

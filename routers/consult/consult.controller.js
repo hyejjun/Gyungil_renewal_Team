@@ -6,17 +6,19 @@ let consulting = (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
-    res.render('./consult/consulting', { userid, username });
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
+    res.render('./consult/consulting', { userid, username, nickname });
 }
 
 let faq = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     let result = await board.findAll({
         where: { type: '8' }
     })
-    res.render('./consult/faq', { userid, username, result, });
+    res.render('./consult/faq', { userid, username, result, nickname });
 }
 
 let consulting_submit = async (req, res) => {

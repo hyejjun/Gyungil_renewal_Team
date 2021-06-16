@@ -41,9 +41,20 @@ let main = async (req, res) => {
 
     if (AccessToken != undefined) {
         res.render('./index', { msg, userid, username, visual, curr })
+    }else if(req.session.kakao != undefined){
+        let {nickname} = req.session.kakao.properties
+        res.render('./index', { msg, nickname, visual, curr })
     } else {
         res.render('./index', { msg, visual, curr, review, })
     }
+
+   
+
+    // if (AccessToken != undefined) {
+    //     res.render('./index', { msg, userid, username, visual, curr })
+    // } else {
+    //     res.render('./index', { msg, visual, curr, review, })
+    // }
 
 }
 
