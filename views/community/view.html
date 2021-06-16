@@ -1,28 +1,38 @@
 {% include "../layout/subpage_top.html" %}
 {% include "../layout/subpage_community_navi.html" %}
 
-
-<!--menu_contents start-->
-
-<div class="menu_contents">
-    <div class="mc_title">
-        {{title}}
-    </div>
-    <div class="mc_content">
-        <div>
-          <input type="hidden" id='hidden_content' value="{{result.content}}">
-          {{result.num}}
+<div class="board_view_wrap menu_contents">
+    <div class="board_view board_title">
+        <div class="title mc_title">
             {{result.subject}}
-            {{result.writer_user.username}} 
-            {{result.date}}
-            {{result.hit}}
-            <div id="content"></div>
-          
         </div>
-
-        <a href="/community/{{board_name}}/list?page={{page}}">목록</a>    
+        <div class="info">
+            <dl>
+                <dt>번호</dt>
+                <dd>{{result.num}}</dd>
+            </dl>
+            <dl>
+                <dt>글쓴이</dt>
+                <dd>{{result.writer_user.username}}</dd>
+            </dl>
+            <dl>
+                <dt>작성일</dt>
+                <dd> {{result.date}}</dd>
+            </dl>
+            <dl>
+                <dt>조회</dt>
+                <dd>{{result.hit}}</dd>
+            </dl>
+        </div>
+        <div class="cont">
+            {{result.content}}
+        </div>
+    </div>
+    <div class="bt_wrap">
+        <a href="/community/notice/list?page={{page}}" class="on">목록</a>
     </div>
 </div>
+
 
 <script type="text/javascript">
   window.addEventListener('DOMContentLoaded',()=>{
