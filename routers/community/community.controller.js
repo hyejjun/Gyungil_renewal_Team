@@ -222,7 +222,7 @@ let review_view = async (req, res) => {
     // 여기서 DB에서 받아와서 값 뿌려주면 됨
     let { AccessToken } = req.cookies;
     let page = req.query.page;
-    let { id, num } = req.query;
+    let { id, num, msg } = req.query;
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     update_hit(id, ip);
 
@@ -238,26 +238,33 @@ let review_view = async (req, res) => {
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     result['num'] = num;
     res.render('./community/review_view', {
-        userid, username, page, result
+        userid, username, page, result, msg
     });
 }
 
 
 
 let review_modify = async (req, res) => {
+    let { AccessToken } = req.cookies;
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let { writer, id, page, num } = req.query;
+    //console.log('username = ', username, 'writer = ', writer);
 
-    let result = await User.findOne({
-        where: { username: writer }
-    })
-    let { userid } = result.dataValues;
+    if (username != writer) {
+        res.redirect(`/community/review_view?page=${page}&id=${id}&num=${num}&msg=수정권한없음`)
+    } else {
+        let result = await User.findOne({
+            where: { username: writer }
+        })
+        let { userid } = result.dataValues;
 
-    let result2 = await board.findOne({
-        where: { writer: userid, id }
-    })
-    res.render('./community/review_modify', {
-        result2, writer, id ,page, num
-    });
+        let result2 = await board.findOne({
+            where: { writer: userid, id }
+        })
+        res.render('./community/review_modify', {
+            result2, writer, id, page, num
+        });
+    }
 }
 
 
