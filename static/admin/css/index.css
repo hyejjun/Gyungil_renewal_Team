@@ -16,6 +16,13 @@ a{
   overflow: hidden;
 }
 
+#summernote_wrap{
+  
+  width: 996px;
+  min-height: 900px;
+  margin: 0 auto;
+}
+
 #gnb{
   width: 1900px;
   height: 100px;

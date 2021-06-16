@@ -7,19 +7,20 @@
         인사말
     </div>
     <div class="mc_content">
-        <div class="intro_title">
-            <!-- <span>취업에서 한 걸음 더,</span>
-            <span>슈퍼신입을 만듭니다.</span>
-            <span>경일게임아카데미</span> -->
-            {{result.subject}}
-        </div>
+        <input type="hidden" id='hidden_content' value="{{result.content}}">
+        <div id='content'></div>
 
-        <div>
-            <!-- 안녕하세요 원장입니다~! -->
-            {{result.content}}
-        </div>
+
     </div>
 </div>
 <!--menu_contents end-->
 
 {% include "../layout/subpage_bottom.html" %}
+
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', () => {
+        const hidden_content = document.querySelector('#hidden_content');
+        const content = document.querySelector('#content');
+        content.innerHTML = `${hidden_content.value}`;
+    })
+</script>

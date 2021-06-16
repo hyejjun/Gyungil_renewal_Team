@@ -14,3 +14,8 @@
 .td_subject{
   cursor: pointer;
 }
+
+#summernote_wrap{
+  width: 996px;
+  min-height: 900px;
+}

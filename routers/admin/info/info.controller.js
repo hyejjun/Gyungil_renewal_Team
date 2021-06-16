@@ -10,7 +10,7 @@ intro_type[2] = 'popup'
 
 let show_intro = async (req, res) => {
   let result = await board.findOne({
-    attributes: ['content', 'subject', 'writer']
+    attributes: ['content',]
   }, {
     where: { id: '1' }
   })
@@ -24,11 +24,10 @@ let show_intro = async (req, res) => {
 
 let modify_intro = async (req, res) => {
   let result = await board.findOne({
-    attributes: ['content', 'subject', 'writer']
+    attributes: ['content',]
   }, {
     where: { id: '1' }
   })
-  result = result.dataValues;
 
   res.render('./admin/info/intro_modify.html', {
     result,
@@ -36,10 +35,10 @@ let modify_intro = async (req, res) => {
 }
 
 let update_intro = async (req, res) => {
-  let { content, subject, writer } = req.body;
+  let { content, } = req.body;
 
   let result = await board.update({
-    content, subject, writer
+    content
   }, {
     where: { id: '1' }
   })
