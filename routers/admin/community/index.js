@@ -13,6 +13,10 @@ router.get('/:board_name/modify',commController.show_modify);
 router.get('/:board_name/destroy',commController.destroy_article);
 router.post('/:board_name/modify',commController.modify_article);
 
+// router.get('/review_write', controller.review_write);
+// router.get('/review_view', controller.review_view);
+// router.post('/review_insert', controller.review_insert);
+
 
 
 

@@ -14,7 +14,7 @@
     유튜브 공유링크: <input type="text" id="youtube_thumbnail" oninput="setYthumnail()" required>
     <input type="hidden" name="thumbnail" id="y_thumbnail">
   </div>
-  <div id="thumbnail"></div>
+  <div id="thumbnail"><img src="{{result.thumbnails[0].image}}" alt=""></div>
 
 </div>
 
@@ -29,15 +29,21 @@
 
   image.addEventListener('change', () => {
     if (image.checked) {
+      document.querySelector('#youtube_thumbnail').value =''; 
       image_box.style.display = "block"
       youtube_box.style.display = "none"
+      let thumbnail = document.querySelector("#thumbnail");
+      while (thumbnail.hasChildNodes()) { thumbnail.removeChild(thumbnail.firstChild); }
     }
   })
 
   youtube.addEventListener('change', () => {
     if (youtube.checked) {
+      document.querySelector('#image_thumbnail').value =''; 
       image_box.style.display = "none"
       youtube_box.style.display = "block"
+      let thumbnail = document.querySelector("#thumbnail");
+      while (thumbnail.hasChildNodes()) { thumbnail.removeChild(thumbnail.firstChild); }
     }
   })
 
