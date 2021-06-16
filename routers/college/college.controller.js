@@ -20,10 +20,9 @@ let history = async (req, res) => {
     let result = await History.findAll({
         order: [['year', 'DESC']]
     });
-    // console.log(result); 
     // 연도 한번만 뽑으려면 아래 함수 사용. 
     result = dlt_year(result);
-    res.render('./college/history', { userid,username, result });
+    res.render('./college/history', { userid,username,result});
 }
 
 let teachers = async (req, res) => {
