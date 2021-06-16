@@ -1,10 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "1234",
-=======
->>>>>>> 239fb29137629dd724eff50252f12fc355cf66cf
+    "password": "root",
     "database": "gyungil",
     "host": "127.0.0.1",
     "dialect": "mysql"
