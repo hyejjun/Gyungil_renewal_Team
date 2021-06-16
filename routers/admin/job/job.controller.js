@@ -90,10 +90,8 @@ let show_write = async (req, res) => {
 }
 
 let create_article = async (req, res) => {
-  console.log(req.file);
   let board_name = req.params.board_name;
   let type = boardType[board_name][1];
-  console.log(req.body);
   let { thumbnailroute } = req.body;
   if (thumbnailroute == 'image') {
     thumbnail = 'http://localhost:3000/' + req.file.filename;
@@ -145,18 +143,31 @@ let show_modify = async (req, res) => {
   let { id } = req.query;
 
   let result = await board.findOne({
+    include: [{
+      model: Thumbnail,
+      as: 'thumbnails',
+    }],
     where: { id, }
   })
 
+  let user = await User.findAll({
+    include: [{
+      model: curriculum,
+      as: 'code',
+    }],
+    where: { type: '3' }
+  })
+
   res.render('./admin/job/modify', {
-    result, board_name,
+    result, board_name,user, 
   })
 
 }
 
 let update_article = async (req, res) => {
   let board_name = req.params.board_name;
-
+  console.log(req.body);
+  console.log(req.file);
   let { subject, content, id } = req.body;
   let date = new Date();
 
@@ -164,7 +175,23 @@ let update_article = async (req, res) => {
     subject, content, date,
   }, {
     where: { id, }
-  })
+  });
+
+  let thumbnail; 
+  if(req.file!=undefined){ 
+    thumbnail = 'http://localhost:3000/' + req.file.filename;
+  }else if(req.body.thumbnail!=''){
+    thumbnail = req.body.thumbnail;
+  }
+
+  if(thumbnail!=undefined){
+    await Thumbnail.update({
+     image: thumbnail,
+    },{
+      where:{board_id:id}
+    }) 
+  }
+
 
   res.redirect(`/admin/job/${board_name}/view?id=${id}`);
 }

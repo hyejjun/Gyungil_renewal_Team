@@ -34,7 +34,7 @@
             <input type="radio" name="slide" id="slide04">
             <ul class="visual_ul slidelist">
                 {% for item in visual %}
-                <li class="slideitem"><img src="http://localhost:3000/{{item.content}}" alt="메인비주얼 이미지"></li>
+                    <li><a href="{{item.link}}"><img src="http://localhost:3000/{{item.image}}" alt="메인비주얼 이미지"></a></li>
                 {% endfor %}
             </ul>
             <div class="slide-control">

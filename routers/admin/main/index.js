@@ -18,7 +18,8 @@ const upload = multer({
 
 
 router.get('/', mainController.main);
-router.post('/visual/update', mainController.update_visual);
+router.post('/visual/update/show', mainController.update_visual_show);
+router.post('/visual/update/link', mainController.update_visual_link);
 router.post('/visual/destroy', mainController.destroy_visual);
 router.get('/visual',mainController.main); 
 router.get('/curr',mainController.get_curr);

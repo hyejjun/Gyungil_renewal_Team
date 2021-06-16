@@ -29,7 +29,36 @@
   
           </div>
             <input type="hidden" name='id'  value="{{result.id}}">
-            <!-- 작성자 이름 쓰는 곳 추가하기. -->
+            <div>
+              {% if title=='포트폴리오'%}
+              <span>팀 대표:</span>
+              {% else %}
+              <span>인터뷰 대상자:</span>
+              {% endif %}
+              <span id="interviewee"></span>
+              <table>
+                <thead>
+                  <th>이름</th>
+                  <th>아이디</th>
+                  <th>생일</th>
+                  <th>교육과정</th>
+                  <th>선택</th>
+                </thead>
+                <tbody>
+                  {% for item in user %}
+                  <tr>
+                    <td><label for="{{item.userid}}">{{item.username}}</label></td>
+                    <td><label for="{{item.userid}}">{{item.userid}}</label></td>
+                    <td><label for="{{item.userid}}">{{item.user_birthday}}</label></td>
+                    <td><label for="{{item.userid}}">{{item.code.name}}</label></td>
+                    <td><input type="radio" name="writer" value="{{item.userid}}" id="{{item.userid}}" onclick="showname()" required></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+
+            {% include "./thumbnail.html" %}
             제목:<input type="text" name='subject'  value="{{result.subject}}">
             {% include "./summernote_modify.html" %}
           </form>

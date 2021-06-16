@@ -38,7 +38,9 @@ db.curr_sbj = models.curr_sbj;
 db.curr_rv = models.curr_rv;
 db.main_rv = models.main_rv;
 db.hit = models.hit;
-db.Thumbnail = models.thumbnail; 
+db.Thumbnail = models.thumbnail;
+db.main_visual = models.main_visual;
+
 
 
 // curr_faq,

@@ -14,6 +14,7 @@ var _subject = require("./subject");
 var _teacher = require("./teacher");
 var _thumbnail = require("./thumbnail");
 var _users = require("./users");
+var _main_viausl = require("./main_visual");
 
 function initModels(sequelize) {
   var board = _board(sequelize, DataTypes);
@@ -31,6 +32,7 @@ function initModels(sequelize) {
   var teacher = _teacher(sequelize, DataTypes);
   var thumbnail = _thumbnail(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
+  let main_visual = _main_viausl(sequelize, DataTypes);
 
   curr_faq.belongsTo(board, { as: "board", foreignKey: "board_id" });
   board.hasMany(curr_faq, { as: "curr_faqs", foreignKey: "board_id" });
@@ -71,6 +73,7 @@ function initModels(sequelize) {
     teacher,
     thumbnail,
     users,
+    main_visual, 
   };
 }
 module.exports = initModels;

@@ -1,26 +1,19 @@
-const {intro,board,User,main_rv} = require("../../../models");
+const {board,User,main_rv,main_visual} = require("../../../models");
 const { Op } = require("sequelize");
 
 
 const intro_type = []; 
 intro_type[0] ='interior'
-intro_type[1] ='main_visual'
-intro_type[2] ='popup'
+
 
 
 let main = async(req, res) => {
-  let result = await intro.findAll({
-    where:{type:'1',} 
+  let result = await main_visual.findAll({
+    where:{show:'1',} 
   })
-  console.log(result); 
-  let resultArr = []; 
-  result.forEach(ele => {
-    resultArr.push(ele.dataValues); 
-  });
-
-
+  
   res.render('./admin/main/visual.html',{
-    resultArr, 
+    result, 
   });
 }
 
@@ -29,19 +22,19 @@ let add_mainv = (req,res)=>{
 }
 
 let create_mainv = async(req,res)=>{
-  let content = req.file.filename;
-  let type = '1'; 
-  await intro.create({
-    content,type
+  let image = req.file.filename;
+  let link = req.body.link; 
+  await main_visual.create({
+    image,link,
   })
 
   res.redirect('/admin/main/'); 
 }
 
-let update_visual = async(req,res)=>{
-  let {id,show} = req.body; 
+let update_visual_show = async(req,res)=>{
+  let {id,show,} = req.body; 
 
-  let result = await intro.update({
+  let result = await main_visual.update({
     show, 
   },{
     where:{id},
@@ -49,10 +42,22 @@ let update_visual = async(req,res)=>{
   res.json({result}) 
 }
 
+let update_visual_link = async(req,res)=>{
+  let {id,link,} = req.body; 
+
+  let result = await main_visual.update({
+    link, 
+  },{
+    where:{id},
+  }) 
+  res.json({result}) 
+}
+
+
 let destroy_visual = async(req,res)=>{
   let {id} = req.body; 
 
-  let result = await intro.destroy({
+  let result = await main_visual.destroy({
     where:{id}, 
   })
   res.json({result}); 
@@ -128,7 +133,8 @@ module.exports = {
   get_review,
   add_mainv,
   create_mainv,
-  update_visual,
+  update_visual_show,
+  update_visual_link,
   destroy_visual,
   update_mainrv,
 }
