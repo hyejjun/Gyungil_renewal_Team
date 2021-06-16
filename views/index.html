@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/gh/hiphop5782/js@0.0.6/typing/hakademy-typing.css">
     <script src="https://cdn.jsdelivr.net/gh/hiphop5782/js@0.0.6/typing/hakademy-typing.js"></script>
+    <link rel="stylesheet" href="/css/index/mainvisual.css">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
         {% include "./layout/gnb.html" %}
         <!--gnb end-->
 
-        <!--visual start-->
+        <!-- visual start 
         <div id="visual" class="w100 slidebox">
             <input type="radio" name="slide" id="slide01" checked>
             <input type="radio" name="slide" id="slide02">
@@ -56,7 +57,23 @@
                 </div>
             </div>
         </div>
-        <!--visual end-->
+       visual end--> 
+        <div id='visual'>
+            <ul id="slideBox">
+                {% for item in visual %}
+                    <li class="slide"><a href="{{item.link}}"><img src="http://localhost:3000/{{item.image}}" alt="메인비주얼 이미지"></a></li>
+                {% endfor %}
+            </ul>
+
+            <div class="slide_btn" id="slide_btn_prev" onclick="viSlideBtn(true)"></div>
+            <div class="slide_btn" id="slide_btn_next"onclick="viSlideBtn()"></div>
+            <!-- <div id="visual_pagination" style="width: 400px;">
+                <div style="width: 0;"></div> -->
+            </div>
+        </div>
+        
+
+
 
         <!--programs start-->
         <div id="program" class="w100">
@@ -71,7 +88,7 @@
                             <a href="#">{{item.name}}</a>
                         </li>
                         {% endfor %}
-
+                        
                     </ul>
                 </div>
             </div>
@@ -146,6 +163,9 @@
         after_login.style.display = 'block';
     </script>
     {% endif %}
+
+
+    <script src="/js/mainslide.js"></script>
 
 </body>
 

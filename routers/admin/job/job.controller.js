@@ -166,8 +166,6 @@ let show_modify = async (req, res) => {
 
 let update_article = async (req, res) => {
   let board_name = req.params.board_name;
-  console.log(req.body);
-  console.log(req.file);
   let { subject, content, id } = req.body;
   let date = new Date();
 
