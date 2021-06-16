@@ -41,7 +41,11 @@
     </div>
 </div>
 <!--menu_contents end-->
-
+{% if msg != undefined %}
+<script>
+    alert('{{msg}}')
+</script>
+{% endif %}
 
 
 {% include "../layout/subpage_bottom.html" %}
