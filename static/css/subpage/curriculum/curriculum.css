@@ -1,0 +1,209 @@
+.crcl_bg {
+	background: url('../images/curriculum/sub_visual_bg.jpg') top center no-repeat;
+}
+.crcl_list {
+	position: relative;
+	padding: 60px 0;
+	border-top: 1px solid #ddd;
+}
+.crcl_list:first-child {
+	border-top: 1px solid #006cdc;
+}
+.crcl_list:last-child {
+	border-bottom: 1px solid #ddd;
+}
+.crcl_list h4 {
+	font-size: 14px;
+	color: #000;
+}
+.crcl_list h4:before {
+	content: " ";
+	display: inline-block;
+	width: 10px;
+	height: 16px;
+	margin-right: 5px;
+	background: url('../images/common/icon_title.gif') top center no-repeat;
+}
+.crcl_img {
+	position: absolute;
+	top: 80px;
+	left: 0px;
+}
+.crcl_img .list_icon {
+	position: absolute;
+	top: -12px;
+	left: 0px;
+}
+.crcl_con {
+	margin-top: 30px;
+	margin-left: 350px;
+}
+.crcl_con h5 {
+	font-size: 16px;
+	color: #000;
+}
+.crcl_con dl {
+	margin-top: 20px;
+}
+.crcl_con dt {
+	display: inline-block;
+	width: 60px;
+	line-height: 22px;
+}
+.crcl_con dd {
+	display: inline-block;
+	width: 440px;
+	line-height: 22px;
+}
+.crcl_con .crcl_hash {
+	display: block;
+	margin-top: 20px;
+	color: #006cdc;
+}
+
+.crcl_article {
+	border-top: 1px solid #006cdc;
+	border-bottom: 1px solid #ddd;
+}
+.crcl_view {}
+.crcl_view thead {
+	background: #f8f8f8;
+	border-bottom: 1px solid #ddd;
+}
+.crcl_view thead tr {
+	border-bottom: 1px solid #ddd;
+}
+.crcl_view thead th {
+	padding: 10px 0;
+	text-align: center;
+}
+.crcl_view thead td {
+	padding: 10px 0;
+}
+.crcl_view tbody td {
+	height: 300px;
+	padding: 20px;
+	line-height: 20px;
+}
+.crcl_view tbody td h3 {
+	font-size: 22px;
+	font-weight: bold;
+	color: #1e88e5;
+	line-height: 30px;
+	border: none;
+}
+.crcl_view tbody td h4 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;
+}
+
+
+.btn_group {
+	margin-top: 20px;
+}
+.btn_group.center {
+	text-align: center;
+}
+.btn_group.right {
+	text-align: right;
+}
+.btn_group button {
+	cursor: pointer;
+}
+.btn_group .btn_blue {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 7px 30px;
+	background: #006cdb;
+	border: 1px solid #006cdb;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.btn_group .btn_blue:hover {
+	background: #2196f3;
+	border: 1px solid #2196f3;
+	color: #fff;
+}
+.btn_group .btn_white {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 7px 30px;
+	border: 1px solid #006cdb;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #006cdb;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.btn_group .btn_white:hover {
+	background: #2196f3;
+	border: 1px solid #2196f3;
+	color: #fff;
+}
+.btn_group .btn_green {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 7px 30px;
+	border: 1px solid #76c619;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #76c619;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.btn_group .btn_green:hover {
+	background: #76c619;
+	border: 1px solid #76c619;
+	color: #fff;
+}
+.btn_group .btn_orange {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 7px 30px;
+	border: 1px solid #ffa000;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #ffa000;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.btn_group .btn_orange:hover {
+	background: #ffa000;
+	border: 1px solid #ffa000;
+	color: #fff;
+}
+.btn_group .btn_gray {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 7px 30px;
+	border: 1px solid #999;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #999;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.btn_group .btn_gray:hover {
+	background: #999;
+	border: 1px solid #999;
+	color: #fff;
+}
