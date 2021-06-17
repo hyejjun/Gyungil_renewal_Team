@@ -4,21 +4,25 @@
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
-         {{title}}
+        {{title}}
     </div>
     <div class="mc_content">
 
-        <ul>
+        <ul class="jobinfo_ul">
             {% for item in result %}
             <li>
-            글번호{{item.num}}
-            작성자 이름{{item.writer_user.username}}
-            썸네일<img src="{{item.thumbnails[0].image}}" alt="">
-            제목<a href="/jobinfo/{{board_name}}/view?id={{item.id}}&page={{page}}&num={{item.num}}">{{item.subject}}</a>
-            작성일{{item.date}}
-            조회수{{item.hit}}
-        </li>
-          {% endfor %}
+                <p>글 번호 : {{item.num}}</p>
+                <p>조회수 : {{item.hit}}</p>
+
+                <a href="/jobinfo/{{board_name}}/view?id={{item.id}}&page={{page}}&num={{item.num}}">
+                    <img src="{{item.thumbnails[0].image}}" alt="">
+                    <p class="jobinfo_content_title">{{item.subject}}</p>
+                </a>
+                <p>작성자 : {{item.writer_user.username}}</p>
+                <p>{{item.date}}</p>
+                
+            </li>
+            {% endfor %}
         </ul>
 
         <div>
@@ -35,7 +39,7 @@
             <a href="/jobinfo/{{board_name}}/list?page={{end}}">끝</a>
 
         </div>
-            
+
     </div>
 </div>
 <!--menu_contents end-->

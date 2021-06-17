@@ -81,7 +81,7 @@ let list = async (req, res) => {
         next = pageblock[nowblock + 1][0];
     }
 
-    console.log(result);
+    //console.log(result);
     res.render(`./jobinfo/list`, {
         result,
         title,

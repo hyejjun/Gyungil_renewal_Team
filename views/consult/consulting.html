@@ -29,52 +29,51 @@
                 </li>
             </ul>
         </div>
-    </div>
-
-    <div class="consult_information">
-        <p>상담정보</p>
-        <table>
-            <colgroup>
-                <col width="12%">
-                <col width="*">
-            </colgroup>
-            <form class="consult_form" action="/consult/consulting_submit" method="post">
-                <tbody class="consult_table">
-                    <tr>
-                        <th>이름 *</th>
-                        <td>
-                            <input type="text" name="name" placeholder="이름을 적어 주세요"
-                                class="consult_input consult_input_name" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>나이 *</th>
-                        <td>
-                            <input type="number" name="age" placeholder="나이를 적어주세요"
-                                class="consult_input consult_input_age" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>전화번호 *</th>
-                        <td>
-                            <input type="tel" id="phoneNum" placeholder="연락 가능한 번호를 입력"
-                                class="consult_input consult_input_tel" name="tel" maxlength="13" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>상담내용</th>
-                        <td>
-                            <textarea name="content" cols="30" placeholder="궁금하신 내용을 적어주세요" rows="10"
-                                class="consult_input consult_input_text" required></textarea>
-                        </td>
-                    </tr>
-                </tbody>
-        </table>
-        <div class="consultBtn_div">
-            <button class="submitBtn consult_submitBtn">상담신청하기</button>
-            <button class="cancelBtn consult_cancleBtn" type="button">취소</button>
+        <div class="consult_information">
+            <p>상담정보</p>
+            <table>
+                <colgroup>
+                    <col width="12%">
+                    <col width="*">
+                </colgroup>
+                <form class="consult_form" action="/consult/consulting_submit" method="post">
+                    <tbody class="consult_table">
+                        <tr>
+                            <th>이름 *</th>
+                            <td>
+                                <input type="text" name="name" placeholder="이름을 적어 주세요"
+                                    class="consult_input consult_input_name" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>나이 *</th>
+                            <td>
+                                <input type="number" name="age" placeholder="나이를 적어주세요"
+                                    class="consult_input consult_input_age" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>전화번호 *</th>
+                            <td>
+                                <input type="tel" id="phoneNum" placeholder="연락 가능한 번호를 입력"
+                                    class="consult_input consult_input_tel" name="tel" maxlength="13" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>상담내용</th>
+                            <td>
+                                <textarea name="content" cols="30" placeholder="궁금하신 내용을 적어주세요" rows="10"
+                                    class="consult_input consult_input_text" required></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+            <div class="consultBtn_div">
+                <button class="submitBtn consult_submitBtn">상담신청하기</button>
+                <button class="cancelBtn consult_cancleBtn" type="button">취소</button>
+            </div>
+            </form>
         </div>
-        </form>
     </div>
 </div>
 <!--menu_contents end-->
