@@ -4,5 +4,9 @@
 }
 
 .icon_Tf{
-   font-size:  15px;
+   font-size:  27px;
+}
+
+.icon_Tf> p {
+margin: 15px 15px 15px 0;
 }
