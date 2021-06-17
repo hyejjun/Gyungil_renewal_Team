@@ -85,7 +85,7 @@
                         {% for item in curr %}
                         <li class="card">
                             <img src="http://localhost:3000/{{item.image}}" alt="교육과정이미지">
-                            <a href="#">{{item.name}}</a>
+                            <a href="http://localhost:3000/curriculum/curriculum_view?id={{item.id}}">{{item.name}}</a>
                         </li>
                         {% endfor %}
                         

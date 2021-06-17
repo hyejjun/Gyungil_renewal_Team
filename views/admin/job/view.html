@@ -26,14 +26,15 @@
           <h2>{{result.subject}}</h2>
 
           
-          작성자<span>{{result.writer}}</span><br>
+          작성자<span>{{result.writer_user.username}}</span><br>
           등록일<span>{{result.date}}</span><br>
           조회수<span>{{result.hit}}</span><br>
           썸네일<div><img src="{{thumbnail}}" alt=""></div>
           <div id ='content'></div>
           <input type="hidden" id ='hidden_content' value="{{result.content}}">
           <a href="/admin/job/{{board_name}}/modify?id={{result.id}}">수정하기</a>
-          <a href="/admin/job/{{board_name}}/destroy?id={{result.id}}">삭제하기</a>
+          <a href="/admin/job/{{board_name}}/destroy?id={{result.id}}&page={{page}}">삭제하기</a>
+          <a href="/admin/job/{{board_name}}?page={{page}}">목록으로 돌아가기</a>
          
         </div>
        

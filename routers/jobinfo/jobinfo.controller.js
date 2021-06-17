@@ -4,7 +4,7 @@ const { update_hit } = require('../update_hit');
 const jwtName = require('../../jwtName')
 
 
-const article_count = 10;
+const article_count = 4;
 let boardType = {
     'interview': ['취업자인터뷰', '6'],
     'portfolio': ['포트폴리오', '7']

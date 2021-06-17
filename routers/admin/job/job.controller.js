@@ -13,60 +13,25 @@ let show_list = async (req, res) => {
   let title = boardType[board_name][0];
   let type = boardType[board_name][1];
   let result = await board.findAll({
-    // offset: article_count * (page - 1),
-    // limit: article_count,
+    offset: article_count * (page - 1),
+    limit: article_count,
     attributes: ['id', 'writer', 'subject', 'date', 'hit'],
     order: [['id', 'DESC']],
+    include:[{
+      model:User, 
+      as:'writer_user'
+  }],
     where: { type, },
   })
 
-  // let count = await board.count({
-  //   where: { type, },
-  // });
-
-  // let start = 1;
-  // let end = Math.ceil(count / article_count);
-  // let N = count - article_count * (page - 1);
-  result = number_set(result);
-
-  // let pageblock = [];
-  // pageblock[0] = [];
-  // let block = 0;
-  // let p = 1;
-  // let nowblock;
-  // while (count > 0) {
-  //   count -= article_count;
-  //   pageblock[block].push(p)
-  //   if (p == page) {
-  //     nowpageblock = pageblock[block];
-  //     nowblock = block;
-  //   }
-  //   p++;
-
-  //   if (p > 10 * (block + 1)) {
-  //     pageblock.push([]);
-  //     block++;
-  //   }
-  // }
-
-  // let prev;
-  // let next;
-  // if (nowblock == 0) {
-  //   prev = false;
-  // } else {
-  //   prev = pageblock[nowblock - 1][9];
-  // }
-
-  // if (nowblock == pageblock.length - 1) {
-  //   next = false;
-  // } else {
-  //   next = pageblock[nowblock + 1][0];
-  // }
+  let pageinfo = await makePage(page,result,type)
+ 
 
   res.render('./admin/job/list', {
     board_name,
     title,
     result,
+    page,pageinfo,type
 
   })
 }
@@ -119,7 +84,7 @@ let create_article = async (req, res) => {
 
 let show_article = async (req, res) => {
   let board_name = req.params.board_name;
-  let { id } = req.query;
+  let { id,page } = req.query;
 
   let result = await board.findOne({
     include: [{
@@ -129,10 +94,11 @@ let show_article = async (req, res) => {
     where: { id, }
   })
   let thumbnail = result.thumbnails;
+  
 
 
   res.render('./admin/job/view', {
-    result, board_name, thumbnail: thumbnail[0].image,
+    result, board_name, thumbnail: thumbnail[0].image,page,
   })
 
 }
@@ -198,12 +164,12 @@ let update_article = async (req, res) => {
 
 let destroy_article = async (req, res) => {
   let board_name = req.params.board_name;
-  let { id } = req.query;
+  let { id,page } = req.query;
 
   let result = await board.destroy({
     where: { id, }
   })
-  res.redirect(`/admin/job/${board_name}`);
+  res.redirect(`/admin/job/${board_name}?page=${page}`);
 
 }
 
@@ -214,13 +180,58 @@ module.exports = {
 }
 
 
-function number_set(x) {
-  let N = x.length;
-  let arr = [];
-  x.forEach(ele => {
-    ele['num'] = N;
-    arr.push(ele)
-    N--;
+async function makePage(page,result,type){ //type: 글 타입.   page: 요청한 페이지.  result는 type으로 뽑은 글의 수. 
+  const pageCount = 10; // 페이지 블록의 수 
+  let count = await board.count({
+      where: { type, },
   });
-  return arr;
+  let end = Math.ceil(count / article_count);
+  let N = count - article_count * (page - 1);
+  
+  result.forEach(v=>{
+    v['num'] = N;
+    N--; 
+  })
+
+  let pageblock = [];
+  pageblock[0] = [];
+  let block = 0;
+  let p = 1;
+  let nowblock = 0;
+  let nowpageblock;
+  while (count > 0) {
+      count -= article_count;
+      pageblock[block].push(p)
+      if (p == page) {
+          nowpageblock = pageblock[block];
+          nowblock = block;
+      }
+      p++;
+
+      if (p > pageCount * (block + 1)) {
+          pageblock.push([]);
+          block++;
+      }
+  }
+  let prev;
+  let next;
+  if (nowblock == 0) {
+      prev = false;
+  } else {
+      prev = pageblock[nowblock - 1][article_count - 1];
+  }
+
+  if (nowblock == pageblock.length - 1) {
+      next = false;
+  } else {
+      next = pageblock[nowblock + 1][0];
+  }
+  let pageinfo = {
+      "prev":prev,
+      "next":next,
+      "nowpageblock":nowpageblock,
+      "end":end,
+      "result":result,
+  }
+  return pageinfo; 
 }

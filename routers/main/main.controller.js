@@ -40,7 +40,7 @@ let main = async (req, res) => {
 
 
     if (AccessToken != undefined) {
-        res.render('./index', { msg, userid, username, visual, curr })
+        res.render('./index', { msg, userid, username, visual, curr,review, })
     } else {
         res.render('./index', { msg, visual, curr, review, })
     }

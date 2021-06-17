@@ -18,28 +18,41 @@
       <div id="main">
 
         <div>
-          <h2>{{title}}</h2>
+          <h2>상담신청 목록</h2>
           <table>
             <thead>
-              <td>글번호</td>
-              <td>제목</td>
-              <td>등록일</td>
+              <td>상담번호</td>
               <td>작성자</td>
+              <td>등록일</td>
             </thead>
             <tbody>
-              {% for item in result %}
+              {% for item in pageinfo.result %}
               <tr>
-                <td>{{item.num}}</td>
+                <td>{{item.id}}</td>
                 <td>
-                  <a href="/admin/consult/view?id={{item.id}}">{{item.subject}}</a>
+                  <a href="/admin/consult/view?id={{item.id}}&page={{page}}">{{item.name}}</a>
                 </td>
                 <td>{{item.date}}</td>
-                <td>{{item.writer}}</td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
         </div>
+
+        <div class="paging">
+          <a href="/admin/consult/consultLlist?page=1">처음</a>
+          {% if pageinfo.prev %}
+          <a href="/admin/consult/consultList?page={{prev}}">이전</a>
+          {% endif %}
+          {% for item in pageinfo.nowpageblock %}
+          <a href="/admin/consult/consultList?page={{item}}" class="sbt">{{item}}</a>
+          {% endfor %}
+          {% if pageinfo.next %}
+          <a href="/admin/consult/consultList?page={{next}}">다음</a>
+          {% endif %}
+          <a href="/admin/consult/consultList?page={{end}}">끝</a>
+
+      </div>
 
 
       </div>

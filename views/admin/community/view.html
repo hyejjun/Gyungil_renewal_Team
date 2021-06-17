@@ -24,7 +24,7 @@
       <div id="main">
         <div>
           <h2>{{result.subject}}</h2>
-          작성자<span>{{result.writer}}</span>
+          작성자<span>{{result.writer_user.username}}</span>
           등록일<span>{{result.date}}</span>
           조회수<span>{{result.hit}}</span>
           <pre id ='pre'></pre>
@@ -33,7 +33,8 @@
           <a href="/admin/community/{{board_name}}/modify?id={{result.id}}">수정하기</a>
           {% endif %}
           <a href="/admin/community/{{board_name}}/destroy?id={{result.id}}">삭제하기</a>
-         
+          
+          <a href="/admin/community/{{board_name}}?page={{page}}">목록으로 돌아가기</a>
         </div>
        
 

@@ -28,25 +28,40 @@
               <td>조회수</td>
             </thead>
             <tbody>
-              {% for item in result %}
+              {% for item in pageinfo.result %}
               <tr>
                 <td>{{item.num}}</td>
                 <td>
-                  <a href="/admin/community/{{board_name}}/view?id={{item.id}}">{{item.subject}}</a>
+                  <a href="/admin/community/{{board_name}}/view?id={{item.id}}&page={{page}}">{{item.subject}}</a>
                 </td>
                 <td>{{item.date}}</td>
-                <td>{{item.writer}}</td>
+                <td>{{item.writer_user.username}}</td>
                 <td>{{item.hit}}</td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
 
-          {% if authority %}
+          {% if type < 5 %}
           <a href="/admin/community/{{board_name}}/write">글 작성</a>
           {% endif %}
         </div>
 
+
+        <div class="paging">
+          <a href="/admin/community/{{board_name}}?page=1">처음</a>
+          {% if pageinfo.prev %}
+          <a href="/admin/community/{{board_name}}?page={{pageinfo.prev}}">이전</a>
+          {% endif %}
+          {% for item in pageinfo.nowpageblock %}
+          <a href="/admin/community/{{board_name}}?page={{item}}" class="sbt">{{item}}</a>
+          {% endfor %}
+          {% if pageinfo.next %}
+          <a href="/admin/community/{{board_name}}?page={{pageinfo.next}}">다음</a>
+          {% endif %}
+          <a href="/admin/community/{{board_name}}?page={{pageinfo.end}}">끝</a>
+
+      </div>
 
       </div>
     </div>
