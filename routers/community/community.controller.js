@@ -81,10 +81,6 @@ let list = async (req, res) => {
         next = pageblock[nowblock + 1][0];
     }
 
-
-
-
-
     res.render(`./community/list`, {
         result, title, board_name, userid, username, nickname, nowpageblock, start, end, prev, next, page
     })

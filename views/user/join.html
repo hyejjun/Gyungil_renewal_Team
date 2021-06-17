@@ -38,12 +38,22 @@
                 </li>
                 <li class="inputWithIcon ">
                     <label for="username"></label>
+                    {% if nickname == undefined %}
                     <input type="text" name="username" id="username" placeholder="이름을 입력해주세요" required>
+                    {% endif %}
+                    {% if nickname %}
+                    <input type="text" name="username" id="username" value="{{nickname}}" readonly>
+                    {% endif %}
                     <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                 </li>
                 <li class="inputWithIcon inputIconBg">
                     <label for="useremail"></label>
+                    {% if nickname == undefined %}
                     <input type="email" name="useremail" id="useremail" placeholder="이메일을 입력해주세요" required>
+                    {% endif %}
+                    {% if nickname %}
+                    <input type="email" name="useremail" id="useremail" value="{{kakao_email}}" readonly>
+                    {% endif %}
                     <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
                 </li>
                 <li class="inputWithIcon">
