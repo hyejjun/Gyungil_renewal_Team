@@ -209,16 +209,16 @@ let review_insert = async (req, res) => {
 
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    let { review_title, review_content } = req.body;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
+    let { review_writer, review_title, review_content } = req.body;
+    console.log(req.body);
 
     let result = await board.create({
-        writer: userid,
+        writer: review_writer,
         subject: review_title,
         content: review_content,
         type: '5'
-
     })
-
     res.redirect(`/community/review_view?id=${result.id}&page=1`)
 
 }
@@ -254,10 +254,10 @@ let review_modify = async (req, res) => {
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;       // 로그인한 사용자 아이디
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;   // 로그인한 사용자 이름
     let { writer, id, page, num } = req.query;      //작성글에 있는 내용들을 쿼리로 보낸거
-    
+
     // 글 작성자의 아이디
     let writer_result = await board.findOne({
-        where : {id}
+        where: { id }
     })
     let writer_id = writer_result.dataValues.writer
 
@@ -265,7 +265,7 @@ let review_modify = async (req, res) => {
         res.redirect(`/community/review_view?page=${page}&id=${id}&num=${num}&msg=수정권한없음`)
     } else {
         let result = await board.findOne({
-            where : {id}
+            where: { id }
         })
         res.render('./community/review_modify', {
             result, username, id, page, num
