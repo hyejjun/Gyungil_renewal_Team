@@ -17,9 +17,9 @@
             <h1>회원정보 수정</h1>
             <h2>{{result.userid}}님의 회원정보</h2>
             <form action="/user/modify_submit" method="post">
-                <!-- 
-                비밀번호
-                <input type="text" name="userpw" value="{{result.userpw}}"> -->
+                
+                    비밀번호
+                    <input type="text" name="userpw" value="{{result.userpw}}">
                 
                     전화번호
                     <input type="text" name="user_tel" value="{{result.user_tel}}" id="modify_tel" maxlength="13" class="user_modi">
