@@ -38,7 +38,7 @@
             <a href="/community/{{board_name}}/list?page={{prev}}">이전</a>
             {% endif %}
             {% for item in nowpageblock %}
-            <a href="/community/{{board_name}}/list?page={{item}}" class="sbt" id="pagbtn">{{item}}</a>
+            <a href="/community/{{board_name}}/list?page={{item}}" class="sbt" id="page_item">{{item}}</a>
             {% endfor %}
             {% if next %}
             <a href="/community/{{board_name}}/list?page={{next}}">다음</a>
@@ -50,15 +50,17 @@
 </div>
 <!--menu_contents end-->
 <script>
-    const target = document.querySelector("#pagbtn")
-    const item = '{{item}}'
+    /*const page_item = document.querySelector('#page_item');
+    const page = '{{page}}'
+    const item = '{{nowpageblock}}'
 
-    console.log(target);
-    console.log(item);
-    // if(target == '{{item}}'){
-    //     console.log('aaaaaaaa');
-    //target.setAttribute('class','on')
-// }
+    for(i=0; i++; i<item.length){
+        if(page == i){
+            page_item.style.background = 'red'
+        }
+    }
+    //console.log(page);
+    // console.log(item);*/
 </script>
 
 {% include "../layout/subpage_bottom.html" %}
