@@ -1,4 +1,5 @@
 {% include "../layout/subpage_top.html" %}
+
 {% include "../layout/subpage_community_navi.html" %}
 
 <!--menu_contents start-->
@@ -37,7 +38,7 @@
             <a href="/community/{{board_name}}/list?page={{prev}}">이전</a>
             {% endif %}
             {% for item in nowpageblock %}
-            <a href="/community/{{board_name}}/list?page={{item}}" class="sbt">{{item}}</a>
+            <a href="/community/{{board_name}}/list?page={{item}}" class="sbt" id="pagbtn">{{item}}</a>
             {% endfor %}
             {% if next %}
             <a href="/community/{{board_name}}/list?page={{next}}">다음</a>
@@ -45,10 +46,19 @@
             <a href="/community/{{board_name}}/list?page={{end}}">끝</a>
 
         </div>
-        
     </div>
 </div>
 <!--menu_contents end-->
+<script>
+    const target = document.querySelector("#pagbtn")
+    const item = '{{item}}'
 
+    console.log(target);
+    console.log(item);
+    // if(target == '{{item}}'){
+    //     console.log('aaaaaaaa');
+    //target.setAttribute('class','on')
+// }
+</script>
 
 {% include "../layout/subpage_bottom.html" %}

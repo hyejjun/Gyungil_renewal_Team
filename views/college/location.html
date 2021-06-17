@@ -5,22 +5,49 @@
 <div class="menu_contents">
     <div class="mc_title">
         오시는 길
-        <input id ="address" type="hidden" value="{{result.subject}}">
+        <input id="address" type="hidden" value="{{result.subject}}">
     </div>
     <div class="mc_content">
         <p style="margin-top:-12px">
             <em class="link">
                 <a href="javascript:void(0);"
                     onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-        
                 </a>
             </em>
         </p>
         <div id="map" style="width:996px;height:500px; top:100px"></div>
         {% include "../layout/map.html" %}
-        <pre style="margin-top:100px">
-            {{result.content}}
+        <pre style="margin-top:130px" class="location">
+            <img src="http://www.lotteintl.co.kr/image/sub/map_ic.png">{{result.content}}
         </pre>
+        <div class="icon_Tf">
+            <img src=http://www.lotteintl.co.kr/image/sub/tel_ic.png width=90px; height=90px;> 
+            <span>
+                TEL
+                02-479-4050
+            </span>
+            <img src=http://www.lotteintl.co.kr/image/sub/tel_ic2.png width=90px; height=90px;>
+            <span>
+                FAX
+                02-479-4056
+            </span>
+        </div>
+
+        <div class="icon_Tf">
+            <p>교통편</p>
+
+            
+            <img src=http://www.lotteintl.co.kr/image/sub/tel_ic3.png >
+            <span>
+                버스 천호역 1번출구 하차
+            </span>
+            <p>
+            <img src=http://www.lotteintl.co.kr/image/sub/tel_ic4.png>
+            <span>
+                지하철 5,8호선 1번 출구로 올라오셔서 10m이내 금복빌딩 3층
+            </span>
+            </p>
+        </div>
     </div>
 </div>
 <!--menu_contents end-->
