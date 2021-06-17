@@ -123,6 +123,7 @@ let review = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     let type = '5'
     let page = req.query.page;
 
@@ -185,6 +186,7 @@ let review = async (req, res) => {
     res.render('./community/review', {
         userid,
         username,
+        nickname,
         result,
         nowpageblock,
         end,
@@ -198,7 +200,8 @@ let review_write = (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
-    res.render('./community/review_write', { userid, username });
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
+    res.render('./community/review_write', { userid, username, nickname });
 }
 
 let review_insert = async (req, res) => {
@@ -248,23 +251,24 @@ let review_view = async (req, res) => {
 
 let review_modify = async (req, res) => {
     let { AccessToken } = req.cookies;
-    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
-    let { writer, id, page, num } = req.query;
-    //console.log('username = ', username, 'writer = ', writer);
+    let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;       // 로그인한 사용자 아이디
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;   // 로그인한 사용자 이름
+    let { writer, id, page, num } = req.query;      //작성글에 있는 내용들을 쿼리로 보낸거
+    
+    // 글 작성자의 아이디
+    let writer_result = await board.findOne({
+        where : {id}
+    })
+    let writer_id = writer_result.dataValues.writer
 
-    if (username != writer) {
+    if (userid != writer_id) {
         res.redirect(`/community/review_view?page=${page}&id=${id}&num=${num}&msg=수정권한없음`)
     } else {
-        let result = await User.findOne({
-            where: { username: writer }
-        })
-        let { userid } = result.dataValues;
-
-        let result2 = await board.findOne({
-            where: { writer: userid, id }
+        let result = await board.findOne({
+            where : {id}
         })
         res.render('./community/review_modify', {
-            result2, writer, id, page, num
+            result, username, id, page, num
         });
     }
 }

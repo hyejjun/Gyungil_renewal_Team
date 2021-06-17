@@ -64,7 +64,7 @@ let kakao_callback = async (req, res) => {
 
 let kakao_userinfo = (req,res)=>{
     let {nickname,profile_image} = req.session.kakao.properties
-    res.render('./info.html',{
+    res.render('./user/kakao_user_info',{
         nickname,
         profile_image
     })
