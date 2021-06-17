@@ -1,12 +1,14 @@
-.menu_contents{
+.menu_contents {
+    overflow: hidden;
+    height: auto;
     float: right;
     background: #64c582;
     width: 83%;
-    height: 100%;
 }
-.mc_content{
-    height: 240px;
+
+.mc_content {
+    overflow: hidden;
+    height: auto;
     padding: 40px 0px;
     box-sizing: border-box;
 }
-

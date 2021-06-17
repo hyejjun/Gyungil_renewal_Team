@@ -1,5 +1,6 @@
 .sub_bottom{
-    height: 1000px;
+    overflow: hidden;
+    height: auto;
 }
 
 .sub_navi{
