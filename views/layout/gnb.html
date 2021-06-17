@@ -31,8 +31,14 @@
                     <a href="/user/join">회원가입</a>
                 </div>
                 <div class="after_login">
-                   <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
-                   <a href="/user/logout"><span class="logout">로그아웃</span></a>
+                    {% if userid != undefined %}
+                    <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
+                    <a href="/user/logout"><span class="logout">로그아웃</span></a>
+                    {% endif %}
+                    {% if nickname != undefined %}
+                    <a href="/auth/kakao/kakao_userinfo"><span class="after_login_span">{{nickname}}님</span></a>
+                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a>
+                    {% endif %}
                 </div>
             </div>
         </div>

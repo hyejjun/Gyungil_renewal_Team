@@ -20,7 +20,13 @@
                         <tr>
                             <th>작성자</th>
                             <td>
+                                {% if userid %}
                                 <input type="text" name="review_writer" class="review_input" id="review_writer" value="{{username}}"  readonly>
+                                {% endif %}
+
+                                {% if nickname %}
+                                <input type="text" name="review_writer" class="review_input" id="review_writer" value="{{nickname}}"  readonly>
+                                {% endif %}
                             </td>
                         </tr>
                         <tr>

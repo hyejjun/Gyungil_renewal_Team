@@ -36,14 +36,20 @@
             <a href="/community/review?page={{prev}}">이전</a>
             {% endif %}
             {% for item in nowpageblock %}
-            <a href="/community/review?page={{item}}" class="sbt">{{item}}</a>
+            <a href="/community/review?page={{item}}" class="sbt" id="page_item">{{item}}</a>
             {% endfor %}
             {% if next %}
             <a href="/community/review?page={{next}}">다음</a>
             {% endif %}
             <a href="/community/review?page={{end}}">끝</a>
 
-            {% if userid != undefined%}
+            {% if userid %}
+            <div class="writez">
+                <a href="/community/review_write">작성하기</a>
+            </div>
+            {% endif %}
+
+            {% if nickname %}
             <div class="writez">
                 <a href="/community/review_write">작성하기</a>
             </div>
@@ -55,6 +61,16 @@
     </div>
 </div>
 <!--menu_contents end-->
+<script>
+    // 해당 페이지 밑에 표시됨
+    const page_item = document.querySelectorAll('#page_item');
+    const page = '{{page}}'
+    for (i = 0; i < page_item.length; i++) {
+        if (page == i + 1) {
+            page_item[i].style.color = 'red'
+        }
+    }
+</script>
 
 
 {% include "../layout/subpage_bottom.html" %}

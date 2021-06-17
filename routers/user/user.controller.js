@@ -7,12 +7,16 @@ const crypto = require('crypto');
 const jwtName = require('../../jwtName');
 
 let join = async (req, res) => {
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
+    let kakao_email = (req.session.kakao != undefined) ? req.session.kakao.kakao_account.email : undefined;
+
+    console.log(req.session.kakao);
     let curr = await curriculum.findAll({
         attribute: ['id', 'name']
     });
     curr.shift(); 
 
-    res.render('./user/join', { curr })
+    res.render('./user/join', { curr, nickname, kakao_email })
 }
 let login = (req, res) => {
     let { msg, flag } = req.query;
@@ -121,8 +125,6 @@ let modify = async (req, res) => {
     let { msg } = req.query;
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-
-    
 
     let result = await User.findOne({
         where: { userid }

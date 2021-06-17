@@ -7,9 +7,18 @@ const PORT = 3000;
 const errorController = require("./routers/errorController");
 const { sequelize } = require('./models/index')
 const cookieParser = require('cookie-parser');
-
+const session = require('express-session');
+const axios = require('axios');
+const qs = require('qs');
 
 const app = express();
+
+app.use(session({
+    secret : 'aaa',
+    resave : false,
+    secure : false,
+    saveUninitialized: false,
+}))
 
 app.set('view engine', 'html')
 nunjucks.configure('views', {

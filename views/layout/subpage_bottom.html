@@ -18,6 +18,18 @@
         after_login.style.display = 'block';
     </script>
     {% endif %}
+
+    {% if nickname != undefined %}
+    <script>
+        const userinfo = document.querySelector('.userinfo');
+        const before_login = document.querySelector('.before_login');
+        const after_login = document.querySelector('.after_login');
+        const after_login_span = document.querySelector('.after_login_span');
+
+        before_login.style.display = 'none';
+        after_login.style.display = 'block';
+    </script>
+    {% endif%}
 </body>
 
 </html>

@@ -147,6 +147,7 @@ text-align: left;
 .board_list_wrap .paging a.sbt.on{
     border-radius: 27px;
     font-weight: 600;
+    background: dodgerblue;
 }
 .writez{
     float: right;

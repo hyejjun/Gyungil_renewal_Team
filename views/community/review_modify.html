@@ -14,19 +14,24 @@
                         <tr>
                             <th>제목</th>
                             <td>
-                                <input type="text" name="review_title" class="review_input" id="review_title" value="{{result2.subject}}">
+                                <input type="text" name="review_title" class="review_input" id="review_title" value="{{result.subject}}">
                             </td>
                         </tr>
                         <tr>
                             <th>작성자</th>
                             <td>
-                                <input type="text" name="review_writer" class="review_input" id="review_writer" value="{{writer}}"  readonly>
+                                {% if username %}
+                                <input type="text" name="review_writer" class="review_input" id="review_writer" value="{{username}}"  readonly>
+                                {% endif %}
+                                {% if nickname %}
+                                <input type="text" name="review_writer" class="review_input" id="review_writer" value="{{nickname}}"  readonly>
+                                {% endif %}
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="review_content" class="review_input" id="review_content" cols="30" rows="10">{{result2.content}}</textarea>
+                                <textarea name="review_content" class="review_input" id="review_content" cols="30" rows="10">{{result.content}}</textarea>
                             </td>
                         </tr>
                     </tbody>
