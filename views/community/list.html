@@ -16,15 +16,17 @@
                     <th>내용</th>
                     <th>날짜</th>
                     <th>조회수</th>
-                </tr> 
+                </tr>
             </thead>
             <tbody>
                 {% for item in result %}
                 <tr>
-                    
+
                     <td>{{item.num}}</td>
                     <td>{{item.writer_user.username}}</td>
-                    <td class="tit"><a href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}&num={{item.num}}">{{item.subject}}</a></td>
+                    <td class="tit"><a
+                            href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}&num={{item.num}}">{{item.subject}}</a>
+                    </td>
                     <td>{{item.date}}</td>
                     <td>{{item.hit}}</td>
                 </tr>
@@ -50,17 +52,14 @@
 </div>
 <!--menu_contents end-->
 <script>
-    /*const page_item = document.querySelector('#page_item');
+    // 해당 페이지 밑에 표시됨
+    const page_item = document.querySelectorAll('#page_item');
     const page = '{{page}}'
-    const item = '{{nowpageblock}}'
-
-    for(i=0; i++; i<item.length){
-        if(page == i){
-            page_item.style.background = 'red'
+    for (i = 0; i < page_item.length; i++) {
+        if(page == i+1){
+            page_item[i].style.color = 'red'
         }
     }
-    //console.log(page);
-    // console.log(item);*/
 </script>
 
 {% include "../layout/subpage_bottom.html" %}
