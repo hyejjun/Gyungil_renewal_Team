@@ -7,7 +7,7 @@
 	border-top: 1px solid #ddd;
 }
 .crcl_list:first-child {
-	border-top: 1px solid #006cdc;
+	border: none;
 }
 .crcl_list:last-child {
 	border-bottom: 1px solid #ddd;

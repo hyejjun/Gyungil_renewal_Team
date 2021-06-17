@@ -48,7 +48,7 @@ let curriculum_view = async (req, res) => {
     })
 
 
-    console.log(spec);
+    //console.log(spec);
     res.render('./curriculum/curriculum_view', {
         userid,
         username,
