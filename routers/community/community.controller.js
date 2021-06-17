@@ -202,21 +202,34 @@ let review_write = (req, res) => {
 
 let review_insert = async (req, res) => {
     //DB에 insert 해서 뿌려주기
-
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     let { review_writer, review_title, review_content } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
 
-    let result = await board.create({
-        writer: review_writer,
-        subject: review_title,
-        content: review_content,
-        type: '5'
-    })
-    res.redirect(`/community/review_view?id=${result.id}&page=1`)
+    if (userid != undefined) {
+        let result = await board.create({
+            writer: userid,
+            subject: review_title,
+            content: review_content,
+            type: '5'
+        })
+        res.redirect(`/community/review_view?id=${result.id}&page=1`)
+    } else if (nickname != undefined) {
+        let kakao_id_find = await User.findOne({
+            where: { username: review_writer }
+        })
+        let kakao_id = kakao_id_find.dataValues.userid
 
+        let result = await board.create({
+            writer: kakao_id,
+            subject: review_title,
+            content: review_content,
+            type: '5'
+        })
+        res.redirect(`/community/review_view?id=${result.id}&page=1`)
+    }
 }
 
 let review_view = async (req, res) => {
@@ -237,9 +250,10 @@ let review_view = async (req, res) => {
     });
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     result['num'] = num;
     res.render('./community/review_view', {
-        userid, username, page, result, msg
+        userid, username, nickname, page, result, msg
     });
 }
 
@@ -249,23 +263,41 @@ let review_modify = async (req, res) => {
     let { AccessToken } = req.cookies;
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;       // 로그인한 사용자 아이디
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;   // 로그인한 사용자 이름
-    let { writer, id, page, num } = req.query;      //작성글에 있는 내용들을 쿼리로 보낸거
+    let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;    //kakao login한 사용자
+    let { id, page, num } = req.query;      //작성글에 있는 내용들을 쿼리로 보낸거
 
-    // 글 작성자의 아이디
     let writer_result = await board.findOne({
         where: { id }
     })
-    let writer_id = writer_result.dataValues.writer
+    let writer_id = writer_result.dataValues.writer // 원글 작성자
 
-    if (userid != writer_id) {
-        res.redirect(`/community/review_view?page=${page}&id=${id}&num=${num}&msg=수정권한없음`)
-    } else {
-        let result = await board.findOne({
-            where: { id }
+    if (userid != undefined) {
+        if (userid != writer_id) {
+            res.redirect(`/community/review_view?page=${page}&id=${id}&num=${num}&msg=수정권한없음`)
+        } else {
+            let result = await board.findOne({
+                where: { id }
+            })
+            res.render('./community/review_modify', {
+                result, username, id, page, num
+            });
+        }
+    } else if (nickname != undefined) {
+        let kakao_id_find = await User.findOne({
+            where: { username : nickname }
         })
-        res.render('./community/review_modify', {
-            result, username, id, page, num
-        });
+        let kakao_id = kakao_id_find.dataValues.userid
+
+        if (kakao_id != writer_id) {
+            res.redirect(`/community/review_view?page=${page}&id=${id}&num=${num}&msg=수정권한없음`)
+        } else {
+            let result = await board.findOne({
+                where: { id }
+            })
+            res.render('./community/review_modify', {
+                result, nickname, id, page, num
+            });
+        }
     }
 }
 
