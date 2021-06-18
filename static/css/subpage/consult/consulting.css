@@ -115,11 +115,7 @@
 
 /* faq css -start-*/
 .accordion {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translateX(-40%);
-    width: 900px;
+   
 }
 
 input[id*="answer"] {
