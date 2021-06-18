@@ -6,12 +6,21 @@
     <div class="mc_title">
         faq
     </div>
-    <div class="mc_content">
+    <!-- <div class="mc_content">
        {% for item in result %}
        {{item.subject}} 
        {{item.content}} 
        {% endfor %}
-    </div>
+    </div> -->
+    <div class="accordion">
+        {% for item in result %}
+		<input type="radio" name="accordion" id="answer{{item.id}}">
+		<label for="answer{{item.id}}">{{item.subject}} <em></em></label>
+		<div>
+			<p>{{item.content}}</p>
+		</div>
+        {% endfor %}
+	</div>
 </div>
 <!--menu_contents end-->
 
