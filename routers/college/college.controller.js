@@ -35,6 +35,8 @@ let teachers = async (req, res) => {
     let result = await teacher.findAll({
         where: { show: 1, }
     })
+
+    
     res.render('./college/teachers', { userid, username, nickname, result });
 }
 

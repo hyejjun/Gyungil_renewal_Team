@@ -44,13 +44,8 @@
             {% if pageinfo.prev %}
             <a href="/community/review?page={{pageinfo.prev}}">이전</a>
             {% endif %}
-<<<<<<< HEAD
             {% for item in pageinfo.nowpageblock %}
             <a href="/community/review?page={{item}}" class="sbt" id="page_item">{{item}}</a>
-=======
-            {% for item in nowpageblock %}
-            <a href="/community/review?page={{item}}" class="sbt" id="review_page_item">{{item}}</a>
->>>>>>> 5bbad3eeb3ed012d2c90b1c4e8c9978eda821394
             {% endfor %}
             {% if pageinfo.next %}
             <a href="/community/review?page={{pageinfo.next}}">다음</a>
@@ -100,7 +95,7 @@
 <!--menu_contents end-->
 <script>
     const review_page_item = document.querySelectorAll('#review_page_item'); 
-    const review_pagenum = '{{nowpageblock}}'
+    const review_pagenum = '{{pageinfo.nowpageblock}}'
     const review_page = '{{page}}'
 
     let review_num= [];

@@ -7,7 +7,14 @@
         교직원 소개
     </div>
     <div class="mc_content">
-        mc content
+       {% for item in result %}
+       <div><img src="http://localhost:3000/{{item.image}}"alt="교직원 이미지"></div>
+       {{item.title}}
+       {{item.position}}
+       {{item.name}}
+       {{item.career}}
+       {{item.content}}
+       {% endfor %}
     </div>
 </div>
 <!--menu_contents end-->

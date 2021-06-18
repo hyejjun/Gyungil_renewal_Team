@@ -1,17 +1,27 @@
 {% include "../layout/subpage_top.html" %}
 {% include "../layout/subpage_college_navi.html" %}
+<link rel="stylesheet" href="/css/index/interior.css">
+
 
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
         시설소개
     </div>
-    <div class="mc_content">
-        {% for item in result %}
-        <img src="http://localhost:3000/{{item.content}}" alt="교육과정이미지">
-        {% endfor %}
+    <div id="interior">
+        <ul id="slideBox">
+            {% for item in result %}
+            <li class="slide">
+                <img src="http://localhost:3000/{{item.content}}" alt="교육과정이미지">
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="slide_btn" id="slide_btn_prev" onclick="viSlideBtn(true)"></div>
+        <div class="slide_btn" id="slide_btn_next"onclick="viSlideBtn()"></div>
     </div>
 </div>
+<script src="/js/mainslide.js"></script>
+
 <!--menu_contents end-->
 
 {% include "../layout/subpage_bottom.html" %}
