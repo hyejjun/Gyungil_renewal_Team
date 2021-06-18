@@ -2,23 +2,53 @@
 {% include "../layout/subpage_jobinfo_navi.html" %}
 
 <!--menu_contents start-->
-<div class="menu_contents">
+<!-- <div class="menu_contents">
     <div class="mc_title">
         {{title}}
     </div>
     <div class="mc_content">
         <div>
-            <input type="hidden" id='hidden_content' value="{{result.content}}">
-            {{result.num}}
-              {{result.subject}}
-              {{result.writer_user.username}}
-              {{result.date}}
-              {{result.hit}}
               <div id="content"></div>
             
           </div>
 
         <a href="/jobinfo/{{board_name}}/list?page={{page}}">목록</a>    
+    </div>
+</div> -->
+<div class="menu_contents board_wrap">
+    <div class="mc_title">
+      {{title}}
+    </div>
+        <div class="board_view_wrap">
+            <div class="board_view board_title">
+                <div class="title">
+                    {{result.subject}}
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>번호</dt>
+                        <dd>{{result.num}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd>{{result.writer_user.username}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>작성일</dt>
+                        <dd> {{result.date}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회</dt>
+                        <dd>{{result.hit}}</dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    {{result.content}}
+                </div>
+            <div class="bt_wrap">
+                <a href="/jobinfo/{{board_name}}/list?page={{page}}" class="on">목록</a>
+            </div>
+        </div>
     </div>
 </div>
 <!--menu_contents end-->
