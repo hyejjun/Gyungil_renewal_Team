@@ -1,4 +1,5 @@
 .sub_bottom{
+    margin-top: 30px;
     overflow: hidden;
     height: auto;
 }
@@ -7,5 +8,35 @@
     float: left;
     height: 200px;
     background: rgb(42, 126, 91);
-    
 }
+
+/* college navi */
+.college_menu_pic,
+.consult_menu_pic
+{
+    background: url('http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg');
+    height: 100%;
+}
+
+.curriculum_menu_pic{
+    background: url('http://www.kiweb.or.kr/images/curriculum/sub_visual_bg.jpg');
+    height: 100%;  
+    background-position: -540px;
+}
+
+.jobinfo_menu_pic{
+    background: url('http://www.kiweb.or.kr/images/job/sub_visual_bg.jpg');
+    height: 100%;  
+}
+
+.jobinfo_menu_pic{
+    background: url('http://www.kiweb.or.kr/images/job/sub_visual_bg.jpg');
+    height: 100%;  
+}
+
+.community_menu_pic{
+    background: url('http://www.kiweb.or.kr/images/community/sub_visual_bg.jpg');
+    height: 100%;  
+}
+
+

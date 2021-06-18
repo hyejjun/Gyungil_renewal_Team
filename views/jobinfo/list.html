@@ -79,11 +79,16 @@
 <!--menu_contents end-->
 <script>
     // 해당 페이지 밑에 표시됨
-    const page_item = document.querySelectorAll('#page_item');
+    const job_page_item = document.querySelectorAll('#job_page_item'); 
+    const job_pagenum = '{{nowpageblock}}'
     const page = '{{page}}'
-    for (i = 0; i < page_item.length; i++) {
-        if (page == i + 1) {
-            page_item[i].style.color = 'red'
+
+    let job_num= [];
+    job_num = job_pagenum.split(',');
+    
+    for(i=0; i<job_num.length; i++){
+        if(page == job_num[i]){
+            job_page_item[i].style.color = 'red'
         }
     }
 </script>
