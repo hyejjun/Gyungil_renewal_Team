@@ -36,7 +36,7 @@
             <a href="/community/review?page={{prev}}">이전</a>
             {% endif %}
             {% for item in nowpageblock %}
-            <a href="/community/review?page={{item}}" class="sbt" id="page_item">{{item}}</a>
+            <a href="/community/review?page={{item}}" class="sbt" id="review_page_item">{{item}}</a>
             {% endfor %}
             {% if next %}
             <a href="/community/review?page={{next}}">다음</a>
@@ -62,12 +62,16 @@
 </div>
 <!--menu_contents end-->
 <script>
-    // 해당 페이지 밑에 표시됨
-    const page_item = document.querySelectorAll('#page_item');
-    const page = '{{page}}'
-    for (i = 0; i < page_item.length; i++) {
-        if (page == i + 1) {
-            page_item[i].style.color = 'red'
+    const review_page_item = document.querySelectorAll('#review_page_item'); 
+    const review_pagenum = '{{nowpageblock}}'
+    const review_page = '{{page}}'
+
+    let review_num= [];
+    reivew_num = review_pagenum.split(',');
+    
+    for(i=0; i<reivew_num.length; i++){
+        if(review_page == reivew_num[i]){
+            review_page_item[i].style.color = 'red'
         }
     }
 </script>

@@ -53,10 +53,15 @@
 <!--menu_contents end-->
 <script>
     // 해당 페이지 밑에 표시됨
-    const page_item = document.querySelectorAll('#page_item');
+    const page_item = document.querySelectorAll('#page_item'); 
+    const pagenum = '{{nowpageblock}}'
     const page = '{{page}}'
-    for (i = 0; i < page_item.length; i++) {
-        if(page == i+1){
+
+    let num= [];
+    num = pagenum.split(',');
+    
+    for(i=0; i<num.length; i++){
+        if(page == num[i]){
             page_item[i].style.color = 'red'
         }
     }
