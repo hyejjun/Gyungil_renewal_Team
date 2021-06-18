@@ -298,6 +298,8 @@ let review_modify = async (req, res) => {
                 result, nickname, id, page, num
             });
         }
+    }else{
+        res.redirect(`/community/review_view?page=${page}&id=${id}&num=${num}&msg=수정권한없음`)
     }
 }
 
