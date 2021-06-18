@@ -40,6 +40,7 @@ let show_list = async (req, res) => {
 
 
 
+
 let show_editor = (req, res) => {
   let board_name = req.params.board_name;
   let title = boardType[board_name][0];
@@ -53,7 +54,7 @@ let create_article = async (req, res) => {
   let board_name = req.params.board_name;
   let title = boardType[board_name][0];
   let type = boardType[board_name][1];
-  let writer = "aaa"// 추후 수정
+  let writer = "admin"// 추후 수정
 
   let { subject, content } = req.body;
 
@@ -62,7 +63,7 @@ let create_article = async (req, res) => {
   })
   let id = result.dataValues.id
 
-  res.redirect(`/admin/community/${board_name}/view?id=${id}`)
+  res.redirect(`/admin/community/${board_name}/view?id=${id}&page=1`)
 }
 
 
@@ -93,7 +94,7 @@ let show_article = async (req, res) => {
 let show_modify = async (req, res) => {
   let board_name = req.params.board_name;
 
-  let { id } = req.query;
+  let { id,page } = req.query;
 
   let result = await board.findOne({
     include:[{
@@ -104,31 +105,31 @@ let show_modify = async (req, res) => {
   })
 
   res.render('./admin/community/modify', {
-    result, board_name,
+    result, board_name, page,
   })
 }
 
 let modify_article = async (req, res) => {
   let board_name = req.params.board_name;
-  let { id, content, subject } = req.body;
+  let { id, content, subject,page } = req.body;
   let date = new Date();
   let result = await board.update({
     content, subject, date
   }, {
     where: { id, }
   })
-  res.redirect(`/admin/community/${board_name}/view?id=${id}`)
+  res.redirect(`/admin/community/${board_name}/view?id=${id}&page=${page}`)
 }
 
 let destroy_article = async (req, res) => {
   let board_name = req.params.board_name;
-  let { id } = req.query;
+  let { id,page } = req.query;
 
   let result = await board.destroy({
     where: { id, }
   })
 
-  res.redirect(`/admin/community/${board_name}`);
+  res.redirect(`/admin/community/${board_name}?page=${page}`);
 }
 
 

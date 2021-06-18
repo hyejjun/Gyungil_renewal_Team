@@ -34,7 +34,11 @@
                 </div>
             </div>
             <div class="bt_wrap">
+                {% if search_type==undefined %}
                 <a href="/community/review?page={{page}}" class="on">목록</a>
+                {% else %}
+                <a href="/community/review?page={{page}}&search_type={{search_type}}&search_value={{search_value}}" class="on">목록</a>
+                {% endif %}
                 <a href="/community/review_modify?writer={{result.writer_user.username}}&id={{result.id}}&page={{page}}&num={{result.num}}">수정</a>
             </div>
         </div>

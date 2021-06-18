@@ -3,32 +3,39 @@
 
 <!--menu_contents start-->
 <div class="menu_contents">
-    <div class="mc_title">
-        {{title}}
-    </div>
-    <div class="mc_content">
-        <div>
-            <input type="hidden" id='hidden_content' value="{{result.content}}">
-            {{result.num}}
-              {{result.subject}}
-              {{result.writer_user.username}}
-              {{result.date}}
-              {{result.hit}}
-              <div id="content"></div>
-            
-          </div>
+  <div class="mc_title">
+    {{title}}
+  </div>
+  <div class="mc_content">
+    <div>
+      <input type="hidden" id='hidden_content' value="{{result.content}}">
+      {{result.num}}
+      {{result.subject}}
+      {{result.writer_user.username}}
+      {{result.date}}
+      {{result.hit}}
+      <div id="content"></div>
 
-        <a href="/jobinfo/{{board_name}}/list?page={{page}}">목록</a>    
     </div>
-</div>
-<!--menu_contents end-->
-<script type="text/javascript">
-    window.addEventListener('DOMContentLoaded',()=>{
-    const hidden_content = document.querySelector('#hidden_content');
-    const content = document.querySelector('#content');
-      content.innerHTML = `${hidden_content.value}`; 
+
+    <div class="bt_wrap">
+      {% if search_type==undefined %}
+      <a href="/jobinfo/{{board_name}}/list?page={{page}}" class="on">목록</a>
+      {% else %}
+      <a href="/jobinfo/{{board_name}}/list?page={{page}}&search_type={{search_type}}&search_value={{search_value}}"
+        class="on">목록</a>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  <!--menu_contents end-->
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', () => {
+      const hidden_content = document.querySelector('#hidden_content');
+      const content = document.querySelector('#content');
+      content.innerHTML = `${hidden_content.value}`;
     })
   </script>
 
 
-{% include "../layout/subpage_bottom.html" %}
+  {% include "../layout/subpage_bottom.html" %}

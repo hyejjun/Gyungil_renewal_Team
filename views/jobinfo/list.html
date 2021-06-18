@@ -9,12 +9,16 @@
     <div class="mc_content">
 
         <ul class="jobinfo_ul">
-            {% for item in result %}
+            {% for item in pageinfo.result %}
             <li>
                 <p>글 번호 : {{item.num}}</p>
                 <p>조회수 : {{item.hit}}</p>
-
+                {% if search_type==undefined %}
                 <a href="/jobinfo/{{board_name}}/view?id={{item.id}}&page={{page}}&num={{item.num}}">
+                {% else %}
+                <a href="/jobinfo/{{board_name}}/view?id={{item.id}}&page={{page}}&num={{item.num}}&search_type={{search_type}}&search_value={{search_value}}">
+                {% endif %}
+
                     <img src="{{item.thumbnails[0].image}}" alt="">
                     <p class="jobinfo_content_title">{{item.subject}}</p>
                 </a>
@@ -25,20 +29,49 @@
             {% endfor %}
         </ul>
 
+        {% if search_type==undefined %}
         <div class="paging">
             <a href="/jobinfo/{{board_name}}/list?page=1">처음</a>
-            {% if prev %}
-            <a href="/jobinfo/{{board_name}}/list?page={{prev}}">이전</a>
+            {% if pageinfo.prev %}
+            <a href="/jobinfo/{{board_name}}/list?page={{pageinfo.prev}}">이전</a>
             {% endif %}
-            {% for item in nowpageblock %}
-            <a href="/jobinfo/{{board_name}}/list?page={{item}}"class="sbt" id="page_item">{{item}}</a>
+            {% for item in pageinfo.nowpageblock %}
+            <a href="/jobinfo/{{board_name}}/list?page={{item}}" class="sbt" id="page_item">{{item}}</a>
             {% endfor %}
-            {% if next %}
-            <a href="/jobinfo/{{board_name}}/list?page={{next}}">다음</a>
+            {% if pageinfo.next %}
+            <a href="/jobinfo/{{board_name}}/list?page={{pageinfo.next}}">다음</a>
             {% endif %}
-            <a href="/jobinfo/{{board_name}}/list?page={{end}}">끝</a>
-
+            <a href="/jobinfo/{{board_name}}/list?page={{pageinfo.end}}">끝</a>
         </div>
+        {% else %}
+        <div class="paging">
+            <a href="/jobinfo/{{board_name}}/list?page=1&search_type={{search_type}}&search_value={{search_value}}">처음</a>
+            {% if pageinfo.prev %}
+            <a href="/jobinfo/{{board_name}}/list?page={{pageinfo.prev}}&search_type={{search_type}}&search_value={{search_value}}">이전</a>
+            {% endif %}
+            {% for item in pageinfo.nowpageblock %}
+            <a href="/jobinfo/{{board_name}}/list?page={{item}}&search_type={{search_type}}&search_value={{search_value}}" class="sbt" id="page_item">{{item}}</a>
+            {% endfor %}
+            {% if pageinfo.next %}
+            <a href="/jobinfo/{{board_name}}/list?page={{pageinfo.next}}&search_type={{search_type}}&search_value={{search_value}}">다음</a>
+            {% endif %}
+            <a href="/jobinfo/{{board_name}}/list?page={{pageinfo.end}}&search_type={{search_type}}&search_value={{search_value}}">끝</a>
+        </div>
+        {% endif %}
+
+        
+<form action="/jobinfo/{{board_name}}/list" method="post">
+    <select name="search_type">
+      <option value="subject">제목</option>
+      <option value="content">내용</option>
+      <option value="username">작성자</option>
+    </select>
+    <input type="hidden" name="board_name" value="{{board_name}}">
+    <input type="text" name="search_value">
+    <input type="submit" value="검색">
+  </form>
+    </div>
+</div>
 
     </div>
 </div>

@@ -17,6 +17,7 @@ const upload = multer({
 
 
 router.get('/:board_name/list',controller.list);
+router.post('/:board_name/list',controller.search);
 router.get('/:board_name/view',controller.view);
 
 module.exports = router;

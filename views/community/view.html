@@ -2,6 +2,7 @@
 {% include "../layout/subpage_community_navi.html" %}
 
 <div class="board_view_wrap menu_contents">
+    <input type="hidden" value="{{result.content}}" id="hidden_content">
     <div class="board_view board_title">
         <div class="title mc_title">
             {{result.subject}}
@@ -20,16 +21,19 @@
                 <dd> {{result.date}}</dd>
             </dl>
             <dl>
-                <dt>조회</dt>
+                <dt>조회수</dt>
                 <dd>{{result.hit}}</dd>
             </dl>
         </div>
-        <div class="cont">
-            {{result.content}}
+        <div class="cont" id = "content">
         </div>
     </div>
     <div class="bt_wrap">
+        {% if search_type==undefined %}
         <a href="/community/{{board_name}}/list?page={{page}}" class="on">목록</a>
+        {% else %}
+        <a href="/community/{{board_name}}/list?page={{page}}&search_type={{search_type}}&search_value={{search_value}}" class="on">목록</a>
+        {% endif%}
     </div>
 </div>
 

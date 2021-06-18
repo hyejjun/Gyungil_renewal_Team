@@ -20,7 +20,9 @@
         <div>
           <div>{{result.subject}} 수정</div>
           <form id='form' action="/admin/community/{{board_name}}/modify" method="post">
+
             <input type="hidden" name='id'  value="{{result.id}}">
+            <input type="hidden" name='page'  value="{{page}}">
             제목:<input type="text" name='subject' value="{{result.subject}}">
             {% include "./summernote_modify.html" %}
           </form>

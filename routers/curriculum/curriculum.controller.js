@@ -12,8 +12,9 @@ let curriculum_list = async (req, res) => {
     let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
 
     let result = await curriculum.findAll({
-        where: { id: { [Op.gt]: 1, } }
+        
     })
+    result.shift(); // 맨 앞에 하나 빼기. 
     res.render('./curriculum/curriculum', { userid, username, nickname, result });
 }
 
