@@ -23,9 +23,8 @@ let show_consultList = async (req, res) => {
     ele.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
   });
 
-  let pageinfo = await makePage(page,result)
+  let pageinfo = await makePage(page, result)
 
-  console.log(pageinfo);
   res.render('./admin/consult/list', {
     page, pageinfo
   })
@@ -101,11 +100,11 @@ module.exports = {
 }
 
 
-async function makePage(page,result){ //type: 글 타입.   page: 요청한 페이지.  result는 type으로 뽑은 글의 수. 
+async function makePage(page, result) { //type: 글 타입.   page: 요청한 페이지.  result는 type으로 뽑은 글의 수. 
   const pageCount = 10; // 페이지 블록의 수 
-  let  count = await consult.count({
-    });
-  
+  let count = await consult.count({
+  });
+
   let end = Math.ceil(count / article_count);
 
   let pageblock = [];
@@ -115,38 +114,38 @@ async function makePage(page,result){ //type: 글 타입.   page: 요청한 페�
   let nowblock = 0;
   let nowpageblock;
   while (count > 0) {
-      count -= article_count;
-      pageblock[block].push(p)
-      if (p == page) {
-          nowpageblock = pageblock[block];
-          nowblock = block;
-      }
-      p++;
+    count -= article_count;
+    pageblock[block].push(p)
+    if (p == page) {
+      nowpageblock = pageblock[block];
+      nowblock = block;
+    }
+    p++;
 
-      if (p > pageCount * (block + 1)) {
-          pageblock.push([]);
-          block++;
-      }
+    if (p > pageCount * (block + 1)) {
+      pageblock.push([]);
+      block++;
+    }
   }
   let prev;
   let next;
   if (nowblock == 0) {
-      prev = false;
+    prev = false;
   } else {
-      prev = pageblock[nowblock - 1][article_count - 1];
+    prev = pageblock[nowblock - 1][article_count - 1];
   }
 
   if (nowblock == pageblock.length - 1) {
-      next = false;
+    next = false;
   } else {
-      next = pageblock[nowblock + 1][0];
+    next = pageblock[nowblock + 1][0];
   }
   let pageinfo = {
-      "prev":prev,
-      "next":next,
-      "nowpageblock":nowpageblock,
-      "end":end,
-      "result":result,
+    "prev": prev,
+    "next": next,
+    "nowpageblock": nowpageblock,
+    "end": end,
+    "result": result,
   }
-  return pageinfo; 
+  return pageinfo;
 }

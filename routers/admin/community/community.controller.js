@@ -1,5 +1,5 @@
 const { board, User, } = require('../../../models');
-const article_count = 10;// 한 페이지에 표시되는 글의 수.  
+const { search, makePage } = require('../../list');
 
 let boardType = {
   'notice': ['공지사항', '1'],
@@ -12,30 +12,42 @@ let boardType = {
 
 
 let show_list = async (req, res) => {
-  let page = req.query.page; 
+  let { page, search_type, search_value } = req.query;
   let board_name = req.params.board_name;
   let title = boardType[board_name][0];
   let type = boardType[board_name][1];
+
   let result = await board.findAll({
-    offset: article_count * (page - 1),
-    limit: article_count,
-    attributes: ['id', 'writer', 'subject', 'date', 'hit'],
     order: [['id', 'DESC']],
-    include:[{
-        model:User, 
-        as:'writer_user'
+    include: [{
+      model: User,
+      as: 'writer_user'
     }],
     where: { type, },
   })
 
- 
+  let N = result.length;
+  result.forEach((ele) => {
+    ele['num'] = N;
+    N--;
+  })
 
-  let pageinfo = await makePage(page,result,type)
+  if (search_type != undefined && search_value != undefined) {
+    result = search(result, search_type, search_value)
+  }
+
+  let pageinfo = await makePage(page, result)
 
   res.render(`./admin/community/list`, {
-     title, board_name,page,
-    pageinfo,type, 
+    title, board_name, page,
+    pageinfo, type, search_type, search_value
   })
+}
+
+
+let search_list = async (req, res) => {
+  let { board_name, search_type, search_value } = req.body;
+  res.redirect(`/admin/community/${board_name}?page=1&search_type=${search_type}&search_value=${search_value}`);
 }
 
 
@@ -71,7 +83,7 @@ let show_article = async (req, res) => {
 
   let board_name = req.params.board_name;
   let type = boardType[board_name][1];
-  let { id,page } = req.query;
+  let { id, page } = req.query;
 
   let authority = true;
   if (type > 4) {
@@ -79,28 +91,28 @@ let show_article = async (req, res) => {
   }
 
   let result = await board.findOne({
-    include:[{
-      model:User, 
-      as:'writer_user'
-  }],
+    include: [{
+      model: User,
+      as: 'writer_user'
+    }],
     where: { id, }
   })
 
   res.render('./admin/community/view', {
-    result, board_name, authority, page, 
+    result, board_name, authority, page,
   })
 }
 
 let show_modify = async (req, res) => {
   let board_name = req.params.board_name;
 
-  let { id,page } = req.query;
+  let { id, page } = req.query;
 
   let result = await board.findOne({
-    include:[{
-      model:User, 
-      as:'writer_user'
-  }],
+    include: [{
+      model: User,
+      as: 'writer_user'
+    }],
     where: { id, }
   })
 
@@ -111,7 +123,7 @@ let show_modify = async (req, res) => {
 
 let modify_article = async (req, res) => {
   let board_name = req.params.board_name;
-  let { id, content, subject,page } = req.body;
+  let { id, content, subject, page } = req.body;
   let date = new Date();
   let result = await board.update({
     content, subject, date
@@ -123,7 +135,7 @@ let modify_article = async (req, res) => {
 
 let destroy_article = async (req, res) => {
   let board_name = req.params.board_name;
-  let { id,page } = req.query;
+  let { id, page } = req.query;
 
   let result = await board.destroy({
     where: { id, }
@@ -135,67 +147,7 @@ let destroy_article = async (req, res) => {
 
 module.exports = {
   show_list, show_editor, create_article, show_article, show_modify,
-  modify_article, destroy_article,
+  modify_article, destroy_article, search_list,
 }
 
 
-async function makePage(page,result,type){ //type: 글 타입.   page: 요청한 페이지.  result는 type으로 뽑은 글의 수. 
-  const pageCount = 10; // 페이지 블록의 수 
-  let count; 
-  if(type==undefined){
-    count = await consult.count({
-    });
-  }else{
-    count = await board.count({
-      where: { type, },
-    });
-    let N = count - article_count * (page - 1);
-    result.forEach(v=>{
-      v['num'] = N;
-      N--; 
-    })
-  }
-  let end = Math.ceil(count / article_count);
-
-  let pageblock = [];
-  pageblock[0] = [];
-  let block = 0;
-  let p = 1;
-  let nowblock = 0;
-  let nowpageblock;
-  while (count > 0) {
-      count -= article_count;
-      pageblock[block].push(p)
-      if (p == page) {
-          nowpageblock = pageblock[block];
-          nowblock = block;
-      }
-      p++;
-
-      if (p > pageCount * (block + 1)) {
-          pageblock.push([]);
-          block++;
-      }
-  }
-  let prev;
-  let next;
-  if (nowblock == 0) {
-      prev = false;
-  } else {
-      prev = pageblock[nowblock - 1][article_count - 1];
-  }
-
-  if (nowblock == pageblock.length - 1) {
-      next = false;
-  } else {
-      next = pageblock[nowblock + 1][0];
-  }
-  let pageinfo = {
-      "prev":prev,
-      "next":next,
-      "nowpageblock":nowpageblock,
-      "end":end,
-      "result":result,
-  }
-  return pageinfo; 
-}
