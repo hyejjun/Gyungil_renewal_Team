@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express');
+const app = express();
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
 const router = require('./routers');
@@ -11,12 +12,26 @@ const session = require('express-session');
 const axios = require('axios');
 const qs = require('qs');
 
-const app = express();
+const socket = require('socket.io');
+const http = require('http');
+const server = http.createServer(app);
+const io = socket(server);
+
+//addEventListener('',)
+io.sockets.on('connection', (socket) => {
+    socket.on('send', (data) => {
+        console.log(`클라이언트에서 받은 메세지는 데이터 ${data.msg}`);
+        socket.broadcast.emit('call', data.msg)
+    })
+})
+
+
+
 
 app.use(session({
-    secret : 'aaa',
-    resave : false,
-    secure : false,
+    secret: 'aaa',
+    resave: false,
+    secure: false,
     saveUninitialized: false,
 }))
 
@@ -50,6 +65,35 @@ app.use('/', router)
 app.use(errorController.pageNotFoundError);
 app.use(errorController.respondInternalError);
 
-app.listen(PORT, () => {
+
+let id = undefined;
+io.sockets.on("connection", socket => {
+    // console.log(socket.handshake.headers.cookie);
+
+    let cookieStr = socket.handshake.headers.cookie;
+    if (cookieStr !== undefined) {
+        let cookieArr = cookieStr.split(';');
+        cookieArr.forEach(v => {
+            let [name, value] = v.split('=');
+            //trim은 공백을 제거하는 메서드.. 
+            //replace 교체
+            if (name == 'AccessToken') {
+                let jwt = value.split('.');
+                //console.log(jwt[1]); 
+                let payload = Buffer.from(jwt[1], 'base64').toString()
+                let { userid } = JSON.parse(payload);
+                id = userid;
+            }
+        })
+    }
+
+    console.log(id);
+    socket.on('send', datas => {
+        console.log(datas);
+        socket.broadcast.emit('msg', datas)
+    })
+})
+
+server.listen(PORT, () => {
     console.log(`server start port ${PORT}`)
 })

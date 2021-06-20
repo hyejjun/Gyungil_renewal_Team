@@ -139,6 +139,13 @@
             </div>
         </div>
         <!--consult end-->
+        <div>
+            <h1>Hello Socket</h1>
+            <input type="text" id="msg">
+            <input type="button" id="btn" value="버튼">
+            <div id="content"></div>
+            <h2><a href="/chat/clientinfo">실시간 상담</a></h2>
+        </div>
 
         <!--footer start-->
         {% include "./layout/footer.html" %}
@@ -178,6 +185,10 @@
     {% endif%}
 
     <script src="/js/mainslide.js"></script>
+
+    <!--클라이언트에서 웹소켓 요청을 위해 필요한 라이브러리-->
+    <script type="text/javascript" src="./socket.io.js"></script>
+   
 
 </body>
 
