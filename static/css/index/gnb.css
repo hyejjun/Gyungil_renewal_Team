@@ -8,12 +8,12 @@
     background: white;
 }
 .header_wrap{
-    width: 1300px;
+    width: 100%;
 }
 
 
 .header{
-    width: 100%;
+    width: 1300px;
     height: 100%;
 }
 .logo{
@@ -60,8 +60,7 @@
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
-    width: 58%;
-    left: 292px;
+    width: 100%;
 }
 .submenu_inner_wrap{
     float: right;

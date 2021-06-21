@@ -23,6 +23,8 @@
 </div> -->
 <div class="menu_contents board_wrap">
     <div class="mc_title">
+    <input type="hidden" value="{{result.content}}" id="hidden_content">
+
       {{title}}
     </div>
         <div class="board_view_wrap">
@@ -48,8 +50,7 @@
                         <dd>{{result.hit}}</dd>
                     </dl>
                 </div>
-                <div class="cont">
-                    {{result.content}}
+                <div class="cont" id = "content">
                 </div>
             <div class="bt_wrap">
                 <a href="/jobinfo/{{board_name}}/list?page={{page}}" class="on">목록</a>
