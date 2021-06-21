@@ -102,7 +102,7 @@ a {
 
 .board_list th,
 .board_list td{
-    padding: 10px;
+    padding: 10px 0;
     font-size: 14px;
 }
 
@@ -112,6 +112,7 @@ text-align: center;
 
 .board_list .tit {
 text-align: left;
+width: 600px;
 }
 
 .board_list tbody tr td:nth-child(3) :hover{

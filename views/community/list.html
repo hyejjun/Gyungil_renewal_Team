@@ -1,5 +1,4 @@
 {% include "../layout/subpage_top.html" %}
-
 {% include "../layout/subpage_community_navi.html" %}
 
 <!--menu_contents start-->
@@ -12,18 +11,16 @@
             <thead>
                 <tr>
                     <th>번호</th>
-                    <th>작성자</th>
-                    <th>내용</th>
+                    <th>제목</th>
                     <th>날짜</th>
+                    <th>작성자</th>
                     <th>조회수</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in pageinfo.result %}
                 <tr>
-
                     <td>{{item.num}}</td>
-                    <td>{{item.writer_user.username}}</td>
                     {% if search_type==undefined %}
                     <td class="tit"><a
                             href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}&num={{item.num}}">{{item.subject}}</a>
@@ -34,6 +31,7 @@
                     </td>
                     {% endif %}
                     <td>{{item.date}}</td>
+                    <td>{{item.writer_user.username}}</td>
                     <td>{{item.hit}}</td>
                 </tr>
                 {% endfor %}
