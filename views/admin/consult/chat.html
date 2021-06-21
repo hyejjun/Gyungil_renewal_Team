@@ -36,11 +36,11 @@
 
 
       <div id="main">
-        <button id="chatBtn" data-value="0">채팅</button>
-        <div id="chatRoom">
+        <!-- <button id="chatBtn" data-value="0">채팅</button> -->
+        <div id="chatroom">
 
-        </div>
-        <div id="chat">
+          <div id="chat">
+          </div>
 
         </div>
 
@@ -58,10 +58,12 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script>
-let socket = io();
-const waiting = document.querySelector('#waiting'); 
+  let socket = io();
+  const chatroom = document.querySelector('#chatroom')
+  const waiting = document.querySelector('#waiting'); 
 const consulting = document.querySelector('#consulting'); 
 const start_btn = document.querySelector('#start_btn'); 
+let client_id; 
 setInterval(()=>{
   wait_consult();
   now_consult(); 
@@ -81,7 +83,9 @@ socket.on('test',datas=>{
 
 
 function addCard2(datas,type){ //mychat  yourchat 
-      const chat = document.querySelector('#chat')
+  console.log(datas); 
+      let temp = datas[1]; 
+      const chat = document.querySelector(`#chat${temp}`)
       const div = document.createElement('div');
       const subdiv1 = document.createElement('div');
       const subdiv2 = document.createElement('div');
@@ -99,6 +103,17 @@ function addCard2(datas,type){ //mychat  yourchat
       chat.appendChild(div); 
 }
 
+
+function addCard(text,now_client,type) { //mychat  yourchat 
+  const chat = document.querySelector(`#chat${now_client}`)
+  const div = document.createElement('div');
+  const pre = document.createElement('pre');
+
+  pre.innerHTML = text;
+  pre.classList.add(type);
+  div.appendChild(pre);
+  chat.appendChild(div);
+}
 
 
 async function wait_consult(){
@@ -149,10 +164,23 @@ async function now_consult(){
 
 
 
-async function startChat(id){
+async function startChat(id,name){
+  
+  const chats = document.querySelectorAll('.chat'); 
+  chats.forEach(v=>{
+    v.style.display='none'
+  })
+  const username = document.createElement('h3'); 
+  username.innerHTML =name; 
+  const chat = document.createElement('div'); 
+  chat.setAttribute('id',`chat${id}`); 
+  chat.setAttribute('class',`chat`);
+  chat.style.display='block'
+  chat.appendChild(username); 
+  chatroom.appendChild(chat); 
 
   let consultant_id = socket.id; 
-  let client_id = id;  
+  client_id = id;  
   let url = 'http://localhost:3000/admin/consult/chat/start'
   let options = {
     method: 'post',
@@ -172,6 +200,36 @@ async function startChat(id){
   datas.push(message); 
   socket.emit('test',datas);
   
+}
+
+
+
+function send(){
+  const consultant_id = socket.id // 관리자 소켓번호
+  const msg = document.querySelector('#msg');
+  if(msg.value=='') return false; 
+  let datas = []; 
+  let now_client =client_id; 
+  console.log(client_id);  
+  datas.push(now_client);
+  datas.push(consultant_id);
+  datas.push(msg.value);
+  socket.emit('test',datas);
+  addCard(msg.value,now_client, 'mychat')
+  msg.value = '';
+  msg.focus();
+}
+
+function change_client(id){
+  client_id = id; 
+  console.log(client_id);
+  const chats = document.querySelectorAll('.chat');
+  console.log(chats);  
+  chats.forEach(v=>{
+    v.style.display='none'
+  })
+  const chat = document.querySelector(`#chat${id}`)
+  chat.style.display='block'
 }
 
 

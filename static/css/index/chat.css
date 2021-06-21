@@ -1,54 +1,55 @@
-#chat {
-  width: 400px;
-  min-height: 600px;
+.chat {
+  width: 600px;
+  min-height: 900px;
   height: auto;
   background: paleturquoise;
   overflow: scroll;
 }
 
-#chat > div {
-  height: 30px;
+.chat > div {
+  height: 40px;
   padding: 5px;
   margin-bottom: 12px;
 }
-#chat > div > div {
+/* .chat > div > div {
   height: auto;
   overflow: hidden;
-}
+} */
 
-#chat > div > div > pre {
+.chat > div > div > pre {
   display: inline-block;
-  max-width: 190px;
+  max-width: 290px;
   padding: 7px 14px;
   border-radius: 15px;
+  overflow: visible;
   box-sizing: border-box;
 }
 
-#chat > div > pre {
+.chat > div > pre {
   display: inline-block;
-  max-width: 190px;
+  max-width: 290px;
   padding: 7px 14px;
   border-radius: 15px;
 }
 
-#chat > div > div > span {
+.chat > div > div > span {
   display: block;
-  float: right;
+  float: left;
   font-weight: bold;
 }
 
-#chat > div > pre.mychat {
-  float: left;
+.chat > div > pre.mychat {
+  float: right;
   background: yellow;
 }
 
-#chat > div > div > pre.yourchat {
-  float: right;
+.chat > div > div > pre.yourchat {
+  float: left;
   background: pink;
 }
 
 #chatInputArea {
-  width: 400px;
+  width: 600px;
   padding: 5px 7px;
 }
 /* 

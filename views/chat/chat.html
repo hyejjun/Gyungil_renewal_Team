@@ -19,7 +19,7 @@
 
   <div id="chat_area" style="display: none;">
     <div id="chatRoom"></div>
-    <div id="chat"></div>
+    <div class="chat"></div>
 
     <div id="chatInputArea">
       <textarea name="" id="msg"></textarea>
@@ -85,17 +85,20 @@
 async function send(){ 
   let id =  socket.id
   const msg = document.querySelector('#msg'); 
-
+  
   let datas = []; 
   datas.push(consultant_id);
   datas.push(id);
   datas.push(msg.value); 
   datas.push(username.value); 
   socket.emit('test',datas);
+  addCard(msg.value, 'mychat')
+  msg.value = '';
+  msg.focus();
   // let datas = []; 
   // datas.push(userid); 
   // datas.push(msg.value); 
-  // if(msg.value=='') return false; 
+
   // socket.emit('send',datas); 
   // addCard(msg.value,'mychat')
   // msg.value = ''; 
@@ -109,7 +112,7 @@ async function send(){
 
 
 function addCard2(datas,type){ //mychat  yourchat 
-      const chat = document.querySelector('#chat')
+      const chat = document.querySelector('.chat')
       const div = document.createElement('div');
       const subdiv1 = document.createElement('div');
       const subdiv2 = document.createElement('div');
@@ -118,7 +121,7 @@ function addCard2(datas,type){ //mychat  yourchat
       const span = document.createElement('span');
       
 
-      span.innerHTML = '경일게임아카데미 상담사'; 
+      span.innerHTML = '경일게임아카데미'; 
       pre.innerHTML = datas; 
       pre.classList.add(type); 
       subdiv1.appendChild(span); 
@@ -126,6 +129,17 @@ function addCard2(datas,type){ //mychat  yourchat
       div.appendChild(subdiv1); 
       div.appendChild(subdiv2); 
       chat.appendChild(div); 
+}
+
+function addCard(text, type) { //mychat  yourchat 
+  const chat = document.querySelector('.chat')
+  const div = document.createElement('div');
+  const pre = document.createElement('pre');
+
+  pre.innerHTML = text;
+  pre.classList.add(type);
+  div.appendChild(pre);
+  chat.appendChild(div);
 }
 
 
