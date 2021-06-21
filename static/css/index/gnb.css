@@ -8,12 +8,12 @@
     background: white;
 }
 .header_wrap{
-    width: 100%;
+    width: 1300px;
 }
 
 
 .header{
-    width: 1300px;
+    width: 100%;
     height: 100%;
 }
 .logo{
@@ -52,15 +52,19 @@
 
 /*submenu start*/
 .submenu{
-    height: 250px;
-    background: #aea0b9;
+    opacity: 0.8;
+    border-radius: 80px;
+    height: 220px;
+    background: #d6d3d8;
     position: relative;
     z-index: 9;
     display: none;
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
-    width: 100%;
+    width: 58%;
+    left: 292px;
+    font-weight: bolder;
 }
 .submenu_inner_wrap{
     float: right;
@@ -72,7 +76,7 @@
     cursor: pointer;
 }
 .submenu_ul>a>li{
-    height: 50px;
+    height: 46px;
 }
 /*submenu end*/
 
