@@ -17,13 +17,12 @@ const http = require('http');
 const server = http.createServer(app);
 const io = socket(server);
 
-//addEventListener('',)
-io.sockets.on('connection', (socket) => {
-    socket.on('send', (data) => {
-        console.log(`클라이언트에서 받은 메세지는 데이터 ${data.msg}`);
-        socket.broadcast.emit('call', data.msg)
-    })
-})
+// //addEventListener('',)
+// io.sockets.on('connection', (socket) => {
+//     socket.on('send', (data) => {
+//         socket.broadcast.emit('call', data.msg)
+//     })
+// })
 
 
 
@@ -66,31 +65,14 @@ app.use(errorController.pageNotFoundError);
 app.use(errorController.respondInternalError);
 
 
-let id = undefined;
+
 io.sockets.on("connection", socket => {
-    // console.log(socket.handshake.headers.cookie);
-
-    let cookieStr = socket.handshake.headers.cookie;
-    if (cookieStr !== undefined) {
-        let cookieArr = cookieStr.split(';');
-        cookieArr.forEach(v => {
-            let [name, value] = v.split('=');
-            //trim은 공백을 제거하는 메서드.. 
-            //replace 교체
-            if (name == 'AccessToken') {
-                let jwt = value.split('.');
-                //console.log(jwt[1]); 
-                let payload = Buffer.from(jwt[1], 'base64').toString()
-                let { userid } = JSON.parse(payload);
-                id = userid;
-            }
-        })
-    }
-
-    console.log(id);
-    socket.on('send', datas => {
+    console.log('xxxxxxxxxxxx'); 
+    socket.on('test', datas => {
+        console.log('zzzzzzzzzzzzzzzzzzzzzzzz'); 
         console.log(datas);
-        socket.broadcast.emit('msg', datas)
+        let id= datas[0]; 
+        io.sockets.to(id).emit('test', datas);
     })
 })
 

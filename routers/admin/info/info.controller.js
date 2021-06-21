@@ -125,7 +125,7 @@ let create_teacher = async (req, res) => {
   let result = await teacher.create({
     name, position, title, career, content, image,
   })
-  res.redirect('/admin/info/teachers')
+  res.redirect('/admin/info/teacher')
 }
 
 let modify_teacher = async (req, res) => {
@@ -158,7 +158,7 @@ let update_teacher = async (req, res) => {
     where: { id, }
   })
 
-  res.redirect('/admin/info/teachers');
+  res.redirect('/admin/info/teacher');
 }
 
 let destroy_teacher = async (req, res) => {
@@ -167,7 +167,7 @@ let destroy_teacher = async (req, res) => {
   let result = await teacher.destroy({
     where: { id, }
   })
-  res.redirect('/admin/info/teachers');
+  res.redirect('/admin/info/teacher');
 }
 
 

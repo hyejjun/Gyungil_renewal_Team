@@ -7,7 +7,11 @@ const curriculumRouter = require('./curriculum');
 const infoRouter = require('./info');
 const jobRouter = require('./job');
 const consultRouter = require('./consult');
+const loginRouter = require('./login');
 
+
+
+router.use('/', loginRouter);
 router.use('/community', communityRouter);
 router.use('/consult', consultRouter);
 router.use('/curriculum', curriculumRouter);

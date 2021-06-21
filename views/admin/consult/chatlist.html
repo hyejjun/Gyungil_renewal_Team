@@ -1,0 +1,20 @@
+
+{% if wait %}
+{% for item in clients %}
+  <li>
+    <strong>{{item.name}}/{{item.age}}/{{item.date}}</strong>
+    <div><input  type="button" data-id="{{item.id}}" onclick="startChat(`{{item.id}}`)" value="시작"></div>
+  </li>
+
+{% endfor %}
+{% else %}
+
+{% for item in clients %}
+  <li>
+    <strong>{{item.name}}/{{item.age}}/{{item.date}}</strong>
+    <div><input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="종료"></div>
+  </li>
+
+{% endfor %}
+{% endif %}
+

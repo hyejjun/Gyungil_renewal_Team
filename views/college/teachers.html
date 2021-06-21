@@ -9,11 +9,17 @@
     <div class="mc_content">
        {% for item in result %}
        <div><img src="http://localhost:3000/{{item.image}}"alt="교직원 이미지"></div>
-       {{item.title}}
-       {{item.position}}
-       {{item.name}}
-       {{item.career}}
-       {{item.content}}
+       <span>
+           {{item.title}}
+       </span><br>
+       <span>
+           {{item.position}}
+       </span><br>
+       <span>
+           {{item.name}}
+       </span><br>
+       <pre>{{item.career}}</pre>
+       <pre>{{item.content}}</pre>
        {% endfor %}
     </div>
 </div>

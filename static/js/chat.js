@@ -2,9 +2,38 @@ const chatBtn = document.querySelector('#chatBtn');
 const chatRoom = document.querySelector('#chatRoom');
 let flag = undefined;
 
+const name1 = document.querySelector('#name').value;
+const age = document.querySelector('#age').value;
+const tel = document.querySelector('#tel').value;
+
 let socket = io();
 
+socketChat(); 
 
+ function socketChat() {
+  socket.on("connect", () => {
+  
+  console.log(socket.id);
+    let id = socket.id; 
+    let url = 'http://localhost:3000/admin/consult/chat/start'
+    let options = {
+    method: 'post',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      name1,age,tel,id
+    }),
+  }
+  let response = fetch(url, options); 
+    
+});
+  socket.on('test', datas => {
+  
+    console.log(datas); 
+
+  })
+}
 
 
 chatBtn.addEventListener('click', () => {
@@ -50,22 +79,7 @@ chatBtn.addEventListener('click', () => {
 // }
 // }
 
-function socketChat() {
-  socket.on("connect", () => {
 
-  });
-
-  socket.on('msg', datas => {
-    chatBtn.dataset.value = parseInt(chatBtn.dataset.value) + 1;
-    //dataset
-    if (flag == false) {
-
-      chatBtn.innerHTML = `채팅 <span style = "color:red; padding:2px;">${chatBtn.dataset.value}</span>`
-    }
-    addCard2(datas, 'yourchat');
-
-  })
-}
 
 
 const chatSend = document.querySelector('#chatSend');

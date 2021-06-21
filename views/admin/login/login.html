@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/user/login.css">
+</head>
+<body>
+    <div class="l-form">
+        <ul>
+        <form action="/admin/login_check" class="form" method="post">
+            <li>
+                <h1 class="form__title">관리자 로그인</h1>
+            </li>
+            <li class="form__div">
+                <input type="text" class="form__input" id="login_userid" name="userid" placeholder=" ">
+                <label for="login_userid" class="form__label">아이디</label>
+            </li>
+            <li class="form__div">
+                <input type="password" class="form__input" name="userpw" id="login_userpw" placeholder=" ">
+                <label for="login_userpw" class="form__label">비밀번호</label>
+            </li>
+            <input type="submit" class="form__button" value="로그인">
+        </form>
+        </ul>
+    </div>
+
+
+    {% if flag == '0' %}
+    <script type="text/javascript">
+        alert('{{msg}}');
+        let login_userid = document.querySelector('#login_userid');
+        login_userid.focus();
+    </script>
+    {% endif %}
+
+</body>
+</html>

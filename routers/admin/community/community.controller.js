@@ -66,7 +66,8 @@ let create_article = async (req, res) => {
   let board_name = req.params.board_name;
   let title = boardType[board_name][0];
   let type = boardType[board_name][1];
-  let writer = "admin"// 추후 수정
+  let writer = req.session.userid; 
+  console.log(req.session); 
 
   let { subject, content } = req.body;
 

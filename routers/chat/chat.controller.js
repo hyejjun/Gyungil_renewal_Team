@@ -1,58 +1,62 @@
-const express = require('express');
-const app = express();
-const socket = require('socket.io');
-const http = require('http');
-const server = http.createServer(app);
-const io = socket(server);
 
+let {clients} = require('../admin/consult/consult.controller')
 
-let get_clientInfo = (req, res) => {
-  res.render(`./chat/clientInfo.html`, {
-  })
+let getchat = (req,res)=>{ 
+  res.render('./chat/chat.html')
 }
 
-let start_consult = (req, res) => {
-  console.log('aaa')
-  res.render(`./chat/chat.html`, {
+let request = (req,res)=>{
+  console.log(req.body); 
+  let {id, name, age} = req.body; 
+  let now = new Date(); 
+  let mm = now.getMonth()+1;
+  let d = now.getDate();
+  let h = now.getHours(); 
+  let m = now.getMinutes(); 
+
+  now = `${mm}/${d}  ${h}:${m}`
+  let temp = {}; 
+  temp['id'] = id; 
+  temp['name'] = name; 
+  temp['age'] = age;
+  temp['date'] = now;
+  temp['consultant'] = null; 
+  let flag=true; 
+
+  clients.forEach(v=>{ 
+    if(v.id==id){ 
+      flag= false; 
+    }
   })
+
+  if(flag) clients.push(temp); 
+  console.log(clients); 
+  
+ res.json({}); 
 }
 
-let get_message = async (req, res) => {
 
+let send = async (req,res)=>{
+  let id =req.body.id;
+  let consultant_id;  
+  clients.forEach(v=>{ 
+    if(v.id == id){ 
+      consultant_id = v.consultant; 
+    }
+  })
+ console.log(consultant_id); 
+  res.json({consultant_id,})
 
 }
 
 
 
-//소켓 서버에서 받는 부분. 
-let id = undefined;
-io.sockets.on("connection", socket => {
-  // console.log(socket.handshake.headers.cookie);
 
-  let cookieStr = socket.handshake.headers.cookie;
-  if (cookieStr !== undefined) {
-    let cookieArr = cookieStr.split(';');
-    cookieArr.forEach(v => {
-      let [name, value] = v.split('=');
-      //trim은 공백을 제거하는 메서드.. 
-      //replace 교체
-      if (name == 'AccessToken') {
-        let jwt = value.split('.');
-        //console.log(jwt[1]); 
-        let payload = Buffer.from(jwt[1], 'base64').toString()
-        let { userid } = JSON.parse(payload);
-        id = userid;
-      }
-    })
-  }
 
-  console.log(id);
-  socket.on('send', datas => {
-    console.log(datas);
-    socket.broadcast.emit('msg', datas)
-  })
-})
+
 
 module.exports = {
-  get_message, get_clientInfo, start_consult
+  request,
+  getchat,
+  send, 
 }

@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/css/index/chat.css">
+
 
 </head>
 
@@ -16,6 +18,22 @@
     <div id="container1900">
       {% include "../layout/gnb.html" %}
       {% include "./consult_snb.html" %}
+      <div>
+
+        <div>
+          <span>진행중인 상담</span>
+          <ul id="consulting">
+          </ul>
+      </div>
+      
+      <div>
+        <span>대기중인 상담</span>        
+        <ul id="waiting">
+        </ul>
+      </div>
+      
+    </div>
+
 
       <div id="main">
         <button id="chatBtn" data-value="0">채팅</button>
@@ -36,7 +54,144 @@
       </div>
     </div>
   </div>
-
 </body>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+<script>
+let socket = io();
+const waiting = document.querySelector('#waiting'); 
+const consulting = document.querySelector('#consulting'); 
+const start_btn = document.querySelector('#start_btn'); 
+setInterval(()=>{
+  wait_consult();
+  now_consult(); 
+},3000); 
+
+
+socket.on("connect", () => {
+
+});
+
+socket.on('test',datas=>{
+            // consultant_id = datas[1]; 
+            console.log(datas); 
+
+            addCard2(datas,'yourchat'); 
+          })
+
+
+function addCard2(datas,type){ //mychat  yourchat 
+      const chat = document.querySelector('#chat')
+      const div = document.createElement('div');
+      const subdiv1 = document.createElement('div');
+      const subdiv2 = document.createElement('div');
+
+      const pre = document.createElement('pre');
+      const span = document.createElement('span');
+      
+      span.innerHTML = datas[3]; 
+      pre.innerHTML = datas[2]; 
+      pre.classList.add(type); 
+      subdiv1.appendChild(span); 
+      subdiv2.appendChild(pre);
+      div.appendChild(subdiv1); 
+      div.appendChild(subdiv2); 
+      chat.appendChild(div); 
+}
+
+
+
+async function wait_consult(){
+  let url = 'http://localhost:3000/admin/consult/chat/wait'
+  let options = {
+    method: 'get',
+  }
+  let response = await fetch(url, options);
+  let result = await response.text();
+  if(isJson(result)){ 
+    //로그인 처리가 잘 안되었을 때, 
+    let json  = JSON.parse(result); 
+    if(json.result === false) alert(json.msg);
+  }else{ 
+    //로그인 처리가 완료가 잘 되었을때.
+    waiting.innerHTML = result;
+    //로그인 처리가 잘 되고 화면이 잘 그려졌을 때
+    // socketChat(); 
+  }
+}
+
+
+async function now_consult(){
+  let id = socket.id; 
+  let url = 'http://localhost:3000/admin/consult/chat/consulting'
+  let options = {
+    method: 'post',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      id, 
+    }),
+  }
+  let response = await fetch(url, options);
+  let result = await response.text();
+  if(isJson(result)){ 
+    //로그인 처리가 잘 안되었을 때, 
+    let json  = JSON.parse(result); 
+    if(json.result === false) alert(json.msg);
+  }else{ 
+    //로그인 처리가 완료가 잘 되었을때.
+    consulting.innerHTML = result;
+    //로그인 처리가 잘 되고 화면이 잘 그려졌을 때
+    // socketChat(); 
+  }
+}
+
+
+
+async function startChat(id){
+
+  let consultant_id = socket.id; 
+  let client_id = id;  
+  let url = 'http://localhost:3000/admin/consult/chat/start'
+  let options = {
+    method: 'post',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      consultant_id, 
+      client_id
+    }),
+  }
+  let response = await fetch(url, options);
+  let datas = []; 
+  datas.push(client_id);
+  let message = '안녕하세요 경일게임아카데미입니다.' 
+  datas.push(consultant_id); 
+  datas.push(message); 
+  socket.emit('test',datas);
+  
+}
+
+
+
+
+
+
+function isJson(str) {
+  try {
+    let json = JSON.parse(str);
+    return (typeof json == 'object')
+  } catch (e) {
+    return false;
+  }
+
+}
+
+</script>
+
+
+
 
 </html>

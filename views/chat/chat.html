@@ -1,18 +1,139 @@
-<button id="chatBtn" data-value="0">채팅</button>
-<div id="chatRoom">
+<!DOCTYPE html>
+<html lang="en">
 
-</div>
-  <div id="chat">
-  
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/index/chat.css">
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="request_info">
+    이름: <input type="text" id="username" required><br>
+    나이: <input type="number" id="userage" required><br>
+    <input type="button" onclick="request_real_time_consult()" value="상담요청하기">
   </div>
 
-<div id="chatInputArea">
-  <textarea name="" id="msg" ></textarea>
-  <!-- <input type="text" id = 'msg'> -->
-  <button id="chatSend" onclick="send()">전송</button>
-</div>
+  <div id="chat_area" style="display: none;">
+    <div id="chatRoom"></div>
+    <div id="chat"></div>
 
-<link rel="stylesheet" href="/css/index/chat.css">
-<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script src="/js/chat.js"></script>
+    <div id="chatInputArea">
+      <textarea name="" id="msg"></textarea>
+      <!-- <input type="text" id = 'msg'> -->
+      <button id="chatSend" onclick="send()">전송</button>
 
+    </div>
+
+
+
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/js/chat.js"></script> -->
+
+
+
+
+
+    <script>
+      let socket = io();
+      const chat_area = document.querySelector('#chat_area');
+      const username = document.querySelector('#username');
+      const userage = document.querySelector('#userage');
+
+      async function request_real_time_consult() {
+        socket.on("connect", () => {
+
+        });
+        let id = socket.id;
+        console.log(id);
+        let name = username.value; 
+        let age = userage.value; 
+
+        let url = 'http://localhost:3000/chat/request'
+        let options = {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            name, age, id,
+          }),
+        }
+        let response = await fetch(url, options);
+        if (response.ok) {
+          alert('상담요청하였습니다. 잠시만 기다려주세요.')
+          request_info.style.display = 'none';
+          chat_area.style.display = 'block';
+          socket.on('test',datas=>{
+            consultant_id = datas[1]; 
+            datas = datas[2]; 
+            addCard2(datas,'yourchat'); 
+          })
+        } else {
+          window.location.reload();
+          alert('상담요청 실패했습니다.');
+        }
+      }
+
+
+
+
+
+async function send(){ 
+  let id =  socket.id
+  const msg = document.querySelector('#msg'); 
+
+  let datas = []; 
+  datas.push(consultant_id);
+  datas.push(id);
+  datas.push(msg.value); 
+  datas.push(username.value); 
+  socket.emit('test',datas);
+  // let datas = []; 
+  // datas.push(userid); 
+  // datas.push(msg.value); 
+  // if(msg.value=='') return false; 
+  // socket.emit('send',datas); 
+  // addCard(msg.value,'mychat')
+  // msg.value = ''; 
+  // msg.focus(); 
+  
+}
+
+
+
+
+
+
+function addCard2(datas,type){ //mychat  yourchat 
+      const chat = document.querySelector('#chat')
+      const div = document.createElement('div');
+      const subdiv1 = document.createElement('div');
+      const subdiv2 = document.createElement('div');
+
+      const pre = document.createElement('pre');
+      const span = document.createElement('span');
+      
+
+      span.innerHTML = '경일게임아카데미 상담사'; 
+      pre.innerHTML = datas; 
+      pre.classList.add(type); 
+      subdiv1.appendChild(span); 
+      subdiv2.appendChild(pre);
+      div.appendChild(subdiv1); 
+      div.appendChild(subdiv2); 
+      chat.appendChild(div); 
+}
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

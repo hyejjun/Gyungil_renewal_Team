@@ -71,6 +71,7 @@ let get_curr = (req, res) => {
 
 //////////////// 리뷰등록 페이지 
 let get_review = async (req, res) => {
+
   let rv = await board.findAll({
     include: [{
       model: User,

@@ -3,6 +3,14 @@ const { consult, board,
 
 const article_count = 10;
 
+
+
+
+let clients = []; 
+
+
+
+
 let show_consultList = async (req, res) => {
   let page = req.query.page;
   let result = await consult.findAll({
@@ -29,6 +37,33 @@ let show_consultList = async (req, res) => {
     page, pageinfo
   })
 }
+
+
+let show_consult = async(req,res)=>{ 
+  let {id, page}  = req.query; 
+  console.log(req.query); 
+  let result = await consult.findOne({
+    where:{id,}
+  })
+
+  let temp = result.dataValues.date;
+    let y = temp.getFullYear();
+    let mm = temp.getMonth() + 1;
+    let d = temp.getDate();
+    let t = temp.getHours();
+    let m = temp.getMinutes();
+    if (mm < 10) mm = '0' + mm;
+    if (d < 10) d = '0' + d;
+    result.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
+
+
+  console.log(result); 
+  res.render('./admin/consult/view', {
+    page,result, 
+  })
+
+}
+
 
 let show_faqList = async (req, res) => {
   let type = '8';
@@ -93,10 +128,53 @@ let destroy_faq = async (req, res) => {
 }
 
 
+let show_chat = (req,res)=>{ 
+  res.render('./admin/consult/chat')
+}
+
+let show_wait = (req,res)=>{ 
+  let temp = []; 
+  clients.forEach(v=>{
+    if(v.consultant==null){ 
+      temp.push(v); 
+    }
+  })
+  waiting = temp; 
+  wait=true; 
+    res.render('./admin/consult/chatlist',{clients:waiting, wait, }); 
+}
+
+
+let show_cosulting = (req,res)=>{ 
+  let temp = []; 
+  let {id} = req.body;
+  clients.forEach(v=>{
+    if(v.consultant==id){ 
+      temp.push(v); 
+    }
+  })
+  consulting = temp; 
+  wait = false;
+    res.render('./admin/consult/chatlist',{clients:consulting, wait}); 
+}
+
+let start_chat = (req,res)=>{ 
+  let { consultant_id, client_id} = req.body; 
+  clients.forEach(v=>{
+    if(v.id==client_id){
+       v.consultant = consultant_id; 
+    }
+  })
+  res.json(); 
+}
+
+
+
+
 module.exports = {
   write_faq, create_faq, modify_faq, update_faq,
-  show_consultList, show_faqList, destroy_faq,
-
+  show_consultList, show_faqList, destroy_faq,show_consult, show_wait, clients, show_chat, 
+  start_chat, show_cosulting, 
 }
 
 
