@@ -121,7 +121,7 @@ let show_article = async (req, res) => {
 
 let show_modify = async (req, res) => {
   let board_name = req.params.board_name;
-  let { id } = req.query;
+  let { id ,page} = req.query;
 
   let result = await board.findOne({
     include: [{
@@ -131,6 +131,8 @@ let show_modify = async (req, res) => {
     where: { id, }
   })
 
+  console.log(result.dataValues.writer); 
+  const target=result.dataValues.writer; 
   let user = await User.findAll({
     include: [{
       model: curriculum,
@@ -139,8 +141,16 @@ let show_modify = async (req, res) => {
     where: { type: '3' }
   })
 
+  user.forEach(v=>{
+    if(v.dataValues.userid==target){
+      v['check'] = true; 
+    }else{
+      v['check'] = false; 
+    }
+  })
+
   res.render('./admin/job/modify', {
-    result, board_name, user,
+    result, board_name, user, page, 
   })
 
 }
@@ -149,21 +159,22 @@ let update_article = async (req, res) => {
   let board_name = req.params.board_name;
   let { subject, content, id } = req.body;
   let date = new Date();
+  console.log(req.body); 
+  console.log(req.file); 
 
   let result = await board.update({
     subject, content, date,
   }, {
     where: { id, }
   });
-
+  
   let thumbnail;
-  if (req.file != undefined) {
+  if (req.file != undefined) { //이미지일때. 
     thumbnail = 'http://localhost:3000/' + req.file.filename;
-  } else if (req.body.thumbnail != '') {
+  } else if (req.body.thumbnail != '') { //유튜브일때..
     thumbnail = req.body.thumbnail;
   }
-
-  if (thumbnail != undefined) {
+  if (thumbnail != undefined) { //썸네일 업데이트 했을때. 
     await Thumbnail.update({
       image: thumbnail,
     }, {

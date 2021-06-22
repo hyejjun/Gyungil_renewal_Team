@@ -44,6 +44,7 @@ router.post('/create_teacher', upload.single('img'), infoController.create_teach
 router.get('/teacher/modify', infoController.modify_teacher)
 router.post('/teacher/modify', upload.single('img'), infoController.update_teacher)
 router.get('/teacher/destroy', infoController.destroy_teacher)
+router.post('/teacher/show', infoController.modify_teacherShow)
 
 router.get('/location', infoController.show_location);
 router.post('/location/modify', infoController.update_location);

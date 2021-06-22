@@ -1,55 +1,71 @@
-.chat {
-  width: 600px;
-  min-height: 900px;
-  height: auto;
-  background: paleturquoise;
-  overflow: scroll;
-}
-
-.chat > div {
-  height: 40px;
-  padding: 5px;
-  margin-bottom: 12px;
-}
-/* .chat > div > div {
-  height: auto;
-  overflow: hidden;
-} */
-
-.chat > div > div > pre {
-  display: inline-block;
-  max-width: 290px;
-  padding: 7px 14px;
-  border-radius: 15px;
-  overflow: visible;
+div{
   box-sizing: border-box;
 }
 
-.chat > div > pre {
-  display: inline-block;
-  max-width: 290px;
+.chat {
+  width: 800px;
+  min-height: 900px;
+  height: auto;
+  background: paleturquoise;
+  overflow-y: scroll;
+}
+
+.chat > div {
+  position: relative;
+  padding: 5px;
+  width: 800px;
+  margin-bottom: 20px;
+}
+
+
+
+.chat > div > pre.mychat {
+  display: block;
+  float: right;
+  height: auto;
+  overflow: hidden;
+  margin-right: 10px;
+  max-width: 390px;
   padding: 7px 14px;
   border-radius: 15px;
+  background: yellow;
+
 }
+
+.chat > div > div > pre.yourchat {
+  display: block;
+  float: left;
+  height: auto;
+  overflow: hidden;
+  margin-left: 10px;
+  max-width: 390px;
+  padding: 7px 14px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background: pink;
+}
+
 
 .chat > div > div > span {
   display: block;
   float: left;
+  margin-left: 10px;
   font-weight: bold;
 }
 
-.chat > div > pre.mychat {
-  float: right;
+.chat > div> pre.mychat{ 
+  float: left;
   background: yellow;
 }
 
-.chat > div > div > pre.yourchat {
-  float: left;
+.chat > div> pre.yourchat{ 
+  float: right;
   background: pink;
 }
 
+
 #chatInputArea {
-  width: 600px;
+  width: 800px;
   padding: 5px 7px;
 }
 /* 
@@ -62,14 +78,65 @@
     ededed
 
 */
+
 #chatInputArea > textarea {
-  width: 200px;
+  width: 800px;
   padding: 7px 14px;
   border: 1px solid #666;
+  box-sizing: border-box;
 }
+
+
+
 
 #chatInputArea > button {
   padding: 7px 14px;
   background: #eee;
   border: 1px solid #999999;
 }
+
+
+#realTime_list{ 
+  float: left;
+  width: 300px;
+  height: auto;
+  overflow: hidden;
+}
+
+#chatroom{ 
+  position: relative;
+  float: left;
+  width: 800px;
+  height: 600px;
+  
+}
+
+#consulting_box,
+#waiting_box{
+  width: 300px;
+  min-height: 400px;
+  height: auto;
+  overflow: hidden;
+}
+
+#realTime_list>div>ul>li>div{ 
+  float: left;
+}
+
+.clientInfo{ 
+  width: 240px;
+  height: 60px;
+}
+
+.clientInfo>strong,
+.clientInfo>span{
+  display: block;
+  float: left;
+}
+
+.consult_event{ 
+  width: 60px;
+  height: 60px;
+}
+
+

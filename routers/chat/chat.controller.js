@@ -1,5 +1,7 @@
 
 let { clients } = require('../admin/consult/consult.controller')
+let {socket, io} = require('../../server'); 
+
 
 let getchat = (req, res) => {
   res.render('./chat/chat.html')
@@ -20,6 +22,7 @@ let request = (req, res) => {
   temp['age'] = age;
   temp['date'] = now;
   temp['consultant'] = null;
+  temp['on']=true;
   let flag = true;
 
   clients.forEach(v => {
@@ -47,6 +50,20 @@ let send = async (req, res) => {
 
 }
 
+let end = (req,res)=>{
+  console.log(req.body.data);
+  let {data} = req.body;
+
+  for(let i = 0; i<clients.length; i++){ 
+    if(clients[i].id==data){
+      console.log('catch'); 
+      clients[i].on = false; 
+      break;  
+    }
+  }
+  
+}
+
 
 
 
@@ -56,4 +73,5 @@ module.exports = {
   request,
   getchat,
   send,
+  end, 
 }

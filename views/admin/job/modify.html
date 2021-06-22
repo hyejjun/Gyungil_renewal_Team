@@ -24,7 +24,7 @@
 
         <div>
           <div>{{result.subject}} 수정</div>
-          <form id="form" action="/admin/job/{{board_name}}/modify" method="post">
+          <form id="form" action="/admin/job/{{board_name}}/modify" method="post" enctype="multipart/form-data">
           <div>
   
           </div>
@@ -51,7 +51,11 @@
                     <td><label for="{{item.userid}}">{{item.userid}}</label></td>
                     <td><label for="{{item.userid}}">{{item.user_birthday}}</label></td>
                     <td><label for="{{item.userid}}">{{item.code.name}}</label></td>
+                    {% if item.check %}
+                    <td><input type="radio" name="writer" value="{{item.userid}}" id="{{item.userid}}" onclick="showname()" checked required></td>
+                    {% else %}
                     <td><input type="radio" name="writer" value="{{item.userid}}" id="{{item.userid}}" onclick="showname()" required></td>
+                    {% endif %}
                   </tr>
                   {% endfor %}
                 </tbody>

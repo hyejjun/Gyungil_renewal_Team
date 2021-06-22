@@ -23,7 +23,6 @@
 
     <div id="chatInputArea">
       <textarea name="" id="msg"></textarea>
-      <!-- <input type="text" id = 'msg'> -->
       <button id="chatSend" onclick="send()">전송</button>
 
     </div>
@@ -38,20 +37,23 @@
 
 
     <script>
-      let socket = io();
+
+      const socket = io();
       const chat_area = document.querySelector('#chat_area');
       const username = document.querySelector('#username');
       const userage = document.querySelector('#userage');
+      let id; 
+
 
       async function request_real_time_consult() {
         socket.on("connect", () => {
-
+          
         });
-        let id = socket.id;
-        console.log(id);
-        let name = username.value; 
-        let age = userage.value; 
 
+        
+        const name = username.value;
+        const age = userage.value; 
+        id = socket.id;
         let url = 'http://localhost:3000/chat/request'
         let options = {
           method: 'POST',
@@ -62,89 +64,100 @@
             name, age, id,
           }),
         }
+        
         let response = await fetch(url, options);
         if (response.ok) {
           alert('상담요청하였습니다. 잠시만 기다려주세요.')
           request_info.style.display = 'none';
           chat_area.style.display = 'block';
-          socket.on('test',datas=>{
-            consultant_id = datas[1]; 
-            datas = datas[2]; 
-            addCard2(datas,'yourchat'); 
-          })
+
         } else {
           window.location.reload();
           alert('상담요청 실패했습니다.');
         }
       }
 
+      //////////////////////여기까지 오면 clients 배열에 정보가 들어감 
 
-
-
-
-async function send(){ 
-  let id =  socket.id
-  const msg = document.querySelector('#msg'); 
-  
-  let datas = []; 
-  datas.push(consultant_id);
-  datas.push(id);
-  datas.push(msg.value); 
-  datas.push(username.value); 
-  socket.emit('test',datas);
-  addCard(msg.value, 'mychat')
-  msg.value = '';
-  msg.focus();
-  // let datas = []; 
-  // datas.push(userid); 
-  // datas.push(msg.value); 
-
-  // socket.emit('send',datas); 
-  // addCard(msg.value,'mychat')
-  // msg.value = ''; 
-  // msg.focus(); 
-  
-}
+      socket.on('test', datas => {
+            consultant_id = datas[1];
+            datas = datas[2];
+            addCard2(datas, 'yourchat');
+          })
 
 
 
 
 
+      async function send() {
+        
+        let id = socket.id
+        const msg = document.querySelector('#msg');
+        if(msg.value=='') return; 
+        let datas = [];
+        datas.push(consultant_id);
+        datas.push(id);
+        datas.push(msg.value);
+        datas.push(username.value);
+        socket.emit('test', datas);
+        addCard(msg.value, 'mychat')
+        msg.value = '';
+        msg.focus();
+      }
 
-function addCard2(datas,type){ //mychat  yourchat 
-      const chat = document.querySelector('.chat')
-      const div = document.createElement('div');
-      const subdiv1 = document.createElement('div');
-      const subdiv2 = document.createElement('div');
 
-      const pre = document.createElement('pre');
-      const span = document.createElement('span');
+
+
       
 
-      span.innerHTML = '경일게임아카데미'; 
-      pre.innerHTML = datas; 
-      pre.classList.add(type); 
-      subdiv1.appendChild(span); 
-      subdiv2.appendChild(pre);
-      div.appendChild(subdiv1); 
-      div.appendChild(subdiv2); 
-      chat.appendChild(div); 
-}
 
-function addCard(text, type) { //mychat  yourchat 
-  const chat = document.querySelector('.chat')
-  const div = document.createElement('div');
-  const pre = document.createElement('pre');
+    window.addEventListener("unload", () => {
+      let data = new FormData(); 
+      data.append('data',id); 
+      window.navigator.sendBeacon("http://localhost:3000/chat/end",data); 
+    }, false);
+      
 
-  pre.innerHTML = text;
-  pre.classList.add(type);
-  div.appendChild(pre);
-  chat.appendChild(div);
-}
+
+
+
+
+
+      function addCard2(datas, type) { //mychat  yourchat 
+        const chat = document.querySelector('.chat')
+        const div = document.createElement('div');
+        const pre = document.createElement('pre');
+        const span = document.createElement('span');
+
+        span.innerHTML = '경일게임아카데미';
+        pre.innerHTML = datas;
+        pre.classList.add(type);
+        div.appendChild(span);
+        div.appendChild(pre);
+        chat.appendChild(div);
+      }
+
+      function addCard(text, type) { //mychat  yourchat 
+        const chat = document.querySelector('.chat')
+        const div = document.createElement('div');
+        const pre = document.createElement('pre');
+
+        pre.innerHTML = text;
+        pre.classList.add(type);
+        div.appendChild(pre);
+        chat.appendChild(div);
+      }
+
+      window.addEventListener('unload',()=>{
+        let datas ='goob bye'; 
+        socket.emit('end',datas)
+      })
 
 
 
     </script>
+
+    
 
 
 

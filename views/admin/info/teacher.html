@@ -16,15 +16,15 @@
       <div id="main">
         <table>
           <thead>
-            <td>이름</td>
-            <td>직위</td>
-            <td>헤드라인</td>
-            <td>경력</td>
-            <td>내용</td>
-            <td>이미지</td>
-            <td>공개</td>
-            <td>수정</td>
-            <td>삭제</td>
+            <th>이름</th>
+            <th>직위</th>
+            <th>헤드라인</th>
+            <th>경력</th>
+            <th>내용</th>
+            <th>이미지</th>
+            <th>공개</th>
+            <th>수정</th>
+            <th>삭제</th>
           </thead>
           <tbody>
             {% for item in result%}
@@ -37,13 +37,13 @@
               <td><img src="http://localhost:3000/{{item.image}}"alt="교직원 이미지"></td>
               <td>
                 {% if item.show=='0' %}
-                <input type="button" value="공개" name="{{item.id}}">
+                <input type="checkbox"  onclick="check(`{{item.id}}`)" >
                 {% else %}
-                <input type="button" value="비공개" name="{{item.id}}">
+                <input type="checkbox" onclick="check(`{{item.id}}`)" checked>
                 {% endif %}
               </td>
               <td>
-                <input type="checkbox" name="" id="">
+                <a href="/admin/info/teacher/modify?id={{item.id}}">수정</a>
               </td>
               <td>
                 <a href="/admin/info/teacher/destroy?id={{item.id}}">삭제</a>
@@ -64,6 +64,7 @@
 
  
 
+  <script src="/admin/js/teacher.js" type="text/javascript"></script>
   
 </body>
 </html>

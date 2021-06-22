@@ -67,15 +67,19 @@ app.use(errorController.respondInternalError);
 
 
 io.sockets.on("connection", socket => {
-    console.log('xxxxxxxxxxxx'); 
     socket.on('test', datas => {
-        console.log('zzzzzzzzzzzzzzzzzzzzzzzz'); 
-        console.log(datas);
         let id= datas[0]; 
         io.sockets.to(id).emit('test', datas);
+    })
+
+    socket.on('end',datas=>{
+        console.log('cccccccccccccccccccccccccc')
     })
 })
 
 server.listen(PORT, () => {
     console.log(`server start port ${PORT}`)
 })
+
+
+module.exports={socket,}

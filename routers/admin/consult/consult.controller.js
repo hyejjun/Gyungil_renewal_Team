@@ -168,13 +168,24 @@ let start_chat = (req,res)=>{
   res.json(); 
 }
 
+let end_chat = (req,res)=>{
+  let{client_id} = req.body; 
+  for(let i = 0; i<clients.length; i++){ 
+    if(clients[i].id==client_id){ 
+      clients.splice(i,1);
+      break; 
+    }
+  }
+  res.json(); 
+}
+
 
 
 
 module.exports = {
   write_faq, create_faq, modify_faq, update_faq,
   show_consultList, show_faqList, destroy_faq,show_consult, show_wait, clients, show_chat, 
-  start_chat, show_cosulting, 
+  start_chat, show_cosulting, end_chat,
 }
 
 

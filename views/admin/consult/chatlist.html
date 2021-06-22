@@ -1,21 +1,55 @@
 
 {% if wait %}
-{% for item in clients %}
-  <li>
-    <strong>{{item.name}}({{item.age}})<br>
-            {{item.date}}</strong>
-    <div><input  type="button" data-id="{{item.id}}" onclick="startChat(`{{item.id}}`,`{{item.name}}`)" value="시작"></div>
-  </li>
 
-{% endfor %}
-{% else %}
 {% for item in clients %}
+{% if item.on %}
   <li >
-    <strong onclick="change_client(`{{item.id}}`)">{{item.name}}({{item.age}})<br>
-      {{item.date}}</strong>
-    <div><input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="종료"></div>
+    <div>
+      <strong >{{item.name}}({{item.age}})</strong>
+      <span>{{item.date}}</span>
+    </div>
+    <div class="consult_event">
+    <input  type="button" data-id="{{item.id}}" onclick="startChat(`{{item.id}}`,`{{item.name}}`)" value="시작">
+    </div>
   </li>
-
+  {% else %}
+  <li style="color: red;">
+    <div>
+      <strong >{{item.name}}({{item.age}})</strong>
+      <span>{{item.date}}</span>
+    </div>
+    <div class="consult_event">
+      <input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="삭제">
+    </div>
+  </li>
+  {% endif %}
 {% endfor %}
+
+{% else %}
+
+{% for item in clients %}
+{% if item.on %}
+  <li >
+    <div class="clientInfo" onclick="change_client(`{{item.id}}`)">
+      <strong >{{item.name}}({{item.age}})</strong>
+      <span>{{item.date}}</span>
+    </div>
+    <div class="consult_event">
+      <input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="종료">
+    </div>
+  </li>
+{% else %}
+<li style="color: red;">
+  <div class="clientInfo" onclick="change_client(`{{item.id}}`)">
+    <strong >{{item.name}}({{item.age}})</strong>
+    <span>{{item.date}}</span>
+  </div>
+  <div class="consult_event">
+    <input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="종료">
+  </div>
+</li>
+{% endif %}
+{% endfor %}
+
 {% endif %}
 

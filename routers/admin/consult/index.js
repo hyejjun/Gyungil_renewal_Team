@@ -16,6 +16,7 @@ router.get('/chat',consultController.show_chat);
 router.get('/chat/wait',consultController.show_wait);
 router.post('/chat/consulting',consultController.show_cosulting);
 router.post('/chat/start',consultController.start_chat);
+router.post('/chat/end',consultController.end_chat);
 
 
 

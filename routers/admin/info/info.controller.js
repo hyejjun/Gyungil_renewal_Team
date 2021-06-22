@@ -171,6 +171,19 @@ let destroy_teacher = async (req, res) => {
 }
 
 
+let modify_teacherShow = async (req,res)=>{
+  let {id, show} = req.body; 
+
+  let result = await teacher.update({
+    show,
+  },{
+    where:{id,}
+  })
+
+  res.json({result}); 
+}
+
+
 
 /////////////////////시설소개
 let interior = async (req, res) => {
@@ -262,6 +275,6 @@ module.exports = {
   interior, create_interior, destroy_interior, update_interior, add_interior,
   get_teacher, add_teacher, create_teacher, modify_teacher, destroy_teacher, update_teacher,
   get_history, add_history, dlt_history, update_history,
-  show_location, show_modify, update_location,
+  show_location, show_modify, update_location,modify_teacherShow, 
 }
 
