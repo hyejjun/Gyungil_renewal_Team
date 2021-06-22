@@ -1,3 +1,4 @@
+
 <!--menu pic start-->
 <div id="menu_pic" class="w100">
     <div class="w100 college_menu_pic">
@@ -15,7 +16,7 @@
                     학교소개
                 </div>
                 <div class="sub_navi_content">
-                    <ul>
+                    <ul class="lia">
                         <li><a href="/college/introduction">인사말</a></li>
                         <li><a href="/college/history">연혁</a></li>
                         <li><a href="/college/teachers">교직원소개</a></li>
@@ -26,3 +27,14 @@
             </div>
         </div>
         <!--sub navi end-->
+        <!-- <script>
+            const sele = document.querySelector('.lia>li')
+            sele.addEventListener('click', function god() {
+                li.classList.add('on');
+            }
+        </script> -->
+        <script>
+            $("a").click(function() {
+                toggleClass(".active-color");
+            });
+            </script>

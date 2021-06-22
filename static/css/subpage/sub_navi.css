@@ -14,7 +14,6 @@
     border-bottom: 1px solid #d9d9d9;
     font-size: 17px;
     line-height: 50px;
-    letter-spacing: -1.5px;
 }
 
 .sub_navi_title{
@@ -56,3 +55,11 @@
     height: 100%;  
 }
 
+
+.on{
+    color: #0b83fa;
+}
+.sub_navi_content >ul> li > a:hover {color: #0b83fa;} 
+
+a.active-color { color:#0b83fa; }
+.sub_navi_content > a:active { color: #0b83fa; }
