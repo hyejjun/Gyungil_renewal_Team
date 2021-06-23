@@ -1,7 +1,7 @@
 *{margin: 0; padding: 0;}
 
 
-#slideBox>li>a>img{
+#main_slideBox>li>a>img{
   display: block; 
   width: 1920px;
   height: 495px;
@@ -12,9 +12,12 @@
 #visual{
   position: relative;
   /* z-index: 5; */
+  margin:0 auto; 
+  width: 1920px;
+  height: 495px;
 }
 
-#slideBox{
+#main_slideBox{
   width: 1920px;
   height: 495px;
   margin: 80px  0 auto ;
@@ -29,12 +32,12 @@
   height: 495px;
 }
 
-#slideBox>li.slide.on{
+#main_slideBox>li.slide.on{
   display: block;
 }
 
 
-#slideBox>li.slide.visualSlide_in{
+#main_slideBox>li.slide.visualSlide_in{
   display: block;
   animation: 1s viSlideIn;
   animation-fill-mode: forwards;
@@ -51,7 +54,7 @@
   }
 }
 
-#slideBox>li.slide.visualSlide_out{
+#main_slideBox>li.slide.visualSlide_out{
   display: block;
   animation: 1s viSlideOut;
   animation-fill-mode: forwards;
@@ -62,7 +65,7 @@
   to{left:-1920px}
 }
 
-#slideBox>li.slide.visualSlide_in2{
+#main_slideBox>li.slide.visualSlide_in2{
   display: block;
   animation: 1s viSlideIn2;
   animation-fill-mode: forwards;
@@ -77,7 +80,7 @@
   }
 }
 
-#slideBox>li.slide.visualSlide_out2{
+#main_slideBox>li.slide.visualSlide_out2{
   display: block;
   animation: 1s viSlideOut2;
   animation-fill-mode: forwards;
