@@ -74,28 +74,11 @@
         </div>
       </div>
   
-      <div class="msg right-msg">
-        <div
-         class="msg-img"
-         style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)">
-        </div>
-  
-        <div class="msg-bubble" id="msg">
-          <div class="msg-info">
-            <div class="msg-info-name">Sajad</div>
-            <div class="msg-info-time">12:46</div>
-          </div>
-  
-          <div class="msg-text">
-          </div>
-        </div>
-
-      </div>
     </main>
   
     <form class="msger-inputarea">
       <input type="text" class="msger-input" placeholder="Enter your message...">
-      <button type="submit" class="msger-send-btn" id="chatSend" onclick="send()">Send</button>
+      <button type="submit" class="msger-send-btn" id="chatSend" >보내기</button>
     </form>
   </section>
 </body>
@@ -107,15 +90,19 @@
   const chat_area = document.querySelector('#chat_area');
   const username = document.querySelector('#username');
   const userage = document.querySelector('#userage');
+  const msgerForm = get(".msger-inputarea");
+const msgerInput = get(".msger-input");
+const msgerChat = get(".msger-chat");
   let id; 
-  let tempname; 
+  let PERSON_NAME;
+
 
   async function request_real_time_consult() {
     socket.on("connect", () => {
       
     });
 
-    tempname = username.value; 
+    PERSON_NAME = username.value;
     const name = username.value;
     const age = userage.value; 
     id = socket.id;
@@ -147,33 +134,11 @@
   socket.on('test', datas => {
         consultant_id = datas[1];
         datas = datas[2];
-        addCard2(datas, 'yourchat');
+        appendMessage(BOT_NAME, BOT_IMG, "left", datas);
       })
 
 
 
-
-
-  async function send() {
-    
-    let id = socket.id
-    const msg = document.querySelector('#msg');
-    if(msg.value=='') return; 
-    let datas = [];
-    datas.push(consultant_id);
-    datas.push(id);
-    datas.push(msg.value);
-    datas.push(username.value);
-    socket.emit('test', datas);
-    addCard(msg.value, 'mychat')
-    msg.value = '';
-    msg.focus();
-  }
-
-
-
-
-  
 
 
 window.addEventListener("unload", () => {
@@ -183,71 +148,31 @@ window.addEventListener("unload", () => {
 }, false);
   
 
-
-
-
-
-
-  function addCard2(datas, type) { //mychat  yourchat 
-    const chat = document.querySelector('.chat')
-    const div = document.createElement('div');
-    const pre = document.createElement('pre');
-    const span = document.createElement('span');
-
-    span.innerHTML = '경일게임아카데미';
-    pre.innerHTML = datas;
-    pre.classList.add(type);
-    div.appendChild(span);
-    div.appendChild(pre);
-    chat.appendChild(div);
-  }
-
-  function addCard(text, type) { //mychat  yourchat 
-    const chat = document.querySelector('.chat')
-    const div = document.createElement('div');
-    const pre = document.createElement('pre');
-
-    pre.innerHTML = text;
-    pre.classList.add(type);
-    div.appendChild(pre);
-    chat.appendChild(div);
-  }
-
-  window.addEventListener('unload',()=>{
-    let datas ='goob bye'; 
-    socket.emit('end',datas)
-  })
-
-
   // 채팅방
-  const msgerForm = get(".msger-inputarea");
-const msgerInput = get(".msger-input");
-const msgerChat = get(".msger-chat");
 
-const BOT_MSGS = [
-"Hi, how are you?",
-"Ohh... I can't understand what you trying to say. Sorry!",
-"I like to play games... But I don't know how to play!",
-"Sorry if my answers are not relevant. :))",
-"I feel sleepy! :("
-];
+
 
 // Icons made by Freepik from www.flaticon.com
 const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
 const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
-const BOT_NAME = "KI";
-const PERSON_NAME = tempname;
+const BOT_NAME = "경일게임아카데미";
 
 msgerForm.addEventListener("submit", event => {
 event.preventDefault();
+let id = socket.id
+    const msgText = msgerInput.value;
+    if (!msgText) return;
+    let datas = [];
+    datas.push(consultant_id);
+    datas.push(id);
+    datas.push(msgText);
+    datas.push(username.value);
+    socket.emit('test', datas);
+    
+    appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+    msgerInput.value = "";
+    msgerInput.focus();
 
-const msgText = msgerInput.value;
-if (!msgText) return;
-
-appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
-msgerInput.value = "";
-
-botResponse();
 });
 
 function appendMessage(name, img, side, text) {
@@ -271,15 +196,7 @@ msgerChat.insertAdjacentHTML("beforeend", msgHTML);
 msgerChat.scrollTop += 500;
 }
 
-// function botResponse() {
-// const r = random(0, BOT_MSGS.length - 1);
-// const msgText = BOT_MSGS[r];
-// const delay = msgText.split(" ").length * 100;
 
-// setTimeout(() => {
-// appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-// }, delay);
-// }
 
 // Utils
 function get(selector, root = document) {
@@ -293,9 +210,6 @@ const m = "0" + date.getMinutes();
 return `${h.slice(-2)}:${m.slice(-2)}`;
 }
 
-// function random(min, max) {
-// return Math.floor(Math.random() * (max - min) + min);
-// }
 
 
 

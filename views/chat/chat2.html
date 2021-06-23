@@ -152,17 +152,6 @@ window.addEventListener("unload", () => {
     chat.appendChild(div);
   }
 
-  function addCard(text, type) { //mychat  yourchat 
-    const chat = document.querySelector('.chat')
-    const div = document.createElement('div');
-    const pre = document.createElement('pre');
-
-    pre.innerHTML = text;
-    pre.classList.add(type);
-    div.appendChild(pre);
-    chat.appendChild(div);
-  }
-
   window.addEventListener('unload',()=>{
     let datas ='goob bye'; 
     socket.emit('end',datas)
