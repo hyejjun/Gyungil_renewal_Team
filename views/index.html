@@ -64,22 +64,21 @@
                 </ul>
             </div>
         </div>
-        <!--programs end-->
-
-        <!--reviews start-->
-        <div id="reviews" class="w100">
-            <div class="w1200">
-                <h3 class="reviews_title">경일게임아카데미 수강생의 생생한 목소리를 들어보세요</h3>
-                <div id='rv_visible'>
-                    <ul id="rv_box">
-                        {% for item in review %}
-                        <li class="rv_card{{item.quot}}">
-                            <p class="rv_comment">{{item.rv.content}}</p>
-                            <div class='rv_writer'> 수강생 {{item.rv.writer_user.username}}</div>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+    </div>
+    <!--programs end-->
+    <!--reviews start-->
+    <div id="reviews" class="w100">
+        <div class="w1200">
+            <h3 class="reviews_title">경일게임아카데미 수강생의 생생한 목소리를 들어보세요</h3>
+            <div id='rv_visible'>
+                <ul id="rv_box">
+                    {% for item in review %}
+                    <li class="rv_card{{item.quot}}">
+                        <p class="rv_comment">{{item.rv.content}}</p>
+                        <div class='rv_writer'> 수강생 {{item.rv.writer_user.username}}</div>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

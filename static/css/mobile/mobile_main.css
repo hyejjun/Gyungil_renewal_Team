@@ -32,6 +32,69 @@
         padding: 10px 0;
     }
     /*슬라이드 메뉴*/
+    #side_area{
+        display: block;
+    }
+    #side_flag{display:none;}
+    #side_area > #side_flag+label{
+        width:30px;
+        height:20px;
+        right: 10px;
+        top: 20px;
+        display:block;
+        position:absolute;
+        cursor:pointer;
+    }
+    #side_area > #side_flag+label span{
+        position:absolute;
+        display:block;
+        width:100%;
+        height:3px;
+        background:#000;
+        z-index:10;
+        transition: all .35s;
+    }
+
+    #side_area > #side_flag+label span:nth-child(1){top:0px;}
+    #side_area > #side_flag+label span:nth-child(2){top:50%; transform:translateY(-50%)}
+    #side_area > #side_flag+label span:nth-child(3){bottom:0px;}
+
+    #side_area > #side_flag:checked+label span:nth-child(1){top:50%; transform:translateY(-50%) rotate(45deg);}
+    #side_area > #side_flag:checked+label span:nth-child(2){opacity:0;}
+    #side_area > #side_flag:checked+label span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg);}
+    #side_area > #sidebar {
+        width: 155px;
+        height: 100%;
+        padding: 90px 18px;
+        box-sizing: border-box;
+        position:fixed;
+        top:0px;
+        right:-160px;
+        /* background:#fff; */
+        background: rgb(26, 161, 110);
+        z-index:2;
+        transition: all .35s;
+    }
+    #side_area > #sidebar > ul >li {margin-top:20px;}
+    #side_area > #side_flag:checked+label+#sidebar{
+        right:0px;
+        transition: all .35s;
+    }
+
+    .login{
+        width: 100px;
+        height: 50px;
+        display: block;
+        position: absolute;
+        bottom: 70px;
+        right: 20px;
+        font-size: 20px;
+    }
+    .login > a{
+        display: block;
+        height: 50px;
+        text-align: right;
+    }
 
     /*프로그램 부분*/
     #program{
@@ -76,16 +139,18 @@
     #reviews{
         margin-top: 30px;
     }
-    #reviews,
+    #reviews{
+        width: 100% !important;
+        height: auto;
+    }
+
     #reviews > .w1200
     {
         width: 100%;
         height: auto;
+        padding: 10px;
     }
 
-    #rv_visible{
-
-    }
 
     /*연락망*/
     #location{
@@ -128,8 +193,9 @@
         overflow: hidden;
     }
 
-    #footer_inner_div{
-
+    .footer_inner_div{
+        width: 100%;
+        padding: 30px;
     }
 
     .footer_logo{
@@ -149,7 +215,11 @@
     }
 
     .footer_copyright>p{
+        height: 50px;
+    }
 
+    .footer_copyright>p:nth-child(3){
+        display: none;
     }
 
 
