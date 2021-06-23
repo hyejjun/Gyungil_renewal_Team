@@ -1,11 +1,17 @@
 @media (max-width: 1200px) {
+    @font-face {
+        font-family: 'NanumSquareRound';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
     html {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
         overflow-y: auto;
         scroll-behavior: smooth;
-        font-family: 'Nanum Gothic', sans-serif;
+        font-family: 'NanumSquareRound';
     }
     #wrap {
         width: 100%;
@@ -34,7 +40,7 @@
         margin-top: 50px;
         background: none;
     }
-    #program>div{
+    #program>.w1200{
         width: 100%;
         height: auto;
     }
@@ -66,5 +72,89 @@
         display: none;
     }
     
+    /*review*/
+    #reviews{
+        margin-top: 30px;
+    }
+    #reviews,
+    #reviews > .w1200
+    {
+        width: 100%;
+        height: auto;
+    }
+
+    #rv_visible{
+
+    }
+
+    /*연락망*/
+    #location{
+        display: none;
+    }
+
+    #consult,
+    #consult > .w1200{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .consultInnerWrap{
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        padding: 30px 65px;
+    }
+
+    .consultText{
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+   
+    .consultText>span{
+        display: block;
+    }
+
+    .consultBtn{
+        width: 130px;
+        height: 55px;
+        float: left;
+    }
+
+    /*footer*/
+    #footer{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    #footer_inner_div{
+
+    }
+
+    .footer_logo{
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    .footer_logo > img{
+        display: block;
+        width: 110px;
+    }
+
+    .footer_copyright{
+        display: block;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .footer_copyright>p{
+
+    }
+
+
+    
+
+
 
 }
