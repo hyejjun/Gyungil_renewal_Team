@@ -64,18 +64,22 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <!--programs end-->
+        <!--programs end-->
 
-    <!--reviews start-->
-    <div id="reviews" class="w100">
-        <div class="w1200">
-            <div class="reviews_title">수강생 후기</div>
-
-            {% for item in review %}
-            <div>
-                {{item.rv.writer_user.username}}
-                {{item.rv.content}}
+        <!--reviews start-->
+        <div id="reviews" class="w100">
+            <div class="w1200">
+                <h3 class="reviews_title">경일게임아카데미 수강생의 생생한 목소리를 들어보세요</h3>
+                <div id='rv_visible'>
+                    <ul id="rv_box">
+                        {% for item in review %}
+                        <li class="rv_card{{item.quot}}" >
+                            <p class="rv_comment">{{item.rv.content}}</p>
+                            <div class='rv_writer'> 수강생 {{item.rv.writer_user.username}}</div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
             {% endfor %}
 
@@ -153,10 +157,15 @@
     {% endif%}
 
     <script src="/js/mainslide.js"></script>
+    <script src="/js/reviewslide.js"></script>
 
+<<<<<<< HEAD
     <!--클라이언트에서 웹소켓 요청을 위해 필요한 라이브러리-->
     <script type="text/javascript" src="./socket.io.js"></script>
 
+=======
+   
+>>>>>>> 958e477ddc35c699ade9084ef296895f6e691848
 
 </body>
 

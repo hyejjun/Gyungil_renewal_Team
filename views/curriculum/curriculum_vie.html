@@ -1,0 +1,75 @@
+{% include "../layout/subpage_top.html" %}
+{% include "../layout/subpage_curriculum_navi.html" %}
+
+<!--menu_contents start-->
+<div class="menu_contents">
+    <div class="mc_title">
+        {{spec.name}}
+    </div>
+    <!-- <div class="mc_content">
+        <img src="http://localhost:3000/{{spec.image}}" alt="">
+        {{spec.term}}개월
+        {{spec.start_time}} ~{{spec.end_time}}
+        {{spec.locaion}}
+        {{spec.tuition}}
+        {{spec.qual}} -->
+        <div class="board_view_wrap">
+            <div class="board_view board_title">
+                
+                <div class="info">
+                    <dl>
+                        <dt>{{spec.term}}</dt>
+                        <dd>개월 과정</dd>
+                    </dl>
+                    <dl>
+                        <dt>교육시간</dt>
+                        <dd>{{spec.start_time}} ~{{spec.end_time}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>교육장소</dt>
+                        <dd>{{spec.locaion}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>자격요건</dt>
+                        <dd>{{spec.qual}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>수강료</dt>
+                        <dd>{{spec.tuition}}</dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    <img src="http://localhost:3000/{{spec.image}}" alt="">
+                    <p>{{spec.info}}</p>
+                </div>
+            <div class="bt_wrap">
+                <a href="/jobinfo/{{board_name}}/list?page={{page}}" class="on">목록</a>
+            </div>
+        </div>
+    </div>
+
+        <div>커리큘럼</div>
+        <ul>
+        {% for item in subjects %}
+            <li>
+                {{item.name}}
+                {{item.content}}
+            </li>
+            {% endfor %}
+        </ul> 
+
+        <div>수강후기</div>
+        <ul>
+            {% for item in review %}
+            <li>
+                {{item.writer_user.username}}
+                {{item.content}}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!--menu_contents end-->
+
+
+{% include "../layout/subpage_bottom.html" %}

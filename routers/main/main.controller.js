@@ -38,12 +38,20 @@ let main = async (req, res) => {
           }], 
     })
 
+    let n=1; 
+    review.forEach(v=>{
+        v['quot'] = n;
+        n++;
+        if(n==6) n = 1;  
+    })
+
+
 
     if (AccessToken != undefined) {
-        res.render('./index', { msg, userid, username, visual, curr })
+        res.render('./index', { msg, userid, username, visual, curr, review,  })
     }else if(req.session.kakao != undefined){
         let {nickname} = req.session.kakao.properties
-        res.render('./index', { msg, nickname, visual, curr })
+        res.render('./index', { msg, nickname, visual, curr, review,  })
     } else {
         res.render('./index', { msg, visual, curr, review, })
     }

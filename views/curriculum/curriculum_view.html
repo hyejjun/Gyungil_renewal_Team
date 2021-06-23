@@ -1,75 +1,178 @@
 {% include "../layout/subpage_top.html" %}
 {% include "../layout/subpage_curriculum_navi.html" %}
+<body>
+	<header class="header">
+		<div class="global-width">
+			<h1 class="page-title">{{spec.name}}</h1>
+			<p>커리 큘럼에 대하여 자세한 소개가 있겠습니다.</p>
+		</div>
+	</header>
+	<section class="scroll-content">
+		<div class="scroll-graphic">
+			<div class="graphic-item "><img class="scene-img" src="/images/00.png" alt=""></div>
+			<div class="graphic-item"><img class="scene-img" src="images/01.png" alt=""></div>
+			<div class="graphic-item" data-action="birdFlies">
+				<img class="bird" src="images/bird.gif" alt="">
+				<img class="scene-img" src="images/02.png" alt="">
+			</div>
+			<div class="graphic-item"><img class="scene-img" src="images/bird.gif" alt=""></div>
+			<div class="graphic-item"><img class="scene-img" src="images/03.png" alt=""></div>
+			<div class="graphic-item" data-action="birdFlies2">
+				<img class="bird" src="images/bird.gif" alt="">
+				<img class="scene-img" src="images/04.png" alt="">
+			</div>
+			<div class="graphic-item"><img class="scene-img" src="images/05.png" alt=""></div>
+			<div class="graphic-item"><img class="scene-img" src="images/06.png" alt=""></div>
+			<div class="graphic-item"><img class="scene-img" src="images/07.png" alt=""></div>
+			<div class="graphic-item"><img class="scene-img" src="images/08.png" alt=""></div>
+		</div>
+		<div class="scroll-text global-width">
+			<div class="step">
+				<p>
+					{{spec.name}}을 소개한다.
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					{{spec.term}} 개월 과정으로 구성되어 있다
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					교육시간은 이렇다.<br>{{spec.start_time}} ~{{spec.end_time}}
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					교육장소는 {{spec.locaion}}
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					수강료는 {{spec.tuition}}
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					{{spec.info}}
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					라면 매니아 답게 유튜브로 <a href="https://www.youtube.com/channel/UCYzTR8jV9_xv1p25N2dNBQQ" target="_blank">라면소녀</a> 채널을 보며 간식으로 라면을 먹는다.
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					자기 전, 가끔 <a href="https://www.youtube.com/channel/UCkTRKCuFrRiXQm_gMG1uDvg" target="_blank">요가소년</a> 채널을 보며 요가를 한다.
+				</p>
+			</div>
+			<div class="step">
+				<p>
+					일과를 마치고 <span class="strikethrough">폰질을 한다</span> 잠자리에 든다.
+				</p>
+			</div>
+		</div>
+	</section>
+	<div class="bt_wrap">
+		<a href="/jobinfo/{{board_name}}/list?page={{page}}" class="on">목록</a>
+	</div>
+	<footer class="global-footer">
+	</footer>
 
-<!--menu_contents start-->
-<div class="menu_contents">
-    <div class="mc_title">
-        {{spec.name}}
-    </div>
-    <!-- <div class="mc_content">
-        <img src="http://localhost:3000/{{spec.image}}" alt="">
-        {{spec.term}}개월
-        {{spec.start_time}} ~{{spec.end_time}}
-        {{spec.locaion}}
-        {{spec.tuition}}
-        {{spec.qual}} -->
-        <div class="board_view_wrap">
-            <div class="board_view board_title">
-                
-                <div class="info">
-                    <dl>
-                        <dt>{{spec.term}}</dt>
-                        <dd>개월 과정</dd>
-                    </dl>
-                    <dl>
-                        <dt>교육기간</dt>
-                        <dd>{{spec.start_time}} ~{{spec.end_time}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>교육장소</dt>
-                        <dd>{{spec.locaion}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>자격요건</dt>
-                        <dd>{{spec.qual}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>수강료</dt>
-                        <dd>{{spec.tuition}}</dd>
-                    </dl>
-                </div>
-                <div class="cont">
-                    <img src="http://localhost:3000/{{spec.image}}" alt="">
-                    <p>{{spec.info}}</p>
-                </div>
-            <div class="bt_wrap">
-                <a href="/jobinfo/{{board_name}}/list?page={{page}}" class="on">목록</a>
-            </div>
-        </div>
-    </div>
+	<script>
+		(() => {
 
-        <div>커리큘럼</div>
-        <ul>
-        {% for item in subjects %}
-            <li>
-                {{item.name}}
-                {{item.content}}
-            </li>
-            {% endfor %}
-        </ul> 
+const actions = {
+	birdFlies(key) {
+		if (key) {
+			document.querySelector('[data-index="2"] .bird').style.transform = `translateX(${window.
+				innerWidth}px)`;
+		} else {
+			document.querySelector('[data-index="2"] .bird').style.transform = `translateX(-100%)`;
+		}
+	},
 
-        <div>수강후기</div>
-        <ul>
-            {% for item in review %}
-            <li>
-                {{item.writer_user.username}}
-                {{item.content}}
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-<!--menu_contents end-->
+	birdFlies2(key) {
+		if (key) {
+			document.querySelector('[data-index="5"] .bird').style.transform = `translateX(${window.
+				innerWidth}px, ${window.innerHeight * 0.7}px)`;
+		} else {
+			document.querySelector('[data-index="5"] .bird').style.transform = `translateX(-100%)`;
+		}
+	}
+};
 
 
+
+const stepElems = document.querySelectorAll('.step');
+const graphicElems = document.querySelectorAll('.graphic-item');
+// 현재활성화된(visible 클래스가 붙은) .graphic-item을 지정
+let currentItem = graphicElems[0]; 
+
+const io = new IntersectionObserver((entries,obserber) => {
+	ioIndex = entries[0].target.dataset.index * 1
+	console.log(ioIndex);
+});
+
+
+for (let i =0; i < stepElems.length; i++) {
+	io.observe(stepElems[i]);
+	// stepElems[i].setAttribute('data-index',i);
+	stepElems[i].dataset.index = i;
+	graphicElems[i].dataset.index = i;
+}
+
+function activate(action) {   
+	currentItem.classList.add('visible')
+	if(action) {
+		actions[action](true);
+	}
+
+}
+
+function inactivate(action) {
+	currentItem.classList.remove('visible')
+	if(action) {
+		actions[action](false);
+	}
+}
+
+window.addEventListener('scroll',() => {
+	let step;
+	let boundingRect;
+	let temp = 0;
+	
+
+	for( let i =ioIndex-1;  i< ioIndex +2; i++)  {
+		step = stepElems[i];
+		if(!step) continue
+		boundingRect = step.getBoundingClientRect();
+
+		temp++;
+
+		if (boundingRect.top > window.innerHeight *0.1 &&
+			boundingRect.top < window.innerHeight *0.8) {
+
+				inactivate();
+				currentItem =  graphicElems[step.dataset.index];
+				activate(currentItem.dataset.action);
+			}
+	}
+	console.log(temp);
+});
+
+window.addEventListener('load', () => {
+	 seTimeout(() => scrollTo(0, 0), 100);
+});
+
+activate();
+})();
+
+	</script>
 {% include "../layout/subpage_bottom.html" %}
