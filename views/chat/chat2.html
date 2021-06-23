@@ -1,0 +1,176 @@
+{% include "../layout/subpage_top.html" %}
+{% include "../layout/subpage_consult_navi.html" %}
+<link rel="stylesheet" href="/css/index/chat.css">
+<!--menu_contents start-->
+<div class="menu_contents">
+    <div class="mc_title">
+        실시간 상담
+    </div>
+    <div class="mc_content">
+        <div id="request_info">
+            <p>상담정보</p>
+            <table>
+                <colgroup>
+                    <col width="12%">
+                    <col width="*">
+                </colgroup>
+                <tbody class="consult_table">
+                    <tr>
+                        <th>이름 *</th>
+                        <td>
+                            <input type="text"  id="username" placeholder="이름을 적어 주세요"
+                                class="consult_input consult_input_name" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>나이 *</th>
+                        <td>
+                            <input type="number"  id="userage" placeholder="나이를 적어주세요"
+                                class="consult_input consult_input_age" required>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="consultBtn_div">
+                <button onclick="request_real_time_consult()" class="submitBtn consult_submitBtn">상담신청하기</button>
+            </div>
+        </div>
+
+        <div id="chat_area" style="display: none;">
+            <div id="chatRoom"></div>
+            <div class="chat"></div>
+        
+            <div id="chatInputArea">
+              <textarea name="" id="msg"></textarea>
+              <button id="chatSend" onclick="send()">전송</button>
+        
+            </div>
+        </div>
+    </div>
+</div>
+<!--menu_contents end-->
+<!-- 스크립트 영역 -->
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script>
+
+  const socket = io();
+  const chat_area = document.querySelector('#chat_area');
+  const username = document.querySelector('#username');
+  const userage = document.querySelector('#userage');
+  let id; 
+
+
+  async function request_real_time_consult() {
+    socket.on("connect", () => {
+      
+    });
+
+    
+    const name = username.value;
+    const age = userage.value; 
+    id = socket.id;
+    let url = 'http://localhost:3000/chat/request'
+    let options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        name, age, id,
+      }),
+    }
+    
+    let response = await fetch(url, options);
+    if (response.ok) {
+      alert('상담요청하였습니다. 잠시만 기다려주세요.')
+      request_info.style.display = 'none';
+      chat_area.style.display = 'block';
+
+    } else {
+      window.location.reload();
+      alert('상담요청 실패했습니다.');
+    }
+  }
+
+  //////////////////////여기까지 오면 clients 배열에 정보가 들어감 
+
+  socket.on('test', datas => {
+        consultant_id = datas[1];
+        datas = datas[2];
+        addCard2(datas, 'yourchat');
+      })
+
+
+
+
+
+  async function send() {
+    
+    let id = socket.id
+    const msg = document.querySelector('#msg');
+    if(msg.value=='') return; 
+    let datas = [];
+    datas.push(consultant_id);
+    datas.push(id);
+    datas.push(msg.value);
+    datas.push(username.value);
+    socket.emit('test', datas);
+    addCard(msg.value, 'mychat')
+    msg.value = '';
+    msg.focus();
+  }
+
+
+
+
+  
+
+
+window.addEventListener("unload", () => {
+  let data = new FormData(); 
+  data.append('data',id); 
+  window.navigator.sendBeacon("http://localhost:3000/chat/end",data); 
+}, false);
+  
+
+
+
+
+
+
+  function addCard2(datas, type) { //mychat  yourchat 
+    const chat = document.querySelector('.chat')
+    const div = document.createElement('div');
+    const pre = document.createElement('pre');
+    const span = document.createElement('span');
+
+    span.innerHTML = '경일게임아카데미';
+    pre.innerHTML = datas;
+    pre.classList.add(type);
+    div.appendChild(span);
+    div.appendChild(pre);
+    chat.appendChild(div);
+  }
+
+  function addCard(text, type) { //mychat  yourchat 
+    const chat = document.querySelector('.chat')
+    const div = document.createElement('div');
+    const pre = document.createElement('pre');
+
+    pre.innerHTML = text;
+    pre.classList.add(type);
+    div.appendChild(pre);
+    chat.appendChild(div);
+  }
+
+  window.addEventListener('unload',()=>{
+    let datas ='goob bye'; 
+    socket.emit('end',datas)
+  })
+
+
+
+</script>
+
+{% include "../layout/subpage_bottom.html" %}
+

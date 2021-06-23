@@ -11,31 +11,59 @@
 </head>
 
 <body>
-  <div id="request_info">
-    이름: <input type="text" id="username" required><br>
-    나이: <input type="number" id="userage" required><br>
-    <input type="button" onclick="request_real_time_consult()" value="상담요청하기">
+  {% include "../layout/subpage_top.html" %}
+{% include "../layout/subpage_consult_navi.html" %}
+<div class="menu_contents">
+  <div class="mc_title">
+      실시간 상담
   </div>
+  <div class="mc_content">
+      <div id="request_info">
+          <p>상담정보</p>
+          <table>
+              <colgroup>
+                  <col width="12%">
+                  <col width="*">
+              </colgroup>
+              <tbody class="consult_table">
+                  <tr>
+                      <th>이름 *</th>
+                      <td>
+                          <input type="text"  id="username" placeholder="이름을 적어 주세요"
+                              class="consult_input consult_input_name" required>
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>나이 *</th>
+                      <td>
+                          <input type="number"  id="userage" placeholder="나이를 적어주세요"
+                              class="consult_input consult_input_age" required>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <div class="consultBtn_div">
+              <button onclick="request_real_time_consult()" class="submitBtn consult_submitBtn">상담신청하기</button>
+          </div>
+      </div>
 
-  <div id="chat_area" style="display: none;">
-    <div id="chatRoom"></div>
-    <div class="chat"></div>
+      <div id="chat_area" style="display: none;">
+          <div id="chatRoom"></div>
+          <div class="chat"></div>
+      
+          <div id="chatInputArea">
+            <textarea name="" id="msg"></textarea>
+            <button id="chatSend" onclick="send()">전송</button>
+      
+          </div>
+      </div>
+  </div>
+</div>
+{% include "../layout/subpage_bottom.html" %}
 
-    <div id="chatInputArea">
-      <textarea name="" id="msg"></textarea>
-      <button id="chatSend" onclick="send()">전송</button>
 
-    </div>
-
-
-
+<!-- 스크립트 영역 -->
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <!-- <script src="/js/chat.js"></script> -->
-
-
-
-
-
     <script>
 
       const socket = io();
