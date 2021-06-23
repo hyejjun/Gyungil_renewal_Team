@@ -1,0 +1,42 @@
+@media (max-width: 1200px) {
+    .personal_ag_div{
+        width: 100%;
+    }
+    .consult_information{
+        width: 100%;
+    }
+    .consult_information>table{
+        width: 100%;
+    }
+
+    .consult_table>tr{
+        width: 100%;
+        height: 30vw;
+    }
+
+    .consult_table>tr>th{
+        width: 19vw;
+        display: block;
+    }
+
+    .consult_table>tr>td{
+        width: 100%;
+        display: block;
+    }
+
+    .consult_table>tr:nth-child(3)>th{
+        padding: 0 0 0 10px;
+    }
+
+    .consult_table>tr>td>input{
+        width: 89vw;
+    }
+    .consult_table>tr:nth-child(4)>th{
+        padding: 0;
+    }
+
+    .consult_input_text{
+        width: 89vw;
+    }
+
+}

@@ -13,6 +13,19 @@
         scroll-behavior: smooth;
         font-family: 'NanumSquareRound';
     }
+    .gnb_wrap {
+        width: 100%;
+    }
+    .gnb {
+        display: none;
+    }
+    .logo>a>img{
+        display: inline-block;
+        width: 130px;
+        height: 70%;
+        padding: 10px 0;
+    }
+    
 
     /*슬라이드 메뉴*/
     #side_area{
@@ -115,4 +128,36 @@
     .footer_copyright>p:nth-child(3){
         display: none;
     }
+
+
+
+    /*submenu*/
+    #menu_pic{
+        display: none;
+    }
+
+    .sub_bottom{
+        margin-top: 100px;
+    }
+
+    .sub_navi{
+        display: none;
+    }
+    .menu_contents{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .mc_title{
+        width: 95vw;
+        height: auto;
+        font-size: 25px;
+    }
+    .mc_content{
+        width: 90vw;
+    }
+
 }
