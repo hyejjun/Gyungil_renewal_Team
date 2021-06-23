@@ -13,26 +13,5 @@
   margin: 0 auto;
 }
 
-.slidebox {max-width:1900px;margin:0 auto;position:relative;}
-.slidebox .slidelist {position:relative;white-space:nowrap;font-size:0;overflow:hidden;}
-.slidebox .slidelist .slideitem {position:relative;display:inline-block;vertical-align:middle;background-color:#fff;width:100%;transition:all 1s;}
-.slidebox .slidelist .slideitem > a {display:block;width:auto;position:relative;}
-.slidebox .slidelist .slideitem > a img {width: 1900px;}
-
-.slidebox .slide-control [class*="control"] label {position:absolute;z-index:3;top:50%;transform:translateY(-50%);padding:20px;border-radius:50%;cursor:pointer;}
-.slidebox .slide-control [class*="control"] label.prev {left:7px;background: url('https://www.sktcloudmarketplace.com/img/icon_main_indicator_left.2e08b9e6.svg') center center / 50% no-repeat;}
-.slidebox .slide-control [class*="control"] label.next {right:7px;background: url('https://www.sktcloudmarketplace.com/img/icon_main_indicator_over.46fcf19c.svg') center center / 50% no-repeat;}
-
-[name="slide"] {display:none;}
-#slide01:checked ~ .slidelist .slideitem {left:0;}
-#slide02:checked ~ .slidelist .slideitem {left:-100%;}
-#slide03:checked ~ .slidelist .slideitem {left:-200%;}
-#slide04:checked ~ .slidelist .slideitem {left:-300%;}
-
-.slide-control [class*="control"] {display:none;}
-#slide01:checked ~ .slide-control .control01 {display:block;}
-#slide02:checked ~ .slide-control .control02 {display:block;}
-#slide03:checked ~ .slide-control .control03 {display:block;}
-#slide04:checked ~ .slide-control .control04 {display:block;}
 
 /*visual end*/

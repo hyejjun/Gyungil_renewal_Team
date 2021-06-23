@@ -1,0 +1,70 @@
+@media (max-width: 1200px) {
+    html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+    #wrap {
+        width: 100%;
+    }
+    #visual {
+        display: none;
+    }
+    .gnb_wrap {
+        width: 100%;
+    }
+    .gnb {
+        display: none;
+    }
+    .logo>a>img{
+        display: inline-block;
+        width: 130px;
+        height: 70%;
+        padding: 10px 0;
+    }
+    /*슬라이드 메뉴*/
+
+    /*프로그램 부분*/
+    #program{
+        width: 100%;
+        height: auto;
+        margin-top: 50px;
+        background: none;
+    }
+    #program>div{
+        width: 100%;
+        height: auto;
+    }
+    .program_title{
+        font-size: 20px;
+    }
+    .program_sub_title{
+        display: none;
+    }
+    .program_list{
+        width: 100%;
+        height: auto;
+    }
+    .program_list>ul{
+        display: block;
+    }
+    .card{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        background: none;
+    }
+    .card>a>img{
+        height: 160px;
+    }
+    .card>a:nth-child(2){
+        display: none;
+    }
+    
+
+}

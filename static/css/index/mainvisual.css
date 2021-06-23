@@ -20,6 +20,8 @@
   margin: 80px  0 auto ;
   position: relative;
   overflow: hidden;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .slide{

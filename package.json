@@ -31,5 +31,13 @@
     "summernote": "^0.8.18"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyejjun/Gyungil_renewal_Team.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hyejjun/Gyungil_renewal_Team/issues"
+  },
+  "homepage": "https://github.com/hyejjun/Gyungil_renewal_Team#readme",
   "description": ""
 }

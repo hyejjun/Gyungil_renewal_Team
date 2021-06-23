@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Document</title>
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index/gnb.css">
@@ -14,6 +16,8 @@
     <link rel="stylesheet" href="/css/index/location.css">
     <link rel="stylesheet" href="/css/index/consult.css">
     <link rel="stylesheet" href="/css/index/footer.css">
+
+    <link rel="stylesheet" href="/css/mobile/mobile_main.css">
 
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/gh/hiphop5782/js@0.0.6/typing/hakademy-typing.css">
@@ -26,127 +30,94 @@
         <!--gnb start-->
         {% include "./layout/gnb.html" %}
         <!--gnb end-->
-
-        <!-- visual start 
-        <div id="visual" class="w100 slidebox">
-            <input type="radio" name="slide" id="slide01" checked>
-            <input type="radio" name="slide" id="slide02">
-            <input type="radio" name="slide" id="slide03">
-            <input type="radio" name="slide" id="slide04">
-            <ul class="visual_ul slidelist">
-                {% for item in visual %}
-                <li class="slideitem"><a href="{{item.link}}"><img src="http://localhost:3000/{{item.image}}"
-                            alt="메인비주얼 이미지"></a></li>
-                {% endfor %}
-            </ul>
-            <div class="slide-control">
-                <div class="control01">
-                    <label for="slide04" class="prev"></label>
-                    <label for="slide02" class="next"></label>
-                </div>
-                <div class="control02">
-                    <label for="slide01" class="prev"></label>
-                    <label for="slide03" class="next"></label>
-                </div>
-                <div class="control03">
-                    <label for="slide02" class="prev"></label>
-                    <label for="slide04" class="next"></label>
-                </div>
-                <div class="control04">
-                    <label for="slide03" class="prev"></label>
-                    <label for="slide01" class="next"></label>
-                </div>
-            </div>
-        </div>
-       visual end--> 
         <div id='visual'>
             <ul id="slideBox">
                 {% for item in visual %}
-                    <li class="slide"><a href="{{item.link}}"><img src="http://localhost:3000/{{item.image}}" alt="메인비주얼 이미지"></a></li>
+                <li class="slide"><a href="{{item.link}}"><img src="http://localhost:3000/{{item.image}}"
+                            alt="메인비주얼 이미지"></a></li>
                 {% endfor %}
             </ul>
 
             <div class="slide_btn" id="slide_btn_prev" onclick="viSlideBtn(true)"></div>
-            <div class="slide_btn" id="slide_btn_next"onclick="viSlideBtn()"></div>
+            <div class="slide_btn" id="slide_btn_next" onclick="viSlideBtn()"></div>
             <!-- <div id="visual_pagination" style="width: 400px;">
                 <div style="width: 0;"></div> -->
-            </div>
         </div>
-        
+    </div>
 
-
-
-        <!--programs start-->
-        <div id="program" class="w100">
-            <div class="w1200">
-                <div class="program_title">어떤 수업이 있나요?</div>
-                <div class="program_sub_title">당신도 할 수 있어요</div>
-                <div class="program_list">
-                    <ul>
-                        {% for item in curr %}
-                        <li class="card">
+    <!--programs start-->
+    <div id="program" class="w100">
+        <div class="w1200">
+            <div class="program_title">어떤 수업이 있나요?</div>
+            <div class="program_sub_title">당신도 할 수 있어요</div>
+            <div class="program_list">
+                <ul>
+                    {% for item in curr %}
+                    <li class="card">
+                        <a href="http://localhost:3000/curriculum/curriculum_view?id={{item.id}}">
                             <img src="http://localhost:3000/{{item.image}}" alt="교육과정이미지">
-                            <a href="http://localhost:3000/curriculum/curriculum_view?id={{item.id}}">{{item.name}}</a>
-                        </li>
-                        {% endfor %}
-                        
-                    </ul>
-                </div>
+                        </a>
+                        <a href="http://localhost:3000/curriculum/curriculum_view?id={{item.id}}">{{item.name}}</a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
             </div>
         </div>
-        <!--programs end-->
+    </div>
+    <!--programs end-->
 
-        <!--reviews start-->
-        <div id="reviews" class="w100">
-            <div class="w1200">
-                <div class="reviews_title">수강생 후기</div>
+    <!--reviews start-->
+    <div id="reviews" class="w100">
+        <div class="w1200">
+            <div class="reviews_title">수강생 후기</div>
 
-                {% for item in review %}
-                <div>
-                    {{item.rv.writer_user.username}}
-                    {{item.rv.content}}
-                </div>
-                {% endfor %}
+            {% for item in review %}
+            <div>
+                {{item.rv.writer_user.username}}
+                {{item.rv.content}}
+            </div>
+            {% endfor %}
 
-                <div class="reviews_sub_title">경일게임아카데미 수강생의 생생한 목소리를 들어보세요</div>
+            <div class="reviews_sub_title">경일게임아카데미 수강생의 생생한 목소리를 들어보세요</div>
+        </div>
+    </div>
+    <!--reviews end-->
+
+    <!--location start-->
+    <div id="location" class="w100">
+        <div class="w1200">
+            <div>
+                <img src="http://www.kiweb.or.kr/images/main_new/customer_tel.png" alt="연락처">
             </div>
         </div>
-        <!--reviews end-->
+    </div>
+    <!--location end-->
 
-        <!--location start-->
-        <div id="location" class="w100">
-            <div class="w1200">
-                <div>
-                    <img src="http://www.kiweb.or.kr/images/main_new/customer_tel.png" alt="연락처">
+    <!--consult start-->
+    <div id="consult" class="w100">
+        <div class="w1200">
+            <div class="consultInnerWrap">
+                <div class="consultText">
+                    경일게임아카데미에서
+                    <span class="typing"></span>
+                    을 시작하세요.
                 </div>
+                <a href="/consult/consulting">
+                    <div class="consultBtn">지원하기</div>
+                </a>
             </div>
         </div>
-        <!--location end-->
-
-        <!--consult start-->
-        <div id="consult" class="w100">
-            <div class="w1200">
-                <div class="consultInnerWrap">
-                    <div class="consultText">
-                        경일게임아카데미에서
-                        <span class="typing"></span>
-                        을 시작하세요.
-                    </div>
-                    <a href="/consult/consulting">
-                        <div class="consultBtn">지원하기</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!--consult end-->
-
-   
-  
+    </div>
+    <!--consult end-->
 
 
-        <!--footer start-->
-        {% include "./layout/footer.html" %}
-        <!--footer end-->
+
+
+
+    <!--footer start-->
+    {% include "./layout/footer.html" %}
+    <!--footer end-->
     </div>
 
     <script src="/js/submenu.js"></script>
@@ -185,7 +156,7 @@
 
     <!--클라이언트에서 웹소켓 요청을 위해 필요한 라이브러리-->
     <script type="text/javascript" src="./socket.io.js"></script>
-   
+
 
 </body>
 
