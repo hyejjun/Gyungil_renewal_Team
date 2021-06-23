@@ -25,6 +25,7 @@
                     </a>
                 </ul>
             </div>
+            
             <div class="userinfo">
                 <div class="before_login">
                     <a href="/user/login">로그인</a>
@@ -33,13 +34,44 @@
                 <div class="after_login">
                     {% if userid != undefined %}
                     <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
-                    <a href="/user/logout"><span class="logout">로그아웃</span></a>
-                    {% endif %}
-                    {% if nickname != undefined %}
+                    <a href="/user/logout"><span class="logout">로그아웃</span></a> {% endif %} {% if nickname != undefined %}
                     <a href="/auth/kakao/kakao_userinfo"><span class="after_login_span">{{nickname}}님</span></a>
-                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a>
-                    {% endif %}
+                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a> {% endif %}
                 </div>
+            </div>
+
+            <div id="side_area">
+                <input type="checkbox" id="side_flag" >
+                <label for="side_flag">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div id="sidebar">
+                    <ul class="gnb_ul">
+                        <a href="/college/introduction">
+                            <li>학교소개</li>
+                        </a>
+                        <a href="/curriculum/curriculum">
+                            <li>교육과정</li>
+                        </a>
+                        <a href="/jobinfo/interview/list?page=1">
+                            <li>취업정보</li>
+                        </a>
+                        <a href="/community/notice/list?page=1">
+                            <li>커뮤니티</li>
+                        </a>
+                        <a href="/consult/consulting">
+                            <li>상담신청</li>
+                        </a>
+                    </ul>
+
+                    <div class="login">
+                        <a href="/user/login">로그인</a>
+                        <a href="/user/join">회원가입</a>
+                    </div>
+                </div>
+                
             </div>
         </div>
         <div class="submenu">
