@@ -1,8 +1,10 @@
 /*reviews start*/
 #reviews{
-    height: 400px;
-    background: #7f95bb;
-    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+    width: 100vw !important;
+    height: 420px;
+    margin-top: 50px;
 }
 .reviews_title{
     text-align: center;
@@ -12,4 +14,169 @@
     text-align: center;
 }
 /*reviews end*/
+
+#rv_visible{
+   width: 1200px;
+   height: 420px;
+   margin: 0 auto;
+   overflow: hidden;
+}
+
+
+#rv_box{
+    width: auto;
+    white-space: nowrap;
+    height: 420px;
+    position: relative;
+    padding-top: 20px;
+}
+
+.rv_card1{
+    width: 380px;
+    height: 320px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px 0 rgb(60 60 60 / 15%);
+    border: solid 1px #ededed;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 12px;
+    display:inline-block;
+    padding: 38px 48px 0;
+    text-align: center;
+    background-image: url(../images/icon-quot-1.png),url(../images/icon-quot-gray.png);
+    background-size: 20px 16px,20px 16px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: 27px 26px,340px 203px;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rv_card2{
+    width: 380px;
+    height: 320px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px 0 rgb(60 60 60 / 15%);
+    border: solid 1px #ededed;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 12px;
+    display:inline-block;
+    padding: 38px 48px 0;
+    text-align: center;
+    background-image: url(../images/icon-quot-2.png),url(../images/icon-quot-gray.png);
+    background-size: 20px 16px,20px 16px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: 27px 26px,340px 203px;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+}
+
+.rv_card3{
+    width: 380px;
+    height: 320px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px 0 rgb(60 60 60 / 15%);
+    border: solid 1px #ededed;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 12px;
+    display:inline-block;
+    padding: 38px 48px 0;
+    text-align: center;
+    background-image: url(../images/icon-quot-3.png),url(../images/icon-quot-gray.png);
+    background-size: 20px 16px,20px 16px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: 27px 26px,340px 203px;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+}
+
+.rv_card4{
+    width: 380px;
+    height: 320px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px 0 rgb(60 60 60 / 15%);
+    border: solid 1px #ededed;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 12px;
+    display:inline-block;
+    padding: 38px 48px 0;
+    text-align: center;
+    background-image: url(../images/icon-quot-4.png),url(../images/icon-quot-gray.png);
+    background-size: 20px 16px,20px 16px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: 27px 26px,340px 203px;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+}
+
+.rv_card5{
+    width: 380px;
+    height: 320px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px 0 rgb(60 60 60 / 15%);
+    border: solid 1px #ededed;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 12px;
+    display:inline-block;
+    padding: 38px 48px 0;
+    text-align: center;
+    background-image: url(../images/icon-quot-5.png),url(../images/icon-quot-gray.png);
+    background-size: 20px 16px,20px 16px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: 27px 26px,340px 203px;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+}
+
+
+
+
+.rv_comment{
+    width: 282px;
+    height: 155px;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: -1px;
+    white-space: initial;
+    font-weight: 400;
+    box-sizing: border-box;
+    color: #333;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.rv_writer{
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 23px;
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    
+
+}
 
