@@ -37,15 +37,25 @@
         </div>
       </div>
         <!-- <button id="chatBtn" data-value="0">채팅</button> -->
-        <div id="chatroom">
-          <div id="chat"></div>
+        <section class="msger" id="chat_area" >
+          <header class="msger-header">
+            <div class="msger-header-title">
+              <i class="fas fa-comment-alt"></i> 실시간 상담
+            </div>
+            <div class="msger-header-options">
+              <span><i class="fas fa-cog"></i></span>
+            </div>
+          </header>
+          <div  id='chatroom'>
+
+
+          </div>
         
-        </div>
-        <div id="chatInputArea">
-          <textarea name="" id="msg"></textarea>
-          <!-- <input type="text" id = 'msg'> -->
-          <button id="chatSend" onclick="send()">전송</button>
-        </div>
+          <form class="msger-inputarea">
+            <input type="text" class="msger-input" placeholder="Enter your message...">
+            <button type="submit" class="msger-send-btn" id="chatSend" >보내기</button>
+          </form>
+        </section>
 
        
 
@@ -58,6 +68,15 @@
 
 <script>
   let socket = io();
+  const msgerForm = get(".msger-inputarea");
+const msgerInput = get(".msger-input");
+const msgerChat =document.querySelectorAll('.msger-chat')
+
+  // Icons made by Freepik from www.flaticon.com
+const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
+const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+// const BOT_NAME = "경일게임아카데미";
+const PERSON_NAME ='경일게임아카데미'
   const chatroom = document.querySelector('#chatroom')
   const waiting = document.querySelector('#waiting'); 
 const consulting = document.querySelector('#consulting'); 
@@ -75,40 +94,15 @@ socket.on("connect", () => {
 
 socket.on('test',datas=>{
             // consultant_id = datas[1]; 
-            console.log(datas); 
-
-            addCard2(datas,'yourchat'); 
+            let name = datas[3];
+            let msgText = datas[2];
+            appendMessage(name, PERSON_IMG, "left", msgText,client_id);
           })
 
 
-function addCard2(datas,type){ //mychat  yourchat 
-      let temp = datas[1]; 
-      const chat = document.querySelector(`#chat${temp}`)
-      const div = document.createElement('div');
 
 
-      const pre = document.createElement('pre');
-      const span = document.createElement('span');
-      
-      span.innerHTML = datas[3]; 
-      pre.innerHTML = datas[2]; 
-      pre.classList.add(type); 
-      div.appendChild(span); 
-      div.appendChild(pre); 
-      chat.appendChild(div); 
-}
 
-
-function addCard(text,now_client,type) { //mychat  yourchat 
-  const chat = document.querySelector(`#chat${now_client}`)
-  const div = document.createElement('div');
-  const pre = document.createElement('pre');
-
-  pre.innerHTML = text;
-  pre.classList.add(type);
-  div.appendChild(pre);
-  chat.appendChild(div);
-}
 
 
 async function wait_consult(){
@@ -160,22 +154,22 @@ async function now_consult(){
 
 
 async function startChat(id,name){
-  
-  const chats = document.querySelectorAll('.chat'); 
-  chats.forEach(v=>{
-    v.style.display='none'
-  })
-  const username = document.createElement('h3'); 
-  username.innerHTML =name; 
+  //class="msger-chat"
+  const chats = document.querySelectorAll('.msger-chat');
+  if(chats.length>0){
+    chats.forEach(v=>{
+      v.style.display='none'
+    })
+  }
+
   const chat = document.createElement('div'); 
   chat.setAttribute('id',`chat${id}`); 
-  chat.setAttribute('class',`chat`);
-  chat.style.display='block'
-  chat.appendChild(username); 
+  chat.setAttribute('class',`msger-chat`);
+  chat.style.display='block' 
   chatroom.appendChild(chat); 
 
   let consultant_id = socket.id; 
-  client_id = id;  
+  client_id = id;
   let url = 'http://localhost:3000/admin/consult/chat/start'
   let options = {
     method: 'post',
@@ -188,12 +182,14 @@ async function startChat(id,name){
     }),
   }
   let response = await fetch(url, options);
+  let message = '안녕하세요 경일게임아카데미입니다.' 
   let datas = []; 
   datas.push(client_id);
-  let message = '안녕하세요 경일게임아카데미입니다.' 
   datas.push(consultant_id); 
   datas.push(message); 
   socket.emit('test',datas);
+  appendMessage(PERSON_NAME, BOT_IMG, "right", message,client_id);
+
   
 }
 
@@ -218,37 +214,39 @@ async function endChat(id){
 
 
 
+msgerForm.addEventListener("submit", event => {
+  event.preventDefault();
+  const consultant_id = socket.id 
+    const msgText = msgerInput.value;
+    if (!msgText) return;
+    let datas = [];
+    datas.push(client_id);
+    datas.push(consultant_id);
+    datas.push(msgText);
+    socket.emit('test', datas);
+    
+    appendMessage(PERSON_NAME, BOT_IMG, "right", msgText,client_id);
+    msgerInput.value = "";
+    msgerInput.focus();
 
-function send(){
-  const consultant_id = socket.id // 관리자 소켓번호
-  const msg = document.querySelector('#msg');
-  if(msg.value=='') return false; 
-  let datas = []; 
-  let now_client =client_id; 
-  console.log(client_id);  
-  datas.push(now_client);
-  datas.push(consultant_id);
-  datas.push(msg.value);
-  socket.emit('test',datas);
-  addCard(msg.value,now_client, 'mychat')
-  msg.value = '';
-  msg.focus();
-}
+});
+
+
+
+
+
+
+
 
 function change_client(id){
   client_id = id; 
-  console.log(client_id);
-  const chats = document.querySelectorAll('.chat');
-  console.log(chats);  
+  const chats = document.querySelectorAll('.msger-chat');
   chats.forEach(v=>{
     v.style.display='none'
   })
   const chat = document.querySelector(`#chat${id}`)
   chat.style.display='block'
 }
-
-
-
 
 
 
@@ -261,6 +259,63 @@ function isJson(str) {
   }
 
 }
+
+
+// function addCard2(datas,type){ //mychat  yourchat 
+//       let temp = datas[1]; 
+//       const chat = document.querySelector(`#chat${temp}`)
+//       const div = document.createElement('div');
+
+
+//       const pre = document.createElement('pre');
+//       const span = document.createElement('span');
+      
+//       span.innerHTML = datas[3]; 
+//       pre.innerHTML = datas[2]; 
+//       pre.classList.add(type); 
+//       div.appendChild(span); 
+//       div.appendChild(pre); 
+//       chat.appendChild(div); 
+// }
+
+
+
+function appendMessage(name, img, side, text,now) {
+//   Simple solution for small apps
+const msgerChat = document.querySelector(`#chat${now}`); 
+const msgHTML = `
+<div class="msg ${side}-msg">
+  <div class="msg-img" style="background-image: url(${img})"></div>
+
+  <div class="msg-bubble">
+    <div class="msg-info">
+      <div class="msg-info-name">${name}</div>
+      <div class="msg-info-time">${formatDate(new Date())}</div>
+    </div>
+
+    <div class="msg-text">${text}</div>
+  </div>
+</div>
+`;
+
+msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+msgerChat.scrollTop += 500;
+}
+
+
+// Utils
+function get(selector, root = document) {
+return root.querySelector(selector);
+}
+
+function formatDate(date) {
+const h = "0" + date.getHours();
+const m = "0" + date.getMinutes();
+
+return `${h.slice(-2)}:${m.slice(-2)}`;
+}
+
+
 
 </script>
 
