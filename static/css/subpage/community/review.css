@@ -172,7 +172,7 @@ width: 600px;
 
 input, button
 {
-    color: #fff;
+    color: black;
     font-family: Nunito;
     padding: 0;
     margin: 0;
@@ -184,16 +184,15 @@ input, button
 {
     position: absolute;
     top: auto;
-    left: auto;
-    width: 850px;
-    padding: 15px;
+    width: 598px;
+    padding: 0px;
     margin: 0px;
-    background-color: #006cdc;
+    background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 10px 40px dodgerblue, 0 0 0 20px #137df6;
-    transform: scale(0.3);
+    box-shadow: 0 10px 40px black, 0 0 0 20px #030303;
+    transform: scale(0.23);
     position: absolute;
-    left: -200px;
+    left: -150px;
 }
 
 form
@@ -201,17 +200,17 @@ form
     height: 96px;
 }
 
-.ckinput[type="text"]
-{
+input[type="text"]
+{   display: block;
     width: 100%;
     height: 96px;
     font-size: 60px;
     line-height: 1;
 }
 
-.ckinput[type="text"]::placeholder
+input[type="text"]::placeholder
 {
-    color: #e16868;
+    color: #cfd2d5;
 }
 
 #s-cover
@@ -220,7 +219,7 @@ form
     padding-left: 35px;
 }
 
-.ckbutton
+button
 {
     position: relative;
     display: block;
@@ -238,7 +237,7 @@ form
     height: 43px;
     margin-top: 0;
     border-width: 15px;
-    border: 15px solid #fff;
+    border: 15px solid #030303;
     background-color: transparent;
     border-radius: 50%;
     transition: 0.5s ease all;
@@ -266,7 +265,7 @@ button span:before, button span:after
     right: 0;
     width: 45px;
     height: 15px;
-    background-color: #fff;
+    background-color: #030303;
     border-radius: 10px;
     transform: rotateZ(0);
     transition: 0.5s ease all;
@@ -333,19 +332,8 @@ button span:before, button span:after
     transform: translate(-50%, -50%);
   } */
   
-  .box select {
-    background-color: #0876e2;
-    color: white;
-    padding: 10px;
-    width: 100px;
-    border: none;
-    font-size: 20px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
-    background-color: #0876e2;
-    color: white;
+.box select {
+    color: black;
     padding: 10px;
     width: 100px;
     border: none;
@@ -354,10 +342,21 @@ button span:before, button span:after
     -webkit-appearance: button;
     appearance: button;
     outline: none;
+    background-color: cd1d3;
+    color: black;
+    padding: 0px;
+    width: 76px;
+    border: 4px solid;
+    border-radius: 8px;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
     position: absolute;
-    bottom: 11px;
+    bottom: 32px;
+}
 
-  }
   
   .box::before {
     content: "\f13a";
