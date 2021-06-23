@@ -1,0 +1,78 @@
+.teachars {
+  width: 1000px;
+}
+
+.teacher_img {
+  width: 300px;
+  display: inline-block;
+}
+
+.teachar_text {
+  display: inline-block;
+  float: right;
+  width: 600px;
+}
+
+.teachar_title {
+  font-size: 45px;
+  font-size: 2.5em;
+  text-align: center;
+  color: #000000;
+  text-shadow: 2px 2px #181a1c;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.teachar_position {
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.teachar_name {
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.teachar_career {
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.teachar_content {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 20px;
+}
+
+/* 김동철 */
+.scroll_image {
+  position: sticky;
+  top: 0;
+  height: 1000px;
+}
+
+.scroll_image > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 450px;
+  height: 830px;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.scroll_image > div > img {
+  display: block;
+  width: 450px;
+  height: 830px;
+}
+
+.visable {
+  opacity: 1;
+}
+
+.scroll_text {
+  position: relative;
+}
+
+/* .teachar_text{
+
+} */

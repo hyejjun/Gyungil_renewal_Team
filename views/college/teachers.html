@@ -1,6 +1,6 @@
 {% include "../layout/subpage_top.html" %}
 {% include "../layout/subpage_college_navi.html" %}
-<link rel="stylesheet" href="/css/teacher.css">
+<link rel="stylesheet" href="/css/subpage/college/teacher.css">
 
 <!--menu_contents start-->
 <div class="menu_contents">
@@ -8,8 +8,15 @@
         교직원 소개
     </div>
     <div class="mc_content teachars">
-        {% for item in result %}
-        <div class="teacher_img"><img src="http://localhost:3000/{{item.image}}" alt="교직원 이미지"></div>
+
+        <div class="scroll_image" >
+            {% for item in result %}
+            <div class="teacher_img"><img src="http://localhost:3000/{{item.image}}" alt="교직원 이미지"></div>            
+            {% endfor %}
+        </div>
+
+        <div class="scroll_text">
+            {% for item in result %}
         <div class="teachar_text">
             <span class="teachar_title">
                 {{item.title}}
@@ -24,6 +31,8 @@
             <pre class="teachar_content">{{item.content}}</pre>
         </div>
         {% endfor %}
+        </div>
+        
     </div>
 </div>
 <!--menu_contents end-->
