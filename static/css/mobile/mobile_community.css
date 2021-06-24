@@ -71,6 +71,7 @@
     .board_view > .title{
         width: 100vw;
         box-sizing: border-box;
+        margin: 0;
     }
     .info{
         padding: 7px;
