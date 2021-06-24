@@ -89,8 +89,8 @@ caption {
 
 a {
     text-decoration: none;
-    color: inherit;
 }
+
 
 .board_list {
     width: 100%;
@@ -347,7 +347,7 @@ button span:before, button span:after
     background-color: cd1d3;
     color: black;
     padding: 3px;
-    width: 46px;
+    width: 57px;
     border: 1px solid;
     border-radius: 24px;
     font-size: 13px;
