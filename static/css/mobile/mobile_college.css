@@ -2,6 +2,9 @@
     /*인사말*/
 
     /*연혁*/
+    .history_content{
+        padding : 0 15px 50px 15px;
+    }
     .mc_content > .his_sub{
         width: 100px;
         font-size: 40px;
@@ -9,6 +12,14 @@
     .mc_content > ul > .his_con{
         font-size: 15px;
         text-align: left;
+        line-height: 23px;
+        width: 75vw;
+        height: auto;
+        min-height: 60px;
+        list-style: inside;
+        list-style-position: inside;
+        text-indent: -20px;
+        padding-left: 20px;
     }
 
     /*교직원소개*/
@@ -112,7 +123,7 @@
         width: 250px;
         font-size: 15px;
         position: relative;
-        top: -18px;
+        top: -21px;
         left: 14px;
     }
 
