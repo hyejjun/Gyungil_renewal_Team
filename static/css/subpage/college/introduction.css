@@ -39,7 +39,6 @@ nav a {
 }
 
 .rb-container {
-  font-family: "PT Sans", sans-serif;
   width: 50%;
   margin: auto;
   display: block;
@@ -141,7 +140,6 @@ input::placeholder {
 }
 
 .his_con{
-font-family: 'Sunflower', sans-serif;
 text-align: center;
 font-size: 30px;
 line-height: 60px;

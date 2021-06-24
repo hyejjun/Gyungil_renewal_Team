@@ -16,7 +16,7 @@
         {% for item in result %}
 		<input type="radio" name="accordion" id="answer{{item.id}}">
 		<label for="answer{{item.id}}">{{item.subject}} <em></em></label>
-		<div>
+		<div class="faq_content">
 			<p>{{item.content}}</p>
 		</div>
         {% endfor %}

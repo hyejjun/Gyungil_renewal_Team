@@ -1,0 +1,142 @@
+@media (max-width: 1200px) {
+    /*인사말*/
+
+    /*연혁*/
+    .history_content{
+        padding : 0 15px 50px 15px;
+    }
+    .mc_content > .his_sub{
+        width: 100px;
+        font-size: 40px;
+    }
+    .mc_content > ul > .his_con{
+        font-size: 15px;
+        text-align: left;
+        line-height: 23px;
+        width: 75vw;
+        height: auto;
+        min-height: 60px;
+        list-style: inside;
+        list-style-position: inside;
+        text-indent: -20px;
+        padding-left: 20px;
+    }
+
+    /*교직원소개*/
+    .menu_contents> .teachars{
+        width: 90vw;
+        padding: 40px 10px;
+    }
+    .teacher_img>img{
+        width: 160px;
+        height: auto;
+    }
+    .teachars > .teachar_text{
+        display: block;
+        float: none;
+        width: auto;
+        margin-bottom: 80px;
+    }
+    .teachars > .teachar_text > .teachar_title{
+        font-size: 20px;
+        text-shadow: none;
+        font-weight: bold;
+        border-left: 4px solid #c7c7c7;
+        display: block;
+        text-align: left;
+        padding: 0 10px;
+    }
+    .teachars > .teachar_text > .teachar_position{
+        font-size: 18px;
+        display: block;
+        padding: 10px;
+    }
+
+    .teachars > .teachar_text > .teachar_name{
+        font-size: 18px;
+        display: block;
+        width: 137px;
+        height: 40px;
+        line-height: 36px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        
+    }
+    .teachars > .teachar_text > .teachar_career{
+        font-size: 15px;
+        display: none;
+    }
+    .teachars > .teachar_text > .teachar_content{
+        font-size: 15px;
+        display: none;
+
+    }
+    
+    /*시설소개*/
+    .menu_contents>#interior{
+        width: 100%;
+        height: auto;
+        margin: 60px auto;
+    }
+    #interior>#slideBox{
+        width: 90vw;
+        height: 300px;
+        
+    }
+    #slideBox>li{
+        height: auto;
+    }
+    #interior>#slideBox>li>img{
+        width: 95vw;
+        height: 300px;
+    }
+    /*오시는길*/
+    .mc_content>p{
+        display: none;
+    }
+    #map{
+        width: 93vw !important;
+        height: 300px !important;
+        top: 0 !important;
+    }
+
+    .mc_content > .location{
+        display: none;
+    }
+
+    .icon_Tf>li{
+        padding: 20px 0;
+    }
+
+    .icon_Tf>li>img,
+    .icon_Tf>img
+    {
+        display: inline-block;
+        width: 50px;
+        height: 52px;
+        
+    }
+    .icon_Tf>li>span,
+    .icon_Tf>span
+    {
+        display: inline-block;
+        width: 250px;
+        font-size: 15px;
+        position: relative;
+        top: -21px;
+        left: 14px;
+    }
+
+    .icon_Tf>p{
+        border-left: 3px solid #666;
+        padding-left: 13px;
+        font-size: 18px;
+        margin: 23px 8px;
+    }
+
+    .icon_Tf>li>.subway{
+        top: -5px;
+    }
+    
+
+}
