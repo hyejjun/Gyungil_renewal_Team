@@ -47,7 +47,7 @@
 
     /*게시글 list*/
     .board_list> thead > tr > th:nth-child(1) {
-        width: 20px;
+        width: 30vw;
     } 
     .board_list> thead > tr > th:nth-child(2) {
         width: 50vw;
@@ -62,7 +62,8 @@
         text-align: center !important;
     }
 
-    .board_list>tbody>tr>td:nth-child(3){
+    .board_list>tbody>tr>td:nth-child(3),
+    .board_list>tbody>tr>td:nth-child(4){
         font-size: 11px;
     }
 
