@@ -48,14 +48,13 @@ let curriculum_view = async (req, res) => {
         }],
     })
 
-
-    res.render('./curriculum/curriculum_view', {
-        userid,
-        username,
+    res.render('./curriculum/curriculum_vie', {
+        // userid,
+        // username,
         spec,
         subjects,
-        review,
-        nickname
+        // review,
+        // nickname
     });
 }
 

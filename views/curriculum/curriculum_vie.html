@@ -1,75 +1,203 @@
-{% include "../layout/subpage_top.html" %}
-{% include "../layout/subpage_curriculum_navi.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="/css/subpage/curriculum/curr_common.css">
+  <link rel="stylesheet" href="/css/subpage/curriculum/curr_view.css">
 
-<!--menu_contents start-->
-<div class="menu_contents">
-    <div class="mc_title">
-        {{spec.name}}
-    </div>
-    <!-- <div class="mc_content">
-        <img src="http://localhost:3000/{{spec.image}}" alt="">
-        {{spec.term}}개월
-        {{spec.start_time}} ~{{spec.end_time}}
-        {{spec.locaion}}
-        {{spec.tuition}}
-        {{spec.qual}} -->
-        <div class="board_view_wrap">
-            <div class="board_view board_title">
+</head>
+<body>
+  <div id="gnb_wrap" class="w100">
+    <div class="w1200 header_wrap">
+        <div class="header">
+            <div class="logo">
+                <a href="/">
+                    <img src="http://www.kiweb.or.kr/images/main_new/logo_new_2018.png" alt="경일로고">
+                </a>
+            </div>
+            <div class="gnb">
+                <ul class="gnb_ul">
+                    <a href="/college/introduction">
+                        <li>학교소개</li>
+                    </a>
+                    <a href="/curriculum/curriculum">
+                        <li>교육과정</li>
+                    </a>
+                    <a href="/jobinfo/interview/list?page=1">
+                        <li>취업정보</li>
+                    </a>
+                    <a href="/community/notice/list?page=1">
+                        <li>커뮤니티</li>
+                    </a>
+                    <a href="/consult/consulting">
+                        <li>상담신청</li>
+                    </a>
+                </ul>
+            </div>
+            
+            <div class="userinfo">
+                <div class="before_login">
+                    <a href="/user/login">로그인</a>
+                    <a href="/user/join">회원가입</a>
+                </div>
+                <div class="after_login">
+                    {% if userid != undefined %}
+                    <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
+                    <a href="/user/logout"><span class="logout">로그아웃</span></a> {% endif %} {% if nickname != undefined %}
+                    <a href="/auth/kakao/kakao_userinfo"><span class="after_login_span">{{nickname}}님</span></a>
+                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a> {% endif %}
+                </div>
+            </div>
+
+            <div id="side_area">
+                <input type="checkbox" id="side_flag" >
+                <label for="side_flag">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div id="sidebar">
+                    <ul class="gnb_ul">
+                        <a href="/college/introduction">
+                            <li>학교소개</li>
+                        </a>
+                        <a href="/curriculum/curriculum">
+                            <li>교육과정</li>
+                        </a>
+                        <a href="/jobinfo/interview/list?page=1">
+                            <li>취업정보</li>
+                        </a>
+                        <a href="/community/notice/list?page=1">
+                            <li>커뮤니티</li>
+                        </a>
+                        <a href="/consult/consulting">
+                            <li>상담신청</li>
+                        </a>
+                    </ul>
+
+                    <div class="login">
+                        <a href="/user/login">로그인</a>
+                        <a href="/user/join">회원가입</a>
+                    </div>
+                </div>
                 
-                <div class="info">
-                    <dl>
-                        <dt>{{spec.term}}</dt>
-                        <dd>개월 과정</dd>
-                    </dl>
-                    <dl>
-                        <dt>교육시간</dt>
-                        <dd>{{spec.start_time}} ~{{spec.end_time}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>교육장소</dt>
-                        <dd>{{spec.locaion}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>자격요건</dt>
-                        <dd>{{spec.qual}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>수강료</dt>
-                        <dd>{{spec.tuition}}</dd>
-                    </dl>
-                </div>
-                <div class="cont">
-                    <img src="http://localhost:3000/{{spec.image}}" alt="">
-                    <p>{{spec.info}}</p>
-                </div>
-            <div class="bt_wrap">
-                <a href="/jobinfo/{{board_name}}/list?page={{page}}" class="on">목록</a>
+            </div>
+        </div>
+        <div class="submenu">
+            <div class="submenu_inner_wrap">
+                <ul class="submenu_ul">
+                    <a href="/college/introduction">
+                        <li>인사말</li>
+                    </a>
+                    <a href="/college/history">
+                        <li>연혁</li>
+                    </a>
+                    <a href="/college/teachers">
+                        <li>교직원소개</li>
+                    </a>
+                    <a href="/college/interior">
+                        <li>시설소개</li>
+                    </a>
+                    <a href="/college/location">
+                        <li>오시는 길</li>
+                    </a>
+                </ul>
+                <ul class="submenu_ul">
+                    <a href="/curriculum/curriculum">
+                        <li>과정안내</li>
+                    </a>
+                </ul>
+                <ul class="submenu_ul">
+                    <a href="/jobinfo/interview/list?page=1">
+                        <li>취업자인터뷰</li>
+                    </a>
+                    <a href="/jobinfo/portfolio/list?page=1">
+                        <li>포트폴리오</li>
+                    </a>
+                </ul>
+                <ul class="submenu_ul">
+                    <a href="/community/notice/list?page=1">
+                        <li>공지사항</li>
+                    </a>
+                    <a href="/community/review?page=1">
+                        <li>수강후기</li>
+                    </a>
+                    <a href="/community/ki_story/list?page=1">
+                        <li>KI이야기</li>
+                    </a>
+                    <a href="/community/ki_reporter/list?page=1">
+                        <li>KI기자단</li>
+                    </a>
+                    <a href="/community/column/list?page=1">
+                        <li>교수칼럼</li>
+                    </a>
+                </ul>
+                <ul class="submenu_ul">
+                    <a href="/consult/consulting">
+                        <li>상담신청</li>
+                    </a>
+                    <a href="/consult/faq">
+                        <li>자주묻는질문</li>
+                    </a>
+                    <li>
+                        <a href="/chat">실시간 상담</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-
-        <div>커리큘럼</div>
-        <ul>
-        {% for item in subjects %}
-            <li>
-                {{item.name}}
-                {{item.content}}
-            </li>
-            {% endfor %}
-        </ul> 
-
-        <div>수강후기</div>
-        <ul>
-            {% for item in review %}
-            <li>
-                {{item.writer_user.username}}
-                {{item.content}}
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
 </div>
-<!--menu_contents end-->
+
+ <!-- <section id ='curr_info' style="background-image: url(/uploads/technology.jpg); background-repeat: no-repeat; background-size: cover; width: 100vw;" > --> -->
+ <section id ='curr_info'  > 
+    <!-- <img src="http://localhost:3000/{{spec.image}}" alt=""> -->
+    <strong class="name">{{spec.name}}</strong>
+    <div class="curr_content">
+        <div>
+            <div >{{spec.info}}</div>
+            <div >교육기간: {{spec.term}}개월</div>
+            <div >교육시간: {{spec.start_time}} ~{{spec.end_time}}</div>
+            <div >교육장소: {{spec.location}}</div>
+            <div >자격요건: {{spec.qual}}</div>
+            <div >수강료: {{spec.tuition}}</div>
+        </div>
+    </div>
+    
+    
+</section>
+<section id ='curr_sbj'>
+    <strong id="head">커리큘럼</strong>
+  <div id="scroll_image">
+    {% for item in subjects %}
+	<div class="subject_image"><img class="sbj-img" src="http://localhost:3000/{{item.image}}" alt="교과목이미지"></div>
+    {% endfor %}
+  </div>
+  <div id="scroll_text">
+    {% for item in subjects %}    
+    <div class="subject_text">
+      <strong>{{item.name}}</strong>
+      <pre>{{item.content}}</pre>
+    </div>
+    <div id="temp">
+
+    </div>
+    {% endfor %}
+  </div>
 
 
-{% include "../layout/subpage_bottom.html" %}
+</section>
+<section id ='curr_rv'>
+
+
+</section>  
+
+<script src="/js/submenu.js"></script>
+<script src="/js/curr.js"></script>
+
+
+</body>
+</html>

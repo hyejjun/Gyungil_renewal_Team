@@ -1,13 +1,14 @@
 /*reviews start*/
 #reviews{
-    position: relative;
     overflow: hidden;
     width: 100vw !important;
     height: 420px;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .reviews_title{
     text-align: center;
+    font-size: 28px;
+    width: 1200px;
 }
 
 .reviews_sub_title{
@@ -18,7 +19,7 @@
 #rv_visible{
    width: 1200px;
    height: 420px;
-   margin: 0 auto;
+   /* margin: 0 auto; */
    overflow: hidden;
 }
 

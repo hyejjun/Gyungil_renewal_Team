@@ -1,0 +1,47 @@
+*{margin: 0;
+  padding: 0;}
+
+ul,li{
+  list-style: none;
+  box-sizing: border-box;
+}
+
+
+
+#sticky_wrap{ 
+  width: 1200px;
+  height: 1200px;
+  margin: 0 auto;
+  
+}
+
+#sticky_area{
+  position:sticky;
+  width: 1200px;
+  height: 840px;
+  top:80px;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+#card_box{
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  height: 400px;
+  background-color: blanchedalmond;
+}
+
+.card{ 
+  width: 400px;
+  height: 400px;
+  font-size: 200px;
+  text-align: center;
+}
+
+.card>a>img{ 
+  width: 400px;
+  height: 400px;
+}
+

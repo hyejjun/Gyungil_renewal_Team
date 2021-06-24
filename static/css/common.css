@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
 }
+
 @font-face {
     font-family: 'NanumSquareRound';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Godo';
     font-style: normal;
@@ -15,6 +17,7 @@
     font-weight: 700;
     src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
   }
+
 html{
     overflow-x: hidden;
     overflow-y: auto;

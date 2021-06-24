@@ -1,0 +1,204 @@
+@font-face {
+  font-family: 'NanumSquareRound';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+#curr_info{
+  position: relative;
+  width: 1920px;
+  height: 100vh;
+  padding-top:150px ;
+  box-sizing: border-box;
+}
+
+#curr_sbj{
+  width: 100vw;
+  /* position: relative; */
+}
+
+
+
+#curr_rv{
+  width: 100vw;
+  height: 100vh;
+  background-color: coral;
+}
+
+.sbj-img {
+  float: left;
+  max-width: 50vw;
+  height: auto;
+}
+
+
+
+.subject_image {
+  float: left;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  position: absolute;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.visable {
+  opacity: 1;
+}
+
+#scroll_image {
+  position: sticky;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  z-index: 4;
+}
+
+#head{ 
+  position: sticky;
+  color: rgb(1, 1, 100);;
+  padding-left: 80px;
+  top:20px; 
+  z-index: 200;
+  font-size: 50px;
+}
+
+#scroll-text {
+  width: 50vw;
+  position: relative;
+  float: right;
+  z-index: 100;
+}
+
+.subject_text {
+  box-sizing: border-box;
+  margin-bottom:  60vh;
+  margin-left: 55vw;
+  width: 40vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  position: relative;
+  z-index: 90;
+  border: 5px solid #1566c3;
+  border-radius: 50px;
+}
+
+.sbj-img {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.subject_text>strong{
+  color: rgb(1, 1, 100);
+  display: block;
+  font-size: 50px;
+  font-weight: bold;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  font-family: 'NanumSquareRound';
+}
+
+.subject_text>pre{
+  color: #551a8b;
+  font-size: 30px;
+  line-height: 50px;
+  font-family: 'NanumSquareRound';
+  font-weight: bolder;
+} 
+
+
+#temp{ width: 50vw;
+  height: 30vh;
+  opacity: 0;
+}
+
+.name{
+  position: absolute;
+  left: -85vw;
+  width: 85vw;
+  height: 10vh;
+  display: block;
+  font-size: 7vh;
+  margin-bottom: 100px;
+  text-align: right;
+  background-color: rgb(1, 1, 100);
+  color: white;
+  float: left;
+  border-radius: 0  7vh 7vh 0;
+  line-height: 10vh;
+  padding-top: 50px;
+  padding-right: 80px;
+  padding-bottom: 50px;
+  animation: 2s moveright ;
+  animation-fill-mode: forwards;
+  font-family: 'NanumSquareRound';
+}
+
+
+@keyframes moveright{
+  from {
+    margin-left: 0%;
+  }
+
+  to {
+    margin-left: 85%;
+  }
+}
+
+
+.curr_content{
+  position: absolute;
+  right: -70vw;
+  top:40vh; 
+  width: 70vw;
+  height: auto; 
+  overflow: hidden;
+  color: white; 
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: rgb(1, 1, 100);
+  text-align: left;
+  border-radius: 12vh 0  0 12vh;
+  animation: 2s moveleft ;
+  animation-fill-mode: forwards;
+  font-family: 'NanumSquareRound';
+}
+
+@keyframes moveleft{
+  from {
+    margin-right: 0%;
+  }
+
+  to {
+    margin-right: 65%;
+  }
+}
+
+
+.curr_content>div>div{
+  display: block;
+  width: 50vw;
+  height: auto;
+  overflow: hidden;
+  float: left;
+  padding-left: 100px;
+  font-size: 3vh;
+  margin-bottom: 1vh;
+}
+
+
+
+
+
+
