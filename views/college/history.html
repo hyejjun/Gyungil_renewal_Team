@@ -10,36 +10,14 @@
     </div>
     <div class="mc_content ">
         
-        <div class="container">
-            <div class="leftbox">
-              <nav>
-                <a id="dashboard"><i class="fas fa-tachometer-alt"></i></a>
-                <a id="profile"> <i class="fas fa-user"></i> </a>
-                <a id="settings"> <i class="fas fa-cog"></i> </a>
-                <a id="messages"> <i class="fas fa-comments"></i> </a>
-                <a id="notification"> <i class="fas fa-bell"></i> </a>
-              </nav>
-            </div>
-            <div class="rightbox">
-              <div class="rb-container">
-                <ul class="rb">
-
-                    {% for item in result %}
-                  <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        {{item.year}}<br>
-                    </div>
-                    <div class="item-title">{{item.content}}</div>
-          
-                  </li>
-                  {% endfor %}
-
-          
-                </ul>
-          
-              </div>
-            </div>
-          </div>
+      {% for item in result %}
+      <span>{{item.year}}</span>
+      <ul>
+        {% for con in item.content %}
+        <li>{{con}}</li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
     </div>
 </div>
 <!--menu_contents end-->

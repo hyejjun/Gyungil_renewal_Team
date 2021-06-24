@@ -23,7 +23,9 @@ let history = async (req, res) => {
         order: [['year', 'DESC']]
     });
     // 연도 한번만 뽑으려면 아래 함수 사용. 
-    result = dlt_year(result);
+    // result = dlt_year(result);
+    result = clear_year(result); 
+    console.log(result); 
     res.render('./college/history', { userid,username,nickname, result });
 }
 
@@ -83,4 +85,34 @@ function dlt_year(arr) {
     }
     temp.unshift(arr[arr.length-1].dataValues);
     return temp;
+}
+
+function clear_year(arr){ 
+
+    let temp = [];
+    let temp2 = [];
+    for(let i = 0; i<arr.length; i++){ 
+        temp.push(String(arr[i].dataValues.year));
+        temp = [...new Set(temp)]; 
+    }
+    temp.reverse(); 
+    
+    temp.forEach(v=>{ 
+        let box = {}; 
+        box['year'] = v; 
+        box['content'] = [];
+        temp2.push(box); 
+    })
+    
+    arr.forEach(v=>{
+        for(let i = 0; i<temp2.length; i++){ 
+            if(temp2[i]['year']==v.dataValues.year){ 
+                temp2[i]['content'].push(v.dataValues.content); 
+                break; 
+            }
+        }
+    })
+
+    
+    return temp2; 
 }
