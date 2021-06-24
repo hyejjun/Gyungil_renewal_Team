@@ -80,4 +80,52 @@
         height: 300px;
     }
     /*오시는길*/
+    .mc_content>p{
+        display: none;
+    }
+    #map{
+        width: 93vw !important;
+        height: 300px !important;
+        top: 0 !important;
+    }
+
+    .mc_content > .location{
+        display: none;
+    }
+
+    .icon_Tf>li{
+        padding: 20px 0;
+    }
+
+    .icon_Tf>li>img,
+    .icon_Tf>img
+    {
+        display: inline-block;
+        width: 50px;
+        height: 52px;
+        
+    }
+    .icon_Tf>li>span,
+    .icon_Tf>span
+    {
+        display: inline-block;
+        width: 250px;
+        font-size: 15px;
+        position: relative;
+        top: -18px;
+        left: 14px;
+    }
+
+    .icon_Tf>p{
+        border-left: 3px solid #666;
+        padding-left: 13px;
+        font-size: 18px;
+        margin: 23px 8px;
+    }
+
+    .icon_Tf>li>.subway{
+        top: -5px;
+    }
+    
+
 }

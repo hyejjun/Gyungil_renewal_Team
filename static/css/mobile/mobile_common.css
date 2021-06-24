@@ -172,8 +172,11 @@
         width: 95vw;
         height: auto;
         font-size: 25px;
+        padding: 20px 0;
+        margin-bottom: 30px;
     }
     .mc_content{
+        padding: 0;
         width: 90vw;
     }
 
