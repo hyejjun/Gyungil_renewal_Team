@@ -39,7 +39,6 @@ nav a {
 }
 
 .rb-container {
-  font-family: "PT Sans", sans-serif;
   width: 50%;
   margin: auto;
   display: block;
@@ -127,4 +126,21 @@ ul.rb li .timestamp {
 input::placeholder {
   padding: 5em 5em 1em 1em;
   color: dodgerblue;
+}
+
+.his_sub{
+  text-align: -webkit-center;
+  display: block;
+  font-size: 50px;
+  font-weight: 400;
+  text-shadow: 4px 3px 10px #999;
+  margin: 22px 0;
+  width: 980px;
+  border-bottom: 4px solid #383434;
+}
+
+.his_con{
+text-align: center;
+font-size: 30px;
+line-height: 60px;
 }

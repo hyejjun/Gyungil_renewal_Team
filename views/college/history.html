@@ -1,6 +1,8 @@
 {% include "../layout/subpage_top.html" %}
 <link rel="stylesheet" href="/css/subpage/college/introduction.css">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 {% include "../layout/subpage_college_navi.html" %}
 
 <!--menu_contents start-->
@@ -8,13 +10,13 @@
     <div class="mc_title">
         연혁
     </div>
-    <div class="mc_content ">
+    <div class="mc_content history_content">
         
       {% for item in result %}
-      <span>{{item.year}}</span>
+      <span class="his_sub">{{item.year}}</span>
       <ul>
         {% for con in item.content %}
-        <li>{{con}}</li>
+        <li class="his_con">{{con}}</li>
         {% endfor %}
       </ul>
       {% endfor %}
