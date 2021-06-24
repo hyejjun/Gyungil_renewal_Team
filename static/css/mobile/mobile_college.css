@@ -1,0 +1,27 @@
+@media (max-width: 1200px) {
+    /*인사말*/
+
+    /*연혁*/
+
+    /*교직원소개*/
+
+    /*시설소개*/
+    .menu_contents>#interior{
+        width: 100%;
+        height: auto;
+        margin: 60px auto;
+    }
+    #interior>#slideBox{
+        width: 90vw;
+        height: 300px;
+        
+    }
+    #slideBox>li{
+        height: auto;
+    }
+    #interior>#slideBox>li>img{
+        width: 95vw;
+        height: 300px;
+    }
+    /*오시는길*/
+}

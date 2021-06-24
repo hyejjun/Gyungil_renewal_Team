@@ -85,24 +85,25 @@
         transition: all .35s;
     }
 
-    .login{
+    /* .login{
         width: 100%;
         height: auto;
         display: block;
         position: relative;
-        /* bottom: 0; */
-        /* right: 0; */
+        /* bottom: 0; 
+        /* right: 0; 
         font-size: 15px;
-        /* padding: 10px; */
-        /* box-sizing: border-box; */
+        /* padding: 10px; 
+        box-sizing: border-box; 
         background: #91b3e6;
         top: 277px
-    }
+    }*/
+    /*
     .login > a{
         display: block;
         height: 50px;
         text-align: right;
-    }
+    } */
 
 
     /*footer*/
