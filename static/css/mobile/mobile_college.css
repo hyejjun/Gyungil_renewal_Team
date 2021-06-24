@@ -30,13 +30,26 @@
         font-size: 20px;
         text-shadow: none;
         font-weight: bold;
+        border-left: 4px solid #c7c7c7;
+        display: block;
+        text-align: left;
+        padding: 0 10px;
     }
     .teachars > .teachar_text > .teachar_position{
         font-size: 18px;
+        display: block;
+        padding: 10px;
     }
 
     .teachars > .teachar_text > .teachar_name{
         font-size: 18px;
+        display: block;
+        width: 137px;
+        height: 40px;
+        line-height: 36px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        
     }
     .teachars > .teachar_text > .teachar_career{
         font-size: 15px;
