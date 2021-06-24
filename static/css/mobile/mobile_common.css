@@ -25,7 +25,15 @@
         height: 70%;
         padding: 10px 0;
     }
-    
+    .wrap{
+        width: 100vw;
+    }
+    .header_wrap{
+        width: 100vw;
+    }
+    .userinfo{
+        display: none;
+    }
 
     /*슬라이드 메뉴*/
     #side_area{
@@ -95,13 +103,13 @@
 
     /*footer*/
     #footer{
-        width: 100%;
+        width: 100vw;
         height: auto;
         overflow: hidden;
     }
 
     .footer_inner_div{
-        width: 100%;
+        width: 100vw;
         padding: 30px;
     }
 
@@ -137,14 +145,18 @@
     }
 
     .sub_bottom{
+        width: 100vw;
         margin-top: 100px;
+    }
+    .sub_bottom> .w1200{
+        width: 100%;
     }
 
     .sub_navi{
         display: none;
     }
     .menu_contents{
-        width: 100%;
+        width: 100vw;
         height: auto;
         overflow: hidden;
         padding: 10px;

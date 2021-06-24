@@ -1,0 +1,87 @@
+@media (max-width: 1200px) {
+
+    .form_position{
+        bottom: -30px;
+    }
+    .form_position>form{
+        width: 100vw;
+
+    }
+
+    .box>select{
+        width: 29vw;
+        font-size: 16px;
+        bottom: 32px;
+        border-radius: 10px;
+    }
+
+    #cover{
+        left: -117px;
+        width: 660px;
+        height: 58px;
+    }
+
+    #s-circle{
+        top: -30px;
+        left: 0;
+        width: 28px;
+        height: 27px;
+    }
+    button span{
+        top: 44px;
+        left: 33px;
+    }
+
+    .td{
+        width: 100%;
+        height: 100%;
+    }
+    .td>input{
+        width: 100%;
+        height: 81px;
+        position: relative;
+        top: -20px;
+    }
+
+    /*게시글 list*/
+    .board_list> thead > tr > th:nth-child(1) {
+        width: 20px;
+    } 
+    .board_list> thead > tr > th:nth-child(2) {
+        width: 50vw;
+    }
+    .board_list> thead > tr > th:nth-child(3), 
+    .board_list> thead > tr > th:nth-child(4),
+    .board_list> thead > tr > th:nth-child(5) {
+        width: 280px;
+    }
+
+    .tit{
+        text-align: center !important;
+    }
+
+    .board_list>tbody>tr>td:nth-child(3){
+        font-size: 11px;
+    }
+
+    /*게시글 view*/
+    .board_view > .title{
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    .info{
+        padding: 7px;
+    }
+    .info>dl:nth-child(1){
+        display: none;
+    }
+    .info>dl:nth-child(3){
+        width: 200px;
+    }
+    .bt_wrap a{
+        min-width: 55px;
+        font-size: 15px;
+        height: 13px;
+        line-height: 14px;
+    }
+}
