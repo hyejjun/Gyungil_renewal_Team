@@ -1,26 +1,38 @@
 {% include "../layout/subpage_top.html" %}
 {% include "../layout/subpage_college_navi.html" %}
+<link rel="stylesheet" href="/css/subpage/college/teacher.css">
 
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
         교직원 소개
     </div>
-    <div class="mc_content">
-       {% for item in result %}
-       <div><img src="http://localhost:3000/{{item.image}}"alt="교직원 이미지"></div>
-       <span>
-           {{item.title}}
-       </span><br>
-       <span>
-           {{item.position}}
-       </span><br>
-       <span>
-           {{item.name}}
-       </span><br>
-       <pre>{{item.career}}</pre>
-       <pre>{{item.content}}</pre>
-       {% endfor %}
+    <div class="mc_content teachars">
+
+        <div class="scroll_image" >
+            {% for item in result %}
+            <div class="teacher_img"><img src="http://localhost:3000/{{item.image}}" alt="교직원 이미지"></div>            
+            {% endfor %}
+        </div>
+
+        <div class="scroll_text">
+            {% for item in result %}
+        <div class="teachar_text">
+            <span class="teachar_title">
+                {{item.title}}
+            </span><br>
+            <span class="teachar_position">
+                {{item.position}}
+            </span><br>
+            <span class="teachar_name">
+                {{item.name}} 선생님
+            </span><br>
+            <pre class="teachar_career">{{item.career}}</pre>
+            <pre class="teachar_content">{{item.content}}</pre>
+        </div>
+        {% endfor %}
+        </div>
+        
     </div>
 </div>
 <!--menu_contents end-->
