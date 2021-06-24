@@ -10,11 +10,11 @@
     }
 
     .form_position>form>.box>select{
-        width: 29vw;
+        /* width: 29vw;
         font-size: 16px;
         bottom: 6px;
         border-radius: 10px;
-        height: 34px;
+        height: 34px; */
     }
 
     .form_position>form>#cover{

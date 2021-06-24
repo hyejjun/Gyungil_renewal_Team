@@ -69,7 +69,7 @@
     #side_area > #sidebar {
         width: 155px;
         height: 100%;
-        padding: 90px 18px;
+        padding: 60px 22px;
         box-sizing: border-box;
         position:fixed;
         top:0px;
@@ -86,13 +86,17 @@
     }
 
     .login{
-        width: 100px;
-        height: 50px;
+        width: 100%;
+        height: auto;
         display: block;
-        position: absolute;
-        bottom: 70px;
-        right: 20px;
-        font-size: 20px;
+        position: relative;
+        /* bottom: 0; */
+        /* right: 0; */
+        font-size: 15px;
+        /* padding: 10px; */
+        /* box-sizing: border-box; */
+        background: #91b3e6;
+        top: 277px
     }
     .login > a{
         display: block;

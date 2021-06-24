@@ -31,6 +31,8 @@
 
     .consult_table>tr>td>input{
         width: 89vw;
+        font-size: 13px;
+        height: 33px;
     }
     .consult_table>tr:nth-child(4)>th{
         padding: 0;
@@ -53,13 +55,18 @@
     .accordion{
         width: 95vw;
     }
-    .accordion>label{
-        height: 8vw;
-        font-size: 16px !important;
+    .menu_contents>.accordion>label{
+        height: 95px;
+        font-size: 16px;
+        padding: 30px 60px;
+        box-sizing: border-box;
+    }
+    .faq_content>p{
+        font-size: 16px;
     }
 
     /*실시간 상담*/
-    #request_info>p{
+    .mc_content>#request_info>p{
         font-size: 22px;
         height: 70px;
         text-align: center;
