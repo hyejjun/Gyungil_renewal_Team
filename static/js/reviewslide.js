@@ -11,8 +11,7 @@ function moveleft(){
 
 
 const io = new IntersectionObserver((entries,observer)=>{
-  console.log(entries[0]); 
-  console.log(entries[0].boundingClientRect.width); 
+
   let boxlength = entries[0].boundingClientRect.width; 
 })
 
