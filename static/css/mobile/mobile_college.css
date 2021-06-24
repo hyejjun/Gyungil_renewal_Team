@@ -2,9 +2,52 @@
     /*인사말*/
 
     /*연혁*/
+    .mc_content > .his_sub{
+        width: 100px;
+        font-size: 40px;
+    }
+    .mc_content > ul > .his_con{
+        font-size: 15px;
+        text-align: left;
+    }
 
     /*교직원소개*/
+    .menu_contents> .teachars{
+        width: 90vw;
+        padding: 40px 10px;
+    }
+    .teacher_img>img{
+        width: 160px;
+        height: auto;
+    }
+    .teachars > .teachar_text{
+        display: block;
+        float: none;
+        width: auto;
+        margin-bottom: 80px;
+    }
+    .teachars > .teachar_text > .teachar_title{
+        font-size: 20px;
+        text-shadow: none;
+        font-weight: bold;
+    }
+    .teachars > .teachar_text > .teachar_position{
+        font-size: 18px;
+    }
 
+    .teachars > .teachar_text > .teachar_name{
+        font-size: 18px;
+    }
+    .teachars > .teachar_text > .teachar_career{
+        font-size: 15px;
+        display: none;
+    }
+    .teachars > .teachar_text > .teachar_content{
+        font-size: 15px;
+        display: none;
+
+    }
+    
     /*시설소개*/
     .menu_contents>#interior{
         width: 100%;
