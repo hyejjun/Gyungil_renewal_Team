@@ -160,4 +160,16 @@
         width: 90vw;
     }
 
+    .mobile_submenu_ul{
+        display: none;
+    }
+
+    .mobile_submenu_ul.open{
+        display: block;
+    }
+
+    .mobile_gnb_li{
+        cursor: pointer;
+    }
+
 }

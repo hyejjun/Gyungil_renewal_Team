@@ -25,7 +25,7 @@
                     </a>
                 </ul>
             </div>
-            
+
             <div class="userinfo">
                 <div class="before_login">
                     <a href="/user/login">로그인</a>
@@ -34,36 +34,95 @@
                 <div class="after_login">
                     {% if userid != undefined %}
                     <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
-                    <a href="/user/logout"><span class="logout">로그아웃</span></a> {% endif %} {% if nickname != undefined %}
+                    <a href="/user/logout"><span class="logout">로그아웃</span></a> {% endif %} {% if nickname != undefined
+                    %}
                     <a href="/auth/kakao/kakao_userinfo"><span class="after_login_span">{{nickname}}님</span></a>
                     <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a> {% endif %}
                 </div>
             </div>
 
             <div id="side_area">
-                <input type="checkbox" id="side_flag" >
+                <input type="checkbox" id="side_flag">
                 <label for="side_flag">
                     <span></span>
                     <span></span>
                     <span></span>
                 </label>
                 <div id="sidebar">
-                    <ul class="gnb_ul">
-                        <a href="/college/introduction">
-                            <li>학교소개</li>
-                        </a>
-                        <a href="/curriculum/curriculum">
-                            <li>교육과정</li>
-                        </a>
-                        <a href="/jobinfo/interview/list?page=1">
-                            <li>취업정보</li>
-                        </a>
-                        <a href="/community/notice/list?page=1">
-                            <li>커뮤니티</li>
-                        </a>
-                        <a href="/consult/consulting">
-                            <li>상담신청</li>
-                        </a>
+                    <ul class="mobile_gnb_ul">
+                        <li class="mobile_gnb_li">
+                            학교소개
+                            <ul class="mobile_submenu_ul">
+                                <a href="/college/introduction">
+                                    <li>인사말</li>
+                                </a>
+                                <a href="/college/history">
+                                    <li>연혁</li>
+                                </a>
+                                <a href="/college/teachers">
+                                    <li>교직원소개</li>
+                                </a>
+                                <a href="/college/interior">
+                                    <li>시설소개</li>
+                                </a>
+                                <a href="/college/location">
+                                    <li>오시는 길</li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="mobile_gnb_li">
+                            교육과정
+                            <ul class="mobile_submenu_ul">
+                                <a href="/curriculum/curriculum">
+                                    <li>과정안내</li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="mobile_gnb_li">
+                            취업정보
+                            <ul class="mobile_submenu_ul">
+                                <a href="/jobinfo/interview/list?page=1">
+                                    <li>취업자인터뷰</li>
+                                </a>
+                                <a href="/jobinfo/portfolio/list?page=1">
+                                    <li>포트폴리오</li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="mobile_gnb_li">
+                            커뮤니티
+                            <ul class="mobile_submenu_ul">
+                                <a href="/community/notice/list?page=1">
+                                    <li>공지사항</li>
+                                </a>
+                                <a href="/community/review?page=1">
+                                    <li>수강후기</li>
+                                </a>
+                                <a href="/community/ki_story/list?page=1">
+                                    <li>KI이야기</li>
+                                </a>
+                                <a href="/community/ki_reporter/list?page=1">
+                                    <li>KI기자단</li>
+                                </a>
+                                <a href="/community/column/list?page=1">
+                                    <li>교수칼럼</li>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="mobile_gnb_li">
+                            상담신청
+                            <ul class="mobile_submenu_ul">
+                                <a href="/consult/consulting">
+                                    <li>상담신청</li>
+                                </a>
+                                <a href="/consult/faq">
+                                    <li>자주묻는질문</li>
+                                </a>
+                                <li>
+                                    <a href="/chat">실시간 상담</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <div class="login">
@@ -71,7 +130,7 @@
                         <a href="/user/join">회원가입</a>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <div class="submenu">
@@ -138,3 +197,4 @@
         </div>
     </div>
 </div>
+<script src="/js/mobile_menu.js"></script>

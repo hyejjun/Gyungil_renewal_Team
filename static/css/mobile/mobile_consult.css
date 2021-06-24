@@ -1,4 +1,5 @@
 @media (max-width: 1200px) {
+    /*상담신청*/
     .personal_ag_div{
         width: 100%;
     }
@@ -37,6 +38,36 @@
 
     .consult_input_text{
         width: 89vw;
+    }
+    .mobile_submenu_ul{
+        margin-top: 13px;
+    }
+
+    
+    .mobile_submenu_ul>a{
+        display: block;
+        height: 30px;
+    }
+
+    /*faq*/
+    .accordion{
+        width: 95vw;
+    }
+    .accordion>label{
+        height: 8vw;
+        font-size: 16px !important;
+    }
+
+    /*실시간 상담*/
+    #request_info>p{
+        font-size: 22px;
+        height: 70px;
+        text-align: center;
+    }
+
+    .consultBtn_div{
+        padding: 0;
+        margin: 55px 0 0 0;
     }
 
 }
