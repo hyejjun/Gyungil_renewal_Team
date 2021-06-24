@@ -19,16 +19,14 @@
             {% for item in result %}
             <li>
               <input type="hidden" value="{{item.id}}">
-              <div><img src="http://localhost:3000/{{item.image}}"alt="슬라이드 이미지"></div>
+              <div><img src="http://localhost:3000/{{item.image}}"alt="슬라이드 이미지" width="400" height="300"></div>
               <div><a href="{{item.link}}">{{item.link}}</a></div>
               {% if item.show==1 %}
               <div><input type="checkbox" checked onclick="check()"></div>
               {% else %}
               <div><input type="checkbox" onclick="check()"></div>
               {% endif %}
-
               <div>
-
                 <input type="button" name ="{{item.id}}" value="링크수정" onclick="link_update()">
                 <input type="button" name ="{{item.id}}" value="삭제" onclick="destroy()">
               </div>
