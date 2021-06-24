@@ -1,24 +1,27 @@
 @media (max-width: 1200px) {
 
-    .form_position{
-        bottom: -30px;
+    .mc_content > .form_position{
+        width: 100vw;
+        bottom: -20px;
     }
     .form_position>form{
         width: 100vw;
 
     }
 
-    .box>select{
+    .form_position>form>.box>select{
         width: 29vw;
         font-size: 16px;
-        bottom: 32px;
+        bottom: 6px;
         border-radius: 10px;
+        height: 34px;
     }
 
-    #cover{
-        left: -117px;
-        width: 660px;
-        height: 58px;
+    .form_position>form>#cover{
+        left: -212px;
+        width: 879px;
+        height: 103px;
+        bottom: -28px;
     }
 
     #s-circle{
@@ -36,11 +39,10 @@
         width: 100%;
         height: 100%;
     }
-    .td>input{
+    #cover>.tb>.td>input{
         width: 100%;
-        height: 81px;
+        height: 94px;
         position: relative;
-        top: -20px;
     }
 
     /*게시글 list*/
