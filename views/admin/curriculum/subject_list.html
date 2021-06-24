@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>커뮤니티</title>
-  <link rel="stylesheet" href="/admin/css/index.css">
+<link rel="stylesheet" href="/css/subpage/community/review.css">
+<link rel="stylesheet" href="/admin/css/index.css">
 
 </head>
 <body>
@@ -13,7 +14,7 @@
     <div id="container1900">
       {% include "../layout/gnb.html" %}
       {% include "./curr_snb.html" %}
-      <div id="main">
+      <div id="main" class="board_list" >
         <table>
           <thead>
             <td>교과목</td>
@@ -27,7 +28,7 @@
             <tr>
               <td>{{item.name}}</td>
               <td>{{item.content}}</td>
-              <td><img src="http://localhost:3000/{{item.image}}" alt=""></td>
+              <td><img src="http://localhost:3000/{{item.image}}" width="400" height="300" alt=""></td>
               <td><a href="/admin/curriculum/subject/modify?id={{item.id}}">수정</a></td>
               <td><a href="/admin/curriculum/subject/destroy?id={{item.id}}">삭제</a></td>
             </tr>
