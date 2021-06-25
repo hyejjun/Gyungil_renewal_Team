@@ -2,9 +2,6 @@ const { curriculum, subject, curr_sbj, User, board, curr_rv } = require("../../.
 
 
 
-
-
-
 let show_curr = async (req, res) => {
   let result = await curriculum.findAll({
     attributes: ['id', 'name'],

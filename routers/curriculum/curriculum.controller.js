@@ -55,12 +55,12 @@ let curriculum_view = async (req, res) => {
     });
 
     res.render('./curriculum/curriculum_vie', {
-        // userid,
-        // username,
+        userid,
+        username,
         spec,
         subjects,
         review,
-        // nickname
+        nickname
     });
 }
 
