@@ -69,41 +69,33 @@
     #side_area > #sidebar {
         width: 155px;
         height: 100%;
-        padding: 60px 22px;
+        padding: 45px 22px;
         box-sizing: border-box;
-        position:fixed;
-        top:0px;
-        right:-160px;
-        /* background:#fff; */
-        background: rgb(26, 161, 110);
-        z-index:2;
+        position: fixed;
+        top: 0px;
+        right: -160px;
+        background: rgb(56 158 208);
+        z-index: 2;
         transition: all .35s;
+        color: #fffffff0;
+        font-size: 17px;
+        overflow: scroll;
     }
-    #side_area > #sidebar > ul >li {margin-top:20px;}
+    #side_area > #sidebar > ul >li {margin-top:30px;}
     #side_area > #side_flag:checked+label+#sidebar{
         right:0px;
         transition: all .35s;
     }
 
-    /* .login{
-        width: 100%;
-        height: auto;
-        display: block;
-        position: relative;
-        /* bottom: 0; 
-        /* right: 0; 
+    .mobile_submenu_ul {
+        padding-left: 10px;
+    }
+    .mobile_submenu_ul > a > li,
+    .mobile_submenu_ul > li > a
+     {
+        color: #ffffffde;
         font-size: 15px;
-        /* padding: 10px; 
-        box-sizing: border-box; 
-        background: #91b3e6;
-        top: 277px
-    }*/
-    /*
-    .login > a{
-        display: block;
-        height: 50px;
-        text-align: right;
-    } */
+    }
 
 
     /*footer*/

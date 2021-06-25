@@ -2,7 +2,7 @@
 
     .mc_content > .form_position{
         width: 100vw;
-        bottom: -20px;
+        bottom: 0;
     }
     .form_position>form{
         width: 100vw;
@@ -17,6 +17,7 @@
         right: 200px;
         left: 5px;
         height: 28px;
+        box-shadow: none;
     }
 
     .form_position>form>#cover{
