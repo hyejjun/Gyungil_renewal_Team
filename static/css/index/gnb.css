@@ -73,6 +73,7 @@
     width: 58%;
     left: 292px;
     font-weight: bolder;
+    background: white;
 }
 
 .submenu_inner_wrap {
@@ -88,6 +89,7 @@
 
 .submenu_ul>a>li {
     height: 46px;
+    color: black;
 }
 
 

@@ -387,5 +387,5 @@ button span:before, button span:after
 
 .form_position{
       position: relative;
-      bottom: 10px;
+      bottom: -60px;    
   }
