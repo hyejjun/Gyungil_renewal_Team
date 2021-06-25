@@ -178,6 +178,7 @@
     .mc_content{
         padding: 0;
         width: 90vw;
+        min-height: 350px;
     }
 
     .mobile_submenu_ul{
