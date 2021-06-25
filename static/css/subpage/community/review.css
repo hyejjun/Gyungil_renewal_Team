@@ -96,29 +96,97 @@ a {
     width: 100%;
 }
 
-.board_list tr {
+.board_list > thead > tr:nth-child(1){
+    border-bottom: 2px solid #999;
+    font-size:16px;
+    font-weight:bold;
+    padding:0px;
+}
+
+.board_list > thead > tr:nth-child(1) > th {
+    padding-bottom:6px;
+    font-size:14px;
+}
+
+.board_list > thead > tr:nth-child(1) > th{
+    text-align:left;
+}
+.board_list > tbody > tr:hover{
+    background:#eee;
+}
+
+.board_list > tbody > tr{
+    padding:10px 0 10px 0;
+    height:30px;
     border-bottom: 1px solid #999;
 }
 
-.board_list th,
-.board_list td{
-    padding: 10px 0;
-    font-size: 14px;
+.board_list > tbody > tr > td{ 
+    font-size:12px;
+    text-align:center; 
+    color:#333;
 }
 
-.board_list td {
-text-align: center;
+.board_list > tbody > tr > td > a{ 
+    font-size:12px;
+    text-align:center; 
+    color:#333;
+}
+
+.board_list > tbody > tr > td.tit {
+    text-align: left !important;
+}
+
+/* 번호 */
+.board_list > tbody > tr > td:nth-child(1){
+    width:8%;
+    text-align:left;
+    padding-left:5px;
+} 
+
+/* 날짜 */
+.board_list > tbody > tr > td:nth-child(3){
+    width:15%;
+    text-align:left;
+}
+
+/* 작성자 */
+.board_list > tbody > tr > td:nth-child(4){
+    width:15%;
+    text-align:left;
 }
 
 .board_list .tit {
     width: 600px;
+}
+/* 조회수 */
+.board_list > tbody > tr > td:nth-child(5){
+    width:6%;
+    text-align:left;
 }
 
 .board_list tbody tr td:nth-child(3) :hover{
     text-decoration: underline;
 }
 
-.board_list_wrap .paging{
+.paging{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:30px;
+}
+
+.paging > a{
+    display:inline-block;
+    width:28px;
+    height:28px;
+    border:1px solid #ddd;
+    font-size:11px;
+    line-height:30px;
+    text-align:center;
+}
+
+/* .board_list_wrap .paging{
     margin-top: 20px;
     font-size: 0;
     text-align: center;
@@ -151,7 +219,7 @@ text-align: center;
 }
 .writez{
     float: right;
-}
+} */
 
 
 
@@ -181,17 +249,10 @@ input, button
 
 #cover
 {
-    position: absolute;
     top: auto;
-    width: 772px;
-    padding: 0px;
-    margin: 0px;
+    width: 130px;
     background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 1px 0px black, 0 0 0 4px #030303;
-    transform: scale(0.23);
-    position: absolute;
-    left: 137px;
+    box-shadow: 0 1px 0px black, 0 0 0 1px #030303;
 }
 
 form
@@ -239,7 +300,7 @@ button
     border: 15px solid #030303;
     background-color: transparent;
     border-radius: 50%;
-    transition: 0.5s ease all;
+    /* transition: 0.5s ease all; */
 }
 
 button span
@@ -268,9 +329,9 @@ button span:before, button span:after
     border-radius: 10px;
     transform: rotateZ(0);
     transition: 0.5s ease all;
-}
+} 
 
-#s-cover:hover #s-circle
+/* #s-cover:hover #s-circle
 {
     top: -1px;
     width: 67px;
@@ -278,18 +339,18 @@ button span:before, button span:after
     border-width: 0;
     background-color: #0e0e0e;
     border-radius: 20px;
-}
+} */
 
-#s-cover:hover span
+/* #s-cover:hover span
 {
     top: 50%;
     left: 56px;
     width: 25px;
     margin-top: -9px;
     transform: rotateZ(0);
-}
+} */
 
-#s-cover:hover button span:before
+/* #s-cover:hover button span:before
 {
     bottom: 11px;
     transform: rotateZ(52deg);
@@ -305,7 +366,7 @@ button span:before, button span:after
     right: -6px;
     width: 40px;
     background-color: #0e0e0e;;
-}
+} */
 
 #ytd-url {
   display: block;
@@ -324,67 +385,53 @@ button span:before, button span:after
   z-index: 125;
 }
 
-  /* .box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
   
-.box select {
-    right: 573px;
-    color: black;
+.box > select {
     background: #eee;
     padding: 10px;
     width: 100px;
-    border: none;
     font-size: 20px;
-    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
-    -webkit-appearance: button;
-    appearance: button;
     outline: none;
-    background-color: cd1d3;
     color: black;
     padding: 3px;
     width: 57px;
     border: 1px solid;
-    border-radius: 24px;
     font-size: 13px;
-    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
-    -webkit-appearance: button;
-    appearance: button;
     outline: none;
-    position: absolute;
-    bottom: 36px;
 }
+  
 
-  
-  .box::before {
-    content: "\f13a";
-    font-family: FontAwesome;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20%;
-    height: 100%;
-    text-align: center;
-    font-size: 28px;
-    line-height: 45px;
-    color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-  }
-  
-  .box:hover::before {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .box select option {
-    padding: 30px;
-  }
 
 .form_position{
-      position: relative;
-      bottom: -60px;    
-  }
+    width:100% !important;
+}
+
+.form_position > form{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#cover{
+    left:0 !important;
+    bottom: 0 !important;
+    width:300px !important;
+    height:30px !important;
+}
+
+#cover>.tb>.td>input {
+    height:30px !important;
+    position:relative;
+    top:-32px !important;
+    font-size:14px;
+    box-sizing: border-box;
+    padding-left:7px;
+}
+
+#cover>.tb>.td>input:focus{
+    outline: none;
+    
+}
+
