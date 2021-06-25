@@ -115,7 +115,7 @@
 
 /* faq css -start-*/
 .accordion {
-    height: 930px;
+    height: 1055px;
 }
 
 input[id*="answer"] {
@@ -124,13 +124,13 @@ input[id*="answer"] {
 
 input[id*="answer"]+label {
     display: block;
-    padding: 30px;
+    padding: 20px;
     border: 19px solid #ffffff;
-    border-radius: 15px;
+    border-radius: 18px;
     border-bottom: 0;
     color: #000;
     font-weight: 900;
-    font-size: 19px;
+    font-size: 18px;
     background: #f4f4f4;
     cursor: pointer;
     position: relative;
@@ -151,8 +151,7 @@ input[id*="answer"]+label+div {
     max-height: 0;
     transition: all .35s;
     overflow: hidden;
-    background: #ebf8ff;
-    font-size: 22px;
+    font-size: 19px;
 }
 
 input[id*="answer"]+label+div p {
