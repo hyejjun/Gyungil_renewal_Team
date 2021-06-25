@@ -1,4 +1,5 @@
 @media (max-width: 1200px) {
+    /*커리큘럼*/
     .mc_content>div{
 
     }
@@ -23,6 +24,60 @@
         position: relative;
         top: 280px;
         left: 33px;
+    }
+
+    /*커리큘럼 자세히 보기*/
+    #curr_info{
+        
+    }
+    #curr_info>.name{
+        font-size: 20px;
+        padding-left: 10px;
+        height: 100px;
+        box-sizing: border-box;
+    }
+
+    .curr_content{
+        
+    }
+    .curr_content>div>div{
+        font-size: 15px;
+    }
+
+
+    #curr_sbj{
+        margin-top: 50px;
+    }
+    #head{
+        font-size: 30px;
+    }
+
+    .sbj-img{
+        height: 80vw;
+        position: relative;
+        top: 20%;
+    }
+
+    .subject_text>strong{
+        font-size: 27px;
+    }
+    .subject_text>div{
+        font-size: 20px;
+    }
+
+    #rv_head{
+        font-size: 30px;
+    }
+    .rv_text_box>span{
+        font-size: 20px;
+    }
+
+    #curr_consult>p{
+        font-size: 21px;
+    }
+
+    #curr_consult>a{
+        font-size: 20px;
     }
 
 }
