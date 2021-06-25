@@ -12,7 +12,7 @@ const consultRouter = require('./consult/index');
 const adminRouter = require('./admin/index');
 const chatRouter = require('./chat/index.js');
 
-router.use('/', mainRouter);
+router.use('/',mainRouter);
 router.use('/auth', authRouter);
 router.use('/user', userRouter);
 router.use('/college', collegeRouter);

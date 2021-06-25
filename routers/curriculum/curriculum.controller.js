@@ -54,9 +54,7 @@ let curriculum_view = async (req, res) => {
         if(p==5) p=1; 
     });
 
-    console.log(userid);
-    console.log(username);
-    console.log(nickname);
+
 
     res.render('./curriculum/curriculum_vie', {
         userid,

@@ -25,14 +25,10 @@ let login_check = async (req, res) => {
     })
     
     let type = loginResult.dataValues.type;
-  
 
-    if(type>=3){
-      res.redirect('/amdin?msg=관리자 페이지에 접근할 수 없습니다&flag=0');
-    }
     ////////// 모든 라우터에서 세션 없으면 접근 못하게 하기. 
     
-    if (loginResult != null) {
+    if (loginResult != null && type<3) {
         let username = loginResult.dataValues.username;
         let userid = loginResult.dataValues.userid;
         req.session.username = username; 
@@ -43,7 +39,7 @@ let login_check = async (req, res) => {
           res.redirect(`/admin/main?msg=로그인에 성공했습니다`);
       })
     } else {
-        res.redirect('/admin?msg=아이디/비밀번호를 확인하세요&flag=0');
+        res.redirect('/admin?msg=관리자 페이지에 접근할 수 없습니다.&flag=0');
     }
 
 }
@@ -60,7 +56,6 @@ let logout = (req, res) => {
 
 let id_check = async (req, res) => {
     let userid = req.query.userid;
-    console.log(userid);
     let flag = false;
     let result = await User.findOne({
         where: { userid }
