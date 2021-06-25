@@ -6,161 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel="stylesheet" href="/css/subpage/curriculum/curr_common.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/index/gnb.css">
   <link rel="stylesheet" href="/css/subpage/curriculum/curr_view.css">
   <link rel="stylesheet" href="/css/mobile/mobile_common.css">
 
 </head>
 <body>
-  <!-- <div id="gnb_wrap" class="w100">
-    <div class="w1200 header_wrap">
-        <div class="header">
-            <div class="logo">
-                <a href="/">
-                    <img src="http://www.kiweb.or.kr/images/main_new/logo_new_2018.png" alt="경일로고">
-                </a>
-            </div>
-            <div class="gnb">
-                <ul class="gnb_ul">
-                    <a href="/college/introduction">
-                        <li>학교소개</li>
-                    </a>
-                    <a href="/curriculum/curriculum">
-                        <li>교육과정</li>
-                    </a>
-                    <a href="/jobinfo/interview/list?page=1">
-                        <li>취업정보</li>
-                    </a>
-                    <a href="/community/notice/list?page=1">
-                        <li>커뮤니티</li>
-                    </a>
-                    <a href="/consult/consulting">
-                        <li>상담신청</li>
-                    </a>
-                </ul>
-            </div>
-            
-            <div class="userinfo">
-                <div class="before_login">
-                    <a href="/user/login">로그인</a>
-                    <a href="/user/join">회원가입</a>
-                </div>
-                <div class="after_login">
-                    {% if userid %}
-                    <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
-                    <a href="/user/logout"><span class="logout">로그아웃</span></a> 
-                    {% endif %}
-                    {% if nickname %}
-                    <a href="/auth/kakao/kakao_userinfo"><span class="after_login_span">{{nickname}}님</span></a>
-                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div id="side_area">
-                <input type="checkbox" id="side_flag" >
-                <label for="side_flag">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-                <div id="sidebar">
-                    <ul class="gnb_ul">
-                        <a href="/college/introduction">
-                            <li>학교소개</li>
-                        </a>
-                        <a href="/curriculum/curriculum">
-                            <li>교육과정</li>
-                        </a>
-                        <a href="/jobinfo/interview/list?page=1">
-                            <li>취업정보</li>
-                        </a>
-                        <a href="/community/notice/list?page=1">
-                            <li>커뮤니티</li>
-                        </a>
-                        <a href="/consult/consulting">
-                            <li>상담신청</li>
-                        </a>
-                    </ul>
-
-                    <div class="login">
-                        <a href="/user/login">로그인</a>
-                        <a href="/user/join">회원가입</a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="submenu">
-            <div class="submenu_inner_wrap">
-                <ul class="submenu_ul">
-                    <a href="/college/introduction">
-                        <li>인사말</li>
-                    </a>
-                    <a href="/college/history">
-                        <li>연혁</li>
-                    </a>
-                    <a href="/college/teachers">
-                        <li>교직원소개</li>
-                    </a>
-                    <a href="/college/interior">
-                        <li>시설소개</li>
-                    </a>
-                    <a href="/college/location">
-                        <li>오시는 길</li>
-                    </a>
-                </ul>
-                <ul class="submenu_ul">
-                    <a href="/curriculum/curriculum">
-                        <li>과정안내</li>
-                    </a>
-                </ul>
-                <ul class="submenu_ul">
-                    <a href="/jobinfo/interview/list?page=1">
-                        <li>취업자인터뷰</li>
-                    </a>
-                    <a href="/jobinfo/portfolio/list?page=1">
-                        <li>포트폴리오</li>
-                    </a>
-                </ul>
-                <ul class="submenu_ul">
-                    <a href="/community/notice/list?page=1">
-                        <li>공지사항</li>
-                    </a>
-                    <a href="/community/review?page=1">
-                        <li>수강후기</li>
-                    </a>
-                    <a href="/community/ki_story/list?page=1">
-                        <li>KI이야기</li>
-                    </a>
-                    <a href="/community/ki_reporter/list?page=1">
-                        <li>KI기자단</li>
-                    </a>
-                    <a href="/community/column/list?page=1">
-                        <li>교수칼럼</li>
-                    </a>
-                </ul>
-                <ul class="submenu_ul">
-                    <a href="/consult/consulting">
-                        <li>상담신청</li>
-                    </a>
-                    <a href="/consult/faq">
-                        <li>자주묻는질문</li>
-                    </a>
-                    <li>
-                        <a href="/chat">실시간 상담</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> -->
+ 
 {% include "../layout/gnb.html" %}
 
- <!-- <section id ='curr_info' style="background-image: url(/uploads/technology.jpg); background-repeat: no-repeat; background-size: cover; width: 100vw;" > --> -->
 
  <section id ='curr_info'  > 
-    <!-- <img src="http://localhost:3000/{{spec.image}}" alt=""> -->
     <strong class="name">{{spec.name}}</strong>
     <div class="curr_content">
         <div>
@@ -218,8 +75,30 @@
 </section>
 
 <script src="/js/mobile_menu.js"></script>
-<script src="/js/submenu.js"></script>
 <script src="/js/curr.js"></script>
+{% if userid != undefined %}
+<script>
+    const userinfo = document.querySelector('.userinfo');
+    const before_login = document.querySelector('.before_login');
+    const after_login = document.querySelector('.after_login');
+    const after_login_span = document.querySelector('.after_login_span');
+
+    before_login.style.display = 'none';
+    after_login.style.display = 'block';
+</script>
+{% endif %}
+
+{% if nickname != undefined %}
+<script>
+    const userinfo = document.querySelector('.userinfo');
+    const before_login = document.querySelector('.before_login');
+    const after_login = document.querySelector('.after_login');
+    const after_login_span = document.querySelector('.after_login_span');
+
+    before_login.style.display = 'none';
+    after_login.style.display = 'block';
+</script>
+{% endif%}
 
 
 </body>
