@@ -111,8 +111,7 @@ text-align: center;
 }
 
 .board_list .tit {
-text-align: left;
-width: 600px;
+    width: 600px;
 }
 
 .board_list tbody tr td:nth-child(3) :hover{
