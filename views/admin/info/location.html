@@ -14,8 +14,13 @@
       {% include "../layout/gnb.html" %}
       {% include "./info_snb.html" %}
       <div id="main">
-        지도에 표시할 주소 <span>{{result.subject}}</span><br>
-        오시는 길 설명 <pre>{{result.content}}</pre><br>
+        
+        주소: {{result.address}}
+        전화번호: {{result.tel}}
+        팩스: {{result.fax}}
+        이메일: {{result.e-mail}}
+        버스: {{result.bus}}
+        지하철: {{result.subway}}
         <a href="/admin/info/location/modify">수정하기</a>
       
       </div>

@@ -15,8 +15,12 @@
       {% include "./info_snb.html" %}
       <div id="main">
         <form action="/admin/info/location/modify" method="post">
-        지도에 표시할 주소: <input type="text" name="subject" value="{{result.subject}}">
-        오시는 길 설명:  <textarea name="content" id="" cols="30" rows="10">{{result.content}}</textarea>
+        주소: <input type="text" name="address" value="{{result.address}}">
+        전화번호: <input type="text" name="tel" value="{{result.tel}}">
+        팩스: <input type="text" name="fax" value="{{result.fax}}">
+        이메일: <input type="text" name="email" value="{{result.email}}">
+        버스: <input type="text" name="bus" value="{{result.bus}}">
+        지하철: <input type="text" name="subway" value="{{result.subway}}">
         <input type="submit" value="수정">
       </form>
       </div>

@@ -60,7 +60,7 @@
   const gnb_wrap = document.querySelector('#gnb_wrap');
   
   document.addEventListener('scroll', function() {
-    if(document.documentElement.scrollTop==0){   
+    if(document.documentElement.scrollTop<100){   
       gnb_wrap.style.opacity = '1'; 
   }else{
     gnb_wrap.style.opacity = '0'; 
@@ -71,7 +71,11 @@ gnb_wrap.addEventListener('mouseover',()=>{
   gnb_wrap.style.opacity = "1";
 })
 gnb_wrap.addEventListener('mouseout',()=>{
-  submenu.style.opacity = "0";
+  if(document.documentElement.scrollTop<100){   
+    gnb_wrap.style.opacity = '1'; 
+}else{
+  gnb_wrap.style.opacity = "0";
+}
 })
 
 

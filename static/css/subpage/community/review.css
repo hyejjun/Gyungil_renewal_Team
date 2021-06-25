@@ -156,6 +156,9 @@ a {
     text-align:left;
 }
 
+.board_list .tit {
+    width: 600px;
+}
 /* 조회수 */
 .board_list > tbody > tr > td:nth-child(5){
     width:6%;

@@ -48,6 +48,6 @@ router.post('/teacher/show', infoController.modify_teacherShow)
 
 router.get('/location', infoController.show_location);
 router.post('/location/modify', infoController.update_location);
-router.get('/location/modify', infoController.show_modify);
+router.get('/location/modify', infoController.show_location_modify);
 
 module.exports = router;

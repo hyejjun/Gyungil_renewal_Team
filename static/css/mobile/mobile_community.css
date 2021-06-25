@@ -9,6 +9,10 @@
 
     }
 
+    .writez{
+        display: none;
+    }
+
     .form_position>form>.box>select{
         width: 20vw;
         font-size: 13px;
