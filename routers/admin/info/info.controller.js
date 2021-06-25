@@ -1,4 +1,5 @@
 const { board, teacher, History, intro } = require("../../../models");
+const main_visual = require("../../../models/main_visual");
 
 const intro_type = [];
 
@@ -240,25 +241,46 @@ let show_location = async (req, res) => {
   let result = await board.findOne({
     where: { id: '2' }
   })
+  let content = result.dataValues.content; 
+  content = content.split('$$'); 
+  result['adrress'] = content[0];
+  result['tel'] = content[1];
+  result['fax'] = content[2];
+  result['email'] = content[3];
+  result['bus'] = content[4];
+  result['subway'] = content[5];
   res.render('./admin/info/location.html', {
     result,
   })
 }
 
-let show_modify = async (req, res) => {
+let show_location_modify = async (req, res) => {
   let result = await board.findOne({
     where: { id: '2' }
   })
+  let content = result.dataValues.content; 
+  content = content.split('$$'); 
+  result['address'] = content[0];
+  result['tel'] = content[1];
+  result['fax'] = content[2];
+  result['email'] = content[3];
+  result['bus'] = content[4];
+  result['subway'] = content[5];
+  
+  console.log(result);
+  console.log(content);
+
   res.render('./admin/info/location_modify.html', {
-    result,
+    result, 
   })
 }
 
 let update_location = async (req, res) => {
-  let { subject, content } = req.body;
+  let { address, tel, fax,email,bus,subway } = req.body;
 
+  let content = `${address}$$${tel}$$${fax}$$${email}$$${bus}$$${subway}`
   let result = await board.update({
-    subject, content,
+     content,
   }, {
     where: { id: '2' }
   })
@@ -275,6 +297,6 @@ module.exports = {
   interior, create_interior, destroy_interior, update_interior, add_interior,
   get_teacher, add_teacher, create_teacher, modify_teacher, destroy_teacher, update_teacher,
   get_history, add_history, dlt_history, update_history,
-  show_location, show_modify, update_location,modify_teacherShow, 
+  show_location, show_location_modify, update_location,modify_teacherShow, 
 }
 

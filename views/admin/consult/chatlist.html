@@ -4,7 +4,7 @@
 {% for item in clients %}
 {% if item.on %}
   <li >
-    <div>
+    <div class="clientInfo">
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
     </div>
@@ -13,8 +13,8 @@
     </div>
   </li>
   {% else %}
-  <li style="color: red;">
-    <div>
+  <li style="background-color: grey;">
+    <div class="clientInfo">
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
     </div>
@@ -39,7 +39,7 @@
     </div>
   </li>
 {% else %}
-<li style="color: red;">
+<li style="background-color: grey;">
   <div class="clientInfo" onclick="change_client(`{{item.id}}`)">
     <strong >{{item.name}}({{item.age}})</strong>
     <span>{{item.date}}</span>
