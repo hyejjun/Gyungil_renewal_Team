@@ -2,6 +2,7 @@
 {% include "../layout/subpage_community_navi.html" %}
 <link rel="stylesheet" href="/css/subpage/community/review.css">
 
+
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
@@ -74,7 +75,7 @@
         
         {% if nickname or userid %}
         <div class="writez">
-            <a href="/community/review_write?page={{page}}">작성하기</a>
+            <a class="submitBtn"  href="/community/review_write?page={{page}}">작성하기</a>
         </div>
         {% endif %}
 

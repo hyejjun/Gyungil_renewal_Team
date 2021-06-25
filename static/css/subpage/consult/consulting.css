@@ -93,13 +93,17 @@
     padding: 6px 60px;
 }
 .submitBtn{
+    display: block;
     width: 130px;
     height: 40px;
     background: #6060d0de;
-    border: none;
+    border: 1px solid;
     border-radius: 7px;
     color: white;
+    line-height: 38px;
     cursor: pointer;
+    text-align: center;
+    float: right;
 }
 
 .cancelBtn{
@@ -166,4 +170,77 @@ input[id*="answer"]:checked+label+div {
 
 input[id*="answer"]:checked+label em {
     background-position: 0 -30px;
+}
+
+
+
+
+
+#review_content{
+    width: 880px;
+    height: 330px;
+}
+
+#review_writer{
+    width: 300px;
+}
+.reviewBtn_div{
+    text-align: right;
+    padding-right: 36px;
+}
+
+
+
+.review_content>tr:nth-child(3)>th{
+    padding: 5px 13px 296px 0px;
+}
+.review_content>tr>th{
+    margin: 0 10px 0 10px;
+    text-align: left;
+    padding: 6px 33px 0 0px;
+}
+
+
+#review_submit{
+    width: 100px;
+    float: right;
+}
+.cancelBtn_review{
+    width: 75px;
+    height: 40px;
+    background: white;
+    border: 1px solid #6060d0de;
+    border-radius: 7px;
+    color: #6060d0de;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 13px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: 7px;
+}
+
+.review_input:focus{
+    border-color: dodgerblue;
+    box-shadow:20px dodgerblue;
+}
+
+
+.review_input{
+    width: 100%;
+    border-radius: 15px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 4px 11px;
+    margin: 18px 0 0 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    border: 2px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all .3s;
+    font-weight: 500;
+    outline: dodgerblue;
 }

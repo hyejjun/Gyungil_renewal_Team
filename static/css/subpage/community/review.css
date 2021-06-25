@@ -297,7 +297,8 @@ button
     border: 15px solid #030303;
     background-color: transparent;
     border-radius: 50%;
-    /* transition: 0.5s ease all; */
+    transition: 0.5s ease all;
+    
 }
 
 button span
