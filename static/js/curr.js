@@ -1,7 +1,7 @@
 (() => {
 
  
-
+  // 커리큘럼 스티키 
   const stepElems = document.querySelectorAll('.subject_text');
   const graphicElems = document.querySelectorAll('.subject_image');
   let currentItem = graphicElems[0]; //현재활성화된 그래픽아이템을 지정하는 변수. 
@@ -54,6 +54,39 @@
   });
 
   activate();
+
+
+  //gnb 숨기기 
+  const gnb_wrap = document.querySelector('#gnb_wrap');
+  
+  document.addEventListener('scroll', function() {
+    if(document.documentElement.scrollTop==0){   
+      gnb_wrap.style.opacity = '1'; 
+  }else{
+    gnb_wrap.style.opacity = '0'; 
+  }
+});
+
+gnb_wrap.addEventListener('mouseover',()=>{
+  gnb_wrap.style.opacity = "1";
+})
+gnb_wrap.addEventListener('mouseout',()=>{
+  submenu.style.opacity = "0";
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
