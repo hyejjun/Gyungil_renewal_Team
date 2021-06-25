@@ -237,7 +237,7 @@ a {
     vertical-align: middle;
 }
 
-input, button
+/* input, button
 {
     color: black;
     font-family: Nunito;
@@ -245,34 +245,34 @@ input, button
     margin: 0;
     border: 0;
     background-color: transparent;
-}
-
+} */
+/* 
 #cover
 {
     top: auto;
     width: 130px;
     background-color: #ffffff;
     box-shadow: 0 1px 0px black, 0 0 0 1px #030303;
-}
+} */
 
 form
 {
     height: 96px;
 }
-
+/* 
 input[type="text"]
 {  display: block;
     width: 118.5%;
     height: 96px;
     font-size: 60px;
     line-height: 1;
-}
+} */
 
 input[type="text"]::placeholder
 {
     color: #cfd2d5;
 }
-
+/*
 #s-cover
 {
     width: 1px;
@@ -330,7 +330,7 @@ button span:before, button span:after
     border-radius: 10px;
     transform: rotateZ(0);
     transition: 0.5s ease all;
-} 
+}  */
 
 /* #s-cover:hover #s-circle
 {
@@ -368,7 +368,7 @@ button span:before, button span:after
     width: 40px;
     background-color: #0e0e0e;;
 } */
-
+/* 
 #ytd-url {
   display: block;
   position: fixed;
@@ -386,16 +386,32 @@ button span:before, button span:after
   z-index: 125;
 }
 
-  
+   */
+
+.box{
+    margin: 0 auto;
+    width: 350px;
+    
+}
+
 .box > select {
+    margin-top: 50px;
     background: #eee;
-    padding: 10px;
-    width: 100px;
-    font-size: 20px;
-    outline: none;
     color: black;
+
+    
+
+
     padding: 3px;
     width: 57px;
+    border: 1px solid;
+    font-size: 13px;
+    outline: none;
+}
+
+.box>input{
+    width: 200px;
+    padding: 3px;
     border: 1px solid;
     font-size: 13px;
     outline: none;
@@ -432,7 +448,6 @@ button span:before, button span:after
 }
 
 #cover>.tb>.td>input:focus{
-    outline: none;
     
 }
 
