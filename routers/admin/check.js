@@ -28,14 +28,7 @@
 //   }
 // }
 
-// function getSignature(header, payload) {
-//   const signature = crypto.createHmac('sha256', Buffer.from(process.env.salt))
-//       .update(header + "." + payload)
-//       .digest('base64')
-//       .replace('=', '')
-//       .replace('==', '');
-//   return signature;
-// }
+
 
 
 function check(req,res,next){
