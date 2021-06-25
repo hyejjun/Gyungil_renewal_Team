@@ -8,10 +8,11 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="stylesheet" href="/css/subpage/curriculum/curr_common.css">
   <link rel="stylesheet" href="/css/subpage/curriculum/curr_view.css">
+  <link rel="stylesheet" href="/css/mobile/mobile_common.css">
 
 </head>
 <body>
-  <div id="gnb_wrap" class="w100">
+  <!-- <div id="gnb_wrap" class="w100">
     <div class="w1200 header_wrap">
         <div class="header">
             <div class="logo">
@@ -45,11 +46,14 @@
                     <a href="/user/join">회원가입</a>
                 </div>
                 <div class="after_login">
-                    {% if userid != undefined %}
+                    {% if userid %}
                     <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
-                    <a href="/user/logout"><span class="logout">로그아웃</span></a> {% endif %} {% if nickname != undefined %}
+                    <a href="/user/logout"><span class="logout">로그아웃</span></a> 
+                    {% endif %}
+                    {% if nickname %}
                     <a href="/auth/kakao/kakao_userinfo"><span class="after_login_span">{{nickname}}님</span></a>
-                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a> {% endif %}
+                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a>
+                    {% endif %}
                 </div>
             </div>
 
@@ -150,7 +154,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+{% include "../layout/gnb.html" %}
 
  <!-- <section id ='curr_info' style="background-image: url(/uploads/technology.jpg); background-repeat: no-repeat; background-size: cover; width: 100vw;" > --> -->
 
@@ -212,6 +217,7 @@
 
 </section>
 
+<script src="/js/mobile_menu.js"></script>
 <script src="/js/submenu.js"></script>
 <script src="/js/curr.js"></script>
 

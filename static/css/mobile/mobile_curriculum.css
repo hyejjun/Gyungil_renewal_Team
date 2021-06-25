@@ -1,0 +1,28 @@
+@media (max-width: 1200px) {
+    .mc_content>div{
+
+    }
+    .mc_content>div>.crcl_list{
+        height: auto;
+        min-height: 500px;
+    }
+    .crcl_list > .crcl_img{
+        left: 27px;
+    }
+    .crcl_img>img{
+        width: 300px !important;
+    }
+
+    .crcl_list>h4{
+        display: none;
+    }
+
+    .crcl_con{
+        width: 95%;
+        margin: 0;
+        position: relative;
+        top: 280px;
+        left: 33px;
+    }
+
+}
