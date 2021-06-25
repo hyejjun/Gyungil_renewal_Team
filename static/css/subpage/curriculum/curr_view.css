@@ -8,7 +8,7 @@
 
 #curr_info{
   position: relative;
-  width: 1920px;
+  width: 100vw;
   height: 100vh;
   padding-top:150px ;
   box-sizing: border-box;
@@ -19,12 +19,20 @@
   /* position: relative; */
 }
 
-
+#rv_head{ 
+  position: sticky;
+  color: #000;
+  padding-left: 4vw;
+  padding-bottom: 10vh;
+  top:20px; 
+  z-index: 200;
+  font-size: 50px;
+}
 
 #curr_rv{
+  margin-top: 30vh;
   width: 100vw;
-  height: 100vh;
-  background-color: coral;
+  
 }
 
 .sbj-img {
@@ -56,7 +64,7 @@
 
 #scroll_image {
   position: sticky;
-  top: 0;
+  top: 10vh;
   width: 50vw;
   height: 100vh;
   z-index: 4;
@@ -64,9 +72,10 @@
 
 #head{ 
   position: sticky;
-  color: rgb(1, 1, 100);;
-  padding-left: 80px;
-  top:20px; 
+  color: #000;
+  padding-top: 3vh;
+  padding-left: 4vw;
+  top:0px; 
   z-index: 200;
   font-size: 50px;
 }
@@ -89,7 +98,7 @@
   padding-bottom: 5vh;
   position: relative;
   z-index: 90;
-  border: 5px solid #1566c3;
+  /* border: 5px solid #1566c3; */
   border-radius: 50px;
 }
 
@@ -100,7 +109,7 @@
 }
 
 .subject_text>strong{
-  color: rgb(1, 1, 100);
+  color: #000;
   display: block;
   font-size: 50px;
   font-weight: bold;
@@ -109,8 +118,8 @@
   font-family: 'NanumSquareRound';
 }
 
-.subject_text>pre{
-  color: #551a8b;
+.subject_text>div{
+  color: #000;
   font-size: 30px;
   line-height: 50px;
   font-family: 'NanumSquareRound';
@@ -125,21 +134,21 @@
 
 .name{
   position: absolute;
-  left: -85vw;
-  width: 85vw;
+  left: -78vw;
+  width: 78vw;
   height: 10vh;
   display: block;
   font-size: 7vh;
-  margin-bottom: 100px;
+  margin-bottom: 7vh;
   text-align: right;
-  background-color: rgb(1, 1, 100);
+  background-color: #000;
   color: white;
   float: left;
   border-radius: 0  7vh 7vh 0;
   line-height: 10vh;
-  padding-top: 50px;
+  padding-top: 3vh;
   padding-right: 80px;
-  padding-bottom: 50px;
+  padding-bottom: 3vh;
   animation: 2s moveright ;
   animation-fill-mode: forwards;
   font-family: 'NanumSquareRound';
@@ -152,22 +161,22 @@
   }
 
   to {
-    margin-left: 85%;
+    margin-left: 78%;
   }
 }
 
 
 .curr_content{
   position: absolute;
-  right: -70vw;
+  right: -75vw;
   top:40vh; 
-  width: 70vw;
+  width: 80vw;
   height: auto; 
   overflow: hidden;
   color: white; 
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: rgb(1, 1, 100);
+  background-color: #000;
   text-align: left;
   border-radius: 12vh 0  0 12vh;
   animation: 2s moveleft ;
@@ -177,11 +186,13 @@
 
 @keyframes moveleft{
   from {
-    margin-right: 0%;
+    right: -75vw;
+    /* margin-right: 0%; */
   }
 
   to {
-    margin-right: 65%;
+    right: 0;
+    /* margin-right: 65%; */
   }
 }
 
@@ -195,6 +206,92 @@
   padding-left: 100px;
   font-size: 3vh;
   margin-bottom: 1vh;
+}
+
+.rv_card{ 
+    width: 80vw;
+    height: 30vh;
+    margin-bottom:20vh; 
+    margin-left: 15vw;
+}
+
+.rv_image_box{
+  float: left;
+  width: 20vw;
+  height: 30vh;
+}
+
+.rv_text_box{
+  float: left;
+  margin-left: 7vw;
+  width: 50vw;
+  height: 30vh;
+  box-sizing: border-box;
+  border-radius: 7vh;
+  border: 5px solid black;
+  padding: 3vh;
+}
+
+
+.rv_image{ 
+  width: 20vw;
+  height: 30vh;
+}
+
+.picto_1{
+  filter: invert(88%) sepia(21%) saturate(2642%) hue-rotate(7deg) brightness(96%) contrast(105%);
+}
+
+.picto_2{
+  filter: invert(79%) sepia(78%) saturate(1067%) hue-rotate(70deg) brightness(99%) contrast(106%);
+
+}
+
+.picto_3{
+  filter: invert(31%) sepia(46%) saturate(3902%) hue-rotate(313deg) brightness(102%) contrast(101%);
+
+}
+
+.picto_4{ 
+  filter: invert(25%) sepia(100%) saturate(1601%) hue-rotate(198deg) brightness(93%) contrast(86%);
+}
+
+.rv_text_box>span{
+  display: block; 
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 2vh;
+}
+
+.rv_text_box>p{
+  font-size: 20px;
+  font-weight:600;
+} 
+
+
+#curr_consult{
+  margin-top: 50vh;
+  width: 100vw;
+  height: 70vh;
+
+}
+
+#curr_consult>p{
+  margin: 0 auto;
+  width: 80vw;
+  font-size: 40px;
+  padding-bottom: 7vh;
+}
+
+#curr_consult>a{
+  margin: 0 auto; 
+  width: 40vw;
+    text-align: center;
+    display: block;
+    background-color: black;
+    color:white;
+    padding: 2vh 4vh ;
+    font-size: 80px;
 }
 
 

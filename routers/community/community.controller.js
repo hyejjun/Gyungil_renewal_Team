@@ -262,10 +262,12 @@ let review = async (req, res) => {
 
 let review_write = (req, res) => {
     let { AccessToken } = req.cookies;
+    let {page} = req.query;
+    console.log(page);
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
-    res.render('./community/review_write', { userid, username, nickname });
+    res.render('./community/review_write', { userid, username, nickname,page });
 }
 
 let review_insert = async (req, res) => {

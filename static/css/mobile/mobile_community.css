@@ -2,7 +2,7 @@
 
     .mc_content > .form_position{
         width: 100vw;
-        bottom: -20px;
+        bottom: 0;
     }
     .form_position>form{
         width: 100vw;
@@ -10,16 +10,19 @@
     }
 
     .form_position>form>.box>select{
-        /* width: 29vw;
-        font-size: 16px;
-        bottom: 6px;
+        width: 20vw;
+        font-size: 13px;
+        bottom: 9px;
         border-radius: 10px;
-        height: 34px; */
+        right: 200px;
+        left: 5px;
+        height: 28px;
+        box-shadow: none;
     }
 
     .form_position>form>#cover{
-        left: -212px;
-        width: 879px;
+        left: -279px;
+        width: 990px;
         height: 103px;
         bottom: -28px;
     }
@@ -43,6 +46,13 @@
         width: 100%;
         height: 94px;
         position: relative;
+    }
+    #cover>.tb>.td>input:focus{
+        outline: 0;
+        /* border: none; */
+        color: black;
+	    text-shadow: 0px 0px 0px #555555;  
+	    -webkit-text-fill-color: transparent;
     }
 
     /*게시글 list*/

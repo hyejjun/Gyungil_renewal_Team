@@ -72,9 +72,9 @@
         </div>
         {% endif %}
         
-        {% if nickname %}
+        {% if nickname or userid %}
         <div class="writez">
-            <a href="/community/review_write">작성하기</a>
+            <a href="/community/review_write?page={{page}}">작성하기</a>
         </div>
         {% endif %}
 
