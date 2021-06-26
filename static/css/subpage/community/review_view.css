@@ -99,3 +99,9 @@
     background: #000;
     color: #fff;
 }
+
+#main_rv_submit_btn{ 
+    display: block;
+    width: 100px;
+    height: 100px;
+}

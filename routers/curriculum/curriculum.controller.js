@@ -47,14 +47,22 @@ let curriculum_view = async (req, res) => {
             as: 'writer_user',
         }],
     })
+    let p = 1; 
+    review.forEach(v => {
+        v['pictonum'] =p; 
+        p++; 
+        if(p==5) p=1; 
+    });
+
+
 
     res.render('./curriculum/curriculum_vie', {
-        // userid,
-        // username,
+        userid,
+        username,
         spec,
         subjects,
-        // review,
-        // nickname
+        review,
+        nickname
     });
 }
 

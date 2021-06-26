@@ -34,10 +34,11 @@
                 <div class="after_login">
                     {% if userid != undefined %}
                     <a href="/user/info"><span class="after_login_span">{{username}}님</span></a>
-                    <a href="/user/logout"><span class="logout">로그아웃</span></a> {% endif %} {% if nickname != undefined
-                    %}
+                    <a href="/user/logout"><span class="logout">로그아웃</span></a> {% endif %} 
+                    {% if nickname != undefined %}
                     <a href="/auth/kakao/kakao_userinfo"><span class="after_login_span">{{nickname}}님</span></a>
-                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a> {% endif %}
+                    <a href="/auth/kakao/unlink"><span class="logout">로그아웃</span></a> 
+                    {% endif %}
                 </div>
             </div>
 
@@ -118,9 +119,9 @@
                                 <a href="/consult/faq">
                                     <li>자주묻는질문</li>
                                 </a>
-                                <li>
-                                    <a href="/chat">실시간 상담</a>
-                                </li>
+                                <a href="/chat">
+                                    <li>실시간 상담</li>
+                                </a>
                             </ul>
                         </li>
                     </ul>
@@ -184,12 +185,15 @@
                     <a href="/consult/faq">
                         <li>자주묻는질문</li>
                     </a>
-                    <li>
-                        <a href="/chat">실시간 상담</a>
-                    </li>
+
+                    <a href="/chat">
+                        <li> 실시간 상담</li>
+                    </a>
+
                 </ul>
             </div>
         </div>
     </div>
 </div>
 <script src="/js/mobile_menu.js"></script>
+<script src="/js/submenu.js"></script>

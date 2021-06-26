@@ -17,9 +17,9 @@
 
          <div>
           <form action="/admin/curriculum/subject/modify" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="{{result.id}}">
+            <input type="hidden" name="id" value="{{result.id}}">
             과목명: <input type="text" name="name"  value='{{result.name}}' required><br>
-            내용: <textarea name="content" id="" cols="30" rows="10" required>{{resutl.content}}</textarea><br>
+            내용: <textarea name="content" id="" cols="40" rows="20" required>{{result.content}}</textarea><br>
             이미지:<input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);"><br>
             <div id="thumbnail">
               <img src="http://localhost:3000/{{result.image}}"alt="과목이미지">

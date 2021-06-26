@@ -27,6 +27,7 @@
     .program_list{
         width: 100%;
         height: auto;
+        padding: 20px 0;
     }
     .program_list>ul{
         display: block;
@@ -38,12 +39,17 @@
         height: auto;
         margin-bottom: 20px;
         background: none;
+        min-height: 350px;
     }
-    .card>a>img{
+    .card>img{
         width: 80vw;
+        height: 200px;
     }
     .card>a:nth-child(2){
-        display: none;
+        font-size: 17px;
+        width: 80vw;
+        height: 30px;
+        padding: 12px 0;
     }
     
     /*review*/
@@ -64,11 +70,20 @@
         box-sizing: border-box;
     }
 
+    .reviews_title{
+        width: 100%;
+        font-size: 18px;
+        padding: 0 38px;
+        box-sizing: border-box;
+    }
+
 
     /*연락망*/
     #location{
         display: none;
     }
+
+    /*지원하기*/
 
     #consult,
     #consult > .w1200{

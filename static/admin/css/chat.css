@@ -1,0 +1,79 @@
+#realTime_list{
+  float: left;
+  height: 1050px;
+}
+
+#consulting_box,
+#waiting_box
+{ min-height: 500px;
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 400px;
+}
+
+#consulting_box{
+  margin-bottom: 50px;
+}
+
+#realTime_list>div>span{
+  display: block;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+.client_in{ 
+  width: 350px;
+  height: 90px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 7px 14px;
+  background-color: blanchedalmond;
+  line-height: 90px;
+}
+
+.client_out{
+  width: 350px;
+  height: 90px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 7px 14px;
+  background-color: gray;
+  line-height: 90px;
+
+}
+
+
+.clientInfo{ 
+  float: left;
+  width: 250px;
+  font-size: 18px;
+}
+
+.consult_event{ 
+  float: left;
+  width: 70px;
+  height: 90px;
+  text-align: center;
+  line-height: 90px;
+}
+
+.consult_event>input{
+  
+  display: inline-block;
+  width: 70px;
+  height: 40px;
+}
+
+
+
+
+
+#chat_area{ 
+  margin-left: 100px;
+}
+

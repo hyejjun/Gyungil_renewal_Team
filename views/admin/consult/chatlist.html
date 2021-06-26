@@ -3,8 +3,8 @@
 
 {% for item in clients %}
 {% if item.on %}
-  <li >
-    <div>
+  <li class="client_in">
+    <div class="clientInfo">
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
     </div>
@@ -13,8 +13,8 @@
     </div>
   </li>
   {% else %}
-  <li style="color: red;">
-    <div>
+  <li class="client_out">
+    <div class="clientInfo">
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
     </div>
@@ -29,7 +29,7 @@
 
 {% for item in clients %}
 {% if item.on %}
-  <li >
+  <li class="client_in">
     <div class="clientInfo" onclick="change_client(`{{item.id}}`)">
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
@@ -39,7 +39,7 @@
     </div>
   </li>
 {% else %}
-<li style="color: red;">
+<li class="client_out">
   <div class="clientInfo" onclick="change_client(`{{item.id}}`)">
     <strong >{{item.name}}({{item.age}})</strong>
     <span>{{item.date}}</span>

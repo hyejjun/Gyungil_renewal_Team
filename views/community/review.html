@@ -2,6 +2,7 @@
 {% include "../layout/subpage_community_navi.html" %}
 <link rel="stylesheet" href="/css/subpage/community/review.css">
 
+
 <!--menu_contents start-->
 <div class="menu_contents">
     <div class="mc_title">
@@ -72,14 +73,11 @@
         </div>
         {% endif %}
         
-        {% if nickname %}
+        {% if nickname or userid %}
         <div class="writez">
-            <a href="/community/review_write">작성하기</a>
+            <a class="submitBtn"  href="/community/review_write?page={{page}}">작성하기</a>
         </div>
         {% endif %}
-
-        
-        <div class="form_position">
             <form action="/community/review" method="post">
                 <div class="box">
                     <select name="search_type">
@@ -87,21 +85,11 @@
                         <option value="content">내용</option>
                         <option value="username">작성자</option>
                     </select>
-                </div>
-                <div id="cover">
-                    <div class="tb">
-                        <input type="hidden" name="board_name" value="{{board_name}}" >
-                        <div class="td"><input type="text" name="search_value"></div>
-                        <div class="td" id="s-cover">
-                            <button type="submit" value="검색">
-                                <div id="s-circle"></div>
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
+                    <input type="hidden" name="board_name" value="{{board_name}}">
+                    <input type="text" name="search_value">
+                    <button type="submit" style="padding: 0px 10px 2px 10px;" >검색</button>
                 </div>
             </form>
-        </div>
     </div>
 </div>
 

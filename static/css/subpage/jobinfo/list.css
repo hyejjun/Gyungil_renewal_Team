@@ -16,36 +16,7 @@
 }
 
 
-
+/
 .paging{
-    margin-top: 20px;
-    font-size: 0;
     text-align: center;
 }
-
-.paging a{
-    display: inline-block;
-    margin-left: 10px;
-    padding: 5px 10px; 
-    border : 1px solid #000;
-    font-size: 12px;
-    background: #eee;
-    border-radius: 500px;
-}
-
-.paging a.sbt{
-    border-radius: 5px;
-    font-weight: 600;
-    background:none;
-}
-
-.paging a:first-child{
-    margin-left: 0;
-}
-
-.paging a.sbt.on{
-    border-radius: 27px;
-    font-weight: 600;
-    background: dodgerblue;
-}
-

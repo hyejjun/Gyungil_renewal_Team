@@ -4,6 +4,7 @@
     background: rgb(99, 119, 156);
     padding: 57px 0;
     box-sizing: border-box;
+    display: none;
 }
 
 /*location end*/

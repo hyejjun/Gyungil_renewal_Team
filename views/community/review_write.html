@@ -1,5 +1,6 @@
 {% include "../layout/subpage_top.html" %}
 {% include "../layout/subpage_community_navi.html" %}
+<link rel="stylesheet" href="/css/subpage/community/consulting.css">
 
 <!--menu_contents start-->
 <div class="menu_contents">
@@ -38,7 +39,7 @@
                     </tbody>
             </table>
             <div class="reviewBtn_div">
-                <a href="/community/review" class="cancelBtn_review">취소</a>
+                <a href="/community/review?page={{page}}" class="cancelBtn_review">취소</a>
                 <input type="submit" value="작성" id="review_submit" class="submitBtn">
             </div>
             </form>

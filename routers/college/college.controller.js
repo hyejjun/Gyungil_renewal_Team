@@ -63,6 +63,15 @@ let location = async (req, res) => {
     let result = await board.findOne({
         where: { id: 2, }
     })
+
+      let content = result.dataValues.content; 
+      content = content.split('$$'); 
+      result['address'] = content[0];
+      result['tel'] = content[1];
+      result['fax'] = content[2];
+      result['email'] = content[3];
+      result['bus'] = content[4];
+      result['subway'] = content[5];
     res.render('./college/location', { userid, username, nickname, result });
 }
 
