@@ -20,7 +20,7 @@
       <div id="main" class="board_list"  >
 
         <h3>메인페이지 수강후기 설정</h3>
-        <table>
+        <table id="main_rv_table">
           <thead>
             <th> 제목</th>
             <th>작성자 이름</th>
@@ -33,11 +33,11 @@
             <!-- <input type="hidden" value="{{select_rv}}" id="select_review"> -->
               {% for item in rv %}
               <tr>
-                <input type="hidden" value="{{item.content}}">  
-                <td class="td_subject">
-                  <label for="check{{item.id}}">{{item.subject}}</label>
+                <input type="hidden" id="content{{item.id}}" value="{{item.content}}">  
+                <td id='subject{{item.id}}' onclick="">
+                  {{item.subject}}
                 </td>
-                <td>{{item.writer_user.username}}</td>
+                <td id="username{{item.id}}">{{item.writer_user.username}}</td>
                 <td>{{item.writer}}</td>
                 <td>{{item.date}}</td>
                 <td>{{item.hit}}</td>
@@ -52,15 +52,16 @@
           </table>
 
           <div id="rv_detail_box">
-            <span>자세히 보기</span>
-            <div id="rv_detail_subject"></div>
-            <div id="rv_detail_name"></div>
-            <div id="rv_detail"></div>
+            <span>자세히 보기</span><br>
+            제목: <span id="rv_detail_subject"></span><br>
+            작성자: <span id="rv_detail_name"></span><br>
+            내용: <span id="rv_detail"></span>
           </div>
+
+          <input id="main_rv_submit_btn" type="button" value="적용" onclick="update_mainrv()">
 
       </div>
      
-        <input id="main_rv_submit_btn" type="button" value="적용" onclick="update_mainrv()">
 
         
       </div>

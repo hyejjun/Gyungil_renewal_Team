@@ -8,7 +8,10 @@ const jwtName = require('../../../jwtName');
 
 
 let login = (req, res) => {
-    res.render('./admin/login/login.html')
+    let { msg, flag } = req.query;
+
+
+    res.render('./admin/login/login.html', { msg, flag })
 }
 
 
@@ -23,21 +26,20 @@ let login_check = async (req, res) => {
     let loginResult = await User.findOne({
         where: { userid, userpw: Cuserpw }
     })
-    
+
     let type = loginResult.dataValues.type;
 
     ////////// 모든 라우터에서 세션 없으면 접근 못하게 하기. 
-    
-    if (loginResult != null && type<3) {
-        let username = loginResult.dataValues.username;
-        let userid = loginResult.dataValues.userid;
-        req.session.username = username; 
-        req.session.userid = userid; 
+
+    if (loginResult != null && type < 4) {
+        req.session.username = loginResult.dataValues.username;
+        req.session.userid = loginResult.dataValues.userid;
+        req.session.type = loginResult.dataValues.type;
 
         req.session.save(() => {
-          console.log(req.session)
-          res.redirect(`/admin/main?msg=로그인에 성공했습니다`);
-      })
+            console.log(req.session)
+            res.redirect(`/admin/main?msg=로그인에 성공했습니다`);
+        })
     } else {
         res.redirect('/admin?msg=관리자 페이지에 접근할 수 없습니다.&flag=0');
     }
@@ -45,13 +47,13 @@ let login_check = async (req, res) => {
 }
 
 let logout = (req, res) => {
-  delete req.session.username;
-  delete req.session.userid;
+    delete req.session.username;
+    delete req.session.userid;
 
 
-  req.session.save(() => {
-      res.redirect('/admin');
-  })
+    req.session.save(() => {
+        res.redirect('/admin');
+    })
 }
 
 let id_check = async (req, res) => {
@@ -72,11 +74,11 @@ let id_check = async (req, res) => {
 
 
 module.exports = {
-   
+
     login,
 
     login_check,
     logout,
     id_check,
-  
+
 }

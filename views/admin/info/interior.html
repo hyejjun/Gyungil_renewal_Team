@@ -14,25 +14,37 @@
       {% include "../layout/gnb.html" %}
       {% include "./info_snb.html" %}
       <div id="main">
-        <div>
-          <ul id="interior_box">
-            {% for item in resultArr %}
-            <li>
-              <input type="hidden" value="{{item.id}}">
-              <div><img src="http://localhost:3000/{{item.content}}"alt="슬라이드 이미지"></div>
-              {% if item.show==1 %}
-              <div><input type="checkbox" checked onclick="check()"></div>
-              {% else %}
-              <div><input type="checkbox" onclick="check()"></div>
-              {% endif %}
-              <div>
-                <input type="button" value="삭제" onclick="destroy()">
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
+        <a class="admin_button" href="/admin/info/interior/add">시설소개 이미지 추가</a>
 
-          <a href="/admin/info/interior/add">시설소개 이미지 추가</a>
+        <div>
+          <table id="interior_box">
+            <thead>
+              <th></th>
+              <th>이미지</th>
+              <th>공개</th>
+              <th>삭제</th>
+            </thead>
+
+            <tbody>
+
+              {% for item in resultArr %}
+            <tr>
+              <td><input type="hidden" value="{{item.id}}"></td>
+              <td><img src="http://localhost:3000/{{item.content}}" width="400" height="300" alt="슬라이드 이미지"></td>
+              {% if item.show==1 %}
+              <td><input type="checkbox" checked onclick="check()"></td>
+              {% else %}
+              <td><input type="checkbox" onclick="check()"></td>
+              {% endif %}
+              <td>
+                <input type="button" value="삭제" onclick="destroy()">
+              </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            
+          </table>
+
         </div>
       </div>
 

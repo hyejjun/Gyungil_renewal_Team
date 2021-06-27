@@ -3,18 +3,15 @@
 -- 서버 버전:                        10.5.9-MariaDB - mariadb.org binary distribution
 -- 서버 OS:                        Win64
 -- HeidiSQL 버전:                  11.0.0.5919
--- --------------------------------------------------------
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
-
+-- ------------------------------------------------------
+ SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
+ SET NAMES utf8;
+ SET NAMES utf8mb4 ;
+ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
 -- gyungil 데이터베이스 구조 내보내기
 DROP DATABASE IF EXISTS `gyungil`;
-CREATE DATABASE IF NOT EXISTS `gyungil` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE IF NOT EXISTS `gyungil`  DEFAULT CHARACTER SET utf8 ;
 USE `gyungil`;
 
 -- 테이블 gyungil.board 구조 내보내기
@@ -781,6 +778,11 @@ INSERT INTO `users` (`id`, `userid`, `userpw`, `username`, `useremail`, `user_bi
 	(23, 'q222', 'mDSHbc+wXLFnpcJJU+uljErImxrfV/KPL50JrxB+6PA', '차무혁', 'aaa@aaa', '2021-06-03', 'aaa', 2, 0, 1),
 	(24, '김동철', 'WeAojG03GNP6W/gY5/pGz32vbBwUN2OzhXVD99zuVjk', '김동철', 'rlaehdcjf@rlaehdcjf', '2021-01-01', '111-1111-1111', 0, 0, 2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+ SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
+ SET NAMES utf8;
+ SET NAMES utf8mb4 ;
+ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
