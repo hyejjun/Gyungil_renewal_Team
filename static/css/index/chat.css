@@ -116,6 +116,7 @@
       padding: 10px;
       border-top: var(--border);
       background: #eee;
+      height: auto;
     }
     .msger-inputarea * {
       padding: 10px;
