@@ -9,7 +9,8 @@
 
 #curr_sub{
   width: 1250px;
-  height: 800px;
+  height: auto;
+  overflow:hidden;
   margin: 0 auto;
 }
 #curr_sub>h3{
@@ -101,4 +102,8 @@
 
 .td_subject{
   cursor: pointer;
+}
+
+#rv_detail_box{
+  border: 1px solid black;
 }

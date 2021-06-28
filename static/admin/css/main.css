@@ -1,16 +1,81 @@
-
-#curr_rv{
+#curr_rv {
   width: 1250px;
   height: 800px;
   margin: 0 auto;
 }
 
-#rv_detail{
-  width: 1250px;
-  height: auto; 
-  overflow: hidden;
+.td_subject {
+  cursor: pointer;
 }
 
-.td_subject{
+.admin_button,
+#main_rv_submit_btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  outline: none;
+  background-color: var(--first-color);
+  color: black;
+  font-size: 26px;
+  font-weight: bold;
+  border-radius: 0.5rem;
   cursor: pointer;
+  border: 1px solid black;
+}
+
+#main_rv_submit_btn {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+}
+
+#visual {
+  margin-top: 20px;
+}
+
+#visual_box {
+  width: 1200px;
+  max-width: 900px;
+  height: auto;
+  overflow: scroll;
+  margin: 0 auto;
+}
+
+#visual_box > tr > td:nth-child(2) {
+  width: 450px;
+  height: 300px;
+  padding: 0 25px;
+  box-sizing: border-box;
+}
+
+#visual_box > tr > td:nth-child(3) {
+  width: 400px;
+  height: 300px;
+  padding: 20px;
+}
+
+#visual_box > tr > td:nth-child(4) {
+  width: 500px;
+  height: 300px;
+  text-align: center;
+}
+
+#visual_box > tr > td:nth-child(5) {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+}
+
+#main_rv_table {
+  max-height: 500px;
+  height: auto;
+  overflow: scroll;
+}
+
+#rv_detail_box {
+  margin-top: 100px;
+  width: 1000px;
+  height: auto;
+  overflow: hidden;
+  margin-left: 100px;
+  border: 1px solid black;
 }

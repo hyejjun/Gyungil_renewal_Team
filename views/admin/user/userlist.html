@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/admin/css/index.css">
+
+  <title>관리자 회원목록</title>
+</head>
+<body>
+  <div id = "wrap">
+    <div id="container1900">
+      {% include "../layout/gnb.html" %}
+      {% include "./user_snb.html" %}
+      <div id="main">
+        <div>
+          <ul>
+            <li><a href="/admin/user/userlist?show=all">전체 회원 보기</a></li>
+            <li><a href="/admin/user/userlist?show=legal_alien">인증된 회원 보기</a></li>
+            <li><a href="/admin/user/userlist?show=admin">전체 관리자 보기</a></li>
+            <li><a href="/admin/user/userlist?show=teacher">전체 교직원 보기</a></li>
+            <li><a href="/admin/user/userlist?show=student">전체 학생 보기</a></li>
+            <li><a href="/admin/user/userlist?show=alien">미인증 회원 보기</a></li>
+
+          </ul>
+        </div>
+        <table>
+          <thead>
+            {% if result.alien %}
+              <th>인증</th>
+            {% endif%}
+            {% if result.teacher %}
+            <th>관리자 권한 부여</th>
+            {% endif%}
+            {% if result.admin %}
+            <th>관리자 권한 해제</th>
+            {% endif%}
+            <th>회원등급</th>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>e-mail</th>
+            <th>생년월일</th>
+            <th>전화번호</th>
+            <th>소속</th>
+            <th>탈퇴여부</th>
+          </thead>
+          {% for item in result %}
+            <tr>
+              {% if result.alien %}
+              <th><input type="checkbox" name="" id="" class='target' value="{{item.id}}"></th>
+              {% endif%}
+              {% if result.teacher %}
+              <th><input type="checkbox" name="" id="" class='target' value="{{item.id}}"></th>
+              {% endif%}
+              {% if result.admin %}
+              <th><input type="checkbox" name="" id="" class='target' value="{{item.id}}"></th>
+              {% endif%}
+              
+              <td>{{item.type}}</td>
+              <td>{{item.userid}}</td>
+              <td>{{item.username}}</td>
+              <td>{{item.useremail}}</td>
+              <td>{{item.user_birthday}}</td>
+              <td>{{item.user_tel}}</td>
+              <td>{{item.code.name}}</td>
+              {% if item.quit==0 %}
+              <td>X</td>
+              {% else %}
+              <td>O</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </table>
+          {% if result.alien %}
+        <div>
+          <form id="allow_form" action="/admin/user/allow" method="post">
+            <input type="button" value="회원인증" onclick="allow('legal')">
+          </form>
+        </div>
+        {% endif%}
+
+        {% if result.teacher %}
+        <div>
+          <form id="allow_form" action="/admin/user/allow" method="post">
+            <input type="button" value="관리자 권한 부여" onclick="allow('teacher')">
+          </form>
+        </div>
+        {% endif%}
+
+        {% if result.admin %}
+        <div>
+          <form id="allow_form" action="/admin/user/allow" method="post">
+            <input type="button" value="관리자 권한 해제" onclick="allow('admin')">
+          </form>
+        </div>
+        {% endif%}
+      </div>
+
+    </div>
+  </div>
+  
+</body>
+
+
+{% if msg %}
+  <script>
+    alert(`{{msg}}`)
+  </script>
+{% endif%}
+
+
+<script type="text/javascript" >
+
+
+
+
+
+function allow(x){ 
+  let answer; 
+  if(x=='legal'){ 
+    answer = confirm('선택된 회원을 인증하시겠습니까?')
+  }else if(x=='teacher'){ 
+    answer = confirm('선택된 교직원에게 관리자 권한을 부여하시겠습니까?')
+  }else if(x=='admin'){ 
+    answer = confirm('선택된 관리자의 관리자 권한을 해제하시겠습니까?')
+  }
+
+  if(answer){ 
+
+    const form = document.querySelector('#allow_form')
+    const target = document.querySelectorAll('.target'); 
+    let allowArr = []; 
+    target.forEach(v=>{ 
+      if(v.checked){ 
+        allowArr.push(v.value); 
+      }
+    })
+    
+  allowArr = allowArr.join(','); 
+  
+  const hiddenField1 = document.createElement("input");
+  const hiddenField2 = document.createElement("input");
+  
+  hiddenField1.setAttribute("type", "hidden");
+hiddenField2.setAttribute("type", "hidden");
+
+hiddenField1.setAttribute("name", 'allow');
+hiddenField2.setAttribute("name", 'type');
+
+hiddenField1.setAttribute("value", allowArr);
+hiddenField2.setAttribute("value", x);
+form.appendChild(hiddenField1);
+form.appendChild(hiddenField2);
+
+form.submit(); 
+}
+}
+
+
+
+
+
+</script>
+</html>

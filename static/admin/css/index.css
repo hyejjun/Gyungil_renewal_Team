@@ -1,48 +1,51 @@
-*{margin: 0;
-  padding: 0;}
+* {
+  margin: 0;
+  padding: 0;
+}
 
-ul,li{
+ul,
+li {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-#main{
+#main {
   float: right;
   width: 1600px;
   height: auto;
   overflow: hidden;
+  position: relative;
 }
 
-#summernote_wrap{
-  
+#summernote_wrap {
   width: 996px;
   min-height: 900px;
   margin: 0 auto;
 }
 
-#gnb{
+#gnb {
   width: 1900px;
   height: 100px;
   margin-bottom: 100px;
 }
 
-#container1900{
+#container1900 {
   width: 1900px;
   height: auto;
   overflow: hidden;
 }
 
-#gnb>ul{
+#gnb > ul {
   float: right;
   width: 1600px;
   height: 100px;
 }
 
-#gnb>ul>li,
-#gnb>h1{
+#gnb > ul > li,
+#gnb > h1 {
   display: inline-block;
   width: 200px;
   height: 100px;
@@ -50,20 +53,20 @@ a{
   line-height: 100px;
 }
 
-#gnb>ul>li>a{
+#gnb > ul > li > a {
   font-weight: bold;
   color: black;
   font-size: 20px;
 }
 
-#snb{
+#snb {
   float: left;
   width: 300px;
   height: auto;
   overflow: hidden;
 }
 
-#snb>h3{
+#snb > h3 {
   width: 300px;
   height: 100px;
   margin-bottom: 50px;
@@ -75,16 +78,15 @@ a{
   text-align: center;
 }
 
-#snb>ul>li{
+#snb > ul > li {
   width: 300px;
   height: 100px;
   text-align: center;
   line-height: 100px;
 }
 
-#snb>ul>li>a{
+#snb > ul > li > a {
   font-weight: bold;
   color: black;
   font-size: 20px;
 }
-  

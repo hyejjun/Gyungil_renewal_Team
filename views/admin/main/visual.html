@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
 
 </head>
 <body>
@@ -14,28 +15,36 @@
       {% include "../layout/gnb.html" %}
       {% include "./main_snb.html" %}
       <div id="main">
-        <div>
-          <ul id="visual_box">
-            {% for item in result %}
-            <li>
-              <input type="hidden" value="{{item.id}}">
-              <div><img src="http://localhost:3000/{{item.image}}"alt="슬라이드 이미지" width="400" height="300"></div>
-              <div><a href="{{item.link}}">{{item.link}}</a></div>
-              {% if item.show==1 %}
-              <div><input type="checkbox" checked onclick="check()"></div>
-              {% else %}
-              <div><input type="checkbox" onclick="check()"></div>
-              {% endif %}
-              <div>
-                <input type="button" name ="{{item.id}}" value="링크수정" onclick="link_update()">
-                <input type="button" name ="{{item.id}}" value="삭제" onclick="destroy()">
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
+        <a class="admin_button" href="/admin/main/mainvisual/add">슬라이드 이미지 추가</a>
 
-          <a href="/admin/main/mainvisual/add">슬라이드 이미지 추가</a>
-        </div>
+        <table id='visual'>
+          <thead>
+            <th></th>
+            <th>이미지</th>
+            <th>링크</th>
+            <th>공개</th>
+            <th>수정/삭제</th>
+          </thead>
+          <tbody id="visual_box">
+            {% for item in result %}
+            <tr>
+              <td><input type="hidden" value="{{item.id}}"></td>
+              <td><div><img src="http://localhost:3000/{{item.image}}"alt="슬라이드 이미지" width="400" height="300"></div></td>
+              <td><div><a href="{{item.link}}">{{item.link}}</a></div></td>
+              {% if item.show==1 %}
+              <td><input type="checkbox" checked onclick="check()"></td>
+              {% else %}
+              <td><input type="checkbox" onclick="check()"></td>
+              {% endif %}
+              <td>
+                <input class="admin_button" type="button" name ="{{item.id}}" value="링크수정" onclick="link_update()">
+                <input  class="admin_button" type="button" name ="{{item.id}}" value="삭제" onclick="destroy()">
+            </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
       </div>
 
     </div>

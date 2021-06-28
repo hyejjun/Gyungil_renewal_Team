@@ -14,7 +14,7 @@ let join = async (req, res) => {
     let curr = await curriculum.findAll({
         attribute: ['id', 'name']
     });
-    curr.shift(); 
+    curr.shift();
 
     res.render('./user/join', { curr, nickname, kakao_email })
 }
@@ -25,7 +25,7 @@ let login = (req, res) => {
 
 let join_success = async (req, res) => {
     console.log(req.body);
-    let { username, userid, userpw, user_birthday, user_tel, class_code, useremail } = req.body;
+    let { username, userid, userpw, user_birthday, user_tel, class_code, useremail, userlevel } = req.body;
 
     let pwtoken = jwtPW(userpw)
 
@@ -36,7 +36,8 @@ let join_success = async (req, res) => {
         user_birthday,
         user_tel,
         class_code,
-        useremail
+        useremail,
+        type: userlevel,
     })
     res.redirect('/user/login');
 }
@@ -53,10 +54,10 @@ let login_check = async (req, res) => {
     })
 
     //console.log("login result = ",loginResult);
-    
+
     if (loginResult != null) {
         let username = loginResult.dataValues.username;
-        let token = ctoken(userid,username);
+        let token = ctoken(userid, username);
         console.log(token)
         res.cookie('AccessToken', token, { httpOnly: true, secure: true });
 
@@ -95,7 +96,7 @@ let info = async (req, res) => {
     let { AccessToken } = req.cookies;
 
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
-    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;  
+    let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
 
     let result = await User.findOne({
         where: { userid }
