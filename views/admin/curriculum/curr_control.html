@@ -18,27 +18,54 @@
       {% include "../layout/gnb.html" %}
       {% include "./curr_snb.html" %}
       <div id="main">
-        <form  id ="form" action="/admin/curriculum/curr/control" method="post" enctype="multipart/form-data">
+        <form id="form" action="/admin/curriculum/curr/control" method="post" enctype="multipart/form-data">
           <div id="curr_spec">
             <h3>교육과정 기본</h3>
             <input type="hidden" name='id' value="{{spec.id}}">
-            교육과정명: <input type="text" name="name" value="{{spec.name}}" required><br>
-            교육과정 소개: <input type="text" name="info" value="{{spec.info}}" required><br>
-            교육기간: <input type="text" name='term' value="{{spec.term}}" required><br>
-            교육 시작시간: <input type="time" name="start_time" value="{{spec.start_time}}" required><br>
-            교육 종료시간: <input type="time" name="end_time" value="{{spec.end_time}}" required><br>
-            교육장소: <input type="text" name="location" value="{{spec.location}}" required><br>
-            수강료: <input type="text" name="tuition" value="{{spec.tuition}}" required><br>
-            자격 요건: <input type="text" name="qual" value="{{spec.qual}}" required><br>
-            이미지:
-            <div id="thumbnail">
-              <img src="http://localhost:3000/{{spec.image}}"alt="교육과정 대표 이미지">
-            </div>
-            <input type="file" accept="image/*" name="img" onchange="setThumbnail(event);"><br>
-            <input type="hidden" name="origin_image" value="{{spec.image}}">
-            <div id="thumbnail"></div>
+            <ul>
+              <li>
+                <label for="curr_name">교육과정명:</label>
+                <input type="text" name="name" value="{{spec.name}}" id="curr_name" required>
+              </li>
+              <li>
+                <label for="curr_info">교육과정 소개:</label>
+                <input type="text" name="info" value="{{spec.info}}" id="curr_info" required>
+              </li>
+              <li>
+                <label for="curr_term">교육기간: </label>
+                <input type="text" name='term' value="{{spec.term}}" id="curr_term" required>
+              </li>
+              <li>
+                <label for="curr_start_time">교육 시작시간 :</label>
+                <input type="time" name="start_time" value="{{spec.start_time}}" id="curr_start_time" required>
+              </li>
+              <li>
+                <label for="curr_end_time">교육 종료시간 :</label>
+                <input type="time" name="end_time" value="{{spec.end_time}}" required>
+              </li>
+              <li>
+                <label for="curr_location">교육장소 :</label>
+                <input type="text" name="location" value="{{spec.location}}" required>
+              </li>
+              <li>
+                <label for="curr_tuition">수강료 :</label>
+                <input type="text" name="tuition" value="{{spec.tuition}}" required>
+              </li>
+              <li>
+                <label for="curr_spec">자격 요건:</label>
+                <input type="text" name="qual" value="{{spec.qual}}" required>
+              </li>
+              <li>
+                <p>이미지 : </p>
+                <div id="thumbnail">
+                  <img src="http://localhost:3000/{{spec.image}}" alt="교육과정 대표 이미지">
+                </div>
+                <input type="file" accept="image/*" name="img" onchange="setThumbnail(event);"><br>
+                <input type="hidden" name="origin_image" value="{{spec.image}}">
+                <div id="thumbnail"></div>
+              </li>
+            </ul>
           </div>
-
 
           <div id="curr_sub">
             <h3>교육과정 교과목 설정</h3>
@@ -105,7 +132,7 @@
           </div>
 
 
-          <div id ='curr_rv'>
+          <div id='curr_rv'>
             <h3>교육과정 수강후기 설정</h3>
             <table>
               <thead>
@@ -117,32 +144,32 @@
               </thead>
               <tbody>
                 <input type="hidden" value="{{select_rv}}" id="select_review">
-                  {% for item in review %}
-                  <tr>
-                    <input type="hidden" value="{{item.content}}">  
-                    <td class="td_subject">
-                      {{item.subject}}
-                    </td>
-                    <td>{{item.writer_user.username}}</td>
-                    <td>{{item.writer}}</td>
-                    <td>{{item.date}}</td>
-                    <td>{{item.hit}}</td>
-                    {% if item.check %}
-                    <td><input class="select_rv" type="checkbox" value="{{item.id}}" checked></td>
-                    {% else %}
-                    <td><input class="select_rv" type="checkbox" value="{{item.id}}" ></td>
-                    {% endif %}
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-              <div id="rv_detail_box">
-                <span>자세히 보기</span><br>
-                제목: <div id="rv_detail_subject"></div>
-                작성자: <div id="rv_detail_name"></div>
-                내용:<div id="rv_detail"></div>
-              </div>
-            
+                {% for item in review %}
+                <tr>
+                  <input type="hidden" value="{{item.content}}">
+                  <td class="td_subject">
+                    {{item.subject}}
+                  </td>
+                  <td>{{item.writer_user.username}}</td>
+                  <td>{{item.writer}}</td>
+                  <td>{{item.date}}</td>
+                  <td>{{item.hit}}</td>
+                  {% if item.check %}
+                  <td><input class="select_rv" type="checkbox" value="{{item.id}}" checked></td>
+                  {% else %}
+                  <td><input class="select_rv" type="checkbox" value="{{item.id}}"></td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <div id="rv_detail_box">
+              <span>자세히 보기</span><br>
+              제목: <div id="rv_detail_subject"></div>
+              작성자: <div id="rv_detail_name"></div>
+              내용:<div id="rv_detail"></div>
+            </div>
+
           </div>
 
 

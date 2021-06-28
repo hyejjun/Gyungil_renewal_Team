@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,28 +8,41 @@
   <title>커뮤니티</title>
   <link rel="stylesheet" href="/admin/css/index.css">
   <link rel="stylesheet" href="/admin/css/main.css">
+  <link rel="stylesheet" href="/admin/css/curr.css">
 </head>
+
 <body>
-  <div id = "wrap">
+  <div id="wrap">
     <div id="container1900">
       {% include "../layout/gnb.html" %}
       {% include "./curr_snb.html" %}
-      
-      <div id="main">
 
-         <div>
+      <div id="main">
+        <div>
           <form action="/admin/curriculum/subject/modify" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="{{result.id}}">
-            과목명: <input type="text" name="name"  value='{{result.name}}' required><br>
-            내용: <textarea name="content" id="" cols="40" rows="20" required>{{result.content}}</textarea><br>
-            이미지:<input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);"><br>
-            <div id="thumbnail">
-              <img src="http://localhost:3000/{{result.image}}"alt="과목이미지">
+            <ul>
+              <li>
+                <label for="modify_subject_title">과목명: </label>
+                <input type="text" name="name" value='{{result.name}}' id="modify_subject_title" required>
+              </li>
+              <li>
+                <label for="modify_subject_content">내용: </label>
+                <textarea name="content" id="modify_subject_content" cols="40" rows="20" required>{{result.content}}</textarea>
+              </li>
+              <li>
+                <label for="modify_subject_img">이미지:</label>
+                <input type="file" accept="image/*" id="modify_subject_img" name="img" onchange="setThumbnail(event);"><br>
+                <div id="thumbnail">
+                  <img src="http://localhost:3000/{{result.image}}" alt="과목이미지">
+                </div>
+                <input type="hidden" name="origin_image" value="{{result.image}}">
+                <input type="file" accept="image/*" name="img" onchange="setThumbnail(event);"><br>
+              </li>
+            </ul>
+            <div class="btndiv">
+              <input class="admin_button" type="submit" value="수정">
             </div>
-            <input type="hidden" name ="origin_image" value="{{result.image}}">
-            <input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);"><br>
-            
-            <input  class="admin_button" type="submit" value="수정">
           </form>
         </div>
 
@@ -36,8 +50,9 @@
     </div>
   </div>
 
- 
+
 
   <script src="/admin/js/thumbnail.js" type="text/javascript"></script>
 </body>
+
 </html>

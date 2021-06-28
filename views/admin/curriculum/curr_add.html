@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,37 +8,70 @@
   <title>커뮤니티</title>
   <link rel="stylesheet" href="/admin/css/index.css">
   <link rel="stylesheet" href="/admin/css/main.css">
+  <link rel="stylesheet" href="/admin/css/curr.css">
 
 </head>
+
 <body>
-  <div id = "wrap">
+  <div id="wrap">
     <div id="container1900">
       {% include "../layout/gnb.html" %}
       {% include "./curr_snb.html" %}
       <div id="main">
         <form action="/admin/curriculum/curr/add" method="post" enctype="multipart/form-data">
-          교육과정명: <input type="text" name="name" required><br>
-          교육과정 소개: <input type="text" name="info" required><br>
-          교육기간: <input type="text" name='term' required><br>
-          교육 시작시간: <input type="time" name="start_time" value="09:00" required><br>
-          교육 종료시간: <input type="time" name="end_time" value="18:00" required ><br>
-          교육장소: <input type="text" name="location" required><br>
-          수강료: <input type="text" name="tuition" required><br>
-          자격 요건: <input type="text" name="qual" required><br>
-          이미지:<input type="file" accept="image/*"  name ="img" onchange="setThumbnail(event);" required><br>
-          <div id="thumbnail"></div>
-          <input class="admin_button" type="submit" value="등록">
+          <ul class="curr_add_ul">
+            <li>
+              <label for="curr_add_name">교육과정명: </label>
+              <input type="text" name="name" id="curr_add_name" required>
+            </li>
+            <li>
+              <label for="curr_add_info">교육과정 소개: </label>
+              <input type="text" name="info" id="curr_add_info" required>
+            </li>
+            <li>
+              <label for="curr_add_term">교육기간: </label>
+              <input type="text" name='term' id="curr_add_term" required>
+            </li>
+            <li>
+              <label for="curr_add_start_time">교육 시작시간: </label>
+              <input type="time" name="start_time" id="curr_add_start_time" value="09:00" required>
+            </li>
+            <li>
+              <label for="curr_add_end_time">교육 종료시간: </label>
+              <input type="time" name="end_time" id="curr_add_end_time" value="18:00" required>
+            </li>
+            <li>
+              <label for="curr_add_location">교육장소: </label>
+              <input type="text" name="location" id="curr_add_location" required>
+            </li>
+            <li>
+              <label for="curr_add_tuition">수강료: </label>
+              <input type="text" name="tuition" id="curr_add_tuition" required>
+            </li>
+            <li>
+              <label for="curr_add_qual">자격 요건: </label>
+              <input type="text" name="qual" id="curr_add_qual" required>
+            </li>
+            <li>
+              <label for="curr_add_img">이미지:</label>
+              <input type="file" accept="image/*" name="img" onchange="setThumbnail(event);" required><br>
+              <div id="thumbnail"></div>
+            </li>
+          </ul>
+          <div class="btndiv">
+            <input class="admin_button" type="submit" value="등록">
+          </div>
         </form>
-        
+
       </div>
     </div>
   </div>
   <script>
     function setThumbnail(event) {
       let reader = new FileReader();
-      reader.onload =  (event)=> {
+      reader.onload = (event) => {
         let thumbnail = document.querySelector("#thumbnail");
-        while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }
+        while (thumbnail.hasChildNodes()) { thumbnail.removeChild(thumbnail.firstChild); }
         let img = document.createElement("img");
         img.setAttribute("src", event.target.result);
         thumbnail.appendChild(img);
@@ -45,8 +79,9 @@
       reader.readAsDataURL(event.target.files[0]);
     }
   </script>
- 
 
-  
+
+
 </body>
+
 </html>
