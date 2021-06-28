@@ -82,6 +82,7 @@ let list = async (req, res) => {
             temp.push(result[i]);
         }
         result = temp;
+<<<<<<< HEAD
 
         pageinfo["result"] = result;
 
@@ -90,6 +91,16 @@ let list = async (req, res) => {
 
     }
 
+=======
+
+        pageinfo["result"] = result;
+
+
+
+
+    }
+
+>>>>>>> 40c2ec0f7b8b123ff8fed7e38bae3c88ea9543d9
     else {
         let result = await board.findAll({
             offset: article_count * (page - 1),
@@ -230,6 +241,7 @@ let review = async (req, res) => {
             temp.push(result[i]);
         }
         result = temp;
+<<<<<<< HEAD
 
         pageinfo["result"] = result;
 
@@ -238,6 +250,16 @@ let review = async (req, res) => {
 
     }
 
+=======
+
+        pageinfo["result"] = result;
+
+
+
+
+    }
+
+>>>>>>> 40c2ec0f7b8b123ff8fed7e38bae3c88ea9543d9
     else {
         let result = await board.findAll({
             offset: article_count * (page - 1),
@@ -252,6 +274,7 @@ let review = async (req, res) => {
         })
 
         pageinfo = await makePage(page, result, type);
+<<<<<<< HEAD
     }
 
 
@@ -260,6 +283,25 @@ let review = async (req, res) => {
     res.render(`./community/review`, {
         userid, username, nickname, page,
         pageinfo, search_type, search_value, 
+=======
+    }
+
+
+
+    let possible = await User.findOne({
+        where: { userid, }
+    })
+    if (possible.type < 5) {
+        possible = true;
+    } else {
+        possible = false;
+    }
+
+    console.log(possible)
+    res.render(`./community/review`, {
+        userid, username, nickname, page,
+        pageinfo, search_type, search_value, possible
+>>>>>>> 40c2ec0f7b8b123ff8fed7e38bae3c88ea9543d9
     })
 }
 
@@ -402,6 +444,7 @@ module.exports = {
     search_review,
 }
 
+<<<<<<< HEAD
 async function makePage(page,result,type){ //type: 글 타입.   page: 요청한 페이지.  result는 type으로 뽑은 글의 수. 
     const pageCount = 10; // 페이지 블록의 수 
     let count; 
@@ -465,6 +508,8 @@ async function makePage(page,result,type){ //type: 글 타입.   page: 요청한
     }
     return pageinfo; 
   }
+=======
+>>>>>>> 40c2ec0f7b8b123ff8fed7e38bae3c88ea9543d9
 
 
 
