@@ -65,3 +65,15 @@
     box-sizing: border-box;
     text-align: center;
 }
+.thumbnail{
+    padding: 50px 0;
+}
+.thumbnail>img{
+    display: block;
+}
+#content{
+    height: auto;
+    min-height: 100px;
+    padding: 20px 10px;
+    font-size: 20px;
+}

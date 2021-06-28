@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/view.css">
 
 </head>
 <script type="text/javascript">
-  window.addEventListener('DOMContentLoaded',()=>{
-  const hidden_content = document.querySelector('#hidden_content');
-  const content = document.querySelector('#content');
-    content.innerHTML = `${hidden_content.value}`; 
+  window.addEventListener('DOMContentLoaded', () => {
+    const hidden_content = document.querySelector('#hidden_content');
+    const content = document.querySelector('#content');
+    content.innerHTML = `${hidden_content.value}`;
   })
 </script>
+
 <body>
 
-  <div id = "wrap">
+  <div id="wrap">
     <div id="container1900">
       {% include "../layout/gnb.html" %}
       {% include "./job_snb.html" %}
       <div id="main">
-        <div>
-          <h2>{{result.subject}}</h2>
-
-          
-          작성자<span>{{result.writer_user.username}}</span><br>
-          등록일<span>{{result.date}}</span><br>
-          조회수<span>{{result.hit}}</span><br>
-          썸네일<div><img src="{{thumbnail}}" alt=""></div>
-          <div id ='content'></div>
-          <input type="hidden" id ='hidden_content' value="{{result.content}}">
-          <a href="/admin/job/{{board_name}}/modify?id={{result.id}}">수정하기</a>
-          <a href="/admin/job/{{board_name}}/destroy?id={{result.id}}&page={{page}}">삭제하기</a>
-          <a href="/admin/job/{{board_name}}?page={{page}}">목록으로 돌아가기</a>
-         
+        <div class="title">{{result.subject}}</div>
+        <div class="info">
+          <dl>
+            <dt>글쓴이</dt>
+            <dd>{{result.writer_user.username}}</dd>
+          </dl>
+          <dl>
+            <dt>작성일</dt>
+            <dd> {{result.date}}</dd>
+          </dl>
+          <dl>
+            <dt>조회수</dt>
+            <dd>{{result.hit}}</dd>
+          </dl>
         </div>
-       
+        <div class="thumbnail">
+          썸네일
+          <img src="{{thumbnail}}" alt="">
+        </div>
+        <div id='content'></div>
+
+        <input type="hidden" id='hidden_content' value="{{result.content}}">
+        <a href="/admin/job/{{board_name}}/modify?id={{result.id}}" class="viewBtn">수정</a>
+        <a href="/admin/job/{{board_name}}/destroy?id={{result.id}}&page={{page}}" class="viewBtn">삭제</a>
+        <a href="/admin/job/{{board_name}}?page={{page}}" class="viewBtn">목록</a>
 
       </div>
     </div>
   </div>
 
-  
+
 </body>
+
 </html>
