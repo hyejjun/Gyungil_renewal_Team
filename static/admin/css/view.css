@@ -1,0 +1,67 @@
+.title {
+    padding: 30px 10px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 2rem;
+}
+
+.info {
+    padding: 15px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 0;
+}
+
+.info dl {
+    /* position: relative; */
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.info dl:first-child {
+    padding-left: 0;
+}
+.info dl::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 13px;
+    background: #ddd;
+}
+
+.info dl:first-child::before {
+    display: none;
+}
+
+.info dl dt,
+.info dl dd {
+    display: inline-block;
+    font-size: 13px;
+}
+
+.info dl dd {
+    margin-left: 10px;
+    color: #777;
+}
+
+#pre{
+    height: auto;
+    min-height: 100px;
+    padding: 30px 15px;
+    font-size: 20px;
+}
+
+.viewBtn{
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 18px;
+    background: black;
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+}

@@ -91,3 +91,29 @@ a {
   color: black;
   font-size: 20px;
 }
+
+
+.writeBtn{
+  display: inline-block;
+    float: right;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 15px;
+    background: black;
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#main>div>h2{
+  margin-bottom: 110px;
+    font-size: 37px;
+    background: #636161;
+    color: white;
+    text-align: center;
+    border-radius: 30px;
+}

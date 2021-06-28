@@ -49,7 +49,7 @@
           </table>
 
           {% if type < 5 %}
-          <a href="/admin/community/{{board_name}}/write">글 작성</a>
+          <a href="/admin/community/{{board_name}}/write" class="writeBtn">글 작성</a>
           {% endif %}
         </div>
 
@@ -82,18 +82,18 @@
           <a href="/admin/community/{{board_name}}?page={{pageinfo.end}}&search_type={{search_type}}&search_value={{search_value}}">끝</a>
 
           {% endif %}
-
-
-          <form action="/admin/community/{{board_name}}" method="post">
-            <select name="search_type">
-              <option value="subject">제목</option>
-              <option value="content">내용</option>
-              <option value="username">작성자</option>
-            </select>
-            <input type="hidden" name="board_name" value="{{board_name}}">
-            <input type="text" name="search_value">
-            <input type="submit" value="검색">
-          </form>
+      </div>
+      <div class="search">
+        <form action="/admin/community/{{board_name}}" method="post">
+          <select name="search_type">
+            <option value="subject">제목</option>
+            <option value="content">내용</option>
+            <option value="username">작성자</option>
+          </select>
+          <input type="hidden" name="board_name" value="{{board_name}}">
+          <input type="text" name="search_value">
+          <input type="submit" value="검색">
+        </form>
       </div>
 
      

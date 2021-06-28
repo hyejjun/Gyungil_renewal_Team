@@ -381,7 +381,7 @@ a {
 }
 
 .board_list > tbody > tr > td.tit {
-    text-align: left !important;
+    text-align: center ;
 }
 
 /* 번호 */
