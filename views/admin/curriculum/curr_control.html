@@ -32,11 +32,10 @@
             자격 요건: <input type="text" name="qual" value="{{spec.qual}}" required><br>
             이미지:
             <div id="thumbnail">
-              <img src="http://localhost:3000/{{spec.image}}"alt="교육과정 대표 이미지">
+              <img style="width: 400px; height: 300px;" src="http://localhost:3000/{{spec.image}}"alt="교육과정 대표 이미지">
             </div>
             <input type="file" accept="image/*" name="img" onchange="setThumbnail(event);"><br>
             <input type="hidden" name="origin_image" value="{{spec.image}}">
-            <div id="thumbnail"></div>
           </div>
 
 

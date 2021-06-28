@@ -109,3 +109,10 @@
 #table>tbody>tr>td{
   text-align: center;
 }
+
+
+#table_wrap{
+  width: 1200px;
+  max-height: 300px;
+  overflow-y: scroll;
+}

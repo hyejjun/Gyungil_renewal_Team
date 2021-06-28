@@ -1,6 +1,6 @@
 
 #curr_spec{
-  width: 1250px;
+  width: 1200px;
   height: 700px;
   margin: 0 auto;
 }
@@ -8,7 +8,7 @@
 
 
 #curr_sub{
-  width: 1250px;
+  width: 1200px;
   height: auto;
   overflow:hidden;
   margin: 0 auto;
@@ -78,13 +78,14 @@
 }
 
 #sbj_detail_box{
+  border: 2px solid black;
   margin-top: 50px;
 }
 
 #sbj_detail{ 
   width: 510px;
   height: 150px;
-  background-color: cadetblue;
+ 
 }
 
 

@@ -39,6 +39,8 @@
         let thumbnail = document.querySelector("#thumbnail");
         while ( thumbnail.hasChildNodes() ) { thumbnail.removeChild( thumbnail.firstChild ); }
         let img = document.createElement("img");
+        img.style.width = 400+'px'
+        img.style.height = 300+'px'
         img.setAttribute("src", event.target.result);
         thumbnail.appendChild(img);
       };
