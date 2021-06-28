@@ -1,12 +1,23 @@
 
-window.addEventListener('DOMContentLoaded', () => {
-  const td_subject = document.querySelectorAll('.td_subject');
-  td_subject.forEach(v => {
-    v.addEventListener('click', show_details())
-  })
-})
+// window.addEventListener('DOMContentLoaded', () => {
+//   const td_subject = document.querySelectorAll('.td_subject');
+//   td_subject.forEach(v => {
+//     v.addEventListener('click', show_details())
+//   })
+// })
 
-function show_details() {
+function show_details(id) {
+  const rv_detail = document.querySelector('#rv_detail'); 
+  const rv_detail_subject = document.querySelector('#rv_detail_subject'); 
+  const rv_detail_name = document.querySelector('#rv_detail_name'); 
+  const content = document.querySelector(`#content${id}`);
+  const name = document.querySelector(`#username${id}`);
+  const subject = document.querySelector(`#subject${id}`);
+
+  rv_detail_subject.innerHTML = subject.innerHTML;
+  rv_detail.innerHTML=content.value;
+  rv_detail_name.innerHTML = name.innerHTML;
+
 
 }
 

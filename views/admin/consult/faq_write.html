@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>커뮤니티</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
 
 </head>
 
@@ -19,9 +20,16 @@
         <div>
           <h3>faq작성</h3>
           <form action="/admin/consult/faq/write" method="post">
-            Q: <input type="text" name="subject" id="subject">
-            A: <textarea name="content" id="content" cols="30" rows="10"></textarea>
-            <input type="submit" value="등록">
+            <div>
+              <span class="faq">Q:</span>
+               <input class="faq_input" type="text" name="subject" id="subject">
+            </div>
+            <div>
+              <span class="faq">A:</span>
+               
+              <textarea  class="faq_input" name="content" id="content" cols="30" rows="10"></textarea>
+            </div>
+            <input class="admin_button" type="submit" value="등록">
           </form>
         </div>
       </div>

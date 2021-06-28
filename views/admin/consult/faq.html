@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>커뮤니티</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
+  <link rel="stylesheet" href="/css/subpage/consult/consulting.css">
+
 
 </head>
 
@@ -16,30 +19,21 @@
       {% include "../layout/gnb.html" %}
       {% include "./consult_snb.html" %}
       <div id="main">
+        <a class="admin_button"  href="/admin/consult/faq/write">faq 작성</a>
 
-       <table>
-         <thead>
-           <td></td>
-           <td>자주 묻는 질문</td>
-         </thead>
-         <tbody>
-           {% for item in result %}
-          <tr>
-            <td>Q</td>
-            <td>{{item.subject}}</td>
-            <td rowspan="2">
-              <a href="/admin/consult/faq/modify?id={{item.id}}">수정</a><br
-              ><a href="/admin/consult/faq/destroy?id={{item.id}}">삭제</a></td>
-          </tr>
-          <tr>
-            <td>A</td>
-            <td>{{item.content}}</td>
-          </tr>
-           {% endfor %}
-         </tbody>
-       </table>
+        <div class="accordion">
+          {% for item in result %}
+      <input type="radio" name="accordion" id="answer{{item.id}}">
+      <label for="answer{{item.id}}">{{item.subject}} <a href="/admin/consult/faq/modify?id={{item.id}}">수정</a>
+        <a href="/admin/consult/faq/destroy?id={{item.id}}">삭제</a></td> <em></em></label>
+      <div class="faq_content">
+        <p>{{item.content}}</p>
+      </div>
+          {% endfor %}
+    </div>
 
-       <a href="/admin/consult/faq/write">faq 작성</a>
+     
+      
 
       </div>
     </div>

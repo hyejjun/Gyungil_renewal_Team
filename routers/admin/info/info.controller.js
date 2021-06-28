@@ -243,7 +243,7 @@ let show_location = async (req, res) => {
   })
   let content = result.dataValues.content; 
   content = content.split('$$'); 
-  result['adrress'] = content[0];
+  result['address'] = content[0];
   result['tel'] = content[1];
   result['fax'] = content[2];
   result['email'] = content[3];

@@ -76,6 +76,36 @@
   width: 1000px;
   height: auto;
   overflow: hidden;
-  margin-left: 100px;
   border: 1px solid black;
+}
+
+.faq{
+  display: inline-block;
+  font-size: 50px;
+}
+
+.faq_input{
+  display: inline-block;
+  width: 1000px;
+  height: 50px;
+  font-size: 50px;
+  line-height: 50px;
+  border: 1px solid black;
+  overflow:visible;
+}
+
+#table{ 
+  width: 800px;
+  height: auto;
+  overflow:hidden;
+  margin: 0 auto;
+}
+
+#table>tbody>tr{
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+#table>tbody>tr>td{
+  text-align: center;
 }

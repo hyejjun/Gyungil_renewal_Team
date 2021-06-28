@@ -13,8 +13,9 @@ a {
 }
 
 #main {
-  float: right;
-  width: 1600px;
+  float: left;
+  width: 1200px;
+  margin-left: 200px;
   height: auto;
   overflow: hidden;
   position: relative;

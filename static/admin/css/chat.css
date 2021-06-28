@@ -9,7 +9,7 @@
   height: auto;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 400px;
+  width: 300px;
 }
 
 #consulting_box{
@@ -27,7 +27,7 @@
 
 
 .client_in{ 
-  width: 350px;
+  width: 250px;
   height: 90px;
   box-sizing: border-box;
   border-radius: 30px;
@@ -37,7 +37,7 @@
 }
 
 .client_out{
-  width: 350px;
+  width: 250px;
   height: 90px;
   box-sizing: border-box;
   border-radius: 30px;
@@ -50,7 +50,7 @@
 
 .clientInfo{ 
   float: left;
-  width: 250px;
+  width: 180px;
   font-size: 18px;
 }
 

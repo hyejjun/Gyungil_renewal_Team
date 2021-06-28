@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>커뮤니티</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
+
 
 </head>
 
@@ -20,9 +22,16 @@
           <h3>faq 수정</h3>
           <form action="/admin/consult/faq/modify" method="post">
             <input type="hidden" name="id" value="{{result.id}}">
-            Q: <input type="text" name="subject" id="subject" value="{{result.subject}}">
-            A: <textarea name="content" id="content" cols="30" rows="10">{{result.content}}</textarea>
-            <input type="submit" value="등록">
+            <div>
+              <span class="faq">Q:</span>
+               <input class="faq_input" type="text" name="subject" id="subject" value="{{result.subject}}">
+            </div>
+            <div>
+              <span class="faq">A:</span>
+               
+              <textarea  class="faq_input" name="content" id="content" cols="30" rows="10">{{result.content}}</textarea>
+            </div>
+            <input class="admin_button" type="submit" value="등록">
           </form>
         </div>
       </div>

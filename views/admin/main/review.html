@@ -34,7 +34,7 @@
               {% for item in rv %}
               <tr>
                 <input type="hidden" id="content{{item.id}}" value="{{item.content}}">  
-                <td id='subject{{item.id}}' onclick="">
+                <td id='subject{{item.id}}' onclick="show_details(`{{item.id}}`)">
                   {{item.subject}}
                 </td>
                 <td id="username{{item.id}}">{{item.writer_user.username}}</td>
@@ -69,6 +69,7 @@
     </div>
   </div>
   <script src="/admin/js/main_rv.js" type="text/javascript"></script>
+  <script src="/admin/js/curr.js" type="text/javascript"></script>
 
 </body>
 </html>

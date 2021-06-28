@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>인삿말</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
+
 
 </head>
 <body>
@@ -14,6 +16,8 @@
       {% include "../layout/gnb.html" %}
       {% include "./info_snb.html" %}
       <div id="main">
+        <a class="admin_button" href="/admin/info/teacher/add">교직원 추가</a>
+
         <table>
           <thead>
             <th>이름</th>
@@ -55,7 +59,6 @@
         </table>
     
         
-        <a href="/admin/info/teacher/add">교직원 추가</a>
         
 
       </div>

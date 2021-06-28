@@ -19,15 +19,15 @@
       {% include "./community_snb.html" %}
       <div id="main" >
 
-        <div class="board_list">
+        <div >
           <h2>{{title}}</h2>
-          <table>
+          <table class="board_list">
             <thead>
-              <td>글번호</td>
-              <td>제목</td>
-              <td>등록일</td>
-              <td>작성자</td>
-              <td>조회수</td>
+              <th>글번호</th>
+              <th>제목</th>
+              <th>등록일</th>
+              <th>작성자</th>
+              <th>조회수</th>
             </thead>
             <tbody>
               {% for item in pageinfo.result %}
