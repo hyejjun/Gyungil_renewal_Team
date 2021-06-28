@@ -23,17 +23,33 @@
   font-size: 20px;
   font-weight: 700;
   text-align: center;
+  border-radius: 30px;
+  padding: 10px;
 }
 
+#consulting_box>span{
+  background: #4ddb55;
+}
+
+#waiting_box>span{
+  background: #ffba3b;
+  margin-bottom: 30px;
+}
+
+
+#waiting{
+  border-radius: 20px;
+}
 
 .client_in{ 
   width: 250px;
   height: 90px;
   box-sizing: border-box;
-  border-radius: 30px;
+  /* border-radius: 30px; */
   padding: 7px 14px;
   background-color: blanchedalmond;
   line-height: 90px;
+  text-align: right;
 }
 
 .client_out{
@@ -55,16 +71,18 @@
 }
 
 .consult_event{ 
-  float: left;
-  width: 70px;
+  float: right;
+  width: 100%;
   height: 90px;
-  text-align: center;
-  line-height: 90px;
+  /* text-align: center; */
+  /* line-height: 90px; */
+  /* background:red; */
 }
 
+
 .consult_event>input{
-  
   display: inline-block;
+  
   width: 70px;
   height: 40px;
 }

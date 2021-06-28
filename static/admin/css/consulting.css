@@ -1,0 +1,32 @@
+.consult_div>h2{
+    margin-bottom: 110px;
+    font-size: 37px;
+    background: #868282;
+    color: white;
+    text-align: center;
+    border-radius: 30px;
+}
+#table{
+    width: 80%;
+    min-height: 120px;
+}
+
+#table>thead{
+    font-size: 25px;
+}
+
+#table>thead>tr>th:nth-child(1){
+    width: 10%;
+}
+
+#table>thead>tr>th:nth-child(2){
+    width: 20%;
+}
+
+#table>thead>tr>th:nth-child(3){
+    width: 10%;
+}
+
+#table>tbody>tr{
+    font-size: 20px;
+}
