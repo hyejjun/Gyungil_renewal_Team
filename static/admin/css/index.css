@@ -2,6 +2,15 @@
   margin: 0;
   padding: 0;
 }
+@font-face {
+  font-family: 'NanumSquareRound';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+html{
+  font-family: 'NanumSquareRound';
+}
 
 ul,
 li {
@@ -17,6 +26,7 @@ a {
   width: 1200px;
   margin-left: 200px;
   height: auto;
+  min-height: 900px;
   overflow: hidden;
   position: relative;
 }
@@ -90,4 +100,30 @@ a {
   font-weight: bold;
   color: black;
   font-size: 20px;
+}
+
+
+.writeBtn{
+  display: inline-block;
+    float: right;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 15px;
+    background: black;
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#main>div>h2{
+  margin-bottom: 110px;
+    font-size: 37px;
+    background: #636161;
+    color: white;
+    text-align: center;
+    border-radius: 30px;
 }

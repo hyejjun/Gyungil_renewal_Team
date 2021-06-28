@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/css/subpage/community/review.css">
 <link rel="stylesheet" href="/admin/css/index.css">
 <link rel="stylesheet" href="/admin/css/main.css">
+<link rel="stylesheet" href="/admin/css/curr.css">
 
 </head>
 <body>
@@ -31,7 +32,7 @@
             <tr>
               <td>{{item.name}}</td>
               <td>{{item.content}}</td>
-              <td><img src="http://localhost:3000/{{item.image}}" width="400" height="300" alt=""></td>
+              <td><img src="http://localhost:3000/{{item.image}}" alt=""></td>
               <td><a href="/admin/curriculum/subject/modify?id={{item.id}}">수정</a></td>
               <td><a href="/admin/curriculum/subject/destroy?id={{item.id}}">삭제</a></td>
             </tr>
