@@ -82,7 +82,6 @@ let list = async (req, res) => {
             temp.push(result[i]);
         }
         result = temp;
-<<<<<<< HEAD
 
         pageinfo["result"] = result;
 
@@ -91,16 +90,6 @@ let list = async (req, res) => {
 
     }
 
-=======
-
-        pageinfo["result"] = result;
-
-
-
-
-    }
-
->>>>>>> 40c2ec0f7b8b123ff8fed7e38bae3c88ea9543d9
     else {
         let result = await board.findAll({
             offset: article_count * (page - 1),
@@ -413,7 +402,6 @@ module.exports = {
     search_review,
 }
 
-<<<<<<< HEAD
 async function makePage(page,result,type){ //type: 글 타입.   page: 요청한 페이지.  result는 type으로 뽑은 글의 수. 
     const pageCount = 10; // 페이지 블록의 수 
     let count; 
@@ -477,8 +465,6 @@ async function makePage(page,result,type){ //type: 글 타입.   page: 요청한
     }
     return pageinfo; 
   }
-=======
->>>>>>> 40c2ec0f7b8b123ff8fed7e38bae3c88ea9543d9
 
 
 
