@@ -30,15 +30,15 @@
             <tr>
               <td><input type="hidden" value="{{item.id}}"></td>
               <td><div><img src="http://localhost:3000/{{item.image}}"alt="슬라이드 이미지" width="400" height="300"></div></td>
-              <td><div><a href="{{item.link}}">{{item.link}}</a></div></td>
+              <td><div><a href=`{{item.link}}`>{{item.link}}</a></div></td>
               {% if item.show==1 %}
               <td><input type="checkbox" checked onclick="check()"></td>
               {% else %}
               <td><input type="checkbox" onclick="check()"></td>
               {% endif %}
               <td>
-                <input class="admin_button" type="button" name ="{{item.id}}" value="링크수정" onclick="link_update()">
-                <input  class="admin_button" type="button" name ="{{item.id}}" value="삭제" onclick="destroy()">
+                <input class="admin_button" type="button" name ="{{item.id}}" value="링크수정" onclick="link_update(`{{item.id}}`)">
+                <input  class="admin_button" type="button" name ="{{item.id}}" value="삭제" onclick="destroy(`{{item.id}}`)">
             </td>
             </tr>
             {% endfor %}
