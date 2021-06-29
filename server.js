@@ -73,7 +73,6 @@ io.sockets.on("connection", socket => {
     })
 
     socket.on('end',datas=>{
-        console.log('cccccccccccccccccccccccccc')
     })
 })
 
