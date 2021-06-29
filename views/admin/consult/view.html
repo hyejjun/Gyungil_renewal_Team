@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/view.css">
+
 
 </head>
 
@@ -17,14 +19,23 @@
       {% include "./consult_snb.html" %}
 
       <div id="main">
-        <div>
-          작성자<span>{{result.name}}</span>
-          등록일<span>{{result.date}}</span>
-          내용 <pre>{{result.content}}</pre>
+        <div class="info">
+          <dl>
+            <dt>작성자</dt>
+            <dd>{{result.name}}</dd>
+          </dl>
+          <dl>
+            <dt>등록일</dt>
+            <dd> {{result.date}}</dd>
+          </dl>
+          <dl>
+           
           <a href="/admin/consult/destroy?id={{result.id}}&page={{page}}">삭제하기</a>
          
         </div>
-       
+        <div>
+          {{result.content}}
+         </div>
 
       </div>
     </div>
