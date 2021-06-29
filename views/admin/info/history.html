@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>인삿말</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
 
 </head>
 <body>
@@ -28,10 +29,10 @@
               <td>{{item.year}}</td>
               <td>{{item.content}}</td>
               <td>
-                <input type="button" value="수정" id='update_btn' name = "{{item.id}}"  required>
+                <input class="admin_button" type="button" value="수정" id='update_btn' name = "{{item.id}}"  required>
               </td>
               <td>        
-                  <input type="button" value="삭제" id='destroy_btn' name = "{{item.id}}" required>
+                  <input class="admin_button" type="button" value="삭제" id='destroy_btn' name = "{{item.id}}" required>
                 </td>
             </tr>
             {% endfor %}
@@ -45,7 +46,7 @@
           <form action="/admin/info/addhistory" method="post">
             연도:<input type="text" name="year" id="year" required>
             내용:<input type="text" name="content" id="content" required>
-            <input type="submit" value="등록" id='add_btn'>
+            <input class="admin_button" type="submit" value="등록" id='add_btn'>
           </form>
             
           

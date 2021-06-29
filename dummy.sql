@@ -501,8 +501,7 @@ INSERT INTO `history` (`id`, `year`, `content`) VALUES
 	(26, 2019, '제1회 문화거리 일러스트레이트 공모전 개최'),
 	(27, 2019, '고용노동부 기관인증평가 3년 우수훈련기관 2회차 선정'),
 	(28, 2019, '직업능력평가원 훈련 이수자 평가 \'A등급\'획득'),
-	(35, 12, '12'),
-	(36, 2018, '11111');
+
 /*!40000 ALTER TABLE `history` ENABLE KEYS */;
 
 -- 테이블 gyungil.hit 구조 내보내기
@@ -733,26 +732,38 @@ CREATE TABLE IF NOT EXISTS `users` (
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `userid`, `userpw`, `username`, `useremail`, `user_birthday`, `user_tel`, `class_code`, `quit`, `type`) VALUES
 	(1, 'admin', 'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg', '최고관리자', 'admin@admin.com', '2021-06-13', '010-000-000', 0, 0, 1),
-	(20, 'yyy', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '윤세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(26, 'yyy2', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '오세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(27, 'yyy3', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '김세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(28, 'yyy4', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '이세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(29, 'yyy5', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '박세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(30, 'yyy6', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '구세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(31, 'yyy7', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '나세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(33, 'yyy8', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '엄세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(34, 'yyy9', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '남세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(35, 'yyy10', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '백세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(38, 'yyy11', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '정세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(39, 'yyy12', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '허세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(40, 'yyy13', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '강세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
-	(42, 'yyy14', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '도세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 3),
+	(20, 'yyy', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '윤세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(26, 'yyy2', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '오세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(27, 'yyy3', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '김세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(28, 'yyy4', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '이세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(29, 'yyy5', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '박세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(30, 'yyy6', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '구세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(31, 'yyy7', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '나세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(33, 'yyy8', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '엄세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(34, 'yyy9', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '남세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(35, 'yyy10', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '백세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(38, 'yyy11', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '정세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(39, 'yyy12', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '허세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(40, 'yyy13', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '강세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
+	(42, 'yyy14', 'lu+8Q6Riq52caoFz5bMi4X8hi1brOgWku8UyIa3rx7M', '도세호', 'kkk@kkk.com', '2021-06-04', '010-000-000', 2, 0, 4),
 	(43, 'aaa', 'mDSHbc+wXLFnpcJJU+uljErImxrfV/KPL50JrxB+6PA', 'aaa', 'aaa@aaa', '2021-06-04', '010-000-000', 1, 0, 6),
 	(44, 'bbb', 'PnRLncOTibrwxaBmBYm4QC89u0m4mz518sk1WFKjxnc', 'bbb', 'aaa@aaa', '2021-06-04', '010-000-000', 3, 0, 6),
 	(45, 'qqq', 'qVvBZjGuK2+ttFXuAY2grcJwPlbYnj7tB0zlbS97G2o', '박세호', 'aaa@aaa', '2021-06-05', '010-000-000', 1, 0, 6),
 	(46, 'www', 'fC7NB/FVZIQx4PlLiSR9cTxXhuHnPpU/L+fso5U0zW0', '김세호', 'qqq@aaa', '2022-01-02', '010-000-000', 3, 0, 6),
 	(47, 'eee', 'KCuR4I/VCjjwMNu97niY023VI2BdlNndblCymOR4RL4', '구세호', 'aaa@aaa', '2021-01-01', '010-000-000', 4, 0, 6),
-	(48, 'rrr', 'ErDw3K77EMAqg6qa2wJZeN21US3ATrOd9oEcamv5dww', '이세호', 'aaa@aaa', '2021-01-01', '010-000-000', 4, 0, 6);
+	(48, 'rrr', 'ErDw3K77EMAqg6qa2wJZeN21US3ATrOd9oEcamv5dww', '이세호', 'aaa@aaa', '2021-01-01', '010-000-000', 4, 0, 6),
+	(49, 'dlaudqkr', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '이명박', 'aaa@aaa', '2021-01-01', '010-000-000', 0, 0, 2),
+	(50, 'answodls', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '문재인', 'aaa@aaa', '2021-01-01', '010-000-000', 0, 0, 2),
+	(51, 'qkrrmsgP', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '박근혜', 'aaa@aaa', '2021-01-01', '010-000-000', 0, 0, 2),
+	(52, 'shangus', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '노무현', 'aaa@aaa', '2021-01-01', '010-000-000', 0, 0, 2),
+	(53, 'rlaeownd', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '김대중', 'rrlaeownd@rlaeownd.com', '2021-06-03', '010-000-000', 0, 0, 2),
+	(54, 'rladudtka', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '김영삼', 'aaa@aaa', '2021-01-01', '123-4123-1233', 0, 0, 2),
+	(55, 'shxodn', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '노태우', 'shxodn@shxodn.com', '2021-01-01', '010-000-000', 0, 0, 3),
+	(56, 'wjsenghks', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '전두환', 'aaa@aaa', '2021-06-02', '010-000-000', 0, 0, 3),
+	(57, 'chlrbgk', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '최규하', 'aaa@aaa', '2021-01-01', '010-000-000', 0, 0, 3),
+	(58, 'qkrwjdgml', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '박정희', 'qkrwjdgml@qkrwjdgml.com', '2021-01-01', '010-7428-0177', 0, 0, 3),
+	(59, 'dbsqhtjs', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '윤보선', 'aaa@aaa', '2021-01-01', '010-7428-0177', 0, 0, 3),
+	(60, 'dltmdaks', 'A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ', '이승만', 'dltmdaks@dltmdaks.com', '2021-06-01', '010-000-000', 0, 0, 3);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
  SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') ;

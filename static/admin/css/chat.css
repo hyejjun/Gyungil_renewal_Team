@@ -42,29 +42,41 @@
 }
 
 .client_in{ 
-  width: 250px;
-  height: 50px;
-  box-sizing: border-box;
-  /* border-radius: 30px; */
-  padding: 7px 14px;
-  background-color: blanchedalmond;
-  border-radius: 25px;
-  line-height: 50px;
-  margin: 20px 0;
+  margin: 10px 0;
+  display: inline-block;
+	padding: 7px 30px;
+	background: #006cdb;
+	border: 1px solid #006cdb;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 
 .client_out{
-  width: 250px;
-  height: 50px;
-  margin: 20px 0;
+  margin: 10px 0;
+  display: inline-block;
+	padding: 7px 30px;
+	background: #040214;
+	border: 1px solid #040214;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
 
-  box-sizing: border-box;
-  border-radius: 30px;
-  padding: 7px 14px;
-  background-color: gray;
-  border-radius: 25px;
-  line-height: 50px;
-
+.client_out>input,
+.client_in>input{ 
+  border: none;
+	font-weight: bold;
 }
 
 

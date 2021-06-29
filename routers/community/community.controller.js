@@ -266,7 +266,7 @@ let review = async (req, res) => {
 let review_write = (req, res) => {
     let { AccessToken } = req.cookies;
     let { page } = req.query;
-    console.log(page);
+    // console.log(page);
     let userid = (AccessToken != undefined) ? jwtId(AccessToken) : undefined;
     let username = (AccessToken != undefined) ? jwtName(AccessToken) : undefined;
     let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;

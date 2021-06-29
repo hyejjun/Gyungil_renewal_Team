@@ -48,7 +48,7 @@ let curriculum_view = async (req, res) => {
         }],
     })
 
-    console.log(review)
+    // console.log(review)
     let p = 1; 
     review.forEach(v => {
         v['pictonum'] =p; 

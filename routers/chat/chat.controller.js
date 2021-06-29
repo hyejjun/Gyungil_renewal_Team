@@ -32,7 +32,7 @@ let request = (req, res) => {
   })
 
   if (flag) clients.push(temp);
-  console.log(clients);
+  // console.log(clients);
 
   res.json({});
 }
@@ -51,12 +51,12 @@ let send = async (req, res) => {
 }
 
 let end = (req,res)=>{
-  console.log(req.body.data);
+  // console.log(req.body.data);
   let {data} = req.body;
 
   for(let i = 0; i<clients.length; i++){ 
     if(clients[i].id==data){
-      console.log('catch'); 
+      // console.log('catch'); 
       clients[i].on = false; 
       break;  
     }

@@ -11,7 +11,7 @@ userlevel[6] = '미인증 학생'
 let show = async (req, res) => {
   let { show, msg } = req.query;
   let type = req.session.type;
-  console.log(type);
+  // console.log(type);
   let result = await User.findAll({
     include: [{
       model: curriculum,
