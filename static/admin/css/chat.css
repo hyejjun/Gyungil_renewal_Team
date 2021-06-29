@@ -71,13 +71,8 @@
 }
 
 .consult_event{ 
-<<<<<<< HEAD
-  float: left;
-  width: 50px;
-=======
   float: right;
   width: 100%;
->>>>>>> ce4ef094e373f9906c02335c413046e2098885d4
   height: 90px;
   /* text-align: center; */
   /* line-height: 90px; */
