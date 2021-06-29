@@ -131,7 +131,6 @@ let show_modify = async (req, res) => {
     where: { id, }
   })
 
-  console.log(result.dataValues.writer); 
   const target=result.dataValues.writer; 
   let user = await User.findAll({
     include: [{
@@ -157,10 +156,8 @@ let show_modify = async (req, res) => {
 
 let update_article = async (req, res) => {
   let board_name = req.params.board_name;
-  let { subject, content, id } = req.body;
+  let { subject, content, id,page } = req.body;
   let date = new Date();
-  console.log(req.body); 
-  console.log(req.file); 
 
   let result = await board.update({
     subject, content, date,
@@ -183,7 +180,7 @@ let update_article = async (req, res) => {
   }
 
 
-  res.redirect(`/admin/job/${board_name}/view?id=${id}`);
+  res.redirect(`/admin/job/${board_name}/view?id=${id}&page=${page}`);
 }
 
 
