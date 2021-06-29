@@ -28,15 +28,15 @@
             <dt>등록일</dt>
             <dd> {{result.date}}</dd>
           </dl>
-          <dl>
            
-          <a href="/admin/consult/destroy?id={{result.id}}&page={{page}}">삭제하기</a>
-         
         </div>
         <div>
           {{result.content}}
-         </div>
 
+         </div>
+          <a href="/admin/consult/consultList?page={{page}}" class="viewtn">목록</a>
+          <a href="/admin/consult/destroy?id={{result.id}}&page={{page}}" class="viewtn">삭제하기</a>
+         
       </div>
     </div>
   </div>
