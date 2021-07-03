@@ -267,8 +267,8 @@ let show_location_modify = async (req, res) => {
   result['bus'] = content[4];
   result['subway'] = content[5];
   
-  console.log(result);
-  console.log(content);
+  // console.log(result);
+  // console.log(content);
 
   res.render('./admin/info/location_modify.html', {
     result, 

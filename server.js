@@ -72,8 +72,12 @@ io.sockets.on("connection", socket => {
         io.sockets.to(id).emit('test', datas);
     })
 
+<<<<<<< HEAD
     socket.on('end', datas => {
         console.log('cccccccccccccccccccccccccc')
+=======
+    socket.on('end',datas=>{
+>>>>>>> 40d2a5d0ab8067177714e7d61834065477dd5bee
     })
 })
 

@@ -21,14 +21,12 @@ let show_consultList = async (req, res) => {
 
   result.forEach(ele => {
     let temp = ele.dataValues.date;
-    let y = temp.getFullYear();
-    let mm = temp.getMonth() + 1;
-    let d = temp.getDate();
+
     let t = temp.getHours();
     let m = temp.getMinutes();
-    if (mm < 10) mm = '0' + mm;
-    if (d < 10) d = '0' + d;
-    ele.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
+    if (t < 10) t = '0' + t;
+    if (m < 10) m = '0' + m;
+    ele.dataValues.date = `${t}:${m}`
   });
 
   let pageinfo = await makePage(page, result)
@@ -39,9 +37,15 @@ let show_consultList = async (req, res) => {
 }
 
 
+<<<<<<< HEAD
 let show_consult = async (req, res) => {
   let { id, page } = req.query;
   console.log(req.query);
+=======
+let show_consult = async(req,res)=>{ 
+  let {id, page}  = req.query; 
+  // console.log(req.query); 
+>>>>>>> 40d2a5d0ab8067177714e7d61834065477dd5bee
   let result = await consult.findOne({
     where: { id, }
   })
@@ -57,7 +61,11 @@ let show_consult = async (req, res) => {
   result.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
 
 
+<<<<<<< HEAD
   console.log(result);
+=======
+  // console.log(result); 
+>>>>>>> 40d2a5d0ab8067177714e7d61834065477dd5bee
   res.render('./admin/consult/view', {
     page, result,
   })

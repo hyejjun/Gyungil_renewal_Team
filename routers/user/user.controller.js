@@ -10,7 +10,6 @@ let join = async (req, res) => {
     let nickname = (req.session.kakao != undefined) ? req.session.kakao.properties.nickname : undefined;
     let kakao_email = (req.session.kakao != undefined) ? req.session.kakao.kakao_account.email : undefined;
 
-    console.log(req.session.kakao);
     let curr = await curriculum.findAll({
         attribute: ['id', 'name']
     });
@@ -24,7 +23,6 @@ let login = (req, res) => {
 }
 
 let join_success = async (req, res) => {
-    console.log(req.body);
     let { username, userid, userpw, user_birthday, user_tel, class_code, useremail, userlevel } = req.body;
 
     let pwtoken = jwtPW(userpw)
@@ -43,7 +41,6 @@ let join_success = async (req, res) => {
 }
 
 let login_check = async (req, res) => {
-    //console.log(req.body);
     let { userid, userpw } = req.body;
 
     let Cuserpw = jwtPW(userpw)
@@ -53,12 +50,10 @@ let login_check = async (req, res) => {
         where: { userid, userpw: Cuserpw }
     })
 
-    //console.log("login result = ",loginResult);
 
     if (loginResult != null) {
         let username = loginResult.dataValues.username;
         let token = ctoken(userid, username);
-        console.log(token)
         res.cookie('AccessToken', token, { httpOnly: true, secure: true });
 
         res.redirect(`/?msg=로그인에 성공했습니다`);
@@ -75,7 +70,7 @@ let logout = (req, res) => {
 
 let id_check = async (req, res) => {
     let userid = req.query.userid;
-    console.log(userid);
+    // console.log(userid);
     let flag = false;
     let result = await User.findOne({
         where: { userid }

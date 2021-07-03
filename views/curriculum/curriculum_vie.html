@@ -59,8 +59,8 @@
     {% for item in review %}
     <div class="rv_card">
         <div class="rv_image_box"><img class='rv_image picto_{{item.pictonum}}' src="http://localhost:3000/programmer_icon1.png" alt=""></div>
-        <div class="rv_text_box"><span>{{item.writer}} 수강생</span>
-            <p>{{item.subject}}</p></div>
+        <div class="rv_text_box"><span>{{item.writer_user.username}} 수강생</span>
+            <p>{{item.content}}</p></div>
     </div>
     {% endfor %}
 

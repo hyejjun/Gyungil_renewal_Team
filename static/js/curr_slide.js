@@ -15,7 +15,6 @@
   let move;
   let wrapWidth; 
   const io = new IntersectionObserver((entries,observer)=>{
-    console.log(entries[0]); 
     if(flag){
       liLength = entries[2].boundingClientRect.width;
       liHeight = entries[2].boundingClientRect.height;

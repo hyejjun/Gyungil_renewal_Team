@@ -10,23 +10,18 @@
 {% for item in clients %}
 {% if item.on %}
   <li class="client_in">
-    <div class="clientInfo">
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
-    </div>
-    <div class="consult_event">
     <input  type="button" data-id="{{item.id}}" onclick="startChat(`{{item.id}}`,`{{item.name}}`)" value="시작">
-    </div>
+
   </li>
   {% else %}
   <li class="client_out">
-    <div class="clientInfo">
+ 
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
-    </div>
-    <div class="consult_event">
       <input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="삭제">
-    </div>
+
   </li>
   {% endif %}
 {% endfor %}
@@ -40,9 +35,9 @@
       <strong >{{item.name}}({{item.age}})</strong>
       <span>{{item.date}}</span>
     </div>
-    <div class="consult_event">
+
       <input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="종료">
-    </div>
+
   </li>
 {% else %}
 <li class="client_out">
@@ -50,9 +45,8 @@
     <strong >{{item.name}}({{item.age}})</strong>
     <span>{{item.date}}</span>
   </div>
-  <div class="consult_event">
     <input type="button" data-id="{{item.id}}" onclick="endChat(`{{item.id}}`)" value="종료">
-  </div>
+
 </li>
 {% endif %}
 {% endfor %}

@@ -10,16 +10,22 @@
 
 .admin_button,
 #main_rv_submit_btn {
+
+  margin: 15px;
+
   display: inline-block;
-  padding: 0.5rem 1rem;
-  outline: none;
-  background-color: var(--first-color);
-  color: black;
-  font-size: 26px;
-  font-weight: bold;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  border: 1px solid black;
+	padding: 7px 14px;
+	background: #006cdb;
+	border: 1px solid #006cdb;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+  /* box-sizing: border-box; */
 }
 
 #main_rv_submit_btn {
@@ -108,4 +114,11 @@
 
 #table>tbody>tr>td{
   text-align: center;
+}
+
+
+#table_wrap{
+  width: 1200px;
+  max-height: 300px;
+  overflow-y: scroll;
 }

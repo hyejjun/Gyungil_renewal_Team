@@ -24,11 +24,11 @@
                     <td>{{item.num}}</td>
                     {% if search_type==undefined %}
                     <td class="tit"><a
-                            href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}&num={{item.num}}">{{item.subject}}</a>
+                            href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}">{{item.subject}}</a>
                     </td>
                     {% else %}
                     <td class="tit"><a
-                        href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}&num={{item.num}}&search_type={{search_type}}&search_value={{search_value}}">{{item.subject}}</a>
+                        href="/community/{{board_name}}/view?page={{page}}&id={{item.id}}&search_type={{search_type}}&search_value={{search_value}}">{{item.subject}}</a>
                     </td>
                     {% endif %}
                     <td>{{item.date}}</td>

@@ -37,8 +37,12 @@ let request = (req, res) => {
 
 
   if (flag) clients.push(temp);
+<<<<<<< HEAD
   // 클라이언트의 정보를 담은 객체를 clients 배열에 넣음 
   console.log(clients);
+=======
+  // console.log(clients);
+>>>>>>> 40d2a5d0ab8067177714e7d61834065477dd5bee
 
   res.json({});
 }
@@ -61,6 +65,7 @@ let send = async (req, res) => {
 
 }
 
+<<<<<<< HEAD
 // 클라이언트가 페이지를 나가면 
 // on 값을 false로 바꿈,
 //상담사 페이지에서 on값이 false인 클라이언트는 검은색으로 표시됨. 
@@ -72,6 +77,17 @@ let end = (req, res) => {
     if (clients[i].id == data) {
       clients[i].on = false;
       break;
+=======
+let end = (req,res)=>{
+  // console.log(req.body.data);
+  let {data} = req.body;
+
+  for(let i = 0; i<clients.length; i++){ 
+    if(clients[i].id==data){
+      // console.log('catch'); 
+      clients[i].on = false; 
+      break;  
+>>>>>>> 40d2a5d0ab8067177714e7d61834065477dd5bee
     }
   }
 
