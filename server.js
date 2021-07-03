@@ -71,11 +71,9 @@ io.sockets.on("connection", socket => {
         let id = datas[0];
         io.sockets.to(id).emit('test', datas);
     })
-
-    // socket.on('end', datas => {
-    //     console.log('cccccccccccccccccccccccccc')
-    // })
 })
+
+
 
 server.listen(PORT, () => {
     console.log(`server start port ${PORT}`)

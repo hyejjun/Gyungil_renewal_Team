@@ -37,9 +37,11 @@ let show_consultList = async (req, res) => {
 }
 
 
+
 let show_consult = async (req, res) => {
   let { id, page } = req.query;
-  // console.log(req.query); 
+  // console.log(req.query);
+
   let result = await consult.findOne({
     where: { id, }
   })
@@ -55,7 +57,7 @@ let show_consult = async (req, res) => {
   result.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
 
 
-  console.log(result);
+
   res.render('./admin/consult/view', {
     page, result,
   })
