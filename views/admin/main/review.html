@@ -17,10 +17,13 @@
       {% include "../layout/gnb.html" %}
       {% include "./main_snb.html" %}
 
-      <div id="main" class="board_list"  >
+      <div id="main"  >
 
         <h3>메인페이지 수강후기 설정</h3>
-        <table id="main_rv_table">
+        <div id="table_wrap">
+
+        
+        <table class="board_list">
           <thead>
             <th> 제목</th>
             <th>작성자 이름</th>
@@ -50,7 +53,7 @@
               {% endfor %}
             </tbody>
           </table>
-
+        </div>
           <div id="rv_detail_box">
             <span>자세히 보기</span><br>
             제목: <span id="rv_detail_subject"></span><br>

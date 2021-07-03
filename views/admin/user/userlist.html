@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
+  <link rel="stylesheet" href="/admin/css/user.css">
 
   <title>관리자 회원목록</title>
 </head>
@@ -14,8 +16,8 @@
       {% include "../layout/gnb.html" %}
       {% include "./user_snb.html" %}
       <div id="main">
-        <div>
-          <ul>
+        <div id='user_navi_wrap'>
+          <ul id='user_navi'>
             <li><a href="/admin/user/userlist?show=all">전체 회원 보기</a></li>
             <li><a href="/admin/user/userlist?show=legal_alien">인증된 회원 보기</a></li>
             <li><a href="/admin/user/userlist?show=admin">전체 관리자 보기</a></li>
@@ -25,7 +27,10 @@
 
           </ul>
         </div>
-        <table>
+        <div id='user_table'>
+
+        
+        <table >
           <thead>
             {% if result.alien %}
               <th>인증</th>
@@ -72,10 +77,11 @@
             </tr>
           {% endfor %}
         </table>
+      </div>
           {% if result.alien %}
         <div>
           <form id="allow_form" action="/admin/user/allow" method="post">
-            <input type="button" value="회원인증" onclick="allow('legal')">
+            <input class="admin_button" type="button" value="회원인증" onclick="allow('legal')">
           </form>
         </div>
         {% endif%}
@@ -83,7 +89,7 @@
         {% if result.teacher %}
         <div>
           <form id="allow_form" action="/admin/user/allow" method="post">
-            <input type="button" value="관리자 권한 부여" onclick="allow('teacher')">
+            <input class="admin_button" type="button" value="관리자 권한 부여" onclick="allow('teacher')">
           </form>
         </div>
         {% endif%}
@@ -91,7 +97,7 @@
         {% if result.admin %}
         <div>
           <form id="allow_form" action="/admin/user/allow" method="post">
-            <input type="button" value="관리자 권한 해제" onclick="allow('admin')">
+            <input class="admin_button" type="button" value="관리자 권한 해제" onclick="allow('admin')">
           </form>
         </div>
         {% endif%}

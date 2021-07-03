@@ -37,7 +37,7 @@ let login_check = async (req, res) => {
         req.session.type = loginResult.dataValues.type;
 
         req.session.save(() => {
-            console.log(req.session)
+            // console.log(req.session)
             res.redirect(`/admin/main?msg=로그인에 성공했습니다`);
         })
     } else {

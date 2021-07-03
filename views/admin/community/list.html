@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>커뮤니티</title>
   <link rel="stylesheet" href="/admin/css/index.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
   <link rel="stylesheet" href="/css/subpage/community/review.css">
 
 
@@ -48,8 +49,8 @@
             </tbody>
           </table>
 
-          {% if type < 5 %}
-          <a href="/admin/community/{{board_name}}/write" class="writeBtn">글 작성</a>
+          {% if type < 4 %}
+          <a class="admin_button" href="/admin/community/{{board_name}}/write" class="writeBtn">글 작성</a>
           {% endif %}
         </div>
 

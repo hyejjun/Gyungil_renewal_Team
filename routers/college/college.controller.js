@@ -25,7 +25,7 @@ let history = async (req, res) => {
     // 연도 한번만 뽑으려면 아래 함수 사용. 
     // result = dlt_year(result);
     result = clear_year(result); 
-    console.log(result); 
+    // console.log(result); 
     res.render('./college/history', { userid,username,nickname, result });
 }
 

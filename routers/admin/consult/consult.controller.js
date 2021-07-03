@@ -21,14 +21,12 @@ let show_consultList = async (req, res) => {
 
   result.forEach(ele => {
     let temp = ele.dataValues.date;
-    let y = temp.getFullYear();
-    let mm = temp.getMonth() + 1;
-    let d = temp.getDate();
+
     let t = temp.getHours();
     let m = temp.getMinutes();
-    if (mm < 10) mm = '0' + mm;
-    if (d < 10) d = '0' + d;
-    ele.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
+    if (t < 10) t = '0' + t;
+    if (m < 10) m = '0' + m;
+    ele.dataValues.date = `${t}:${m}`
   });
 
   let pageinfo = await makePage(page, result)
@@ -41,7 +39,7 @@ let show_consultList = async (req, res) => {
 
 let show_consult = async (req, res) => {
   let { id, page } = req.query;
-  console.log(req.query);
+  // console.log(req.query); 
   let result = await consult.findOne({
     where: { id, }
   })

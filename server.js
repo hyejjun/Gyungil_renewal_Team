@@ -65,16 +65,16 @@ app.use(errorController.pageNotFoundError);
 app.use(errorController.respondInternalError);
 
 
-
+// 소켓 
 io.sockets.on("connection", socket => {
     socket.on('test', datas => {
         let id = datas[0];
         io.sockets.to(id).emit('test', datas);
     })
 
-    socket.on('end', datas => {
-        console.log('cccccccccccccccccccccccccc')
-    })
+    // socket.on('end', datas => {
+    //     console.log('cccccccccccccccccccccccccc')
+    // })
 })
 
 server.listen(PORT, () => {

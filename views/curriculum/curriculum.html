@@ -18,9 +18,9 @@
                     <h5>{{item.name}}</h5>
                     <dl>
                         <dt>교육기간</dt>
-                        <dd>개강일로부터 5개월</dd>
-                        <dd>교육시간 09:00 ~ 18:00</dd>
-                        <dd>교육수당 100% 전액국비지원</dd>
+                        <dd>개강일로부터 {{item.term}}개월</dd>
+                        <dd>교육시간  {{item.start_time}} ~{{item.end_time}}</dd>
+                        <dd>교육수당 {{item.tuition}}</dd>
                     </dl>
                     <div class="btn_group">
                         <a href="/consult/consulting"  class="btn_blue">지원하기</a>

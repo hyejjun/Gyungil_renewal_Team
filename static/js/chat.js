@@ -13,7 +13,6 @@ socketChat();
  function socketChat() {
   socket.on("connect", () => {
   
-  console.log(socket.id);
     let id = socket.id; 
     let url = 'http://localhost:3000/admin/consult/chat/start'
     let options = {
@@ -30,7 +29,6 @@ socketChat();
 });
   socket.on('test', datas => {
   
-    console.log(datas); 
 
   })
 }
@@ -88,7 +86,6 @@ const chatSend = document.querySelector('#chatSend');
 
 async function send() {
   const msg = document.querySelector('#msg');
-  // console.log(msg.value);
 
   let url = 'http://localhost:3000/chat/get';
   let options = { method: 'GET' }

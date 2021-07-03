@@ -42,42 +42,50 @@
 }
 
 .client_in{ 
-  width: 250px;
-  height: 90px;
-  box-sizing: border-box;
-  /* border-radius: 30px; */
-  padding: 7px 14px;
-  background-color: blanchedalmond;
-  line-height: 90px;
-  text-align: right;
+  margin: 10px 0;
+  display: inline-block;
+	padding: 7px 30px;
+	background: #006cdb;
+	border: 1px solid #006cdb;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 
 .client_out{
-  width: 250px;
-  height: 90px;
-  box-sizing: border-box;
-  border-radius: 30px;
-  padding: 7px 14px;
-  background-color: gray;
-  line-height: 90px;
+  margin: 10px 0;
+  display: inline-block;
+	padding: 7px 30px;
+	background: #040214;
+	border: 1px solid #040214;
+	border-radius: 6px;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
 
+.client_out>input,
+.client_in>input{ 
+  border: none;
+	font-weight: bold;
 }
 
 
 .clientInfo{ 
-  float: left;
-  width: 180px;
-  font-size: 18px;
+  display: inline-block;
+  font-size: 16px;
 }
 
-.consult_event{ 
-  float: right;
-  width: 100%;
-  height: 90px;
-  /* text-align: center; */
-  /* line-height: 90px; */
-  /* background:red; */
-}
+
 
 
 .consult_event>input{

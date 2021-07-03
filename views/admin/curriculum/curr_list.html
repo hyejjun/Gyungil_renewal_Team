@@ -30,7 +30,7 @@
               {% for item in result%}
               <tr>
                 <td><a href="/admin/curriculum/curr/control?id={{item.id}}">{{item.name}}</a></td>
-                <td><input type="button" value="삭제" data-idx="{{item.id}}" onclick="destroy_curr();"></td>
+                <td><input class="admin_button"  type="button" value="삭제" data-idx="{{item.id}}" onclick="destroy_curr();"></td>
               </tr>
               {% endfor %}
             </tbody>
