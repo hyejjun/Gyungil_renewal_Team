@@ -6,7 +6,7 @@ const article_count = 10;
 
 
 
-let clients = []; 
+let clients = [];
 
 
 
@@ -39,27 +39,27 @@ let show_consultList = async (req, res) => {
 }
 
 
-let show_consult = async(req,res)=>{ 
-  let {id, page}  = req.query; 
-  console.log(req.query); 
+let show_consult = async (req, res) => {
+  let { id, page } = req.query;
+  console.log(req.query);
   let result = await consult.findOne({
-    where:{id,}
+    where: { id, }
   })
 
   let temp = result.dataValues.date;
-    let y = temp.getFullYear();
-    let mm = temp.getMonth() + 1;
-    let d = temp.getDate();
-    let t = temp.getHours();
-    let m = temp.getMinutes();
-    if (mm < 10) mm = '0' + mm;
-    if (d < 10) d = '0' + d;
-    result.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
+  let y = temp.getFullYear();
+  let mm = temp.getMonth() + 1;
+  let d = temp.getDate();
+  let t = temp.getHours();
+  let m = temp.getMinutes();
+  if (mm < 10) mm = '0' + mm;
+  if (d < 10) d = '0' + d;
+  result.dataValues.date = `${y}-${mm}-${d} ${t}:${m}`
 
 
-  console.log(result); 
+  console.log(result);
   res.render('./admin/consult/view', {
-    page,result, 
+    page, result,
   })
 
 }
@@ -127,64 +127,84 @@ let destroy_faq = async (req, res) => {
   res.redirect(`/admin/consult/faq/list`);
 }
 
-
-let show_chat = (req,res)=>{ 
+////////////////////////채팅 시작 
+let show_chat = (req, res) => {
   res.render('./admin/consult/chat')
 }
 
-let show_wait = (req,res)=>{ 
-  let temp = []; 
-  clients.forEach(v=>{
-    if(v.consultant==null){ 
-      temp.push(v); 
+let show_wait = (req, res) => {
+  let temp = [];
+  clients.forEach(v => {
+    if (v.consultant == null) {
+      temp.push(v);
     }
   })
-  waiting = temp; 
-  wait=true; 
-    res.render('./admin/consult/chatlist',{clients:waiting, wait, }); 
+  waiting = temp;
+  wait = true;
+  res.render('./admin/consult/chatlist', { clients: waiting, wait, });
 }
+/*
+9번째 줄에보면 clients라는 배열을 갖고 있습니다. 
+그 배열에는 객채가 들어있는데 
+그 객체의 속성 중  consultant부분이 null 이면 아직 상담사가 배치되지
+않은 대기중인 클라이언트라는 의미로, 해당 클라이언트만 담아서 
+보내줍니다. 
+*/
 
 
-let show_cosulting = (req,res)=>{ 
-  let temp = []; 
-  let {id} = req.body;
-  clients.forEach(v=>{
-    if(v.consultant==id){ 
-      temp.push(v); 
+let show_cosulting = (req, res) => {
+  let temp = [];
+  let { id } = req.body;
+  clients.forEach(v => {
+    if (v.consultant == id) {
+      temp.push(v);
     }
   })
-  consulting = temp; 
+  consulting = temp;
   wait = false;
-    res.render('./admin/consult/chatlist',{clients:consulting, wait}); 
+  res.render('./admin/consult/chatlist', { clients: consulting, wait });
 }
+/*
+현재 consultant 값이 내 소켓 아이디와 일치하는 것만 담아서 보내줍니다. 
+*/
 
-let start_chat = (req,res)=>{ 
-  let { consultant_id, client_id} = req.body; 
-  clients.forEach(v=>{
-    if(v.id==client_id){
-       v.consultant = consultant_id; 
+
+
+let start_chat = (req, res) => {
+  let { consultant_id, client_id } = req.body;
+  clients.forEach(v => {
+    if (v.id == client_id) {
+      v.consultant = consultant_id;
     }
   })
-  res.json(); 
+  res.json();
 }
+/*
+대기중인 클라이언트 목록에서 시작버튼을 누르면 
+해당 클라이언트의 consultant 속성값이  상담사의 소켓아이디로 바뀝니다.  
+*/
 
-let end_chat = (req,res)=>{
-  let{client_id} = req.body; 
-  for(let i = 0; i<clients.length; i++){ 
-    if(clients[i].id==client_id){ 
-      clients.splice(i,1);
-      break; 
+
+
+let end_chat = (req, res) => {
+  let { client_id } = req.body;
+  for (let i = 0; i < clients.length; i++) {
+    if (clients[i].id == client_id) {
+      clients.splice(i, 1);
+      break;
     }
   }
-  res.json(); 
+  res.json();
 }
-
+/*
+채팅이 종료되면 배열에서 해당 클라이언트를 삭제. 
+*/
 
 
 
 module.exports = {
   write_faq, create_faq, modify_faq, update_faq,
-  show_consultList, show_faqList, destroy_faq,show_consult, show_wait, clients, show_chat, 
+  show_consultList, show_faqList, destroy_faq, show_consult, show_wait, clients, show_chat,
   start_chat, show_cosulting, end_chat,
 }
 

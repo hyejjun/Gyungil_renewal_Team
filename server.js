@@ -68,11 +68,11 @@ app.use(errorController.respondInternalError);
 
 io.sockets.on("connection", socket => {
     socket.on('test', datas => {
-        let id= datas[0]; 
+        let id = datas[0];
         io.sockets.to(id).emit('test', datas);
     })
 
-    socket.on('end',datas=>{
+    socket.on('end', datas => {
         console.log('cccccccccccccccccccccccccc')
     })
 })

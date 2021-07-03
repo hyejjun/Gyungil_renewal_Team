@@ -16,11 +16,18 @@ const upload = multer({
 })
 
 router.get('/', controller.getchat);
-router.post('/request', controller.request);
-router.post('/end', upload.single('data'), controller.end);
-router.post('/send', controller.send)
+//실시간 채팅 들어왔을 때 그려주는 부분 
 
-// router.get('/get', controller.get_message)
+router.post('/request', controller.request);
+// 실시간 상담 요청했을 때 
+
+router.post('/end', upload.single('data'), controller.end);
+//실시간 상담 나갔을 때 
+
+router.post('/send', controller.send)
+//메시지 보낼 때. 
+
+
 
 
 

@@ -86,7 +86,7 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script>
 
-  const socket = io();
+  const socket = io(); //소켓통신 시작 
   const chat_area = document.querySelector('#chat_area');
   const username = document.querySelector('#username');
   const userage = document.querySelector('#userage');
@@ -97,7 +97,11 @@ const msgerChat = get(".msger-chat");
   let PERSON_NAME;
 
 
+  /*
+  클라이언트가 자신의 정보를 입력하고 상담요청을 하면 실행 
+  */
   async function request_real_time_consult() {
+  //소켓이 생성됨. 동시에 고유한 아이디도 생성됨 
     socket.on("connect", () => {
       
     });
@@ -116,6 +120,7 @@ const msgerChat = get(".msger-chat");
         name, age, id,
       }),
     }
+    //클라이언트의 개인정보와 소켓아이디를 담아서 보냄. 
     
     let response = await fetch(url, options);
     if (response.ok) {
@@ -129,11 +134,11 @@ const msgerChat = get(".msger-chat");
     }
   }
 
-  //////////////////////여기까지 오면 clients 배열에 정보가 들어감 
 
+ //메시지 받는 부분. 
   socket.on('test', datas => {
-        consultant_id = datas[1];
-        datas = datas[2];
+        consultant_id = datas[1]; //상담사의 아이디.  
+        datas = datas[2]; //  메시지 내용. 
         appendMessage(BOT_NAME, BOT_IMG, "left", datas);
       })
 
@@ -141,18 +146,35 @@ const msgerChat = get(".msger-chat");
 
 
 
+      
+//페이지에서 나갈때. 
+/*
+이 부분인 제일 골치아픈 부분.
+클라이언트가 페이지에서 나가면 상담이 종료되고, 
+클라이언트가 나갔다는 것을 상담사에게 알려줘야되는데 
+페이지를 나가는 순간에 소켓통신이 이루어지지 않음. 
+
+그래서 아래 
+navigator.sendBeacon()메서드를 통해서
+클라이언트의 소켓아이디값만 보내줌.
+http://localhost:3000/chat/end
+부분에서 클라이언트의 소켓아이디의 on을 false로 바꿔줌. 
+*/
+
+
 window.addEventListener("unload", () => {
+  socket.emit('end','end'); 
   let data = new FormData(); 
   data.append('data',id); 
   window.navigator.sendBeacon("http://localhost:3000/chat/end",data); 
 }, false);
   
 
-  // 채팅방
 
 
 
-// Icons made by Freepik from www.flaticon.com
+
+  // 채팅방그리는 부분 
 const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
 const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 const BOT_NAME = "경일게임아카데미";

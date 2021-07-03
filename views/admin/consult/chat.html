@@ -72,35 +72,46 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script>
-  let socket = io();
+  let socket = io();//소켓통신을 시작한다. 
   const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat =document.querySelectorAll('.msger-chat')
 
-  // Icons made by Freepik from www.flaticon.com
 const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
 const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
-// const BOT_NAME = "경일게임아카데미";
 const PERSON_NAME ='경일게임아카데미'
   const chatroom = document.querySelector('#chatroom')
   const waiting = document.querySelector('#waiting'); 
 const consulting = document.querySelector('#consulting'); 
 const start_btn = document.querySelector('#start_btn'); 
-let client_id; 
-setInterval(()=>{
+
+let client_id; // 클라이언트가 계속 변경되므로 전역으로 뺌 
+//상담사가 상담중인 클라이언트의 이름을 클릭할 때 채팅창이 변경되고
+// client_id는 클릭된 클라이언트의 소켓아이디로 바뀌고
+// 해당 클라이언트와의 채팅이 가능 
+
+
+setInterval(()=>{ 
   wait_consult();
   now_consult(); 
-},500); 
+},500);
+/*모든 에러의 원흉 
+0.5초마다 한번씩 클라이언트 배열을 확인하여 대기중인 클라이언트와
+상담 중인 클라이언트를 확인
+*/ 
 
 
+/*관리자가 실시간 상담페이지에 들어오면 
+ 소켓 생성. 동시에 관리자의 소켓아이디 할당.*/
 socket.on("connect", () => {
 
 });
 
+/*클라이언트로부터 메시지를 받았을 때 작동되는 부분.*/
 socket.on('test',datas=>{
             // consultant_id = datas[1]; 
-            let name = datas[3];
-            let msgText = datas[2];
+            let name = datas[3];//클라이언트의 이름 
+            let msgText = datas[2]; //클라이언트의 메세지
             appendMessage(name, PERSON_IMG, "left", msgText,client_id);
           })
 
@@ -109,7 +120,10 @@ socket.on('test',datas=>{
 
 
 
+/*
+대기중인 클라이언트를 확인하는 부분.
 
+*/
 async function wait_consult(){
   let url = 'http://localhost:3000/admin/consult/chat/wait'
   let options = {
@@ -129,7 +143,7 @@ async function wait_consult(){
   }
 }
 
-
+/* 현재 상담 중인 클라이언트를 확인*/
 async function now_consult(){
   let id = socket.id; 
   let url = 'http://localhost:3000/admin/consult/chat/consulting'
@@ -157,7 +171,13 @@ async function now_consult(){
 }
 
 
+/* 채팅시작. 
 
+대기열에 있는 클라이언트에 대하여 시작버튼을 누르면 
+우선 모든 채팅창을 지워줌.
+그리고 해당하는 클라이언트 채팅창을 만듦. 
+
+*/
 async function startChat(id,name){
   //class="msger-chat"
   const chats = document.querySelectorAll('.msger-chat');
@@ -198,6 +218,11 @@ async function startChat(id,name){
   
 }
 
+
+/* 채팅종료 
+ 종료버튼을 누르면 해당 클라이언트와의 상담이 종료 
+ 배열에서 해당 클라이언트의 정보를 지움.
+*/
 async function endChat(id){
   let url = 'http://localhost:3000/admin/consult/chat/end'
   let options = {
@@ -218,19 +243,20 @@ async function endChat(id){
 
 
 
-
+/* 클라이언트에게 메시지를 보낼때 작동.*/
 msgerForm.addEventListener("submit", event => {
   event.preventDefault();
   const consultant_id = socket.id 
     const msgText = msgerInput.value;
-    if (!msgText) return;
+    if (!msgText) return; //아무내용도 없으면 끝. 
     let datas = [];
-    datas.push(client_id);
-    datas.push(consultant_id);
-    datas.push(msgText);
-    socket.emit('test', datas);
-    
+    datas.push(client_id); //받는사람 주소 
+    datas.push(consultant_id); //보내는사람 주소
+    datas.push(msgText); //메시지 
+    socket.emit('test', datas);//를 담아서 보냄. 
+    //연습삼아 이벤트명을'test'로 정했는데 잘 되서 수정을 안했음. 
     appendMessage(PERSON_NAME, BOT_IMG, "right", msgText,client_id);
+    //내가 보낸 메시지를 내 채팅창에 그리는 부분 
     msgerInput.value = "";
     msgerInput.focus();
 
@@ -241,6 +267,15 @@ msgerForm.addEventListener("submit", event => {
 
 
 
+
+/* 상담중인 채팅을 변경하는 부분. 
+ 상담중 목록에 있는 클라이언트 이름을 누르면 실행
+
+ 클라이언트 아이디를 클릭한 클라이언트의 소켓아이디로 바꿔줌. 
+ 클릭된 클라이언트에 대한 채팅방을 제외하고 모든 채팅방은 display none으로 가려줌
+ 클릭된 클라이언트에 대한 채팅방만 block으로 보여줌. 
+
+ */
 
 
 function change_client(id){
@@ -266,27 +301,11 @@ function isJson(str) {
 }
 
 
-// function addCard2(datas,type){ //mychat  yourchat 
-//       let temp = datas[1]; 
-//       const chat = document.querySelector(`#chat${temp}`)
-//       const div = document.createElement('div');
 
 
-//       const pre = document.createElement('pre');
-//       const span = document.createElement('span');
-      
-//       span.innerHTML = datas[3]; 
-//       pre.innerHTML = datas[2]; 
-//       pre.classList.add(type); 
-//       div.appendChild(span); 
-//       div.appendChild(pre); 
-//       chat.appendChild(div); 
-// }
-
-
-
+//이건 메시지 그리는 함수 
 function appendMessage(name, img, side, text,now) {
-//   Simple solution for small apps
+
 const msgerChat = document.querySelector(`#chat${now}`); 
 const msgHTML = `
 <div class="msg ${side}-msg">
