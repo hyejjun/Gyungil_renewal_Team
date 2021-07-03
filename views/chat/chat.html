@@ -136,6 +136,9 @@ const msgerChat = get(".msger-chat");
 
 
  //메시지 받는 부분. 
+ //상담사가 상담시작을 누르면 
+ // consultant_id 에 상담사 소켓아이디가 담김. 
+ // let 또는 const로 범위를 정해주지 않아서 전역으로 작동. 
   socket.on('test', datas => {
         consultant_id = datas[1]; //상담사의 아이디.  
         datas = datas[2]; //  메시지 내용. 
@@ -146,7 +149,7 @@ const msgerChat = get(".msger-chat");
 
 
 
-      
+
 //페이지에서 나갈때. 
 /*
 이 부분인 제일 골치아픈 부분.
@@ -174,11 +177,13 @@ window.addEventListener("unload", () => {
 
 
 
-  // 채팅방그리는 부분 
+ 
 const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
 const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 const BOT_NAME = "경일게임아카데미";
 
+
+//메시지 보낼 때. 
 msgerForm.addEventListener("submit", event => {
 event.preventDefault();
 let id = socket.id
@@ -197,6 +202,9 @@ let id = socket.id
 
 });
 
+
+
+ // 채팅방그리는 부분 
 function appendMessage(name, img, side, text) {
 //   Simple solution for small apps
 const msgHTML = `
