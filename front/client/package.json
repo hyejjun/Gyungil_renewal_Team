@@ -9,10 +9,17 @@
     "start": "next start",
     "link-contracts": "cd lib && ln -s ../../build/contracts contracts"
   },
+  "description": "This is the frontend client for our dapp. It is built with Next.js and uses a render-prop pattern (via `lib/Web3Container.js`) so we can easily inject blockchain functionality (i.e. web3, accounts, and the contract instance) into each page.",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "",
   "dependencies": {
-    "next": "^6.1.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "web3": "^1.0.0-beta.34"
+    "axios": "^0.23.0",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3",
+    "web3": "^1.6.0"
   }
 }
