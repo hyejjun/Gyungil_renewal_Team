@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
 import WebLayout from './layout/WebLayout'
+import MyNft from './MyNFT'
 
 const ItemList = ()=>{
 
@@ -22,19 +23,25 @@ const ItemList = ()=>{
         text-decoration:none;
         list-style:none;
         margin-right:20px;
-    `
+        float:left;
 
+    `
+    const MenuBar = Styled.ul`
+        clear:both;
+        margin-bottom:70px;
+    `
     return(
         <>
             <WebLayout>
-                <ul className = "ItemListMenuBar">
+                <MyNft/>
+                <MenuBar>
                     <Menu>
-                        <li className = "ItemListMenu1" onClick={btn1}>자산</li>
+                        <li className = "ItemListMenu1" onClick={btn1}>판매</li>
                     </Menu>
                     <Menu>
                         <li className = "ItemListMenu2" onClick={btn2}>경매</li>
                     </Menu>
-                </ul>
+                </MenuBar>
                 <div>
                     {
                         tabBtn === 1
