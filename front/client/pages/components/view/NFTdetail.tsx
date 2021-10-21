@@ -14,8 +14,7 @@ const NFTdetail = () => {
     return (
         <>
             <NFTdetailWrap>
-                <NFTTitle>
-                    <span>NFT 제목</span>
+                <NFTBuy>
                     <span onClick={doLike}>
                         {
                             like
@@ -23,6 +22,13 @@ const NFTdetail = () => {
                                 : <button><FavoriteBorderIcon/></button>
                         }
                     </span>
+                    <span>
+                        <button>구매하기</button>
+                    </span>
+                </NFTBuy>
+                <NFTTitle>
+                    <span>NFT 제목</span>
+                    
                 </NFTTitle>
                 <NFTOwner>
                     <span>
@@ -78,9 +84,65 @@ const NFTdetailWrap = Styled.div`
 
     
 `
+
+const NFTBuy = Styled.div`
+    width: 100%;
+    height: 60px;
+    display: flex;
+    padding-left: 65%;
+    box-sizing: border-box;
+
+    & > span :nth-child(1){
+        width: 30%;
+    }
+    & > span :nth-child(2){
+        width: 60%;
+        margin-left: 3%;
+    }
+
+    & > span:nth-child(1) > button {
+        width: 100%;
+        height: 64px;
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #fff;
+        border: 1px solid #aab4be;
+        box-sizing: border-box;
+        border-radius: 4px;
+        height: 100%;
+    }
+
+    & > span:nth-child(2) > button {
+        width : 100%;
+        height : 100%;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 4px;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 20px;
+        background-color: rgb(32, 129, 226);
+        border: 1px solid rgb(32, 129, 226);
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+
+    & > span:nth-child(1) > button:focus{
+        box-shadow: 0 0 0 0.2rem rgb(30 115 250 / 25%);
+    }
+
+    & > span:nth-child(1) > button > svg {
+        font-size : 30px;
+    }
+`
 const NFTTitle = Styled.div`
     height: 150px;
-    /* background: darkgrey; */
     padding: 3% 0;
     box-sizing: border-box;
     display : flex;
@@ -91,37 +153,10 @@ const NFTTitle = Styled.div`
         font-weight: 700;
         font-size: 48px;
         line-height: 64px;
-        width: 70%;
+        width: 100%;
         word-break: break-all;
     }
-    & > span :nth-child(2){
-        width: 30%;
-        background: tan;
-    }
-
-    & > span:nth-child(2) > button {
-        display: inline-block;
-        font-weight: 400;
-        color: #212529;
-        text-align: center;
-        vertical-align: middle;
-        width: 100%;
-        height: 64px;
-        cursor: pointer;
-        background-color: #fff;
-        border: 1px solid #aab4be;
-        box-sizing: border-box;
-        border-radius: 4px;
-        height: 100%;
-    }
-
-    & > span:nth-child(2) > button:focus{
-        box-shadow: 0 0 0 0.2rem rgb(30 115 250 / 25%);
-    }
-
-    & > span:nth-child(2) > button > svg {
-        font-size : 30px;
-    }
+   
 `
 
 const NFTOwner = Styled.div`
