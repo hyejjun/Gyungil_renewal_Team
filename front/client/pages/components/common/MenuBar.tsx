@@ -1,19 +1,23 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Styled from 'styled-components';
-
+import Link from 'next/link'
 
 const MenuBar = () => {
-    const [loginState,setLoginState] = useState<string>("Login")
+    const [loginState, setLoginState] = useState<string>("Login")
     const loginClick = () => {
 
     }
     return (
         <MenubarWrapper>
-            <span>logoooo</span>
+            <span>
+                <Link href="/">
+                    <a >logoooo</a>
+                </Link>
+            </span>
             <ul>
                 <li>Explorer</li>
                 <li>Create</li>
-                <li onClick={()=>{loginClick()}}>{loginState}</li>
+                <li onClick={() => { loginClick() }}>{loginState}</li>
             </ul>
         </MenubarWrapper>
     )
