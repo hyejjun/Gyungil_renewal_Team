@@ -1,17 +1,20 @@
 import Link from 'next/link';
 import Styled from 'styled-components';
 
+
 const NeedLogin = () => {
+    const closeBtn = () => {
+        
+        
+    }
     return(
         <NeedLoginWrapper>
             <div><p>로그인이 필요합니다.</p></div>
             <div><p>계속하려면 로그인을 해주세요</p></div>
             <div>
-                <span>취소</span>
-                <span>로그인</span>
+            <span onClick={()=>closeBtn()}>취소</span>
+                <span><Link href=""><a>로그인</a></Link></span>
             </div>
-
-
         </NeedLoginWrapper>
     )
 }
@@ -23,15 +26,27 @@ const NeedLoginWrapper = Styled.div`
     width:350px;
     height:220px;
     border-radius:3%;
-    border:1.2px solid black;
     box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
     display:block;
     justify-content:center;
     text-align:center;
     padding-top:10px;
+    position:absolute;
+    background-color:white;
+    margin: auto;
+    border: 1px solid black;
+    padding: 30px;
+    a{
+        text-decoration:none;
+        background-color:#1e73fa;
+        color:white;
+    }
+
+    
     div:nth-child(1) p{
         font-weight:700;
         font-size:17.5px;
+        padding-bottom:20px;
     }
     div:nth-child(2) p{
         font-size:14.5px;
@@ -44,10 +59,23 @@ const NeedLoginWrapper = Styled.div`
         justify-content:center;
     }
     div:nth-child(3)>span{
-        width:100px;
-        height:40px;
-        border:1px solid black;
-        border-radius:10%;
+        width:110px;
+        height:48px;
+        margin-left:2px;
+        margin-right:2px;
+        border-radius:7%;
+        line-height:47px;        
+    }
+    div:nth-child(3)>span:nth-child(1){
+        background-color:#e1f0ff;
+        color:#1e73fa;
+        font-weight:400;
+
+    }
+    div:nth-child(3)>span:nth-child(2){
+        background-color:#1e73fa;
+        color:white;
+        font-weight:400;
         
     }
 

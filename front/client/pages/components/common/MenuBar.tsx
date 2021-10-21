@@ -23,8 +23,9 @@ export default MenuBar
 
 const MenubarWrapper = Styled.div`
     box-sizing:border-box;
-    height:70px;
+    height:85px;
     display:flex;
+    padding-top:23px;
     flex-direction:row;
     justify-content:space-around;
     align-items: stretch;
