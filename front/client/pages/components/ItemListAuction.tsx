@@ -110,7 +110,20 @@ const MoreNFT = Styled.div`
 const ItemListAuction = () => {
 
     let [count,setCount] = useState<number>(0)
+    interface NFTList { 
+        subject: string,
+        artist: string,
+        Like: number,
+    }
 
+    let NFTListArr: NFTList[] = [
+        {
+            subject: 'lalaland',
+            artist: 'daminal',
+            Like: 5,
+        },
+
+    ]
     useEffect(()=>{
 
             let cnt0:number = 0;

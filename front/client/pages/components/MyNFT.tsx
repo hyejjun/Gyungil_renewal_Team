@@ -26,6 +26,12 @@ const MenuImg = Styled.li`
     list-style:none;
     margin-right:20px;
     float:right;
+    background:#bbb;
+    margin-top:50px;
+    margin-right:50px;
+    box-sizing:border-box;
+    width:280px;
+    height:300px;
 `
 
 const MenuH3 = Styled.h3`
