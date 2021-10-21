@@ -27,7 +27,7 @@ const MenuImg = Styled.li`
     margin-right:20px;
     float:right;
     background:#bbb;
-    margin-top:50px;
+    margin-top:60px;
     margin-right:50px;
     box-sizing:border-box;
     width:280px;
@@ -36,6 +36,8 @@ const MenuImg = Styled.li`
 
 const MenuH3 = Styled.h3`
     font-size:42px;
+    margin-top:50px;
+    margin-bottom:30px;
 `
 const SellBtn = Styled.button`
     margin-top:80px;
