@@ -5,7 +5,7 @@ const NFTContent = () => {
     return (
         <>
             <NFTpic>
-                NFT 사진 들어감
+                <img src="" alt="NFT 사진" />
             </NFTpic>
         </>
     )
@@ -13,7 +13,15 @@ const NFTContent = () => {
 export default NFTContent
 
 const NFTpic = Styled.div`
-    width : 100%;
-    height : auto;
     background : yellow;
+    width: 600px;
+    height: 500px;
+    margin : 0 auto;
+    /* background-color: rgb(255, 255, 255); */
+
+    & > img {
+        border-radius: 4px;
+        width: 640px;
+        height: 640px;
+    }
 `
