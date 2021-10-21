@@ -121,6 +121,8 @@ const NFTTitle = Styled.div`
 const NFTOwner = Styled.div`
     width : 100%;
     height : auto;
+    padding: 2% 0;
+    box-sizing: border-box;
     min-height : 100px;
     display: flex;
     border-bottom: 1px solid rgba(20, 30, 40, 0.1);
@@ -131,6 +133,17 @@ const NFTOwner = Styled.div`
     }
     & > span {
         width : 50%;
+    }
+    & > span > ul > li:nth-child(1){
+        font-size: 14px;
+        line-height: 22px;
+        color: rgba(45,55,65,.7);
+    }
+    & > span > ul > li:nth-child(2){
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        color: #2d3741;
     }
 
 `
