@@ -24,6 +24,9 @@ const ItemList = () => {
                     <Menu1 onClick={btn1}>판매</Menu1>
                 </Menu>
                 <Menu>
+                    <Menu1>|</Menu1>
+                </Menu>
+                <Menu>
                     <Menu1 onClick={btn2}>경매</Menu1>
                 </Menu>
             </MenuBar>
@@ -42,7 +45,6 @@ export default ItemList
 
 const Menu = Styled.li`
 color:#2d3741;
-font-size:24px;
 display:inline-block;
 text-decoration:none;
 list-style:none;
