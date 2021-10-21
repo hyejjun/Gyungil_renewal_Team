@@ -8,7 +8,6 @@ const WebLayout = ({ children }) => {
                 <WebInnerWrap>
                     <MenuBar />
                     <WebHeight>
-                        aaaaaaa
                         {children}
                     </WebHeight>
                 </WebInnerWrap>
