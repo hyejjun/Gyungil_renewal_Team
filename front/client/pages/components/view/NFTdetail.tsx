@@ -1,14 +1,41 @@
 // view 페이지에서 NFT 설명 넣는 곳
+import React, { useState } from "react";
 import Styled from 'styled-components'
 
 const NFTdetail = () => {
+    const [like, setLike] = useState<boolean>(false);
+
+    const doLike = () => {
+        setLike(prev => !prev)
+    }
+
     return (
         <>
             <NFTdetailWrap>
                 <NFTTitle>
                     <span>NFT 제목</span>
-                    <span>하트 버튼</span>
+                    <span onClick={doLike}>
+                        {
+                            like
+                                ? <button>❤</button>
+                                : <button>♡</button>
+                        }
+                    </span>
                 </NFTTitle>
+                <NFTOwner>
+                    <span>
+                        <ul>
+                            <li>Created by</li>
+                            <li>만든이</li>
+                        </ul>
+                    </span>
+                    <span>
+                        <ul>
+                            <li>Owned by</li>
+                            <li>소유자</li>
+                        </ul>
+                    </span>
+                </NFTOwner>
                 <NFTExplain>
                     <p>설명</p>
                     <div>
@@ -46,14 +73,16 @@ const NFTdetailWrap = Styled.div`
     width : 100%;
     height : auto;
     margin-top: 5%;
-`
 
+    
+`
 const NFTTitle = Styled.div`
     height: 150px;
-    background: darkgrey;
+    /* background: darkgrey; */
     padding: 3% 0;
     box-sizing: border-box;
     display : flex;
+    border-bottom: 1px solid rgba(20, 30, 40, 0.1);
 
     & > span :nth-child(1){
         color: #2d3741;
@@ -67,15 +96,96 @@ const NFTTitle = Styled.div`
         width: 30%;
         background: tan;
     }
+
+    & > span:nth-child(2) > button {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        width: 100%;
+        height: 64px;
+        cursor: pointer;
+        background-color: #fff;
+        border: 1px solid #aab4be;
+        box-sizing: border-box;
+        border-radius: 4px;
+        height: 100%;
+    }
+
+    & > span:nth-child(2) > button:focus{
+        box-shadow: 0 0 0 0.2rem rgb(30 115 250 / 25%);
+    }
+`
+
+const NFTOwner = Styled.div`
+    width : 100%;
+    height : auto;
+    min-height : 100px;
+    display: flex;
+    border-bottom: 1px solid rgba(20, 30, 40, 0.1);
+    ul,li{
+        list-style : none;
+        padding : 0;
+        margin : 0;
+    }
+    & > span {
+        width : 50%;
+    }
+
 `
 
 const NFTExplain = Styled.div`
-    height: 100px;
-    background: #ebd4ba;
+    height: auto;
+    min-height: 100px;
+    /* background: #ebd4ba; */
+    border-bottom: 1px solid rgba(20, 30, 40, 0.1);
+    & > p{
+        font-weight: 700;
+        font-size: 20px;
+        color: #2d3741;
+        vertical-align: middle;
+    }
     
 `
-
 const NFTHistory = Styled.div`
-    
+    width: 100%;
+    height: auto;
+    min-height: 150px;
+    /* background: cadetblue; */
+
+    & > p{
+        font-weight: 700;
+        font-size: 20px;
+        color: #2d3741;
+        vertical-align: middle;
+    }
+
+    & > table {
+        width: 100%;
+        height: auto;
+    }
+
+    & > table > thead {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 22px;
+        color: #2d3741;
+    }
+
+    & > table > thead > tr > td:nth-child(1),td:nth-child(2){
+        width : 160px;
+    }
+
+    & > table > thead > tr > td:nth-child(3),td:nth-child(4){
+        width : 240px;
+    }
+
+    & > table > tbody {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        color: #2d3741;
+    }
 `
 
