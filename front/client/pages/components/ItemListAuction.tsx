@@ -225,6 +225,7 @@ const NFT = Styled.li`
     box-sizing:border-box;
     padding:19px;
     margin-bottom:20px;
+    box-shadow:3px 3px 10px #bbb;
 `
 const NFTImg = Styled.div`
     background:#bbb;
@@ -284,4 +285,23 @@ const Line = Styled.div`
 
 const MoreNFT = Styled.div`
     text-align:center;
+    padding:10px;
+    font-size:26px;
+    box-sizing:border-box;
+    width:150px;
+    height:60px;
+    color:grey;
+    border:1px solid #bbb;
+    border-radius:5px;
+    background:white;
+    margin:0 auto;
+    margin-bottom:120px;
+    margin-top:50px;
+    &:hover{
+        background:#bbb;
+        color:white;
+        transition:all 1s ease 0;
+        
+    }
+    
 `

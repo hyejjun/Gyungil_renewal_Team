@@ -53,6 +53,7 @@ const Line = Styled.div`
     margin-top:20px;
     height:1px;
     margin-bottom:50px;
+    box-shadow:3px 3px 10px #bbb;
 `
 
 const MyNFT = ()=>{
