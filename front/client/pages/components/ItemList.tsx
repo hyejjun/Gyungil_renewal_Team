@@ -5,7 +5,7 @@ import ItemListAuction from './ItemListAuction'
 import WebLayout from './layout/WebLayout'
 import MyNft from './MyNFT'
 
-const ItemList = ()=>{
+const ItemList = () => {
 
     const [tabBtn, settabBtn] = useState<number>(1);
 
@@ -35,26 +35,24 @@ const ItemList = ()=>{
             color:#055fec;
         }
     `
-    return(
+    return (
         <>
-            <WebLayout>
-                <MyNft/>
-                <MenuBar>
-                    <Menu>
-                        <Menu1 onClick={btn1}>판매</Menu1>
-                    </Menu>
-                    <Menu>
-                        <Menu1 onClick={btn2}>경매</Menu1>
-                    </Menu>
-                </MenuBar>
-                <div>
-                    {
-                        tabBtn === 1
+            <MyNft />
+            <MenuBar>
+                <Menu>
+                    <Menu1 onClick={btn1}>판매</Menu1>
+                </Menu>
+                <Menu>
+                    <Menu1 onClick={btn2}>경매</Menu1>
+                </Menu>
+            </MenuBar>
+            <div>
+                {
+                    tabBtn === 1
                         ? <ItemListSell />
                         : <ItemListAuction />
-                    }              
-                </div>   
-            </WebLayout>           
+                }
+            </div>
         </>
     )
 }
