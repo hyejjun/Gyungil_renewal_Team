@@ -1,13 +1,11 @@
 import Styled from "styled-components"
 import MenuBar from '../common/MenuBar'
 import Footer from "../common/Footer"
-import NeedLogin from "../common/NeedLogin"
 
 const WebLayout = ({ children }) => {
     return (
         <>
             <WebWrap>
-                <NeedLogin/>
                 <MenuBar />
                 <WebInnerWrap>
                     <WebHeight>
