@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
+import NeedLogin from "./components/common/NeedLogin";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <div>
         <span>{text} 적용 완료</span>
       </div>
+      <NeedLogin/>
     </div>
   );
 }
