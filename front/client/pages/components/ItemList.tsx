@@ -16,25 +16,6 @@ const ItemList = () => {
         settabBtn(2);
     }
 
-    const Menu = Styled.li`
-        color:#2d3741;
-        font-size:24px;
-        display:inline-block;
-        text-decoration:none;
-        list-style:none;
-        margin-right:20px;
-        float:left;
-
-    `
-    const MenuBar = Styled.ul`
-        clear:both;
-        margin-bottom:70px;
-    `
-    const Menu1 = Styled.li`
-        &:hover{
-            color:#055fec;
-        }
-    `
     return (
         <>
             <MyNft />
@@ -58,3 +39,24 @@ const ItemList = () => {
 }
 
 export default ItemList
+
+const Menu = Styled.li`
+color:#2d3741;
+font-size:24px;
+display:inline-block;
+text-decoration:none;
+list-style:none;
+margin-right:20px;
+float:left;
+
+`
+const MenuBar = Styled.ul`
+clear:both;
+margin-bottom:70px;
+`
+const Menu1 = Styled.li`
+    font-size:24px;
+&:hover{
+    color:#055fec;
+}
+`
