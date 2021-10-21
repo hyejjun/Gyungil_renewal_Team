@@ -8,7 +8,6 @@ const WebLayout = ({ children }) => {
                 <WebInnerWrap>
                     <MenuBar />
                     <WebHeight>
-                        aaaaaaa
                         {children}
                     </WebHeight>
                 </WebInnerWrap>
@@ -30,6 +29,7 @@ const WebInnerWrap = Styled.div`
     width : 1200px;
     height: 100vh;
     margin : 0 auto;
+    background : #89c5a9;
 `
 
 const WebHeight = Styled.div`
