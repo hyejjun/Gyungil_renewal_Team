@@ -68,7 +68,6 @@ const FooterWrapper = Styled.div`
     #topInFooter>span:nth-child(2)>p{   
         display:inline;
     }
-    //#topInFooter>span:nth-child(2)>p
     div:nth-child(2){
         margin-top:60px
     }
