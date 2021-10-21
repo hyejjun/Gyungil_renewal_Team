@@ -1,6 +1,7 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
 
+
 function MyApp({ Component, pageProps }: AppProps) {
   return(
     

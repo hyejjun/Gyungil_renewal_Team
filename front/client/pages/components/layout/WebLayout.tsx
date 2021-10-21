@@ -28,7 +28,7 @@ const WebWrap = Styled.div`
 
 const WebInnerWrap = Styled.div`
     width : 1200px;
-    height: 100vh;
+    height: auto;
     margin : 0 auto;
     background : #FAFAFA;
 `

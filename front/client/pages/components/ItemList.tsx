@@ -30,16 +30,21 @@ const ItemList = ()=>{
         clear:both;
         margin-bottom:70px;
     `
+    const Menu1 = Styled.li`
+        &:hover{
+            color:#055fec;
+        }
+    `
     return(
         <>
             <WebLayout>
                 <MyNft/>
                 <MenuBar>
                     <Menu>
-                        <li className = "ItemListMenu1" onClick={btn1}>판매</li>
+                        <Menu1 onClick={btn1}>판매</Menu1>
                     </Menu>
                     <Menu>
-                        <li className = "ItemListMenu2" onClick={btn2}>경매</li>
+                        <Menu1 onClick={btn2}>경매</Menu1>
                     </Menu>
                 </MenuBar>
                 <div>
