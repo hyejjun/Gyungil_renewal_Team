@@ -2,40 +2,55 @@ import Styled from 'styled-components'
 import React, { useState } from 'react'
 import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
+import WebLayout from './layout/WebLayout'
 import MyNft from './MyNFT'
 
 const ItemList = () => {
 
-    const [tabBtn, settabBtn] = useState<number>(0);
+    const [tabBtn, settabBtn] = useState<number>(1);
 
     const btn1 = () => {
-        settabBtn(0);
-    }
-    const btn2 = () => {
-
         settabBtn(1);
     }
+    const btn2 = () => {
+        settabBtn(2);
+    }
 
+    const Menu = Styled.li`
+        color:#2d3741;
+        font-size:24px;
+        display:inline-block;
+        text-decoration:none;
+        list-style:none;
+        margin-right:20px;
+        float:left;
+
+    `
+    const MenuBar = Styled.ul`
+        clear:both;
+        margin-bottom:70px;
+    `
+    const Menu1 = Styled.li`
+        &:hover{
+            color:#055fec;
+        }
+    `
     return (
         <>
             <MyNft />
             <MenuBar>
-                <Menu1>
-                    <Menu onClick={btn1}>판매</Menu>
-                </Menu1>
-                <Menu2>
-                    <Menu onClick={btn2}>경매</Menu>
-                </Menu2>
+                <Menu>
+                    <Menu1 onClick={btn1}>판매</Menu1>
+                </Menu>
+                <Menu>
+                    <Menu1 onClick={btn2}>경매</Menu1>
+                </Menu>
             </MenuBar>
             <div>
                 {
-                    tabBtn == 0
+                    tabBtn === 1
                         ? <ItemListSell />
-                        : (
-                            tabBtn == 1
-                             ? <ItemListAuction />
-                             : <ItemListSell />
-                        )
+                        : <ItemListAuction />
                 }
             </div>
         </>
@@ -43,33 +58,3 @@ const ItemList = () => {
 }
 
 export default ItemList
-
-const Menu1 = Styled.li`
-    color:#2d3741;
-    font-size:24px;
-    display:inline-block;
-    text-decoration:none;
-    list-style:none;
-    margin-right:20px;
-    float:left;
-
-`
-const Menu2 = Styled.li`
-    color:blue;
-    font-size:24px;
-    display:inline-block;
-    text-decoration:none;
-    list-style:none;
-    float:left;
-
-`
-const MenuBar = Styled.ul`
-    clear:both;
-    margin-bottom:70px;
-`
-const Menu = Styled.li`
-    font-size:24px;
-&:hover{
-    color:#055fec;
-}
-`
