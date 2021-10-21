@@ -23,13 +23,14 @@ const WebWrap = Styled.div`
     width : 100%;
     height: auto;
     overflow: hidden;
+    background:#FAFAFA;
 `
 
 const WebInnerWrap = Styled.div`
     width : 1200px;
     height: auto;
     margin : 0 auto;
-    /* background : #89c5a9; */
+    background : #FAFAFA;
 `
 
 const WebHeight = Styled.div`
