@@ -3,49 +3,59 @@ import React, { useState, useEffect } from 'react'
 
 
 const ItemListSell = () => {
+    let [count,setCount] = useState<number>(0)
 
     interface ArrEle {
+        id: number,
         subject: string,
         artist: string,
         Like: number,
     }
+    
     const [Arr, setArr] = React.useState<ArrEle[]>([
         {
+            id: 1,
             subject: 'adsfds',
             artist: 'daminal',
             Like: 0,
         },
-        {
+        {   id: 2,
             subject: 'adsfdsf',
             artist: 'daminal',
             Like: 5,
         },
         {
+            id: 3,
             subject: 'adsff',
             artist: 'daminal',
             Like: 5,
         },
         {
+            id: 4,
             subject: 'adsg',
             artist: 'daminal',
             Like: 5,
         },
         {
+            id: 5,
             subject: 'adg',
             artist: 'daminal',
             Like: 5,
         },
         {
+            id: 6,
             subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
         },
         {
+            id: 7,
             subject: 'adsg',
             artist: 'daminal',
             Like: 5,
         },
         {
+            id: 8,
             subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
@@ -82,7 +92,36 @@ const ItemListSell = () => {
         </NFTFourList>
     );
 
-    let [count,setCount] = useState<number>(0)
+    const handleClick = (): void => {
+        setArr(
+            Arr.concat(        
+                {
+                    id: 7,
+                    subject: 'adsg',
+                    artist: 'daminal',
+                    Like: 5,
+                },
+                {
+                    id: 8,
+                    subject: 'asdgsdg',
+                    artist: 'daminal',
+                    Like: 5,
+                },
+                {
+                    id: 7,
+                    subject: 'adsg',
+                    artist: 'daminal',
+                    Like: 5,
+                },
+                {
+                    id: 8,
+                    subject: 'asdgsdg',
+                    artist: 'daminal',
+                    Like: 5,
+                }
+            ),
+        );
+      };
 
     useEffect(() => {
 
@@ -131,7 +170,7 @@ const ItemListSell = () => {
                     </div>
                 </div>
             </NFTComponent>
-            <MoreNFT>more</MoreNFT>
+            <MoreNFT onClick = {handleClick}>more</MoreNFT>
         </>
     )
 }
@@ -173,7 +212,7 @@ const NFTComponent = Styled.div`
 
 
 `
-const NFTFourList = Styled.li`
+const NFTFourList = Styled.ul`
     display:inline-block;
     list-style:none;
     margin-right:9px;
