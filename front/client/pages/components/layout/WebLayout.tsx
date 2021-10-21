@@ -1,5 +1,6 @@
 import Styled from "styled-components"
 import MenuBar from '../common/MenuBar'
+import Footer from "../common/Footer"
 
 const WebLayout = ({ children }) => {
     return (
@@ -11,6 +12,7 @@ const WebLayout = ({ children }) => {
                         {children}
                     </WebHeight>
                 </WebInnerWrap>
+                <Footer/>
             </WebWrap>
         </>
     )

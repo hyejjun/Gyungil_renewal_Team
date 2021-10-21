@@ -1,6 +1,143 @@
 import Styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
 
+
+const ItemListAuction = () => {
+
+    interface ArrEle {
+        subject: string,
+        artist: string,
+        Like: number,
+    }
+    const [Arr, setArr] = React.useState<ArrEle[]>([
+        {
+            subject: 'lalaland',
+            artist: 'daminal',
+            Like: 0,
+        },
+        {
+            subject: 'lalaland1',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland2',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland3',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland4',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland5',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland6',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland',
+            artist: 'daminal',
+            Like: 0,
+        },
+      ]);
+
+
+
+    const nameList: JSX.Element[] = Arr.map((ele) =>
+        <NFTFourList>
+            <NFT>
+                <NFTImg>
+                    <div><img src={require('../src/지도.jpg').default} /></div>
+                </NFTImg>
+                <Line></Line>
+                <NFTOne>
+                    <NFTOneList>
+                        <NFTSubject>{ele.subject}</NFTSubject>
+                        <NFTartist>{ele.artist}</NFTartist>
+                    </NFTOneList>
+                    <NFTOneImg>
+                        <img src=""></img>
+                    </NFTOneImg>
+                </NFTOne>
+                <NFTOne>
+                    <NFTOneList>
+                        <NFTSubject>@ {ele.Like}</NFTSubject>
+                    </NFTOneList>
+                    <NFTDeclaration>
+                        <NFTSubject>* * *</NFTSubject>
+                    </NFTDeclaration>
+                </NFTOne>
+            </NFT>
+        </NFTFourList>
+    );
+
+    let [count,setCount] = useState<number>(0)
+
+    useEffect(() => {
+
+        let cnt0: number = 0;
+
+        counterFn();
+
+        function counterFn() {
+            let id0 = setInterval(count0Fn, 55);
+            function count0Fn() {
+                cnt0++;
+                setCount(cnt0)
+                if (cnt0 > 50) {
+
+                    return setCount(50)
+                }
+
+            }
+        }
+
+
+    }, [])
+
+    return (
+        <>
+            <div>
+                <PictureNumberNotice>
+                    전체 NFT 리스트 (총 {count}개 발행됨)
+                </PictureNumberNotice>
+                <SelectBox>
+                    <SelectOption>
+                        최근 발행 순
+                    </SelectOption>
+                    <SelectOption>
+                        좋아요 순
+                    </SelectOption>
+                </SelectBox>
+            </div>
+            <NFTComponent>
+                <div>
+                    <div>
+                        <ul>
+                            {nameList}
+
+                        </ul>
+                    </div>
+                </div>
+            </NFTComponent>
+            <MoreNFT>more</MoreNFT>
+        </>
+    )
+}
+
+export default ItemListAuction
+
 const PictureNumberNotice = Styled.div`
     color:#2d3741;
     font-size:24px;
@@ -31,13 +168,16 @@ const NFTComponent = Styled.div`
     clear:both;
     margin-top:100px;
     background:#FAFAFA;
+    padding:0px 50px;
+    box-sizing:border-box;
+
 
 `
 const NFTFourList = Styled.li`
     display:inline-block;
     list-style:none;
-    margin-right:26px;
-    margin-left:10px;
+    margin-right:9px;
+    margin-left:11px;
 `
 const NFT = Styled.li`
     border: 1px solid #bbb;
@@ -46,6 +186,7 @@ const NFT = Styled.li`
     width:243px;
     box-sizing:border-box;
     padding:19px;
+    margin-bottom:20px;
 `
 const NFTImg = Styled.div`
     background:#bbb;
@@ -106,133 +247,3 @@ const Line = Styled.div`
 const MoreNFT = Styled.div`
     text-align:center;
 `
-const [count,setCount] = useState<number>(0)
-
-const ItemListAuction = () => {
-
-    interface ArrEle {
-        subject: string,
-        artist: string,
-        Like: number,
-    }
-
-    const Arr: ArrEle[] = [
-        {
-            subject: 'lalaland',
-            artist: 'daminal',
-            Like: 0,
-        },
-        {
-            subject: 'lalaland1',
-            artist: 'daminal',
-            Like: 5,
-        },
-        {
-            subject: 'lalaland2',
-            artist: 'daminal',
-            Like: 5,
-        },
-        {
-            subject: 'lalaland3',
-            artist: 'daminal',
-            Like: 5,
-        },
-        {
-            subject: 'lalaland4',
-            artist: 'daminal',
-            Like: 5,
-        },
-        {
-            subject: 'lalaland5',
-            artist: 'daminal',
-            Like: 5,
-        },
-        {
-            subject: 'lalaland6',
-            artist: 'daminal',
-            Like: 5,
-        },
-
-    ]
-
-
-    const nameList: JSX.Element[] = Arr.map((ele) =>
-        <NFTFourList>
-            <NFT>
-                <NFTImg>
-                    <div><img src={require('../src/지도.jpg').default} /></div>
-                </NFTImg>
-                <Line></Line>
-                <NFTOne>
-                    <NFTOneList>
-                        <NFTSubject>{ele.subject}</NFTSubject>
-                        <NFTartist>{ele.artist}</NFTartist>
-                    </NFTOneList>
-                    <NFTOneImg>
-                        <img src=""></img>
-                    </NFTOneImg>
-                </NFTOne>
-                <NFTOne>
-                    <NFTOneList>
-                        <NFTSubject>@ {ele.Like}</NFTSubject>
-                    </NFTOneList>
-                    <NFTDeclaration>
-                        <NFTSubject>* * *</NFTSubject>
-                    </NFTDeclaration>
-                </NFTOne>
-            </NFT>
-        </NFTFourList>
-    );
-
-    useEffect(() => {
-
-        let cnt0: number = 0;
-
-        counterFn();
-
-        function counterFn() {
-            let id0 = setInterval(count0Fn, 55);
-            function count0Fn() {
-                cnt0++;
-                setCount(cnt0)
-                if (cnt0 > 50) {
-
-                    return setCount(50)
-                }
-
-            }
-        }
-
-
-    }, [])
-
-    return {
-        <>
-            <div>
-                <PictureNumberNotice>
-                    전체 NFT 리스트 (총 {count}개 발행됨)
-                </PictureNumberNotice>
-                <SelectBox>
-                    <SelectOption>
-                        최근 발행 순
-                    </SelectOption>
-                    <SelectOption>
-                        좋아요 순
-                    </SelectOption>
-                </SelectBox>
-            </div>
-            <NFTComponent>
-                <div>
-                    <div>
-                        <ul>
-                            {nameList}
-
-                        </ul>
-                    </div>
-                </div>
-            </NFTComponent>
-            <MoreNFT>more</MoreNFT>
-        </>
-    }
-
-export default ItemListAuction
