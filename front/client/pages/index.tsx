@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
+import Footer from "./components/common/Footer.tsx"
 
 export default function Home() {
   const [text, setText] = useState<string>("자바스크립트");
@@ -14,6 +15,7 @@ export default function Home() {
       <div>
         <span>{text} 적용 완료</span>
       </div>
+      <Footer/>
     </div>
   );
 }
