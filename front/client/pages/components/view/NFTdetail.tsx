@@ -1,6 +1,8 @@
 // view 페이지에서 NFT 설명 넣는 곳
 import React, { useState } from "react";
 import Styled from 'styled-components'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const NFTdetail = () => {
     const [like, setLike] = useState<boolean>(false);
@@ -17,8 +19,8 @@ const NFTdetail = () => {
                     <span onClick={doLike}>
                         {
                             like
-                                ? <button>❤</button>
-                                : <button>♡</button>
+                                ? <button><FavoriteIcon/></button>
+                                : <button><FavoriteBorderIcon/></button>
                         }
                     </span>
                 </NFTTitle>
@@ -116,6 +118,10 @@ const NFTTitle = Styled.div`
     & > span:nth-child(2) > button:focus{
         box-shadow: 0 0 0 0.2rem rgb(30 115 250 / 25%);
     }
+
+    & > span:nth-child(2) > button > svg {
+        font-size : 30px;
+    }
 `
 
 const NFTOwner = Styled.div`
@@ -150,10 +156,13 @@ const NFTOwner = Styled.div`
 
 const NFTExplain = Styled.div`
     height: auto;
-    min-height: 100px;
-    /* background: #ebd4ba; */
-    border-bottom: 1px solid rgba(20, 30, 40, 0.1);
+    min-height: 150px;
+    border-bottom: 1px solid rgba(20,30,40,0.1);
+    padding: 2% 0;
+    box-sizing: border-box;
+
     & > p{
+        height: 40px;
         font-weight: 700;
         font-size: 20px;
         color: #2d3741;
@@ -164,10 +173,12 @@ const NFTExplain = Styled.div`
 const NFTHistory = Styled.div`
     width: 100%;
     height: auto;
-    min-height: 150px;
-    /* background: cadetblue; */
+    min-height: 200px;
+    padding: 2% 0;
+    box-sizing: border-box;
 
     & > p{
+        height: 40px;
         font-weight: 700;
         font-size: 20px;
         color: #2d3741;
