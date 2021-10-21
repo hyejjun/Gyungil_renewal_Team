@@ -10,9 +10,11 @@ const ItemList = ()=>{
     const [tabBtn, settabBtn] = useState<number>(1);
 
     const btn1 = () => {
+
         settabBtn(1);
     }
     const btn2 = () => {
+
         settabBtn(2);
     }
 
@@ -49,9 +51,13 @@ const ItemList = ()=>{
                 </MenuBar>
                 <div>
                     {
-                        tabBtn === 1
+                        tabBtn == 1
                         ? <ItemListSell />
-                        : <ItemListAuction />
+                        : (
+                            tabBtn == 2
+                            ? <ItemListAuction />
+                            : ''
+                        )
                     }              
                 </div>   
             </WebLayout>           

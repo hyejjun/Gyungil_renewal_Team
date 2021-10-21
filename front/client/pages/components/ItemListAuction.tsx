@@ -1,6 +1,5 @@
 import Styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
-import { clearInterval } from 'timers'
 
 const PictureNumberNotice = Styled.div`
     color:#2d3741;
@@ -107,46 +106,107 @@ const Line = Styled.div`
 const MoreNFT = Styled.div`
     text-align:center;
 `
+const [count,setCount] = useState<number>(0)
+
 const ItemListAuction = () => {
 
-    let [count,setCount] = useState<number>(0)
-    interface NFTList { 
+    interface ArrEle {
         subject: string,
         artist: string,
         Like: number,
     }
 
-    let NFTListArr: NFTList[] = [
+    const Arr: ArrEle[] = [
         {
             subject: 'lalaland',
+            artist: 'daminal',
+            Like: 0,
+        },
+        {
+            subject: 'lalaland1',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland2',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland3',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland4',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland5',
+            artist: 'daminal',
+            Like: 5,
+        },
+        {
+            subject: 'lalaland6',
             artist: 'daminal',
             Like: 5,
         },
 
     ]
-    useEffect(()=>{
 
-            let cnt0:number = 0;
-  
-            counterFn();
-  
-            function counterFn() {
-              let id0 = setInterval(count0Fn, 55);
-              function count0Fn() {
-                    cnt0++;
-                    setCount(cnt0)
-                    if(cnt0 > 50){
-                        
-                        return setCount(50)
-                    }
-                
-              }
+
+    const nameList: JSX.Element[] = Arr.map((ele) =>
+        <NFTFourList>
+            <NFT>
+                <NFTImg>
+                    <div><img src={require('../src/지도.jpg').default} /></div>
+                </NFTImg>
+                <Line></Line>
+                <NFTOne>
+                    <NFTOneList>
+                        <NFTSubject>{ele.subject}</NFTSubject>
+                        <NFTartist>{ele.artist}</NFTartist>
+                    </NFTOneList>
+                    <NFTOneImg>
+                        <img src=""></img>
+                    </NFTOneImg>
+                </NFTOne>
+                <NFTOne>
+                    <NFTOneList>
+                        <NFTSubject>@ {ele.Like}</NFTSubject>
+                    </NFTOneList>
+                    <NFTDeclaration>
+                        <NFTSubject>* * *</NFTSubject>
+                    </NFTDeclaration>
+                </NFTOne>
+            </NFT>
+        </NFTFourList>
+    );
+
+    useEffect(() => {
+
+        let cnt0: number = 0;
+
+        counterFn();
+
+        function counterFn() {
+            let id0 = setInterval(count0Fn, 55);
+            function count0Fn() {
+                cnt0++;
+                setCount(cnt0)
+                if (cnt0 > 50) {
+
+                    return setCount(50)
+                }
+
             }
+        }
 
-        
-    },[])
 
-    return(
+    }, [])
+
+    return {
         <>
             <div>
                 <PictureNumberNotice>
@@ -154,10 +214,10 @@ const ItemListAuction = () => {
                 </PictureNumberNotice>
                 <SelectBox>
                     <SelectOption>
-                                최근 발행 순
+                        최근 발행 순
                     </SelectOption>
                     <SelectOption>
-                                좋아요 순
+                        좋아요 순
                     </SelectOption>
                 </SelectBox>
             </div>
@@ -165,113 +225,14 @@ const ItemListAuction = () => {
                 <div>
                     <div>
                         <ul>
-                            <NFTFourList>
-                                <NFT>
-                                    <NFTImg>
-                                        <div><img src={require('../src/지도.jpg').default} /></div>
-                                    </NFTImg>
-                                    <Line></Line>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>Hat #0</NFTSubject>
-                                            <NFTartist>created by yahoo</NFTartist>
-                                        </NFTOneList>
-                                        <NFTOneImg>
-                                            <img src = ""></img>
-                                        </NFTOneImg>
-                                    </NFTOne>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>@ 3</NFTSubject>
-                                        </NFTOneList>
-                                        <NFTDeclaration>
-                                            <NFTSubject>* * *</NFTSubject>
-                                        </NFTDeclaration>
-                                    </NFTOne>
-                                </NFT>
-                            </NFTFourList>
-                            <NFTFourList>
-                                <NFT>
-                                    <NFTImg>
-                                        <div><img src={require('../src/지도.jpg').default} /></div>
-                                    </NFTImg>
-                                    <Line></Line>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>Hat #0</NFTSubject>
-                                            <NFTartist>created by yahoo</NFTartist>
-                                        </NFTOneList>
-                                        <NFTOneImg>
-                                            <img src = ""></img>
-                                        </NFTOneImg>
-                                    </NFTOne>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>@ 3</NFTSubject>
-                                        </NFTOneList>
-                                        <NFTDeclaration>
-                                            <NFTSubject>* * *</NFTSubject>
-                                        </NFTDeclaration>
-                                    </NFTOne>
-                                </NFT>
-                            </NFTFourList>
-                            <NFTFourList>
-                                <NFT>
-                                    <NFTImg>
-                                        <div><img src={require('../src/지도.jpg').default} /></div>
-                                    </NFTImg>
-                                    <Line></Line>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>Hat #0</NFTSubject>
-                                            <NFTartist>created by yahoo</NFTartist>
-                                        </NFTOneList>
-                                        <NFTOneImg>
-                                            <img src = ""></img>
-                                        </NFTOneImg>
-                                    </NFTOne>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>@ 3</NFTSubject>
-                                        </NFTOneList>
-                                        <NFTDeclaration>
-                                            <NFTSubject>* * *</NFTSubject>
-                                        </NFTDeclaration>
-                                    </NFTOne>
-                                </NFT>
-                            </NFTFourList>
-                            <NFTFourList>
-                                <NFT>
-                                    <NFTImg>
-                                        <div><img src={require('../src/지도.jpg').default} /></div>
-                                    </NFTImg>
-                                    <Line></Line>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>Hat #0</NFTSubject>
-                                            <NFTartist>created by yahoo</NFTartist>
-                                        </NFTOneList>
-                                        <NFTOneImg>
-                                            <img src = ""></img>
-                                        </NFTOneImg>
-                                    </NFTOne>
-                                    <NFTOne>
-                                        <NFTOneList>
-                                            <NFTSubject>@ 3</NFTSubject>
-                                        </NFTOneList>
-                                        <NFTDeclaration>
-                                            <NFTSubject>* * *</NFTSubject>
-                                        </NFTDeclaration>
-                                    </NFTOne>
-                                </NFT>
-                            </NFTFourList>
+                            {nameList}
+
                         </ul>
                     </div>
                 </div>
             </NFTComponent>
             <MoreNFT>more</MoreNFT>
         </>
-    )
-}
+    }
 
 export default ItemListAuction
