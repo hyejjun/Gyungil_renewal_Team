@@ -5,6 +5,7 @@ import ModalBackground from './ModalBackground';
 import RequireLogin from '../RequireLogin';
 import LoginForm from './login/LoginForm';
 import NeedCert from './login/NeedCert';
+import Link from 'next/link';
 
 
 const MenuBar = () => {
@@ -22,19 +23,17 @@ const MenuBar = () => {
                 {
                     flag
                     ?
-                    <ModalBackground>
-                     
-                        {/* <RequireLogin flag={flag} flag2={CreateBtn}/> */}
+                    <ModalBackground>                     
+                        <RequireLogin flag={flag} flag2={CreateBtn}/>
                         {/* <LoginForm/> */}
-                        {/* <NeedCert/> */}
-                      
+                        {/* <NeedCert/> */}     
                         
                     </ModalBackground>
                     
                     :<></>
                 }
             <MenubarWrapper>
-                <span>logoooo</span>
+                <span><Link href="/"><a>Azit Gallery</a></Link></span>
                 <ul>
                     <li>탐색하기</li>
                     <li onClick={()=>CreateBtn()}>발행하기</li>
