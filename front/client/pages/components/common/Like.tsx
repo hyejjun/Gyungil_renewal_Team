@@ -3,12 +3,18 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Styled from 'styled-components'
 
-const Like = (props) => {
+const Like = () => {
+    const [like, setLike] = useState<boolean>(false);
+
+    const doLike = () => {
+        setLike(prev => !prev)
+    }
+
     return (
         <>
-            <LikeBtn onClick={props.doLike}>
+            <LikeBtn onClick={doLike}>
                 {
-                    props.like
+                    like
                     ? <button><FavoriteIcon /></button>
                     : <button><FavoriteBorderIcon /></button>
                 }

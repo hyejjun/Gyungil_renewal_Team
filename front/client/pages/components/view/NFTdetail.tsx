@@ -6,13 +6,7 @@ import NFTexplanation from "./NFTexplanation";
 import Like from "../common/Like";
 
 const NFTdetail = () => {
-    const [like, setLike] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
-
-    const doLike = () => {
-        setLike(prev => !prev)
-    }
-
     const orderOpen = () => {
         setOpen(prev => !prev)
     }
@@ -21,10 +15,10 @@ const NFTdetail = () => {
         <>
             <NFTdetailWrap>
                 <NFTBuy>
-                    <Like doLike={doLike} like={like}/>
-                    <span className="buyBtn" onClick={orderOpen}>
+                    <Like/>
+                    <BuyBtnCSS onClick={orderOpen}>
                         <button>구매하기</button>
-                    </span>
+                    </BuyBtnCSS>
                     <Order open={open} orderOpen={orderOpen} />
                 </NFTBuy>
 
@@ -48,13 +42,13 @@ const NFTBuy = Styled.div`
     display: flex;
     padding-left: 65%;
     box-sizing: border-box;
+`
 
-    & > .buyBtn{
-        width: 60%;
-        margin-left: 3%;
-    }
-
-    & > .buyBtn > button {
+export const BuyBtnCSS = Styled.span`
+    width: 60%;
+    margin-left: 3%;
+    
+    & > button {
         width : 100%;
         height : 100%;
         display: inline-flex;
@@ -71,5 +65,5 @@ const NFTBuy = Styled.div`
         cursor: pointer;
     }
 
-`
+` 
 
