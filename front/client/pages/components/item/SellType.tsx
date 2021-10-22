@@ -3,34 +3,66 @@ import React, { useState } from "react";
 
 
 const SellType = () =>{
-    const [sellAuc, setSellAuc] = useState<boolean>(true);
+    const [ifSell, setifSell] = useState<boolean>(true);
 
-    const ChkSell = () => {
+    const sellOn = (e) => {
+        setifSell(true)
+    }
 
+    const aucOn = (e) => {
+        setifSell(false)
+    }
+
+    const SellSection = () => {
         return(
             <>
-                <input type = "radio" id = "sell" />
-                <label htmlFor = "sell">SELL</label>
+            판매임
             </>
         )
     }
-    const ChkAuc = () => {
-        // setSellAuc(false)
+
+    const AucSection = () => {
         return(
             <>
-                <input type = "radio" id = "auc" />
+            경매임
+            </>
+        )
+    }
+
+    const ChkSell = () => {
+        return(
+            <>
+                <input type = "radio" id = "sell" value="1"
+                onChange = {sellOn} 
+                checked = {ifSell == true ? true : false}
+                />
+                <label htmlFor = "sell">SELL</label>
+                <input type = "radio" id = "auc" value="2"
+                onChange = {aucOn}
+                checked = {ifSell == true ? false : true}
+                />
                 <label htmlFor = "auc">AUC</label>
             </>
         )
     }
 
     return(
-        
         <>
-
                 <ChkSell />
-                <ChkAuc/>
-
+                {ifSell 
+                ? 
+                <>
+                    {/* <div>판매임</div> */}
+                    <input type="text" placeholder="판매가를 입력하세요."/>
+                </> 
+                :  
+                <>
+                    {/* <div>경매임</div> */}
+                    <input type="text" placeholder="경매 시작가를 입력하세요."/>
+                    <input type = "time"></input>
+                </> 
+                
+                }
         </>
     )
 }
