@@ -1,6 +1,6 @@
 import Styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
-
+import Link from 'next/link'
 
 const ItemListSell = () => {
     let [count,setCount] = useState<number>(0)
@@ -80,7 +80,7 @@ const ItemListSell = () => {
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
-                        <NFTSubject>{ele.subject}</NFTSubject>
+                        <Link href = "view"><NFTSubject>{ele.subject}</NFTSubject></Link>
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
                     <NFTOneImg>

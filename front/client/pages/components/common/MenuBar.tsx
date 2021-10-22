@@ -5,7 +5,7 @@ import ModalBackground from './ModalBackground';
 import RequireLogin from '../RequireLogin';
 import LoginForm from './login/LoginForm';
 import NeedCert from './login/NeedCert';
-
+import Link from 'next/link';
 
 const MenuBar = () => {
     const [loginState,setLoginState] = useState<boolean>(false)
@@ -34,7 +34,7 @@ const MenuBar = () => {
                     :<></>
                 }
             <MenubarWrapper>
-                <span>logoooo</span>
+                <Link href = "/"><span>logoooo</span></Link>
                 <ul>
                     <li>탐색하기</li>
                     <li onClick={()=>CreateBtn()}>발행하기</li>
