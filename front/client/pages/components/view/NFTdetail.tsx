@@ -3,12 +3,18 @@ import React, { useState } from "react";
 import Styled from 'styled-components'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Order from "./Order";
 
 const NFTdetail = () => {
     const [like, setLike] = useState<boolean>(false);
+    const [open, setOpen] = useState<boolean>(false);
 
     const doLike = () => {
         setLike(prev => !prev)
+    }
+
+    const orderOpen = () => {
+        setOpen(prev => !prev)
     }
 
     return (
@@ -18,17 +24,19 @@ const NFTdetail = () => {
                     <span onClick={doLike}>
                         {
                             like
-                                ? <button><FavoriteIcon/></button>
-                                : <button><FavoriteBorderIcon/></button>
+                                ? <button><FavoriteIcon /></button>
+                                : <button><FavoriteBorderIcon /></button>
                         }
                     </span>
-                    <span>
+                    <span onClick={orderOpen}>
                         <button>구매하기</button>
                     </span>
+
+                    <Order open={open} orderOpen={orderOpen} />
+
                 </NFTBuy>
                 <NFTTitle>
                     <span>NFT 제목</span>
-                    
                 </NFTTitle>
                 <NFTOwner>
                     <span>
