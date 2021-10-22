@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import Styled from 'styled-components';
-
+import SignUp from '../user/SignUp';
 
 const MenuBar = () => {
     const [loginState,setLoginState] = useState<string>("Login")
