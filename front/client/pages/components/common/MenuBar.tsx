@@ -1,30 +1,77 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect,useLayoutEffect} from 'react';
 import Styled from 'styled-components';
-import SignUp from '../user/SignUp';
+import { setFlagsFromString } from 'v8';
+import ModalBackground from './ModalBackground';
+import RequireLogin from '../RequireLogin';
+import LoginForm from './login/LoginForm';
+import NeedCert from './login/NeedCert';
+import Link from 'next/link';
 
 const MenuBar = () => {
-    const [loginState,setLoginState] = useState<string>("Login")
+    const [loginState,setLoginState] = useState<boolean>(false)
+    const [flag,setFlag] = useState<boolean>(false)
+    const [Login,setLogin] = useState<boolean>(false)
     const loginClick = () => {
-
+        loginState?setLoginState(false):setLoginState(true)
     }
+    const createBtn = () => {
+        loginState==true?setFlag(false):setFlag(true)
+    }
+    const requireOpenBtn = () => {
+        setFlag(prev=>!prev)
+    }
+    const loginOpenBtn = () => {
+        setFlag(prev=>!prev)
+        setLogin(prev=>!prev)
+    }
+    const closeLoginForm = () => {
+        setLogin(prev=>!prev)
+    }
+
+
     return (
-        <MenubarWrapper>
-            <span>logoooo</span>
-            <ul>
-                <li>Explorer</li>
-                <li>Create</li>
-                <li onClick={()=>{loginClick()}}>{loginState}</li>
-            </ul>
-        </MenubarWrapper>
+        <>            
+                {
+                    flag
+                    ?
+                    <ModalBackground>                     
+                        <RequireLogin flag={flag} openBtn={requireOpenBtn} loginOpenBtn={loginOpenBtn}/>
+                        {/* <LoginForm/> */}
+                        {/* <NeedCert/> */}     
+                        
+                    </ModalBackground>
+                    
+                    // :<></>
+                    :   Login
+                        ?
+                        <ModalBackground>
+                            <LoginForm closeLogin={Login} closeLoginBtn={closeLoginForm} />
+                        </ModalBackground>
+                        
+                        :<></>
+                    
+                }
+            <MenubarWrapper>
+                <span><Link href="/"><a>Azit Gallery</a></Link></span>
+                <ul>
+                    <li><Link href="/"><a>탐색하기</a></Link></li>
+                    <li onClick={()=>createBtn()}>발행하기</li>
+                    <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
+                </ul>
+                
+            </MenubarWrapper>
+        </>
     )
 }
 
 export default MenuBar
 
 const MenubarWrapper = Styled.div`
+    display:none;
     box-sizing:border-box;
-    height:70px;
+    height:85px;
     display:flex;
+    padding-top:23px;
     flex-direction:row;
     justify-content:space-around;
     align-items: stretch;
@@ -42,16 +89,24 @@ const MenubarWrapper = Styled.div`
     }
     ul>li{
         margin-right:40px;
-        color:#6c757d;;
+        color:#6c757d;
     }
     ul>li:hover{
         color:#343a40;
     }
+    ul>li:nth-child(1) a{
+        color:#6c757d;
+    }
+    ul>li:nth-child(1) a:hover{
+        color:#343a40;
+    }
     ul>li:nth-child(3){
+        width:60px;
+        text-align:center;
         padding:11px;
-        padding-top:4px;
+        padding-top:7px;
         margin-bottom:3px;
-        line-height:13px;
+        line-height:15px;
         border:1px solid #007bff;
         background-color:#007bff;
         border-radius:5%;
