@@ -1,27 +1,55 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect,useLayoutEffect} from 'react';
 import Styled from 'styled-components';
+import { setFlagsFromString } from 'v8';
+import ModalBackground from './ModalBackground';
+import RequireLogin from '../RequireLogin';
+import LoginForm from './login/LoginForm';
+import NeedCert from './login/NeedCert';
 
 
 const MenuBar = () => {
-    const [loginState,setLoginState] = useState<string>("Login")
+    const [loginState,setLoginState] = useState<boolean>(false)
+    const [flag,setFlag] = useState<boolean>(false)  
     const loginClick = () => {
-
+        loginState?setLoginState(false):setLoginState(true)
     }
+    const CreateBtn = () => {
+        loginState==true?setFlag(false):setFlag(true)
+    }
+
     return (
-        <MenubarWrapper>
-            <span>logoooo</span>
-            <ul>
-                <li>Explorer</li>
-                <li>Create</li>
-                <li onClick={()=>{loginClick()}}>{loginState}</li>
-            </ul>
-        </MenubarWrapper>
+        <>            
+                {
+                    flag
+                    ?
+                    <ModalBackground>
+                     
+                        {/* <RequireLogin flag={flag} flag2={CreateBtn}/> */}
+                        {/* <LoginForm/> */}
+                        {/* <NeedCert/> */}
+                      
+                        
+                    </ModalBackground>
+                    
+                    :<></>
+                }
+            <MenubarWrapper>
+                <span>logoooo</span>
+                <ul>
+                    <li>탐색하기</li>
+                    <li onClick={()=>CreateBtn()}>발행하기</li>
+                    <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
+                </ul>
+                
+            </MenubarWrapper>
+        </>
     )
 }
 
 export default MenuBar
 
 const MenubarWrapper = Styled.div`
+    display:none;
     box-sizing:border-box;
     height:85px;
     display:flex;
@@ -49,10 +77,12 @@ const MenubarWrapper = Styled.div`
         color:#343a40;
     }
     ul>li:nth-child(3){
+        width:60px;
+        text-align:center;
         padding:11px;
-        padding-top:4px;
+        padding-top:7px;
         margin-bottom:3px;
-        line-height:13px;
+        line-height:15px;
         border:1px solid #007bff;
         background-color:#007bff;
         border-radius:5%;
