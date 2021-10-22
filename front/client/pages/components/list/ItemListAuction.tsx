@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
 
 
-const ItemListSell = () => {
+const ItemListAuction = () => {
     let [count,setCount] = useState<number>(0)
 
     interface ArrEle {
@@ -62,13 +62,11 @@ const ItemListSell = () => {
         },
       ]);
 
-
-
     const nameList: JSX.Element[] = Arr.map((ele) =>
         <NFTFourList>
             <NFT>
                 <NFTImg>
-                    <div><img src={require('../src/지도.jpg').default} /></div>
+                    <div><img src={require('../../src/지도.jpg').default} /></div>
                 </NFTImg>
                 <Line></Line>
                 <NFTOne>
@@ -123,6 +121,7 @@ const ItemListSell = () => {
         );
       };
 
+
     useEffect(() => {
 
         let cnt0: number = 0;
@@ -175,7 +174,7 @@ const ItemListSell = () => {
     )
 }
 
-export default ItemListSell
+export default ItemListAuction
 
 const PictureNumberNotice = Styled.div`
     color:#2d3741;
@@ -196,10 +195,6 @@ const SelectBox = Styled.select`
     width:160px;
     padding:3px 7px;
     box-sizing:border-box;
-    &:hover{
-        border: 2px solid #bbb;
-        opacity:50%;
-    }
 `
 const SelectOption = Styled.option`
     color:grey;
@@ -216,7 +211,7 @@ const NFTComponent = Styled.div`
 
 
 `
-const NFTFourList = Styled.ul`
+const NFTFourList = Styled.li`
     display:inline-block;
     list-style:none;
     margin-right:9px;
@@ -306,5 +301,7 @@ const MoreNFT = Styled.div`
         background:#bbb;
         color:white;
         transition:all 1s ease 0;
+        
     }
+    
 `

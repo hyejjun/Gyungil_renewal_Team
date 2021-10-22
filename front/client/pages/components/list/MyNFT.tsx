@@ -3,6 +3,25 @@
 import Styled from 'styled-components'
 import Link from 'next/link'
 
+
+const MyNFT = ()=>{
+    return(
+        <>
+            <MyNFTAll>
+                <Menu>
+                    <MenuH3>나만의 NFT를 발행해보세요</MenuH3>
+                    <div>KrafterSpace에서는 누구나 쉽고 간편하게<br/>NFT를 발행하고 관리할 수 있어요.</div>
+                    <Link href = "/view"><SellBtn>NFT 발행하기</SellBtn></Link>
+                </Menu>
+                <MenuImg><img src = {require('../../src/지도.jpg')} /></MenuImg>
+            </MyNFTAll>
+            <Line></Line>
+        </>
+    )
+}
+
+export default MyNFT
+
 const MyNFTAll = Styled.ul`
     height:480px;
     
@@ -55,21 +74,3 @@ const Line = Styled.div`
     margin-bottom:50px;
     box-shadow:3px 3px 10px #bbb;
 `
-
-const MyNFT = ()=>{
-    return(
-        <>
-            <MyNFTAll>
-                <Menu>
-                    <MenuH3>나만의 NFT를 발행해보세요</MenuH3>
-                    <div>KrafterSpace에서는 누구나 쉽고 간편하게<br/>NFT를 발행하고 관리할 수 있어요.</div>
-                    <Link href = "/view"><SellBtn>NFT 발행하기</SellBtn></Link>
-                </Menu>
-                <MenuImg><img src = {require('../src/지도.jpg')} /></MenuImg>
-            </MyNFTAll>
-            <Line></Line>
-        </>
-    )
-}
-
-export default MyNFT

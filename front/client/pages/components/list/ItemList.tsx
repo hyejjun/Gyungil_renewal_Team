@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 import React, { useState } from 'react'
 import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
-import WebLayout from './layout/WebLayout'
+import WebLayout from '../layout/WebLayout'
 import MyNft from './MyNFT'
 
 const ItemList = () => {
