@@ -18,7 +18,11 @@ export default BackBtn
 
 
 const GoBackWrap = Styled.div`
-    cursor : pointer;
+    & > p {
+        width : 35px;
+        cursor : pointer;
+        
+    }
     & > p > svg {
         font-size : 35px;
     }
