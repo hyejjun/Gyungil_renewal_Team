@@ -2,63 +2,80 @@ import Styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
 
 
-const ItemListAuction = () => {
-
+const ItemListSell = () => {
+    let [count,setCount] = useState<number>(0)
     interface ArrEle {
+        id: number,
         subject: string,
         artist: string,
         Like: number,
+        alert: string
     }
+
     const [Arr, setArr] = React.useState<ArrEle[]>([
         {
-            subject: 'lalaland',
+            id: 1,
+            subject: 'adsfds',
             artist: 'daminal',
             Like: 0,
+            alert: '신고하기'
         },
-        {
-            subject: 'lalaland1',
+        {   id: 2,
+            subject: 'adsfdsf',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
-            subject: 'lalaland2',
+            id: 3,
+            subject: 'adsff',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
-            subject: 'lalaland3',
+            id: 4,
+            subject: 'adsg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
-            subject: 'lalaland4',
+            id: 5,
+            subject: 'adg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
-            subject: 'lalaland5',
+            id: 6,
+            subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
-            subject: 'lalaland6',
+            id: 7,
+            subject: 'adsg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
-            subject: 'lalaland',
+            id: 8,
+            subject: 'asdgsdg',
             artist: 'daminal',
-            Like: 0,
+            Like: 5,
+            alert: '신고하기'
         },
       ]);
-
 
 
     const nameList: JSX.Element[] = Arr.map((ele) =>
         <NFTFourList>
             <NFT>
                 <NFTImg>
-                    <div><img src={require('../src/지도.jpg').default} /></div>
+                    <div><img src={require('../../src/지도.jpg').default} /></div>
                 </NFTImg>
                 <Line></Line>
                 <NFTOne>
@@ -82,8 +99,40 @@ const ItemListAuction = () => {
         </NFTFourList>
     );
 
-    let [count,setCount] = useState<number>(0)
-
+    const handleClick = (): void => {
+        setArr(
+            Arr.concat(        
+                {
+                    id: 7,
+                    subject: 'adsg',
+                    artist: 'daminal',
+                    Like: 5,
+                    alert: '신고하기'
+                },
+                {
+                    id: 8,
+                    subject: 'asdgsdg',
+                    artist: 'daminal',
+                    Like: 5,
+                    alert: '신고하기'
+                },
+                {
+                    id: 7,
+                    subject: 'adsg',
+                    artist: 'daminal',
+                    Like: 5,
+                    alert: '신고하기'
+                },
+                {
+                    id: 8,
+                    subject: 'asdgsdg',
+                    artist: 'daminal',
+                    Like: 5,
+                    alert: '신고하기'
+                }
+            ),
+        );
+      };
     useEffect(() => {
 
         let cnt0: number = 0;
@@ -131,12 +180,12 @@ const ItemListAuction = () => {
                     </div>
                 </div>
             </NFTComponent>
-            <MoreNFT>more</MoreNFT>
+            <MoreNFT onClick = {handleClick}>more</MoreNFT>
         </>
     )
 }
 
-export default ItemListAuction
+export default ItemListSell
 
 const PictureNumberNotice = Styled.div`
     color:#2d3741;
@@ -153,16 +202,17 @@ const PictureNumberNotice = Styled.div`
 const SelectBox = Styled.select`
     display:inline-block;
     float:right;
-    height:36px;
-    width:160px;
+    height:38px;
+    width:180px;
     padding:3px 7px;
     box-sizing:border-box;
+    font-size:16px;
 `
 const SelectOption = Styled.option`
-    color:grey;
-    height:80px;
-    width:150px;
-    padding:2px;
+    color:black;
+    display:inline-block;
+    padding:5px;
+
 `
 const NFTComponent = Styled.div`
     clear:both;
@@ -173,7 +223,7 @@ const NFTComponent = Styled.div`
 
 
 `
-const NFTFourList = Styled.li`
+const NFTFourList = Styled.ul`
     display:inline-block;
     list-style:none;
     margin-right:9px;
@@ -187,6 +237,7 @@ const NFT = Styled.li`
     box-sizing:border-box;
     padding:19px;
     margin-bottom:20px;
+    box-shadow:3px 3px 10px #bbb;
 `
 const NFTImg = Styled.div`
     background:#bbb;
@@ -246,4 +297,21 @@ const Line = Styled.div`
 
 const MoreNFT = Styled.div`
     text-align:center;
+    padding:10px;
+    font-size:26px;
+    box-sizing:border-box;
+    width:150px;
+    height:60px;
+    color:grey;
+    border:1px solid #bbb;
+    border-radius:5px;
+    background:white;
+    margin:0 auto;
+    margin-bottom:120px;
+    margin-top:50px;
+    &:hover{
+        background:#bbb;
+        color:white;
+        transition:all 1s ease 0;
+    }
 `
