@@ -1,7 +1,6 @@
 import Styled from 'styled-components';
 import React, { useState } from "react";
 
-
 const SellType = () =>{
     const [ifSell, setifSell] = useState<boolean>(true);
 
@@ -13,60 +12,63 @@ const SellType = () =>{
         setifSell(false)
     }
 
-    const SellSection = () => {
-        return(
-            <>
-            판매임
-            </>
-        )
-    }
-
-    const AucSection = () => {
-        return(
-            <>
-            경매임
-            </>
-        )
-    }
-
     const ChkSell = () => {
         return(
-            <>
+            <RadioWrapper>
                 <input type = "radio" id = "sell" value="1"
                 onChange = {sellOn} 
                 checked = {ifSell == true ? true : false}
                 />
-                <label htmlFor = "sell">SELL</label>
+                <label htmlFor = "sell">일반 판매</label>
                 <input type = "radio" id = "auc" value="2"
                 onChange = {aucOn}
                 checked = {ifSell == true ? false : true}
                 />
-                <label htmlFor = "auc">AUC</label>
-            </>
+                <label htmlFor = "auc">경매</label>
+            </RadioWrapper>
         )
     }
 
     return(
         <>
-                <ChkSell />
-                {ifSell 
-                ? 
-                <>
-                    {/* <div>판매임</div> */}
+            <ChkSell />
+            {ifSell 
+            ? 
+                <SellAucWrapper>
                     <input type="text" placeholder="판매가를 입력하세요."/>
-                </> 
-                :  
-                <>
-                    {/* <div>경매임</div> */}
+                </SellAucWrapper>
+            :  
+                <SellAucWrapper>
                     <input type="text" placeholder="경매 시작가를 입력하세요."/>
                     <input type = "time"></input>
-                </> 
-                
-                }
+                </SellAucWrapper> 
+            
+            }
         </>
     )
 }
 
 export default SellType
 
+const RadioWrapper = Styled.div`
+    margin-top: 10px;
+    input{
+        font-size: 25px;
+        margin-right: 10px;
+    }
+    label{
+        font-size: 25px;
+        margin-right: 10px;
+    }
+`
 
+const SellAucWrapper = Styled.div`
+    width: 400px;
+    input{
+        margin-top: 20px;
+        display: block;
+        width: 690px;
+        height: 30px;
+        font-size: 25px;
+    }
+`
