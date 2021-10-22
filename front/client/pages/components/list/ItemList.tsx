@@ -56,7 +56,7 @@ const MenuBar = Styled.ul`
 clear:both;
 margin-bottom:70px;
 `
-const Menu1 = Styled.li`
+const Menu1 = Styled.div`
     font-size:24px;
 &:hover{
     color:#055fec;
