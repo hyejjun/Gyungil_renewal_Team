@@ -3877,6 +3877,14 @@
     "iconv-lite" "0.4.24"
     "unpipe" "1.0.0"
 
+"react-daum-postcode@^3.0.0":
+  "integrity" "sha512-G+C6OQNqyMjrACkhUi2SoOBAQtbfowDlCjxo/KQ4Chvv2uIwQQ1MLH8UfRbL00GqbaH0zpANnw0CIM8TEtVaxA=="
+  "resolved" "https://registry.npmjs.org/react-daum-postcode/-/react-daum-postcode-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "prop-types" "^15.7.2"
+    "react" "^17.0.2"
+
 "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=16.6.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
