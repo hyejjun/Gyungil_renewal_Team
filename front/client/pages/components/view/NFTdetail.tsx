@@ -1,26 +1,42 @@
 // view 페이지에서 NFT 설명 넣는 곳
 import React, { useState } from "react";
 import Styled from 'styled-components'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Order from "./Order";
 
 const NFTdetail = () => {
     const [like, setLike] = useState<boolean>(false);
+    const [open, setOpen] = useState<boolean>(false);
 
     const doLike = () => {
         setLike(prev => !prev)
     }
 
+    const orderOpen = () => {
+        setOpen(prev => !prev)
+    }
+
     return (
         <>
             <NFTdetailWrap>
-                <NFTTitle>
-                    <span>NFT 제목</span>
+                <NFTBuy>
                     <span onClick={doLike}>
                         {
                             like
-                                ? <button>❤</button>
-                                : <button>♡</button>
+                                ? <button><FavoriteIcon /></button>
+                                : <button><FavoriteBorderIcon /></button>
                         }
                     </span>
+                    <span onClick={orderOpen}>
+                        <button>구매하기</button>
+                    </span>
+
+                    <Order open={open} orderOpen={orderOpen} />
+
+                </NFTBuy>
+                <NFTTitle>
+                    <span>NFT 제목</span>
                 </NFTTitle>
                 <NFTOwner>
                     <span>
@@ -76,9 +92,65 @@ const NFTdetailWrap = Styled.div`
 
     
 `
+
+const NFTBuy = Styled.div`
+    width: 100%;
+    height: 60px;
+    display: flex;
+    padding-left: 65%;
+    box-sizing: border-box;
+
+    & > span :nth-child(1){
+        width: 30%;
+    }
+    & > span :nth-child(2){
+        width: 60%;
+        margin-left: 3%;
+    }
+
+    & > span:nth-child(1) > button {
+        width: 100%;
+        height: 64px;
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #fff;
+        border: 1px solid #aab4be;
+        box-sizing: border-box;
+        border-radius: 4px;
+        height: 100%;
+    }
+
+    & > span:nth-child(2) > button {
+        width : 100%;
+        height : 100%;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 4px;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 20px;
+        background-color: rgb(32, 129, 226);
+        border: 1px solid rgb(32, 129, 226);
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+
+    & > span:nth-child(1) > button:focus{
+        box-shadow: 0 0 0 0.2rem rgb(30 115 250 / 25%);
+    }
+
+    & > span:nth-child(1) > button > svg {
+        font-size : 30px;
+    }
+`
 const NFTTitle = Styled.div`
     height: 150px;
-    /* background: darkgrey; */
     padding: 3% 0;
     box-sizing: border-box;
     display : flex;
@@ -89,33 +161,10 @@ const NFTTitle = Styled.div`
         font-weight: 700;
         font-size: 48px;
         line-height: 64px;
-        width: 70%;
+        width: 100%;
         word-break: break-all;
     }
-    & > span :nth-child(2){
-        width: 30%;
-        background: tan;
-    }
-
-    & > span:nth-child(2) > button {
-        display: inline-block;
-        font-weight: 400;
-        color: #212529;
-        text-align: center;
-        vertical-align: middle;
-        width: 100%;
-        height: 64px;
-        cursor: pointer;
-        background-color: #fff;
-        border: 1px solid #aab4be;
-        box-sizing: border-box;
-        border-radius: 4px;
-        height: 100%;
-    }
-
-    & > span:nth-child(2) > button:focus{
-        box-shadow: 0 0 0 0.2rem rgb(30 115 250 / 25%);
-    }
+   
 `
 
 const NFTOwner = Styled.div`
@@ -150,10 +199,13 @@ const NFTOwner = Styled.div`
 
 const NFTExplain = Styled.div`
     height: auto;
-    min-height: 100px;
-    /* background: #ebd4ba; */
-    border-bottom: 1px solid rgba(20, 30, 40, 0.1);
+    min-height: 150px;
+    border-bottom: 1px solid rgba(20,30,40,0.1);
+    padding: 2% 0;
+    box-sizing: border-box;
+
     & > p{
+        height: 40px;
         font-weight: 700;
         font-size: 20px;
         color: #2d3741;
@@ -164,10 +216,12 @@ const NFTExplain = Styled.div`
 const NFTHistory = Styled.div`
     width: 100%;
     height: auto;
-    min-height: 150px;
-    /* background: cadetblue; */
+    min-height: 200px;
+    padding: 2% 0;
+    box-sizing: border-box;
 
     & > p{
+        height: 40px;
         font-weight: 700;
         font-size: 20px;
         color: #2d3741;

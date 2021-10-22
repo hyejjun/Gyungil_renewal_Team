@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import ItemList from './components/ItemList'
+import Head from "next/head";
+import ItemList from './components/list/ItemList'
+
 
 
 export default function Home() {

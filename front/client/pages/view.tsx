@@ -6,11 +6,9 @@ import WebLayout from './components/layout/WebLayout'
 const View = () => {
     return (
         <>
-            <WebLayout>
-                <BackBtn />
-                <NFTContent />
-                <NFTdetail />
-            </WebLayout>
+            <BackBtn />
+            <NFTContent />
+            <NFTdetail />
         </>
     )
 }
