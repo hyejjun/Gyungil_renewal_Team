@@ -70,7 +70,7 @@ const SellBtn = Styled.button`
         background:white;
         color:#055fec;
         border:1px solid #055fec;
-        
+
     }
 `
 const Line = Styled.div`
