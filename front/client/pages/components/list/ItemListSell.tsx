@@ -80,7 +80,7 @@ const ItemListSell = () => {
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
-                        <Link href = "view"><NFTSubject>{ele.subject}</NFTSubject></Link>
+                        <Link href = "/sell/view"><NFTSubject>{ele.subject}</NFTSubject></Link>
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
                     <NFTOneImg>

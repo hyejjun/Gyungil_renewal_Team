@@ -71,7 +71,7 @@ const ItemListAuction = () => {
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
-                        <Link href = "/view"><NFTSubject>{ele.subject}</NFTSubject></Link>
+                        <Link href = "/auction/auctionview"><NFTSubject>{ele.subject}</NFTSubject></Link>
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
                     <NFTOneImg>
