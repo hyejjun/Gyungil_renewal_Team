@@ -27,11 +27,9 @@ export default Like
 
 
 const LikeBtn = Styled.span`
-    width : 30%;
-
     & > button {
-        width: 100%;
-        height: 64px;
+        width : 127px;
+        height : 60px;
         display: inline-block;
         font-weight: 400;
         color: #212529;
@@ -42,7 +40,6 @@ const LikeBtn = Styled.span`
         border: 1px solid #aab4be;
         box-sizing: border-box;
         border-radius: 4px;
-        height: 100%;
     }
 
     & > button:focus{
