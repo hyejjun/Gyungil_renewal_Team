@@ -48,6 +48,10 @@ export default User
 const UserWrapper = Styled.div`
     width:100%;
     height:100vh;
+    div {
+        display:block;
+
+    }
 
 
 `
