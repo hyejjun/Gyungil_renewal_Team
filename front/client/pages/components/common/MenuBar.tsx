@@ -55,7 +55,7 @@ const MenuBar = () => {
             <MenubarWrapper>
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>
                 <ul>
-                    <li>탐색하기</li>
+                    <li><Link href="/"><a>탐색하기</a></Link></li>
                     <li onClick={()=>createBtn()}>발행하기</li>
                     <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
                 </ul>
@@ -90,9 +90,15 @@ const MenubarWrapper = Styled.div`
     }
     ul>li{
         margin-right:40px;
-        color:#6c757d;;
+        color:#6c757d;
     }
     ul>li:hover{
+        color:#343a40;
+    }
+    ul>li:nth-child(1) a{
+        color:#6c757d;
+    }
+    ul>li:nth-child(1) a:hover{
         color:#343a40;
     }
     ul>li:nth-child(3){
