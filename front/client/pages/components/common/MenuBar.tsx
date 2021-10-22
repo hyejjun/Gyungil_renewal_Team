@@ -14,8 +14,11 @@ const MenuBar = () => {
     const loginClick = () => {
         loginState?setLoginState(false):setLoginState(true)
     }
-    const CreateBtn = () => {
+    const createBtn = () => {
         loginState==true?setFlag(false):setFlag(true)
+    }
+    const requireOpenBtn = () => {
+        setFlag(prev=>!prev)
     }
 
     return (
@@ -24,7 +27,7 @@ const MenuBar = () => {
                     flag
                     ?
                     <ModalBackground>                     
-                        <RequireLogin flag={flag} flag2={CreateBtn}/>
+                        <RequireLogin flag={flag} openBtn={requireOpenBtn}/>
                         {/* <LoginForm/> */}
                         {/* <NeedCert/> */}     
                         
@@ -36,7 +39,7 @@ const MenuBar = () => {
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>
                 <ul>
                     <li>탐색하기</li>
-                    <li onClick={()=>CreateBtn()}>발행하기</li>
+                    <li onClick={()=>createBtn()}>발행하기</li>
                     <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
                 </ul>
                 

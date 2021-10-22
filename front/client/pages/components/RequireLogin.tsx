@@ -6,18 +6,15 @@ import React from 'react';
 
 
 const RequireLogin = (props) => {
-    const cancelBtn = () => {
-        console.log(props.flag);
-        
-    }
+
 
 
     return(
-        <RequireLoginWrapper>
+        <RequireLoginWrapper flag={props.flag}>
             <div><p>로그인이 필요합니다.</p></div>
             <div><p>계속하려면 로그인을 해주세요</p></div>
             <div>
-                <span onClick={()=>{cancelBtn()}}>취소</span>
+                <span onClick={props.openBtn}>취소</span>
                 <span><Link href=""><a>로그인</a></Link></span>
             </div>
         </RequireLoginWrapper>
@@ -32,7 +29,7 @@ const RequireLoginWrapper = Styled.div`
     height:220px;
     border-radius:3%;
     box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
-    display:block;
+    display:${(props)=>(props.flag?"block":'none')};
     justify-content:center;
     text-align:center;
     padding-top:10px;
