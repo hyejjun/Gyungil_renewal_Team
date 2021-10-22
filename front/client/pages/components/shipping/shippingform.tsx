@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 import React, { useState } from 'react'
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
-
+import Link from 'next/link';
 const shippingfrom = () => {
 
     const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
@@ -19,24 +19,25 @@ const shippingfrom = () => {
     }
 
     return (
-        <>
+        <>  
+        <ShipWrap>
             <HeadLine>Recipient Info</HeadLine>
-            <table>
+            <Table>
                 <tr>
                     <HeadTd>주문인</HeadTd>
-                    <td><InputName type = "text" /></td>
+                    <ContentTd><InputName type = "text" /></ContentTd>
                 </tr>
                 <tr>
                     <HeadTd>수령인</HeadTd>
-                    <td><InputName type = "text" /></td>
+                    <ContentTd><InputName type = "text" /></ContentTd>
                 </tr>
                 <tr>
                     <HeadTd>휴대전화</HeadTd>
-                    <td><InputPhone type = "text" />   -   <InputPhone type = "text" />   -   <InputPhone type = "text" /></td>
+                    <ContentTd><InputPhone type = "text" />   -   <InputPhone type = "text" />   -   <InputPhone type = "text" /></ContentTd>
                 </tr>
                 <tr>
                     <HeadTd>이메일</HeadTd>
-                    <td><InputEmail type = "text" />    @   <InputEmail type = "text" /></td>
+                    <ContentTd><InputEmail type = "text" />    @   <InputEmail type = "text" /></ContentTd>
                 </tr>
                 <tr>
                     <HeadTd>주소</HeadTd>
@@ -60,7 +61,7 @@ const shippingfrom = () => {
                     <HeadTd>배송방법</HeadTd>
                     <Method>
                         <ul>
-                            <li><input type = "radio" name = "normal" checked />택배</li>
+                            <li><input type = "radio" name = "normal" />택배</li>
                             <li><input type = "radio" name = "normal"/>우체국 택배</li>
                             <li><input type = "radio" name = "normal"/>편의점 방문 픽업</li>
                         </ul>
@@ -68,70 +69,75 @@ const shippingfrom = () => {
                 </tr>
                 <tr>
                     <HeadTd>배송 메모</HeadTd>
-                    <td><Memo type = "text" placeholder = "배송 시 요청사항을 입력해주세요"/></td>
+                    <ContentTd><Memo type = "text" placeholder = "배송 시 요청사항을 입력해주세요"/></ContentTd>
                 </tr>
-            </table>
-            <SubmitBtn>주문 완료</SubmitBtn>
+                <tr>
+                    <Center><Link href = "/Paymentfinish"><SubmitBtn>주문 완료</SubmitBtn></Link></Center>
+                </tr>
+            </Table>
+        </ShipWrap>
         </>
     )
 }
 
 export default shippingfrom
 
+const Table = Styled.table`
+
+    box-sizing:border-box;
+    padding:3px;
+    margin-left:90px;
+    margin-top:60px;
+`
+const ShipWrap = Styled.div`
+    margin:60px 0px 80px 180px;
+`
 const HeadLine = Styled.h3`
     font-size:38px;
     margin-bottom:30px;
 `
 const HeadTd = Styled.td`
-    width:250px;
+    width:200px;
     height:40px;
     font-size:20px;
-`
-
-const SubmitBtn = Styled.button`
-    margin-top:30px;
-    width: 160px;
-    height:40px;
-    color:grey;
-    font-size:18px;
     border:1px solid grey;
-    &:hover{
-        color:black;
-    }
+    box-sizing:border-box;
+    padding:7px;
+    
 `
-
 const InputName = Styled.input`
-    width:253px;
-    height:25px;
+    width:350px;
+    height:30px;
 `
 
 const InputPhone = Styled.input`
-    width:70px;
-    height:25px;
+    width:102px;
+    height:30px;
 `
 
 const InputEmail = Styled.input`
     width:160px;
-    height:25px;
+    height:30px;
     
 `
 
 const Memo = Styled.input`
-    height:30px;
-    width:300px;
+    height:37px;
+    width:350px;
 `
 
 const Address = Styled.td`
     font-size:19px;
+    border:1px solid grey;
 `
 
 const AddressFind = Styled.button`
     margin-left:20px;
     color:grey;
-    border:1px solid grey;
-    padding:3px;
+
+    padding:6px;
     box-sizing:border-box;
-    border-radius:4px;
+    height:35px;
     &:hover{
         color:black;
     }
@@ -140,4 +146,27 @@ const AddressFind = Styled.button`
 const Method = Styled.td`
     height:100px;
     line-height:30px;
+    border:1px solid grey;
+`
+
+const ContentTd = Styled.td`
+     border:1px solid grey;
+`
+
+const Center = Styled.td`
+    width: 160px;
+    display:inline-block;
+    margin: 60px auto;
+`
+
+const SubmitBtn = Styled.button`
+    width: 160px;
+    height:50px;
+    color:grey;
+    font-size:18px;
+    display:inline-block
+    margin:40px auto;
+    &:hover{
+        color:black;
+    }
 `

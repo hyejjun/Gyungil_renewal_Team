@@ -4,7 +4,7 @@ import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
 import WebLayout from '../layout/WebLayout'
 import MyNft from './MyNFT'
-import PaymentFinish from '../shipping/PaymentFinish'
+
 const ItemList = () => {
 
     const [tabBtn, settabBtn] = useState<number>(1);
@@ -37,7 +37,6 @@ const ItemList = () => {
                         : <ItemListAuction />
                 }
             </div>
-            <PaymentFinish/>
         </>
     )
 }
