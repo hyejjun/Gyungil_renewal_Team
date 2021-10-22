@@ -36,7 +36,7 @@ const Footer = () => {
 }
 
 export default Footer
-
+ 
 const FooterWrapper = Styled.div`
     padding-left:30px;
     bottom:0px;
@@ -44,7 +44,7 @@ const FooterWrapper = Styled.div`
     height:240px;
     background-color:#141e28;
     box-sizing:border-box;   
-    a, li, span {
+    a,li, span {
         color:#fff;
     }
     ul li {
@@ -63,16 +63,17 @@ const FooterWrapper = Styled.div`
         margin-right:30px;
         text-decoration:none;
         font-size:20px;
-
+        background-color:#141e28;
     }
     #topInFooter>span:nth-child(2)>p{   
         display:inline;
     }
     div:nth-child(2){
+        margin-left:40px;
         margin-top:60px
     }
     div:nth-child(2)>div>ul>li{
-        color:rgba(45,55,65,20);
+        color:rgba(45,55,65,80);
         float:left;
     }
 
