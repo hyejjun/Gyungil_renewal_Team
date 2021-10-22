@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 import React, { useState } from 'react'
 import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
-import WebLayout from './layout/WebLayout'
+import WebLayout from '../layout/WebLayout'
 import MyNft from './MyNFT'
 
 const ItemList = () => {
@@ -24,6 +24,9 @@ const ItemList = () => {
                     <Menu1 onClick={btn1}>판매</Menu1>
                 </Menu>
                 <Menu>
+                    <Menu1>|</Menu1>
+                </Menu>
+                <Menu>
                     <Menu1 onClick={btn2}>경매</Menu1>
                 </Menu>
             </MenuBar>
@@ -42,7 +45,6 @@ export default ItemList
 
 const Menu = Styled.li`
 color:#2d3741;
-font-size:24px;
 display:inline-block;
 text-decoration:none;
 list-style:none;
@@ -54,7 +56,7 @@ const MenuBar = Styled.ul`
 clear:both;
 margin-bottom:70px;
 `
-const Menu1 = Styled.li`
+const Menu1 = Styled.div`
     font-size:24px;
 &:hover{
     color:#055fec;

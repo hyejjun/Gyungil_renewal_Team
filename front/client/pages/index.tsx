@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Head from "next/head";
-// import NeedLogin from "./components/common/NeedLogin";
-import ItemList from './components/ItemList'
+import ItemList from './components/list/ItemList'
+
 
 
 export default function Home() {
@@ -12,7 +12,6 @@ export default function Home() {
 
         <div><ItemList /></div>
       </div>
-      {/* <NeedLogin/> */}
     </div>
   );
 }
