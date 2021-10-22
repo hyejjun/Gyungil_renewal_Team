@@ -97,6 +97,11 @@ const OrderTitle = Styled.div`
 `
 
 const OrderContent = Styled.div`
+    width: 100%;
+    height: auto;
+    padding: 5%;
+    box-sizing: border-box;
+
     & > .orderContentTitle{
         
     }
