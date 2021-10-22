@@ -52,11 +52,7 @@ const MenuBar = () => {
                     
                 }
             <MenubarWrapper>
-<<<<<<< HEAD
-                <Link href = "/"><span>logoooo</span></Link>
-=======
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>
->>>>>>> 2d7a84fc276f5bb3a38975740c278f9174359d49
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
                     <li onClick={()=>createBtn()}>발행하기</li>
