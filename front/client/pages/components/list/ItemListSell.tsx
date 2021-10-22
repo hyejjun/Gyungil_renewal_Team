@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react'
 
 const ItemListSell = () => {
     let [count,setCount] = useState<number>(0)
-
     interface ArrEle {
         id: number,
         subject: string,
         artist: string,
         Like: number,
+        alert: string
     }
 
     const [Arr, setArr] = React.useState<ArrEle[]>([
@@ -18,50 +18,57 @@ const ItemListSell = () => {
             subject: 'adsfds',
             artist: 'daminal',
             Like: 0,
+            alert: '신고하기'
         },
         {   id: 2,
             subject: 'adsfdsf',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
             id: 3,
             subject: 'adsff',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
             id: 4,
             subject: 'adsg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
             id: 5,
             subject: 'adg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
             id: 6,
             subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
             id: 7,
             subject: 'adsg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
         {
             id: 8,
             subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
+            alert: '신고하기'
         },
       ]);
-
 
 
     const nameList: JSX.Element[] = Arr.map((ele) =>
@@ -100,29 +107,32 @@ const ItemListSell = () => {
                     subject: 'adsg',
                     artist: 'daminal',
                     Like: 5,
+                    alert: '신고하기'
                 },
                 {
                     id: 8,
                     subject: 'asdgsdg',
                     artist: 'daminal',
                     Like: 5,
+                    alert: '신고하기'
                 },
                 {
                     id: 7,
                     subject: 'adsg',
                     artist: 'daminal',
                     Like: 5,
+                    alert: '신고하기'
                 },
                 {
                     id: 8,
                     subject: 'asdgsdg',
                     artist: 'daminal',
                     Like: 5,
+                    alert: '신고하기'
                 }
             ),
         );
       };
-
     useEffect(() => {
 
         let cnt0: number = 0;
@@ -192,20 +202,17 @@ const PictureNumberNotice = Styled.div`
 const SelectBox = Styled.select`
     display:inline-block;
     float:right;
-    height:36px;
-    width:160px;
+    height:38px;
+    width:180px;
     padding:3px 7px;
     box-sizing:border-box;
-    &:hover{
-        border: 2px solid #bbb;
-        opacity:50%;
-    }
+    font-size:16px;
 `
 const SelectOption = Styled.option`
-    color:grey;
-    height:80px;
-    width:150px;
-    padding:2px;
+    color:black;
+    display:inline-block;
+    padding:5px;
+
 `
 const NFTComponent = Styled.div`
     clear:both;

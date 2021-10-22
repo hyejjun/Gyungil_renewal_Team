@@ -191,16 +191,17 @@ const PictureNumberNotice = Styled.div`
 const SelectBox = Styled.select`
     display:inline-block;
     float:right;
-    height:36px;
-    width:160px;
+    height:38px;
+    width:180px;
     padding:3px 7px;
     box-sizing:border-box;
+    font-size:16px;
 `
 const SelectOption = Styled.option`
-    color:grey;
-    height:80px;
-    width:150px;
-    padding:2px;
+    color:black;
+    display:inline-block;
+    padding:5px;
+
 `
 const NFTComponent = Styled.div`
     clear:both;
