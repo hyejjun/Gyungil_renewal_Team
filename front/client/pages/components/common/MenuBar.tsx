@@ -10,7 +10,8 @@ import Link from 'next/link';
 
 const MenuBar = () => {
     const [loginState,setLoginState] = useState<boolean>(false)
-    const [flag,setFlag] = useState<boolean>(false)  
+    const [flag,setFlag] = useState<boolean>(false)
+    const [Login,setLogin] = useState<boolean>(false)
     const loginClick = () => {
         loginState?setLoginState(false):setLoginState(true)
     }
@@ -20,6 +21,14 @@ const MenuBar = () => {
     const requireOpenBtn = () => {
         setFlag(prev=>!prev)
     }
+    const loginOpenBtn = () => {
+        setFlag(prev=>!prev)
+        setLogin(prev=>!prev)
+    }
+    const closeLoginForm = () => {
+        setLogin(prev=>!prev)
+    }
+
 
     return (
         <>            
@@ -27,13 +36,21 @@ const MenuBar = () => {
                     flag
                     ?
                     <ModalBackground>                     
-                        <RequireLogin flag={flag} openBtn={requireOpenBtn}/>
+                        <RequireLogin flag={flag} openBtn={requireOpenBtn} loginOpenBtn={loginOpenBtn}/>
                         {/* <LoginForm/> */}
                         {/* <NeedCert/> */}     
                         
                     </ModalBackground>
                     
-                    :<></>
+                    // :<></>
+                    :   Login
+                        ?
+                        <ModalBackground>
+                            <LoginForm closeLogin={Login} closeLoginBtn={closeLoginForm} />
+                        </ModalBackground>
+                        
+                        :<></>
+                    
                 }
             <MenubarWrapper>
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>

@@ -1,9 +1,11 @@
 import Styled from 'styled-components'
 
-const LoginForm = () =>{
+const LoginForm = (props) =>{
+
+    
     return(
-        <LoginFormWrapper>
-            <div>x</div>
+        <LoginFormWrapper closeLogin={props.closeLogin}>
+            <div onClick={props.closeLoginBtn}>x</div>
             <ul>
                 <li>로그인</li>
                 <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
@@ -17,6 +19,7 @@ const LoginForm = () =>{
 export default LoginForm
 
 const LoginFormWrapper = Styled.div`
+    display: ${(props)=>(props.closeLogin?"block":"none")} 
     box-sizing:border-box;
     position:absolute;
     width:410px;

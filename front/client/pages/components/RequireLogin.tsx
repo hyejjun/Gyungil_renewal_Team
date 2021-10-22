@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Styled from 'styled-components';
 import Router from 'next/router';
-import React from 'react';
+import React,{useState} from 'react';
+import { DonutLargeOutlined } from '@mui/icons-material';
 
 
 
@@ -15,7 +16,7 @@ const RequireLogin = (props) => {
             <div><p>계속하려면 로그인을 해주세요</p></div>
             <div>
                 <span onClick={props.openBtn}>취소</span>
-                <span><Link href=""><a>로그인</a></Link></span>
+                <span onClick={props.loginOpenBtn}>로그인</span>
             </div>
         </RequireLoginWrapper>
     )
