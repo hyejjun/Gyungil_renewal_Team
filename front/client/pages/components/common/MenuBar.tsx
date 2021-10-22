@@ -7,7 +7,6 @@ import LoginForm from './login/LoginForm';
 import NeedCert from './login/NeedCert';
 import Link from 'next/link';
 
-
 const MenuBar = () => {
     const [loginState,setLoginState] = useState<boolean>(false)
     const [flag,setFlag] = useState<boolean>(false)

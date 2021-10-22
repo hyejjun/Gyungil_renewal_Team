@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close';
+import Link from 'next/link'
 
 const Order = (props) => {
     return (
@@ -34,7 +35,7 @@ const Order = (props) => {
                         </div>
                     </OrderContent>
                     <OrderBtn>
-                        <button>Checkout</button>
+                        <Link href = "/ship"><button>Checkout</button></Link>
                     </OrderBtn>
                 </OrderForm>
             </ModalWrapper>
