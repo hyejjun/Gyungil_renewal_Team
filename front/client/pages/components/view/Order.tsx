@@ -11,6 +11,31 @@ const Order = (props) => {
                         <span>Complelete Checkout</span>
                         <span onClick={props.orderOpen}> <CloseIcon /> </span>
                     </OrderTitle>
+                    <OrderContent>
+                        <div className="orderContentTitle">
+                            <span>Item</span>
+                            <span>Subtotal</span>
+                        </div>
+                        <div className="orderContentImage">
+                            <span>
+                                <img src="" alt="상품 작은 이미지" />
+                            </span>
+                            <span>
+                                가격 0.14 ETH
+                            </span>
+                        </div>
+                        <div className="orderTotalPrice">
+                            <span>Total</span>
+                            <span>0.14 ETH</span>
+                        </div>
+                        <div>
+                            <input type="checkbox"/>
+                            By checking this box, I agree to 회사명's <span>Tearms of Service</span>
+                        </div>
+                    </OrderContent>
+                    <OrderBtn>
+                        <button>Checkout</button>
+                    </OrderBtn>
                 </OrderForm>
             </ModalWrapper>
         </>
@@ -40,12 +65,9 @@ const OrderForm = Styled.div`
     display:  ${props => (props.flag ? 'block' : 'none')};
     box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
     position: relative;
-    /* box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5); */
     background-color: #fff;
     border-radius: 10px;
 `
-
-
 
 const OrderTitle = Styled.div`
     width: 100%;
@@ -71,4 +93,15 @@ const OrderTitle = Styled.div`
         float: right;
         color: #434343de;
     }
+`
+
+const OrderContent = Styled.div`
+    & > .orderContentTitle{
+        
+    }
+
+`
+
+const OrderBtn = Styled.div`
+
 `
