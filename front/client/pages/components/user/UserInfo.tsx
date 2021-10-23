@@ -1,5 +1,6 @@
 import Styled from 'styled-components'
-import React,{useEffect,} from 'react'
+import React,{useEffect} from 'react'
+import Link from 'next/link'
 
 const User = () => {
     useEffect(() => {
@@ -37,7 +38,7 @@ const User = () => {
                         <p>이메일주소</p>
                         <p>{/*email account*/}algml9603@mgail.com</p>
                     </li>
-                    <li onClick={()=>{ApplyBtn()}}>판매 신청</li>
+                    <li onClick={()=>{ApplyBtn()}}><Link href="/"><a>판매 신청</a></Link></li>
                     <li>
                         <span>프로필편집</span>
                         <span>회원탈퇴</span>
@@ -52,18 +53,25 @@ export default User
 
 const UserWrapper = Styled.div`
     box-sizing:border-box;
-    width:58%;
+    width:50%;
     height:100vh;
     margin-top:3%;
     margin:auto;
     border-radius:2%;
+    a{
+        text-decoration:none;
+        background-color:#b3d7ff;
+        font-weight:500;
+    }
     div{
        width:100%;
        height:480px;
-       background-color:#e6f2ff;
+       //background-color:#e6f2ff;
        padding-top:40px;
-       padding-left:140px;
+       padding-left:80px;
        align-items: stretch;
+       border:5px solid #e6f2ff;
+       margin-left:-60px;
     }
     div>p:nth-child(1){
         font-size:20px;
@@ -78,6 +86,7 @@ const UserWrapper = Styled.div`
         margin-top:8px;
         margin-right:30px;
         margin-bottom:300px;
+        line-height:center;
     }
     li{
         margin-bottom:20px;
@@ -97,13 +106,12 @@ const UserWrapper = Styled.div`
     li:nth-child(4){
         width:100px;
         height:45px;
-        font-size:17px;
         line-height:43px;
         margin-left:120px;
         text-align:center;
         background-color:#b3d7ff;
         border-radius:2%;
-        margin-bottom:40px;
+        margin-bottom:40px; 
     }
 
     li:nth-child(5) span{
