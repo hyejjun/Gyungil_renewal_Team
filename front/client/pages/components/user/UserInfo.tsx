@@ -40,7 +40,6 @@ const User = () => {
                     </li>
                     <li onClick={()=>{ApplyBtn()}}><Link href="/"><a>판매 신청</a></Link></li>
                     <li>
-                        <span>프로필편집</span>
                         <span>회원탈퇴</span>
                     </li>
                 </ul>
