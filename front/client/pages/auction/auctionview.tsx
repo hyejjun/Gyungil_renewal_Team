@@ -1,13 +1,13 @@
 import BackBtn from "../components/common/BackBtn"
 import NFTPic from "../components/view/NFTPic"
-import NFTexplanation from "../components/view/NFTexplanation"
+import NFTAuction from "../components/view/auction/NFTAuction"
 
 const AuctionView = () =>{
     return(
         <>
             <BackBtn/>
             <NFTPic/>
-            <NFTexplanation/>
+            <NFTAuction/>
         </>
     )
 }

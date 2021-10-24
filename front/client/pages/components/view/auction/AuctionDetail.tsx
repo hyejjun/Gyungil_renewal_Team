@@ -1,13 +1,13 @@
 import Styled from 'styled-components'
 
-const Auction = ()=>{
+const AuctionDetail = ()=>{
     return(
         <>
             <div>
-                옥션
+                디테일
             </div>
         </>
     )
 }
 
-export default Auction
+export default AuctionDetail
