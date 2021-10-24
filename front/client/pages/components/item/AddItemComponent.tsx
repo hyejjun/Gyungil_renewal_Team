@@ -1,7 +1,6 @@
 import Styled from 'styled-components';
 import React, { useState } from "react";
-import { Cancel } from '@mui/icons-material';
-
+import SellType from './SellType';
 
 const AddItemComponent = () => {
 
@@ -32,15 +31,14 @@ const AddItemComponent = () => {
 
                     </SectionWrapper>
                     <SectionWrapper>
-                        <SmallTitle>
-                            배경색
-                        </SmallTitle>
-                        <DescText>
-                            NFT 배경색을 선택해주세요. 아래 컬러칩을 눌러 색을 지정하거나, 컬러 코드를 직접 입력할 수 있습니다.
-                        </DescText>
                         <SectionWrapper>
-                            <ColorPalette/>
-                            <ColorInputBox/>
+                            <SmallTitle>
+                                즉시 판매/ 경매
+                            </SmallTitle>
+                            <DescText>
+                                판매 유형을 선택해주세요. 
+                            </DescText>
+                            <SellType></SellType>
                         </SectionWrapper>
                     </SectionWrapper>
                     <SectionWrapper>
@@ -75,8 +73,8 @@ const AddItemComponent = () => {
             </TopWrapper>
             <SectionWrapper>
                 <Line/>
-                <SmallerTitle>
-                <input type="checkbox"/> 
+                <SmallerTitle htmlFor = "agreeOne">
+                <input type="checkbox" id = "agreeOne" /> 
                     본인은 NFT 발행을 위해 아래 정보를 수집 및 이용하는 것에 동의합니다.
                 </SmallerTitle>
                 <TextItemWrapper>
@@ -93,8 +91,8 @@ const AddItemComponent = () => {
                         - 동의를 거부할 경우 NFT를 발행할 수 없습니다.
                     </span>
                 </TextItemWrapper>
-                <SmallerTitle>
-                    <input type="checkbox"/> 
+                <SmallerTitle htmlFor = "agreeTwo">
+                    <input type="checkbox" id = "agreeTwo" /> 
                     본인은 아래 유의사항을 꼼꼼히 확인하였으며, 이를 준수하는데 동의합니다.
                 </SmallerTitle>
                 <TextItemWrapper>
@@ -160,8 +158,8 @@ const SmallTitle = Styled.h4`
     margin-bottom:20px;
 `
 
-const SmallerTitle = Styled.h5`
-    color:#2d3741;
+const SmallerTitle = Styled.label`
+    color:#2d3741; 
     font-size:20px;
     display:inline-block;
     text-decoration:none;
@@ -192,6 +190,7 @@ const BlueButton = Styled.button`
     outline: none;
     color: white;   
     transform:translate(-50%, -50%);
+    cursor: pointer;
 `
 
 const PreviewWrappper = Styled.div`
@@ -247,17 +246,6 @@ const ProfileImg = Styled.div`
     background-color:#dbe5f0;
 `
 
-const ColorInputBox = Styled.input`
-    width: 560px;
-    height: 30px;
-    font-size: 25px;
-`
-
-const ColorPalette = Styled.input.attrs({type:'color'})`
-width: 100px;
-height: 30px;
-margin-right: 30px;
-`
 
 const InputBox = Styled.input`
     width: 690px;
@@ -305,7 +293,6 @@ const BottomBtnWrapper = Styled.div`
     margin-bottom: 50px;
     width:1150px;
     height: 100px;
-    background-color: lightpink;
     position: relative;
 `
 
@@ -318,9 +305,10 @@ const LeftBtn = Styled.button`
     outline: none;
     color: #055fec;   
     position: absolute;
-    left: 45%; 
+    left: 43%; 
     top: 50%;
     transform: translate(-50%, -50%);
+    cursor: pointer;
 `
 
 const RightBtn = Styled.button`   
@@ -332,7 +320,8 @@ const RightBtn = Styled.button`
     outline: none;
     color: white;   
     position: absolute;
-    left: 55%; 
+    left: 56%; 
     top: 50%;
     transform: translate(-50%, -50%);
+    cursor: pointer;
 `
