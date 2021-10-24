@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Own from './own'
 import Selled from './Selled'
-import Notselled from './Notselled'
+import Notselled from './NotSelled'
 
 const MyNftComponent = () => {
 
