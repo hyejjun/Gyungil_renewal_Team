@@ -8,8 +8,8 @@ const Footer = () => {
                 <span>Azit Gallery</span>
                 <span>
                     <p><Link href="/feedback"><a>Send FeedBack</a></Link></p>
-                    <p><Link href=""><a>contect us</a></Link></p>
-                    <p><Link href=""><a>english</a></Link></p>
+                    <p><Link href="/"><a>contect us</a></Link></p>
+                    <p><Link href="/"><a>english</a></Link></p>
                 </span>
             </div>
             <div>

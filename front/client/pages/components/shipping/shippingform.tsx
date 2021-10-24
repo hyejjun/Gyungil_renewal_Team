@@ -72,7 +72,7 @@ const shippingfrom = () => {
                     <ContentTd><Memo type = "text" placeholder = "배송 시 요청사항을 입력해주세요"/></ContentTd>
                 </tr>
                 <tr>
-                    <Center><Link href = "/Paymentfinish"><SubmitBtn>주문 완료</SubmitBtn></Link></Center>
+                    <Center><Link href = "/Paymentfinish"><a><SubmitBtn>주문 완료</SubmitBtn></a></Link></Center>
                 </tr>
             </Table>
         </ShipWrap>

@@ -11,7 +11,7 @@ const MyNFT = ()=>{
                 <Menu>
                     <MenuH3>나만의 NFT를 발행해보세요</MenuH3>
                     <div>KrafterSpace에서는 누구나 쉽고 간편하게<br/>NFT를 발행하고 관리할 수 있어요.</div>
-                    <Link href = "/item/addItem"><SellBtn>NFT 발행하기</SellBtn></Link>
+                    <Link href = "/item/addItem"><a><SellBtn>NFT 발행하기</SellBtn></a></Link>
                 </Menu>
                 <MenuImg><img src = {require('../../src/지도.jpg')} /></MenuImg>
             </MyNFTAll>
