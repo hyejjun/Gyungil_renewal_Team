@@ -7,11 +7,11 @@ const CancelNft = ()=>{
         <SizeWrapper>
             <ModalBackground>
                 <Modal>
-                    <div>NFT 발행을 취소할까요?</div>
-                    <div>입력한 정보는 따로 저장되지 않습니다.</div>
+                    <div>NFT 발행이 완료되었습니다.</div>
+                    <div>발행한 NFT를 지금 바로 확인해보세요<br/>오늘 발행 가능한 NFT 9개 남음</div>
                     <div>
-                        <span>아니요</span>
-                        <span>예</span>
+                        <span>새NFT발행하기</span>
+                        <span>NFT확인하기</span>
                     </div>
                 </Modal>
             </ModalBackground>

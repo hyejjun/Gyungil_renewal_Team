@@ -2,13 +2,13 @@ import Styled from 'styled-components'
 import Modal from './Modal'
 import ModalBackground from '../common/ModalBackground'
 
-const CancelNft = ()=>{
+const CreateNftCh = () => {
     return(
         <SizeWrapper>
             <ModalBackground>
                 <Modal>
-                    <div>NFT 발행을 취소할까요?</div>
-                    <div>입력한 정보는 따로 저장되지 않습니다.</div>
+                    <div>NFT를 발행하시겠습니다.</div>
+                    <div>발행하시는 NFT에 대한 <br/> 모든 책임을 본인에게 있습니다.</div>
                     <div>
                         <span>아니요</span>
                         <span>예</span>
@@ -16,10 +16,12 @@ const CancelNft = ()=>{
                 </Modal>
             </ModalBackground>
         </SizeWrapper>
+
+
     )
 }
 
-export default CancelNft
+export default CreateNftCh
 
 const SizeWrapper = Styled.div`
     margin-left:-175px;
