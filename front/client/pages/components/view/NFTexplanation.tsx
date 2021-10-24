@@ -4,9 +4,6 @@ import Styled from 'styled-components'
 const NFTexplanation = () => {
     return (
         <>
-            <NFTTitle>
-                <span>NFT 제목</span>
-            </NFTTitle>
             <NFTOwner>
                 <span>
                     <ul>
@@ -54,23 +51,7 @@ const NFTexplanation = () => {
 
 export default NFTexplanation
 
-const NFTTitle = Styled.div`
-    height: 150px;
-    padding: 3% 0;
-    box-sizing: border-box;
-    display : flex;
-    border-bottom: 1px solid rgba(20, 30, 40, 0.1);
 
-    & > span :nth-child(1){
-        color: #2d3741;
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 64px;
-        width: 100%;
-        word-break: break-all;
-    }
-   
-`
 
 const NFTOwner = Styled.div`
     width : 100%;
