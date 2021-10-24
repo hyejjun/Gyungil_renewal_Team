@@ -1,18 +1,20 @@
 import BackBtn from '../components/common/BackBtn'
 import NFTPic from '../components/view/NFTPic'
 import NFTdetail from '../components/view/sell/NFTdetail'
+import MyNFTManage from '../components/view/MyNFTManage'
 
-const View = () => {
+const MyNft = () => {
     return (
         <>
             <BackBtn />
             <NFTPic />
             <NFTdetail>
-                구매하기
+                보내기
             </NFTdetail>
+            <MyNFTManage/>
 
         </>
     )
 }
 
-export default View
+export default MyNft
