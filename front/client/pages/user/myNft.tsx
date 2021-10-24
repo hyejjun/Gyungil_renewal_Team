@@ -8,7 +8,7 @@ const View = () => {
             <BackBtn />
             <NFTContent />
             <NFTdetail>
-                구매하기
+                보내기
             </NFTdetail>
         </>
     )

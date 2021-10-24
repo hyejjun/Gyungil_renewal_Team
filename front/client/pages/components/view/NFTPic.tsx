@@ -5,7 +5,7 @@ const NFTContent = () => {
     return (
         <>
             <NFTpic>
-                <img src="" alt="NFT 사진" />
+                <img src="/" alt="NFT 사진" />
             </NFTpic>
         </>
     )

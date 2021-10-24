@@ -145,7 +145,6 @@ const ItemListSell = () => {
                 cnt0++;
                 setCount(cnt0)
                 if (cnt0 > 50) {
-
                     return setCount(50)
                 }
 
@@ -175,7 +174,6 @@ const ItemListSell = () => {
                     <div>
                         <ul>
                             {nameList}
-
                         </ul>
                     </div>
                 </div>

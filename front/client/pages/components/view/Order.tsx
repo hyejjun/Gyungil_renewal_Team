@@ -29,7 +29,7 @@ const Order = (props) => {
                         </div>
                         <div className="orderContentImage">
                             <div>
-                                <img src="" alt="상품 작은 이미지" />
+                                <img src="/" alt="상품 작은 이미지" />
                             </div>
                             <div>
                                 0.14 ETH

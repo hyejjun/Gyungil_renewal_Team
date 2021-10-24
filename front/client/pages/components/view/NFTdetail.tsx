@@ -5,7 +5,7 @@ import Order from "./Order";
 import NFTexplanation from "./NFTexplanation";
 import Like from "../common/Like";
 
-const NFTdetail = () => {
+const NFTdetail = ({children}) => {
     const [open, setOpen] = useState<boolean>(false);
     const orderOpen = () => {
         setOpen(prev => !prev)
@@ -17,7 +17,7 @@ const NFTdetail = () => {
                 <NFTBuy>
                     <Like/>
                     <BuyBtnCSS onClick={orderOpen}>
-                        <button>구매하기</button>
+                        <button>{children}</button>
                     </BuyBtnCSS>
                     <Order open={open} orderOpen={orderOpen} />
                 </NFTBuy>
