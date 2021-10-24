@@ -4,6 +4,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import Link from 'next/link'
 
 const Order = (props) => {
+    const [checked, setChecked] = useState<boolean>(false);
+
+    const checkAgreement = (checkedState) => {
+        setChecked(checkedState)
+    }
+
+    const unCheckedClick = () => {
+        alert('동의란을 확인해주세요')
+    }
+
     return (
         <>
             <ModalWrapper flag={props.open}>
@@ -14,28 +24,36 @@ const Order = (props) => {
                     </OrderTitle>
                     <OrderContent>
                         <div className="orderContentTitle">
-                            <span>Item</span>
-                            <span>Subtotal</span>
+                            <div>Item</div>
+                            <div>Subtotal</div>
                         </div>
                         <div className="orderContentImage">
-                            <span>
+                            <div>
                                 <img src="" alt="상품 작은 이미지" />
-                            </span>
-                            <span>
-                                가격 0.14 ETH
-                            </span>
+                            </div>
+                            <div>
+                                0.14 ETH
+                            </div>
                         </div>
                         <div className="orderTotalPrice">
-                            <span>Total</span>
-                            <span>0.14 ETH</span>
+                            <div>Total</div>
+                            <div>0.14 ETH</div>
                         </div>
-                        <div>
-                            <input type="checkbox"/>
-                            By checking this box, I agree to 회사명's <span>Tearms of Service</span>
+                        <div className="orderAgreement">
+                            <input type="checkbox" id="agreementBuy" onChange={e=>{checkAgreement(e.target.checked)}}/>
+                            <label htmlFor="agreementBuy">
+                                By checking this box, I agree to 회사명's <span>Tearms of Service</span>
+                            </label>
                         </div>
                     </OrderContent>
                     <OrderBtn>
-                        <Link href = "/ship"><button>Checkout</button></Link>
+                        {
+                            checked 
+                            ? <Link href = "/ship"><a><button>Checkout</button></a></Link>
+                            : <button className="unChecked" onClick={unCheckedClick}>Checkout</button>
+
+                        }
+                        
                     </OrderBtn>
                 </OrderForm>
             </ModalWrapper>
@@ -59,7 +77,7 @@ const ModalWrapper = Styled.div`
 
 const OrderForm = Styled.div`   
     width : 700px;
-    height : 600px;
+    height: 550px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -102,12 +120,99 @@ const OrderContent = Styled.div`
     padding: 5%;
     box-sizing: border-box;
 
-    & > .orderContentTitle{
-        
+    & > .orderContentTitle,
+    & > .orderContentImage,
+    & > .orderTotalPrice {
+        width : 100%;
+        display : flex;
+        border-bottom: 1px solid rgba(20,30,40,0.1);
+        padding : 2% 0 ;
+        box-sizing: border-box;
     }
 
+    & > .orderContentTitle > div:nth-child(1){
+        width : 50%;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    & > .orderContentTitle > div:nth-child(2){
+        width: 50%;
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /********************************** */
+    & > .orderContentImage > div:nth-child(1) {
+        width : 50%;
+        & > img {
+            display : inline-block;
+            width : 100px;
+            height : 100px;
+            background : #a9eb2f;
+        }
+    }
+
+    & > .orderContentImage > div:nth-child(2) {
+        width: 50%;
+        text-align: right;
+        padding: 6% 0;
+        box-sizing: border-box;
+    }
+
+    /*************************************** */
+    & > .orderTotalPrice > div:nth-child(1){
+        width : 50%;
+        font-size: 20px;
+        font-weight: bold;
+        
+    }
+    & > .orderTotalPrice > div:nth-child(2){
+        width: 50%;
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    /*********************************** */
+    .orderAgreement {
+        height: auto;
+        padding-top: 5%;
+        box-sizing: border-box;
+    }
+    .orderAgreement > label {
+        margin-left : 10px;
+    }
+    .orderAgreement > label > span {
+        color : blue;
+        
+    }
 `
 
 const OrderBtn = Styled.div`
+    width : 100%;
+    height: 120px;
+    border-top: 1px solid rgba(20,30,40,0.1);
+    padding: 5% 3%;
+    box-sizing: border-box;
 
+    & > a > button,
+    .unChecked {
+        width : 150px;
+        padding: 12px 20px;
+        background-color: rgb(32,129,226);
+        border: 1px solid rgb(32,129,226);
+        color: rgb(255,255,255);
+        cursor: pointer;
+        border-radius: 5px;
+        float : right;
+        font-size : 17px;
+        font-weight : bold;
+    }
+
+    .unChecked {
+        background-color : #d2d2d2;
+        border: 1px solid #d2d2d2;
+    }
 `
