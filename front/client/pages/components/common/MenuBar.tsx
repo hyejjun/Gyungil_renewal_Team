@@ -6,13 +6,15 @@ import RequireLogin from '../RequireLogin';
 import LoginForm from './login/LoginForm';
 import NeedCert from './login/NeedCert';
 import Link from 'next/link';
+import AddItemComponent from '../item/AddItemComponent';
 
 const MenuBar = () => {
     const [loginState,setLoginState] = useState<boolean>(false)
     const [flag,setFlag] = useState<boolean>(false)
     const [Login,setLogin] = useState<boolean>(false)
     const loginClick = () => {
-        loginState?setLoginState(false):setLoginState(true)
+        loginState?setLoginState(false):setLoginState(true);
+        setLogin(true)
     }
     const createBtn = () => {
         loginState==true?setFlag(false):setFlag(true)
@@ -55,7 +57,8 @@ const MenuBar = () => {
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
-                    <li onClick={()=>createBtn()}>발행하기</li>
+                    {/* <li onClick={()=>createBtn()}>발행하기</li> */}
+                    {loginState?<li onClick={()=>createBtn()}><Link href="/item/addItem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
                     <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
                 </ul>
                 
