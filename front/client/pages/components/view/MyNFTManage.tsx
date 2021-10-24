@@ -19,7 +19,19 @@ const MyNFTManage = () => {
                         </span>
                     </div>
                 </MyNFTDelOrSell>        
-     
+                <MyNFTDelOrSell>
+                    <div>           
+                        <span>
+                            <ul>
+                                <li>NFT 판매</li>
+                                <li>해당 NFT를 판매할 수 있습니다. <br/> 판메 요청이 승인되면 거래가 시작되오니 주의하기 바랍니다.</li>
+                            </ul>
+                        </span>
+                        <span>
+                            <button>판매하기</button>
+                        </span>
+                    </div>
+                </MyNFTDelOrSell>         
             </MyNFTManageWrapper>
         </>
     )
