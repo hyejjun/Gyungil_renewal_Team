@@ -7,7 +7,7 @@ const Waybill = ()=>{
                 <ul>
                     <li>상품</li>
                     <li>
-                        <img src="" alt="상품사진" />
+                        <img alt="상품사진" />
                     </li>
                     <li>택배사</li>
                     <li>
