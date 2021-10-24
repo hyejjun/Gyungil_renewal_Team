@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import Styled from 'styled-components'
 import Order from "./Order";
-import NFTexplanation from "./NFTexplanation";
-import Like from "../common/Like";
+import NFTexplanation from "../NFTexplanation";
+import Like from "../../common/Like";
+import NFTTitle from "../NFTTitle";
 
 const NFTdetail = ({children}) => {
     const [open, setOpen] = useState<boolean>(false);
@@ -21,9 +22,8 @@ const NFTdetail = ({children}) => {
                     </BuyBtnCSS>
                     <Order open={open} orderOpen={orderOpen} />
                 </NFTBuy>
-
+                <NFTTitle/>
                 <NFTexplanation/>
-                
             </NFTdetailWrap>
         </>
     )

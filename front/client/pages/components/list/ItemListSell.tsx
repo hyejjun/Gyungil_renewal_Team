@@ -80,11 +80,12 @@ const ItemListSell = () => {
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
-                        <Link href = "/sell/view"><NFTSubject>{ele.subject}</NFTSubject></Link>
+                        <Link href = "/sell/view"><NFTSubject>{ele.subject}</NFTSubject></Link>     
+                        {/* 여기 a 빠졌는데 동작되는 이유.. a 추가하면 오류남 */}
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
                     <NFTOneImg>
-                        <img src=""></img>
+                        <img></img>
                     </NFTOneImg>
                 </NFTOne>
                 <NFTOne>

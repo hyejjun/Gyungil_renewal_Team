@@ -1,16 +1,16 @@
 // view 페이지에서 NFT 사진 넣는 곳
 import Styled from 'styled-components'
 
-const NFTContent = () => {
+const NFTPic = () => {
     return (
         <>
             <NFTpic>
-                <img src="/" alt="NFT 사진" />
+                <img alt="NFT 사진" />
             </NFTpic>
         </>
     )
 }
-export default NFTContent
+export default NFTPic
 
 const NFTpic = Styled.div`
     background : yellow;
