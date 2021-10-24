@@ -1,6 +1,7 @@
 import Styled from 'styled-components';
 import React, { useState } from "react";
 import SellType from './SellType';
+
 const AddItemComponent = () => {
 
     // 임의의 값으로 추후 설정요

@@ -18,8 +18,7 @@ const ModalBackground = ({children}) =>{
     return(
         
             <ModalBackgroundWrppaer>
-
-                <div id="logo">AzitGallery</div>
+                {/* <div id="logo">AzitGallery</div> */}
                 {children}
             </ModalBackgroundWrppaer>
     )
@@ -33,12 +32,12 @@ const ModalBackgroundWrppaer = Styled.div`
     height:100%;
     position:absolute;
     overflow:hidden;
-    background-color:rgba(0, 0, 0, 0.88);
+    background-color:rgba(0, 0, 0, 0.6);
     display:flex;
     justify-content: center;
-    #logo{
+    /* #logo{
         color:white;
         margin-top:150px;
         margin-bottom:30px;
-    }
+    } */
 `

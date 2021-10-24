@@ -9,8 +9,8 @@ const LoginForm = (props) =>{
             <ul>
                 <li>로그인</li>
                 <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
-                <li>카카오로그인</li>
-                <li>사용중인 지갑이 없으신가요? <span> kakao다운로드</span></li>
+                <li>Kaikas로그인</li>
+                <li>사용중인 지갑이 없으신가요? <span> kaikas다운로드</span></li>
             </ul>
         </LoginFormWrapper>
     )
