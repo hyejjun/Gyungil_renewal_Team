@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import Link from 'next/link';
+
 const shippingfrom = () => {
 
     const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
@@ -72,7 +73,7 @@ const shippingfrom = () => {
                     <ContentTd><Memo type = "text" placeholder = "배송 시 요청사항을 입력해주세요"/></ContentTd>
                 </tr>
                 <tr>
-                    <Center><Link href = "/Paymentfinish"><a><SubmitBtn>주문 완료</SubmitBtn></a></Link></Center>
+                    <Center><Link href = "/PaymentEnd"><a><SubmitBtn>주문 완료</SubmitBtn></a></Link></Center>
                 </tr>
             </Table>
         </ShipWrap>

@@ -3,7 +3,7 @@ import PaymentFinish from './components/shipping/PaymentFinish'
 
 
 
-export default function Home() {
+const PaymentEnd = () => { 
 
   return (
     <div className="container">
@@ -14,3 +14,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default PaymentEnd

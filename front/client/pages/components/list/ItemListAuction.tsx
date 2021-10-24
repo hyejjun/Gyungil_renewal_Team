@@ -217,7 +217,7 @@ const NFTFourList = Styled.li`
     display:inline-block;
     list-style:none;
     margin-right:9px;
-    margin-left:11px;
+    margin-left:10px;
 `
 const NFT = Styled.li`
     border: 1px solid #bbb;

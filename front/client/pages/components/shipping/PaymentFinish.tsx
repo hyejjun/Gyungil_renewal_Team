@@ -1,5 +1,6 @@
 import Styled from 'styled-components'
 import React, { useState } from 'react'
+import Link from 'next/link';
 
 const PaymentFinish = () => {
 
@@ -71,6 +72,7 @@ const PaymentFinish = () => {
                 </tr>
             </Table>
         </ShipWrap>
+        <Center><Link href = "/"><a><SubmitBtn>메인 으로</SubmitBtn></a></Link></Center>
         </>
     )
 }
@@ -119,4 +121,21 @@ const OneTd = Styled.td`
 const H5 = Styled.h3`
     font-size:22px;
     margin-bottom:15px;
+`
+
+const Center = Styled.td`
+    width: 160px;
+    display:inline-block;
+    margin: 10px 0px 50px 60px;
+`
+
+const SubmitBtn = Styled.button`
+    width: 160px;
+    height:50px;
+    color:grey;
+    font-size:18px;
+    display:inline-block
+    &:hover{
+        color:black;
+    }
 `

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Shippingform from './components/shipping/shippingform'
 
 
-export default function Home() {
+const Ship = () => {  
 
   return (
     <div className="container">
@@ -13,3 +13,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Ship
