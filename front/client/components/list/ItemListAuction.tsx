@@ -68,7 +68,8 @@ const ItemListAuction = () => {
                 <Link href = "/auction/auctionview">
                     <a>
                         <NFTImg>
-                            <div><img src={require('../../src/지도.jpg').default} /></div>
+                            {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
+                            <div><img alt="경매nft사진" /></div>
                         </NFTImg>
                     </a>
                 </Link>
