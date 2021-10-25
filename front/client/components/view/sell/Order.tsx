@@ -197,6 +197,7 @@ export const OrderBtn = Styled.div`
     box-sizing: border-box;
 
     & > a > button,
+    & > button,
     .unChecked {
         width : 150px;
         padding: 12px 20px;

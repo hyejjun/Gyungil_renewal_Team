@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import Styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close';
 import Link from 'next/link'
+import Router from "next/router"
 import { ModalWrapper, OrderTitle, OrderContent, OrderForm, OrderBtn } from "../sell/Order";
-import useInput from "../../../hooks/useInput";
+// import useInput from "../../../hooks/useInput";
 
 
 const JoinAcution = (props) => {
-    const [checked, setChecked] = useState<boolean>(false);                 // 동의 확인
-    const [balanceCheck, setbalanceCheck] = useState<boolean>(false);       // 잔액확인
-
+    const [checked, setChecked] = useState<boolean>(false);                 // 동의확인 
     const checkAgreement = (checkedState) => {
         setChecked(checkedState)
     }
@@ -17,16 +16,32 @@ const JoinAcution = (props) => {
         alert('동의란을 확인해주세요')
     }
 
-    const checkBalance = (checkBalance) => {
-        setbalanceCheck(checkBalance)
+    const [auctionPrice, setAuctionPrice] = useState<number>(0);
+    const priceChange = (e) => {
+        setAuctionPrice(e.target.value)
     }
+
+    const maxPrice = 0.6;           // useSelector 로 maxprice
+    const yourBalance = 0.7;        // 이걸 나중에 useSelector 로 가져올거임
+    const [balacne, setBalance] = useState<number>(0);
+    const [balanceCheck, setBalanceCheck] = useState<boolean>(false);       // 잔액확인
+
+    useEffect (()=>{
+        setBalance(yourBalance)
+    },[])
+
     const lowBalance = () => {
-        alert('잔액을 확인해주세요')
+        if (balacne <= maxPrice){
+            alert('잔액을 확인해주세요')
+        }else{
+            if(auctionPrice <= maxPrice || auctionPrice > yourBalance){
+                alert('입찰 금액을 확인해주세요')
+            } else {
+                setBalanceCheck(prev => !prev)
+                Router.push('/ship')
+            }
+        }
     }
-
-    const auctionPrice = useInput('')
-
-    console.log(auctionPrice);
 
     return (
         <>
@@ -48,16 +63,16 @@ const JoinAcution = (props) => {
                         </div>
                         <div className="orderTotalPrice">
                             <div>현재 최고가</div>
-                            <div>0.14 ETH</div>
+                            <div>{maxPrice} ETH</div>
                         </div>
                         <div className="yourBalance">
                             <div>잔액</div>
-                            <div>0.5 ETH</div>
+                            <div>{yourBalance} ETH</div>
                         </div>
                         <div className="joinAuction">
                             <div>입찰가</div>
                             <div>
-                                <input type="text" min={0} {...auctionPrice}/> ETH
+                                <input type="text" onChange={priceChange} /> ETH
                             </div>
                         </div>
                         <div className="orderAgreement">
@@ -71,7 +86,7 @@ const JoinAcution = (props) => {
                     <OrderBtn>
                         {
                             checked
-                                ? <Link href="/ship"><a><button>Checkout</button></a></Link>
+                                ? <button onClick={lowBalance}>Checkout</button>
                                 : <button className="unChecked" onClick={unCheckedClick}>Checkout</button>
                         }
                     </OrderBtn>
