@@ -3,17 +3,16 @@
 import Styled from 'styled-components'
 import Link from 'next/link'
 import { useState } from 'react'
-import useInput from '../hooks/useInput'
+import useInput from '../../hooks/useInput'
 
 const SignUp = () => {
 
-    let [nickName, setNickName] = useState<string>('');
-    let [wallet, setWallet] = useState<string>('');
-    let [email, setEmail] = useState<string>('');
+    // let [nickName, setNickName] = useState<string>('');
+    // let [wallet, setWallet] = useState<string>('');
+    // let [email, setEmail] = useState<string>('');
 
     
     const nickName = useInput('')
-    const wallet = useInput('')
     const email = useInput('')
 
 
