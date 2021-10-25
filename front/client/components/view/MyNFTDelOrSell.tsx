@@ -4,7 +4,6 @@ const MyNFTDelOrSell = ({children}) => {
     return (
         <>
             <MyNFTDelSellWrapper>
-
                 {children}
             </MyNFTDelSellWrapper>
         </>
