@@ -6,4 +6,4 @@ const JoinAcution = ()=>{
     )
 }
 
-return JoinAcution
+export default JoinAcution

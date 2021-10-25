@@ -58,7 +58,7 @@ const MenuBar = () => {
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
                     {/* <li onClick={()=>createBtn()}>발행하기</li> */}
-                    {loginState?<li onClick={()=>createBtn()}><Link href="/item/addItem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
+                    {loginState?<li onClick={()=>createBtn()}><Link href="/item/additem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
                     <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
                 </ul>
                 

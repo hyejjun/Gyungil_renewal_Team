@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Shippingform from './components/shipping/shippingform'
+import Shippingform from '../components/shipping/shippingform'
 
 
 const Ship = () => {  
