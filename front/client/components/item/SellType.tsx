@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 import React, { useState } from "react";
 
-const SellType = ({ifSell, extension, sellToggle, extensionToggle}) =>{
+const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChange}) =>{
 
     const ChkSell = () => {
         return(
@@ -27,7 +27,7 @@ const SellType = ({ifSell, extension, sellToggle, extensionToggle}) =>{
             ? 
                 <SellAucWrapper>
                     <SmallTitle>판매 가격</SmallTitle>
-                    <input type="text" placeholder="판매가를 입력하세요."/>
+                    <input type="text" placeholder="판매가를 입력하세요." onChange ={handleTxtChange}/>
                 </SellAucWrapper>
             :  
             <>

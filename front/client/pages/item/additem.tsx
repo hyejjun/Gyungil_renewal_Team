@@ -12,7 +12,24 @@ const addItem = () =>{
     const [agreed, setAgreed] = useState<Array<boolean>>([false,false])
     const [allAgreed, setAllAgreed] = useState<boolean>(false)
 
-    const name = useInput('')
+    const [file, setNamsetFile] = useState<string>('') // -> 바꿔야 함
+    const [price, setPrice] = useState<string>('')
+    const [name, setName] = useState<string>('')
+    const [desc, setDesc] = useState<string>('')
+    
+    const handleTxtChange = (e) => {
+        let item = "ffff"
+        console.log(e.target.value)
+        if(item == "file"){
+            console.log("file")
+        } else if(item=="price"){
+            console.log("price")
+        } else if(item=="name"){
+            console.log("name")
+        } else if(item == "desc"){
+            console.log("desc")
+        }
+    }
 
     const sellToggle = (value:boolean) => {
         setifSell(value)
@@ -50,6 +67,8 @@ const addItem = () =>{
         extensionToggle = {extensionToggle}
         // 동의란 컴포넌트용
         ifAgreed = {ifAgreed}
+
+        handleTxtChange = {handleTxtChange}
         />
 
     )

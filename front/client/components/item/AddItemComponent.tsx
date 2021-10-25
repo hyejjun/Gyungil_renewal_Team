@@ -2,17 +2,38 @@ import Styled from 'styled-components';
 import React, { useState } from "react";
 import SellType from './SellType';
 import Agreement from './Agreement';
+import CreateNftCh from './CreateNftCh';
+import CancelNft from './CancelNft';
 
 const AddItemComponent = ({
     userId, n, ifSell, extension, 
     sellToggle, extensionToggle,
-    ifAgreed, 
+    ifAgreed,
+    handleTxtChange
 }) => {
 
     // 임의의 값으로 추후 설정요
     useState<boolean>(false);
+
+    const [nftCreateState,setnftCreateState] = useState<boolean>(false);
+    const createNftCh = () => {
+        setnftCreateState(prev=>!prev)
+    }
+    const [cancelNft,setcancelNft] = useState<boolean>(false);
+    const cancelNftCh = () => {
+        setcancelNft(prev=>!prev)
+    }
+    const closeBtn = () => {
+        setcancelNft(false);
+        setnftCreateState(false);
+    }
+    
+
+
     return(
         <>
+            {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
+            {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}
             <TopWrapper>
                 <LeftWrapper> 
                     <BigTitle>
@@ -46,6 +67,7 @@ const AddItemComponent = ({
                                 extension = {extension}
                                 sellToggle = {sellToggle}
                                 extensionToggle = {extensionToggle}
+                                handleTxtChange = {handleTxtChange}
                             />
                         </SectionWrapper>
                     </SectionWrapper>
@@ -53,13 +75,17 @@ const AddItemComponent = ({
                         <SmallTitle>
                             이름
                         </SmallTitle>
-                        <InputBox/>
+                        <InputBox
+                            onChange = {(e)=>handleTxtChange("name")}
+                        />
                     </SectionWrapper>
                     <SectionWrapper>
                         <SmallTitle>
                             설명
                         </SmallTitle>
-                        <TextBox />
+                        <TextBox
+                         onChange = {(e)=>handleTxtChange("desc")}
+                        />
                     </SectionWrapper>
                 </LeftWrapper>
                 <RightWrapper>  
@@ -83,9 +109,10 @@ const AddItemComponent = ({
             ifAgreed = {ifAgreed}
             />
             <BottomBtnWrapper>
-                <LeftBtn>취소</LeftBtn>
-                <RightBtn>NFT 발행하기<br/>(오늘{n}개 발행 가능)</RightBtn>
-            </BottomBtnWrapper>
+            
+                <LeftBtn onClick={()=>{cancelNftCh()}}>취소</LeftBtn>
+                <RightBtn onClick={()=>{createNftCh()}}>NFT 발행하기<br/>(오늘{n}개 발행 가능)</RightBtn>
+            </BottomBtnWrapper>           
         </>
     )
 }
