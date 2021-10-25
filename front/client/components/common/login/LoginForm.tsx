@@ -5,10 +5,13 @@ import { connect } from 'react-redux'
 import React from 'react'
 import Link from 'next/link'
 
-
+declare global {
+    interface Window {
+        klaytn: any;
+    }
+}
 
 const LoginForm = (props) =>{
-
     const [clicked, setClicked] = React.useState(false)
     const [kaikasAddress, setKaikasAddress] = React.useState('')
   
@@ -31,7 +34,6 @@ const LoginForm = (props) =>{
   
     const onClick = () => {
       if(!window.klaytn) {
-        setNotInstalled(true)
         return
       }
       setClicked(true)
