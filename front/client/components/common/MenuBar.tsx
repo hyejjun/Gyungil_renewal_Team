@@ -50,7 +50,9 @@ const MenuBar = () => {
                     <li><Link href="/"><a>탐색하기</a></Link></li>
                     {loginState?<li onClick={()=>createBtn()}><Link href="/item/addItem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
                     {loginState?<Link href="/user/MyNftAll"><a>나의NFT</a></Link>:<li onClick={()=>{loginClick()}}>Login</li>}
-                </ul>                
+
+                </ul>
+                
             </MenubarWrapper>
 
         </>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddItemComponent from '../components/item/AddItemComponent';
+import AddItemComponent from '../../components/item/AddItemComponent';
 
 const addItem = () =>{
 

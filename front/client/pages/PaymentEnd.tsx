@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PaymentFinish from './components/shipping/PaymentFinish'
+import PaymentFinish from '../components/shipping/PaymentFinish'
 
 
 
