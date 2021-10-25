@@ -1,5 +1,5 @@
-import BackBtn from '../components/common/BackBtn'
-import UserInfo from '../components/user/UserInfo'
+import BackBtn from '../../components/common/BackBtn'
+import UserInfo from '../../components/user/UserInfo'
 
 const User = () => {
     return(
