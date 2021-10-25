@@ -136,4 +136,8 @@ const AuctionForm = Styled.div`
         font-size: 20px;
         text-align: right;
     }
+
+    .joinAuction > div:nth-child(2) > input:focus{
+        outline : none;
+    }
 `
