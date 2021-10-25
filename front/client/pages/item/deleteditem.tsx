@@ -1,6 +1,4 @@
-import Styled from 'styled-components';
 import React, { useState } from "react";
-import Head from "next/head";
 import DeletedItemComponent from '../../components/item/DeletedItemComponent';
 
 const DeletedItem = () =>{
@@ -9,5 +7,5 @@ const DeletedItem = () =>{
         <DeletedItemComponent/>
     )
 }
-// BigTitle, DescText, Button import
+
 export default DeletedItem

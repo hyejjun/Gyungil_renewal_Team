@@ -4,7 +4,7 @@ import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import Link from 'next/link';
 
-const shippingfrom = () => {
+const Shippingfrom = () => {
 
     const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
     const [address,setaddress] = useState<string>(' ')
@@ -19,14 +19,19 @@ const shippingfrom = () => {
         setIsPopupOpen(false)
     }
 
+    const ComfirmContent = () => {
+
+
+    }
+
     return (
         <>  
         <ShipWrap>
             <HeadLine>Recipient Info</HeadLine>
             <Table>
                 <tr>
-                    <HeadTd>주문인</HeadTd>
-                    <ContentTd><InputName type = "text" /></ContentTd>
+                    <HeadTd id = "Person">주문인</HeadTd>
+                    <ContentTd><label htmlFor = "Person"><InputName type = "text"/></label></ContentTd>
                 </tr>
                 <tr>
                     <HeadTd>수령인</HeadTd>
@@ -81,7 +86,7 @@ const shippingfrom = () => {
     )
 }
 
-export default shippingfrom
+export default Shippingfrom
 
 const Table = Styled.table`
 
