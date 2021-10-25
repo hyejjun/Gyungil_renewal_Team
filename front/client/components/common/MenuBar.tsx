@@ -52,6 +52,7 @@ const MenuBar = () => {
                     {loginState?<LOG><Link href="/user/mynftall"><a>나의NFT</a></Link></LOG>:<LOG></LOG>}
                     {loginState?<LOG onClick={()=>{loginClick()}}>LogOut</LOG>:<LOG onClick={()=>{loginClick()}}>Login</LOG>}
 
+
                 </ul>
                 
             </MenubarWrapper>

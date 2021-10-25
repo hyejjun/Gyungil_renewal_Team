@@ -27,6 +27,7 @@ const MyNftComponent = () => {
                 <MyName>원금회복</MyName>
                 <MyAddress>0x454asdf5454324ewqf3dsf</MyAddress>
                 <Link href = "/user/user"><AStyle><MyProfile>프로필 편집</MyProfile></AStyle></Link>
+
             </MyInfo>
             <MyNft>
                 <Header>
