@@ -66,14 +66,16 @@ const ItemListAuction = () => {
         <NFTFourList>
             <NFT>
                 <Link href = "/auction/auctionview">
-                    <NFTImg>
-                        <div><img src={require('../../src/지도.jpg').default} /></div>
-                    </NFTImg>
+                    <a>
+                        <NFTImg>
+                            <div><img src={require('../../src/지도.jpg').default} /></div>
+                        </NFTImg>
+                    </a>
                 </Link>
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
-                        <Link href = "/auction/auctionview"><a><NFTSubject>{ele.subject}</NFTSubject></a></Link>
+                        <Link href = "/auction/auctionview"><AStyle><NFTSubject>{ele.subject}</NFTSubject></AStyle></Link>
                         {/* <NFTSubject>{ele.subject}</NFTSubject> */}
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
@@ -310,4 +312,13 @@ const MoreNFT = Styled.div`
         
     }
     
+`
+
+const LikeSize = Styled.div`
+    width:50px;
+    height:50px;
+`
+
+const AStyle = Styled.a`
+    text-decoration:none;
 `
