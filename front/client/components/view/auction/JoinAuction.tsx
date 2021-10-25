@@ -16,12 +16,10 @@ const JoinAcution = (props) => {
         alert('동의란을 확인해주세요')
     }
 
-
     const [auctionPrice, setAuctionPrice] = useState<number>(0);
     const priceChange = (e) => {
         setAuctionPrice(e.target.value)
     }
-    
 
     const maxPrice = 0.6;           // useSelector 로 maxprice
     const yourBalance = 0.7;        // 이걸 나중에 useSelector 로 가져올거임
@@ -44,9 +42,6 @@ const JoinAcution = (props) => {
             }
         }
     }
-
-
-    
 
     return (
         <>
