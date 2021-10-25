@@ -1,22 +1,33 @@
 import Styled from 'styled-components'
+import ModalBackground from '../ModalBackground'
+
+
+
+
 
 const LoginForm = (props) =>{
 
     
     return(
-        <LoginFormWrapper closeLogin={props.closeLogin}>
-            <div onClick={props.closeLoginBtn}>x</div>
-            <ul>
-                <li>로그인</li>
-                <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
-                <li>Kaikas로그인</li>
-                <li>사용중인 지갑이 없으신가요? <span> kaikas다운로드</span></li>
-            </ul>
-        </LoginFormWrapper>
+        <ModalBackground>
+            <LoginFormWrapper closeLogin={props.closeLogin}>
+                <div onClick={props.closeLoginBtn}>x</div>
+                <ul>
+                    <li>로그인</li>
+                    <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
+                    <li>Kaikas로그인</li>
+                    <li>사용중인 지갑이 없으신가요? <span> kaikas다운로드</span></li>
+                </ul>
+            </LoginFormWrapper>
+        </ModalBackground>
     )
 }
 
 export default LoginForm
+
+
+
+
 
 const LoginFormWrapper = Styled.div`
     display: ${(props)=>(props.closeLogin?"block":"none")} 
@@ -72,6 +83,5 @@ const LoginFormWrapper = Styled.div`
         border-bottom:1px solid black;
     }
 
-    
 
 `
