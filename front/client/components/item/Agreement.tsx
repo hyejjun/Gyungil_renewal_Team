@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 import React, { useEffect, useState } from "react";
 
-const Agreement = ({agreed, agreeed, ifAgreed}) => {
+const Agreement = ({ifAgreed}) => {
 
     return(
         <>

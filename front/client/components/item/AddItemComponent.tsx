@@ -6,7 +6,7 @@ import Agreement from './Agreement';
 const AddItemComponent = ({
     userId, n, ifSell, extension, 
     sellToggle, extensionToggle,
-    agreed, agreeed, ifAgreed
+    ifAgreed, 
 }) => {
 
     // 임의의 값으로 추후 설정요
@@ -80,8 +80,6 @@ const AddItemComponent = ({
                     </RightWrapper>
             </TopWrapper>
             <Agreement
-            agreed = {agreed}
-            agreeed = {agreeed}
             ifAgreed = {ifAgreed}
             />
             <BottomBtnWrapper>
