@@ -5,7 +5,7 @@ const css = require('@zeit/next-css')
 const nextConfig = {
   webpack: function(config){
   config.module.rules.push({
-      test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
+      test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/, 
       use: {
       loader: 'url-loader',
           options: {

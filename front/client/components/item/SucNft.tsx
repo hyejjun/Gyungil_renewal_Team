@@ -1,28 +1,29 @@
+import React,{useState} from 'react'
 import Styled from 'styled-components'
-import Modal from './Modal'
+import ModalForm from '../common/ModalForm'
 import ModalBackground from '../common/ModalBackground'
+import Link from 'next/link'
 
-const CancelNft = ()=>{
+const SucNft = (props)=>{
     return(
-        <SizeWrapper>
-            <ModalBackground>
-                <Modal>
-                    <div>NFT 발행이 완료되었습니다.</div>
+                <ModalForm>
+                    <div><p>NFT 발행이 완료되었습니다.</p></div>
                     <div>발행한 NFT를 지금 바로 확인해보세요<br/>오늘 발행 가능한 NFT 9개 남음</div>
                     <div>
-                        <span>새NFT발행하기</span>
-                        <span>NFT확인하기</span>
+                        <span><Link href="/item/additem"><a onClick={props.test}>새NFT발행</a></Link></span>
+                        <span id="rightBtn" ><Link href="/user/mynftall"><a>NFT확인</a></Link></span>
                     </div>
-                </Modal>
-            </ModalBackground>
-        </SizeWrapper>
+                </ModalForm>
+  
+
     )
 }
 
-export default CancelNft
+export default SucNft
 
 const SizeWrapper = Styled.div`
     margin-left:-175px;
     margin-top:-99px;
+
     
 `

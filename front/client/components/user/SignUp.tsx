@@ -7,43 +7,16 @@ import useInput from '../../hooks/useInput'
 
 const SignUp = () => {
 
-    const [nickNameChk, setNickNameChk] = useState<string>('');
-    const [emailChk, setEmailChk] = useState<string>('');
-    const [nickNameErr, setNickNameErr] = useState<boolean>(false);
+    // let [nickName, setNickName] = useState<string>('');
+    // let [wallet, setWallet] = useState<string>('');
+    // let [email, setEmail] = useState<string>('');
+
     
     const nickName = useInput('')
     const email = useInput('')
 
 
-    const change = e => {
-        const val = e.target.value
-        setNickNameChk(val)
-
-        
-    }
-
-    const handleNickNameChk = e => {
-        if(nickNameChk === ''){
-            setNickNameErr(false)           
-        }
-    }
-
-    const change2 = e => {
-        const val = e.target.value
-        setEmailChk(val);
-    } 
-
-
-
-
-
-    const check = () =>{
-        if(nickNameChk === ''){
-            setNickNameErr(false)           
-        }
-    }
-
-
+   
 
     return (
         <>
@@ -62,8 +35,8 @@ const SignUp = () => {
                             viewBox="0 0 120 120" 
                             fill="none" 
                             xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="60" cy="60" r="60" fill="white" fill-opacity="0.8" className="circle"></circle>
-                                <path fill-rule="evenodd" clip-rule="evenodd" 
+                                <circle cx="60" cy="60" r="60" fill="white" fillOpacity="0.8" className="circle"></circle>
+                                <path fillRule="evenodd" clipRule="evenodd" 
                                 d="M57 50C56.6656 50 56.3534 50.1671 56.1679 50.4453L54.4648 
                                 53H51C50.2044 53 49.4413 53.3161 48.8787 53.8787C48.3161 
                                 54.4413 48 55.2044 48 56V67C48 67.7957 48.3161 68.5587 48.8787 
@@ -79,11 +52,11 @@ const SignUp = () => {
                             </div>
                             </div>
 
-                            <table width="100%;" className="marginTop">
+                            <table className="marginTop width100">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <table width="100%;">
+                                            <table className="width100">
                                                 <tbody>
                                                     <tr>
                                                         <td className="textLeft pageSubtitleBold">닉네임</td>
@@ -94,22 +67,22 @@ const SignUp = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="10px;"></td>
+                                        <td className="height10"></td>
                                     </tr>
                                     <tr>
                                         <td className="textLeft">
-                                            <input type="text" className="InputBox" value={nickNameChk} name="nickName" id="nickName" onMouseOut={handleNickNameChk} onChange={change} placeholder="닉네임을 입력해주세요." />
+                                            <input type="text" className="InputBox" {...nickName} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요." />
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td height="42px;"></td>
+                                        <td className="height42"></td>
                                     </tr>
                                     <tr>
                                         <td className="textLeft pageSubtitleBold">지갑 주소</td>
                                     </tr>
                                     <tr>
-                                        <td height="10px;"></td>
+                                        <td className="height10"></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -117,21 +90,21 @@ const SignUp = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="42px;"></td>
+                                        <td className="height42"></td>
                                     </tr>
                                     <tr>
                                         <td className="textLeft pageSubtitleBold">이메일 주소</td>
                                     </tr>
                                     <tr>
-                                        <td height="10px;"></td>
+                                        <td className="height10"></td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" className="InputBox" value={emailChk} name="email" onChange={change2} placeholder="이메일 주소를 입력해주세요." />
+                                            <input type="text" className="InputBox" {...email} name="email" placeholder="이메일 주소를 입력해주세요." />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="48px;"></td>
+                                        <td className="height42"></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -359,6 +332,18 @@ svg:hover{
 
 .error{
     color:red;
+}
+
+.height42{
+    height:42px;
+}
+
+.height10{
+    height:10px;
+}
+
+.width100{
+    width:100%;
 }
 
 

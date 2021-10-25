@@ -6,73 +6,79 @@ const PaymentFinish = () => {
 
     return (
         <>
-        <ShipWrap>
-            <HeadLine>Shipping Notice</HeadLine>
-            <H5>배송 정보</H5>
-            <Table>
-                <tr>
-                    <TwoTd>주문번호</TwoTd>
-                    <OneTd>001-A040874087</OneTd>
-                    <TwoTd>배송방법</TwoTd>
-                    <OneTd>택배</OneTd>
-                </tr>
-                <tr>
-                    <TwoTd>상태</TwoTd>
-                    <TwoTdContent>상품 준비 중 (2012-09-06)</TwoTdContent>
-                    <TwoTd>운송장</TwoTd>
-                    <TwoTdContent>64245454545, CJ 대한통운</TwoTdContent>
-                </tr>
-            </Table>
-            <H5>상품 정보</H5>
-            <Table>
-                <tr>
-                    <TwoTd>상품 명</TwoTd>
-                    <OneTd>미학의 문제와 방법</OneTd>
-                </tr>
-                <tr>
-                    <TwoTd>상품 가격</TwoTd>
-                    <OneTd>15000원 </OneTd>
-                </tr>
-                <tr>
-                    <TwoTd>총 주문금액</TwoTd>
-                    <OneTd>15700 원 (상품가격 15000원 + 배송료 700원)</OneTd>
-                </tr>
-                <tr>
-                    <TwoTd>결제 방법</TwoTd>
-                    <OneTd>
-                        kaikas
-                    </OneTd>
-                </tr>
-            </Table>
-            <H5>주문자 정보</H5>
-            <Table>
-                <tr>
-                    <TwoTd>주문하신 분</TwoTd>
-                    <TwoTdContent>김서영</TwoTdContent>
-                    <TwoTd>받으시는 분</TwoTd>
-                    <TwoTdContent>김서영</TwoTdContent>
-                </tr>
-                <tr>
-                    <TwoTd>배송주소</TwoTd>
-                    <OneTd>
-                        (06565) 서울특별시 사당로 29다길 메롱
-                    </OneTd>
-                </tr>
-                <tr>
-                    <TwoTd>휴대번호</TwoTd>
-                    <OneTd>
-                        010-6618-2614
-                    </OneTd>
-                </tr>
-                <tr>
-                    <TwoTd>배송메세지</TwoTd>
-                    <OneTd>
-                        출입방법: 자유 출입 가능
-                    </OneTd>
-                </tr>
-            </Table>
-        </ShipWrap>
-        <Center><Link href = "/"><a><SubmitBtn>메인 으로</SubmitBtn></a></Link></Center>
+            <ShipWrap>
+                <HeadLine>Shipping Notice</HeadLine>
+                <H5>배송 정보</H5>
+                <Table>
+                    <tbody>
+                        <tr>
+                            <TwoTd>주문번호</TwoTd>
+                            <OneTd>001-A040874087</OneTd>
+                            <TwoTd>배송방법</TwoTd>
+                            <OneTd>택배</OneTd>
+                        </tr>
+                        <tr>
+                            <TwoTd>상태</TwoTd>
+                            <TwoTdContent>상품 준비 중 (2012-09-06)</TwoTdContent>
+                            <TwoTd>운송장</TwoTd>
+                            <TwoTdContent>64245454545, CJ 대한통운</TwoTdContent>
+                        </tr>
+                    </tbody>
+                </Table>
+                <H5>상품 정보</H5>
+                <Table>
+                    <tbody>
+                        <tr>
+                            <TwoTd>상품 명</TwoTd>
+                            <OneTd>미학의 문제와 방법</OneTd>
+                        </tr>
+                        <tr>
+                            <TwoTd>상품 가격</TwoTd>
+                            <OneTd>15000원 </OneTd>
+                        </tr>
+                        <tr>
+                            <TwoTd>총 주문금액</TwoTd>
+                            <OneTd>15700 원 (상품가격 15000원 + 배송료 700원)</OneTd>
+                        </tr>
+                        <tr>
+                            <TwoTd>결제 방법</TwoTd>
+                            <OneTd>
+                                kaikas
+                            </OneTd>
+                        </tr>
+                    </tbody>
+                </Table>
+                <H5>주문자 정보</H5>
+                <Table>
+                    <tbody>
+                        <tr>
+                            <TwoTd>주문하신 분</TwoTd>
+                            <TwoTdContent>김서영</TwoTdContent>
+                            <TwoTd>받으시는 분</TwoTd>
+                            <TwoTdContent>김서영</TwoTdContent>
+                        </tr>
+                        <tr>
+                            <TwoTd>배송주소</TwoTd>
+                            <OneTd>
+                                (06565) 서울특별시 사당로 29다길 메롱
+                            </OneTd>
+                        </tr>
+                        <tr>
+                            <TwoTd>휴대번호</TwoTd>
+                            <OneTd>
+                                010-6618-2614
+                            </OneTd>
+                        </tr>
+                        <tr>
+                            <TwoTd>배송메세지</TwoTd>
+                            <OneTd>
+                                출입방법: 자유 출입 가능
+                            </OneTd>
+                        </tr>
+                    </tbody>
+                </Table>
+            </ShipWrap>
+            <Center><Link href="/"><a><SubmitBtn>메인 으로</SubmitBtn></a></Link></Center>
         </>
     )
 }
@@ -123,7 +129,7 @@ const H5 = Styled.h3`
     margin-bottom:15px;
 `
 
-const Center = Styled.td`
+const Center = Styled.div`
     width: 160px;
     display:inline-block;
     margin: 10px 0px 50px 60px;
