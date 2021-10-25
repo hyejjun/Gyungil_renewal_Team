@@ -218,7 +218,7 @@ const NFTComponent = Styled.div`
 
 
 `
-const NFTFourList = Styled.li`
+const NFTFourList = Styled.ul`
     display:inline-block;
     list-style:none;
     margin-right:9px;
