@@ -74,7 +74,7 @@ export const ModalWrapper = Styled.div`
     z-index: 999;
 `
 
-const OrderForm = Styled.div`   
+export const OrderForm = Styled.div`   
     width : 700px;
     height: 550px;
     top: 50%;
@@ -189,7 +189,7 @@ export const OrderContent = Styled.div`
     }
 `
 
-const OrderBtn = Styled.div`
+export const OrderBtn = Styled.div`
     width : 100%;
     height: 120px;
     border-top: 1px solid rgba(20,30,40,0.1);

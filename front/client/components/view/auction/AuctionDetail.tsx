@@ -1,11 +1,18 @@
 import Styled from 'styled-components'
 import { useState } from 'react';
 import { BuyBtnCSS } from '../sell/NFTdetail';
+import JoinAcution from './JoinAuction';
 
 const AuctionDetail = () => {
     const [num, setNum] = useState<number>(5);
     const [price, setPrice] = useState<number>(0.15);
     const [limitTime, setlimitTime] = useState<number>(5);
+
+    const [openAuction, setOpenAuction] = useState<boolean>(false);
+    const auctionOpen = () => {
+        setOpenAuction(prev => !prev)
+    }
+
     return (
         <>
             <AuctionDetailWrap>
@@ -20,9 +27,10 @@ const AuctionDetail = () => {
                     <li>{limitTime}분 전</li>
                 </ul>
                 <BtnWrap>
-                    <BuyBtnCSS className="auctionBtn">
+                    <BuyBtnCSS className="auctionBtn" onClick={auctionOpen}>
                         <button>경매 참여</button>
                     </BuyBtnCSS>
+                    <JoinAcution openAuction={openAuction} auctionOpen={auctionOpen}/>
                 </BtnWrap>
             </AuctionDetailWrap>
         </>
