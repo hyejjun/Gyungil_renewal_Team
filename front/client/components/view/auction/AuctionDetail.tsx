@@ -15,7 +15,7 @@ const AuctionDetail = () => {
                 </ul>
                 <ul className="auctionContent">
                     <li>{num}</li>
-                    <li>{price} ETH</li>
+                    <li>{price}ETH</li>
                     <li>{limitTime}분 전</li>
                 </ul>
             </AuctionDetailWrap>
