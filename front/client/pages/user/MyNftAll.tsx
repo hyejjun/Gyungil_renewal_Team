@@ -1,10 +1,10 @@
 import MyNftList from "../../components/user/MyNftComponent"
 
-const MyNftAll = () => {
+const mynftall = () => {
     return(
         <MyNftList />
         
     )
 }
 
-export default MyNftAll
+export default mynftall

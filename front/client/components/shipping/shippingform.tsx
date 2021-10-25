@@ -165,7 +165,7 @@ const Center = Styled.td`
     margin: 60px auto;
 `
 
-const SubmitBtn = Styled.submit`
+const SubmitBtn = Styled.button`
     width: 160px;
     height:50px;
     color:grey;
