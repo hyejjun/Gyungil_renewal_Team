@@ -75,14 +75,16 @@ const ItemListSell = () => {
         <NFTFourList>
             <NFT>
                 <Link href = "/sell/view">
-                    <NFTImg>
-                        <div><img src={require('../../src/지도.jpg').default} /></div>
-                    </NFTImg>
+                    <a>
+                        <NFTImg>
+                            <div><img src={require('../../src/지도.jpg').default} /></div>
+                        </NFTImg>
+                    </a>
                 </Link>
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
-                        <Link href = "/sell/view"><NFTSubject>{ele.subject}</NFTSubject></Link>     
+                        <Link href = "/sell/view"><AStyle><NFTSubject>{ele.subject}</NFTSubject></AStyle></Link>     
                         {/* 여기 a 빠졌는데 동작되는 이유.. a 추가하면 오류남 */}
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
@@ -317,4 +319,7 @@ const MoreNFT = Styled.div`
         color:white;
         transition:all 1s ease 0;
     }
+`
+const AStyle = Styled.a`
+    text-decoration:none;
 `

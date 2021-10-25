@@ -48,9 +48,9 @@ const MenuBar = () => {
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
-                    {loginState?<li onClick={()=>createBtn()}><Link href="/item/additem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
-                    {loginState?<li><Link href="/user/mynftall"><a>나의NFT</a></Link></li>:<li></li>}
-                    {loginState?<li onClick={()=>{loginClick()}}>LogOut</li>:<li onClick={()=>{loginClick()}}>Login</li>}
+                    {loginState?<LOG onClick={()=>createBtn()}><Link href="/item/additem"><a>발행하기</a></Link></LOG>:<LOG onClick={()=>createBtn()}>발행하기</LOG>}
+                    {loginState?<LOG><Link href="/user/mynftall"><a>나의NFT</a></Link></LOG>:<LOG></LOG>}
+                    {loginState?<LOG onClick={()=>{loginClick()}}>LogOut</LOG>:<LOG onClick={()=>{loginClick()}}>Login</LOG>}
 
                 </ul>
                 
@@ -117,4 +117,7 @@ const MenubarWrapper = Styled.div`
         text-decoration:none;
     }
 
+`
+const LOG = Styled.li`
+    cursor:pointer;
 `
