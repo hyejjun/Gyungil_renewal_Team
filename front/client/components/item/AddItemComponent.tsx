@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import SellType from './SellType';
 import Agreement from './Agreement';
 
-const AddItemComponent = () => {
+const AddItemComponent = ({
+    userId, n, ifSell, extension, 
+    sellToggle, extensionToggle,
+    agreed, agreeed, ifAgreed
+}) => {
 
     // 임의의 값으로 추후 설정요
-    const loggedInUser:string = 'dfassf'
-    const n:number = 10
-
+    useState<boolean>(false);
     return(
         <>
             <TopWrapper>
@@ -39,7 +41,12 @@ const AddItemComponent = () => {
                             <DescText>
                                 판매 유형을 선택해주세요. 
                             </DescText>
-                            <SellType></SellType>
+                            <SellType 
+                                ifSell = {ifSell} 
+                                extension = {extension}
+                                sellToggle = {sellToggle}
+                                extensionToggle = {extensionToggle}
+                            />
                         </SectionWrapper>
                     </SectionWrapper>
                     <SectionWrapper>
@@ -64,7 +71,7 @@ const AddItemComponent = () => {
                         </PreviewWrappper>
                         <PreviewBottomWrapper>
                             <PreviewBottomTitle>NFT 이름</PreviewBottomTitle>
-                            <SmallerTextDesc>Created by {loggedInUser}</SmallerTextDesc>
+                            <SmallerTextDesc>Created by {userId}</SmallerTextDesc>
                             <ProfileImg>{/* 프로필 이미지*/}</ProfileImg>
                         </PreviewBottomWrapper>
                         <DescText>
@@ -72,7 +79,11 @@ const AddItemComponent = () => {
                         </DescText>
                     </RightWrapper>
             </TopWrapper>
-            <Agreement/>
+            <Agreement
+            agreed = {agreed}
+            agreeed = {agreeed}
+            ifAgreed = {ifAgreed}
+            />
             <BottomBtnWrapper>
                 <LeftBtn>취소</LeftBtn>
                 <RightBtn>NFT 발행하기<br/>(오늘{n}개 발행 가능)</RightBtn>

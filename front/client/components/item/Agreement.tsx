@@ -1,14 +1,17 @@
 import Styled from 'styled-components';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Agreement = () => {
+const Agreement = ({agreed, agreeed, ifAgreed}) => {
 
     return(
         <>
             <SectionWrapper>
                 <Line/>
                 <SmallerTitle htmlFor = "agreeOne">
-                <input type="checkbox" id = "agreeOne" /> 
+                <input type="checkbox" 
+                id = "agreeOne" 
+                onChange = {()=>ifAgreed(1)}
+                /> 
                     본인은 NFT 발행을 위해 아래 정보를 수집 및 이용하는 것에 동의합니다.
                 </SmallerTitle>
                 <TextItemWrapper>
@@ -26,7 +29,10 @@ const Agreement = () => {
                     </span>
                 </TextItemWrapper>
                 <SmallerTitle htmlFor = "agreeTwo">
-                    <input type="checkbox" id = "agreeTwo" /> 
+                    <input type="checkbox" 
+                    id = "agreeTwo" 
+                    onChange = {()=>ifAgreed(2)}
+                    /> 
                     본인은 아래 유의사항을 꼼꼼히 확인하였으며, 이를 준수하는데 동의합니다.
                 </SmallerTitle>
                 <TextItemWrapper>
@@ -65,8 +71,8 @@ const SmallerTitle = Styled.label`
     margin-right:20px;
     float:left;
     input {
-    margin-left: 30px;
-    margin-right: 20px;
+        margin-left: 30px;
+        margin-right: 20px;
     }
 `
 
@@ -84,7 +90,6 @@ const TextItemWrapper = Styled.div`
     margin-top: 120px;
     box-sizing: border-box;
     span{
-
         width: 400px;
         display: inline-block;
         color:gray;
@@ -97,5 +102,5 @@ const TextItemWrapper = Styled.div`
         color:gray;
         font-size:16px;
         margin-bottom: 20px;
-}
+    }
 `
