@@ -49,7 +49,8 @@ const MenuBar = () => {
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
                     {loginState?<li onClick={()=>createBtn()}><Link href="/item/addItem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
-                    {loginState?<Link href="/user/mynftall"><a>나의NFT</a></Link>:<li onClick={()=>{loginClick()}}>Login</li>}
+                    {loginState?<li><Link href="/user/mynftall"><a>나의NFT</a></Link></li>:<li></li>}
+                    {loginState?<li onClick={()=>{loginClick()}}>LogOut</li>:<li onClick={()=>{loginClick()}}>Login</li>}
 
                 </ul>
                 
@@ -85,7 +86,7 @@ const MenubarWrapper = Styled.div`
         float:left;
     }
     ul>li, a{
-        margin-right:40px;
+        margin-right:20px;
         color:rgba(0,0,0,.5);;
     }
     ul>li:hover, a:hover{
@@ -96,7 +97,7 @@ const MenubarWrapper = Styled.div`
         border-bottom: 4px solid #1e73fa;
         padding-bottom:31px;
     }
-    ul>li:nth-child(3){
+    ul>li:nth-child(4){
         width:60px;
         text-align:center;
         padding:13px;
@@ -109,7 +110,7 @@ const MenubarWrapper = Styled.div`
         color:#fff;
         margin-left:15px;
     }
-    ul>li:nth-child(3):hover{
+    ul>li:nth-child(4):hover{
         background-color:#1e73fa;
     }
     a{
