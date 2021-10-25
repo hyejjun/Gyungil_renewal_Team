@@ -1,4 +1,4 @@
-import LeftMenubar from "../components/user/LeftMenubar"
+import LeftMenubar from "../../components/user/LeftMenubar"
 const test = () => {
     return(
         <LeftMenubar/>
