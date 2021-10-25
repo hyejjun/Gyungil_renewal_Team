@@ -143,7 +143,7 @@ const SignUp = () => {
                             </table>
                             <div className="devider"></div>
                             <div className="btn3">
-                                <a className="cancelBtn">취소</a>
+                                <a className="cancelBtn" onClick={()=>Router.back()}>취소</a>
                                 <button type="button" className="signUpBtn Btn" onClick={()=>{sucJoin()}}>회원가입</button>
                                 
                             </div>
