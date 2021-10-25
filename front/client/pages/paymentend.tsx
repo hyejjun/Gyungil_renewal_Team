@@ -3,7 +3,7 @@ import PaymentFinish from '../components/shipping/PaymentFinish'
 
 
 
-const paymentend = () => { 
+const PaymentEnd = () => { 
 
   return (
     <div className="container">
@@ -15,8 +15,4 @@ const paymentend = () => {
   );
 }
 
-<<<<<<< HEAD:front/client/pages/PaymentEnd.tsx
-export default paymentend
-=======
 export default PaymentEnd
->>>>>>> c6f5d8e8d72baa740e46e9e736ff142053476ae1:front/client/pages/paymentend.tsx
