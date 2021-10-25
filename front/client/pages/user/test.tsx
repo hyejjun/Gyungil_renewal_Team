@@ -1,7 +1,7 @@
-import LeftMenubar from "../../components/user/LeftMenubar"
+import EditInfo from "../../components/user/EditInfo"
 const test = () => {
     return(
-        <LeftMenubar/>
+        <EditInfo/>
     )
 }
 
