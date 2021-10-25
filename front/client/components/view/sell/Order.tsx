@@ -53,7 +53,6 @@ const Order = (props) => {
                             : <button className="unChecked" onClick={unCheckedClick}>Checkout</button>
 
                         }
-                        
                     </OrderBtn>
                 </OrderForm>
             </ModalWrapper>
@@ -63,7 +62,7 @@ const Order = (props) => {
 
 export default Order
 
-const ModalWrapper = Styled.div`
+export const ModalWrapper = Styled.div`
     box-sizing: border-box;
     display: ${(props) => (props.flag ? 'block' : 'none')};
     position: fixed;
@@ -88,7 +87,7 @@ const OrderForm = Styled.div`
     border-radius: 10px;
 `
 
-const OrderTitle = Styled.div`
+export const OrderTitle = Styled.div`
     width: 100%;
     height: 70px;
     display : flex;
@@ -114,7 +113,7 @@ const OrderTitle = Styled.div`
     }
 `
 
-const OrderContent = Styled.div`
+export const OrderContent = Styled.div`
     width: 100%;
     height: auto;
     padding: 5%;

@@ -45,7 +45,8 @@ const NFTBuy = Styled.div`
 `
 
 export const BuyBtnCSS = Styled.span`
-    width: 60%;
+    width: 246px;
+    height : 60px;
     margin-left: 3%;
     
     & > button {

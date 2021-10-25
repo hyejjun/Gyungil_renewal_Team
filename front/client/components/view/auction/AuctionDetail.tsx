@@ -1,5 +1,6 @@
 import Styled from 'styled-components'
 import { useState } from 'react';
+import { BuyBtnCSS } from '../sell/NFTdetail';
 
 const AuctionDetail = () => {
     const [num, setNum] = useState<number>(5);
@@ -18,6 +19,11 @@ const AuctionDetail = () => {
                     <li>{price}ETH</li>
                     <li>{limitTime}분 전</li>
                 </ul>
+                <BtnWrap>
+                    <BuyBtnCSS className="auctionBtn">
+                        <button>경매 참여</button>
+                    </BuyBtnCSS>
+                </BtnWrap>
             </AuctionDetailWrap>
         </>
     )
@@ -49,5 +55,19 @@ const AuctionDetailWrap = Styled.div`
             font-size : 20px;
             font-weight : bold;
         }
+    }
+`
+
+const BtnWrap = Styled.div`
+    width: 100%;
+    padding: 2% 2% 2% 55%;
+    box-sizing: border-box;
+
+    .auctionBtn{
+
+    }
+
+    .auctionBtn > button{
+        font-size : 20px;
     }
 `
