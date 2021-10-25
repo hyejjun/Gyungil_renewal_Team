@@ -62,9 +62,9 @@ const shippingfrom = () => {
                     <HeadTd>배송방법</HeadTd>
                     <Method>
                         <ul>
-                            <li><input type = "radio" name = "normal" />택배</li>
-                            <li><input type = "radio" name = "normal"/>우체국 택배</li>
-                            <li><input type = "radio" name = "normal"/>편의점 방문 픽업</li>
+                            <li><input type = "radio" name = "normal" id = "firstCheck"/><label htmlFor = "firstCheck">택배</label></li>
+                            <li><input type = "radio" name = "normal" id = "secondCheck"/><label htmlFor = "secondCheck">우체국 택배</label></li>
+                            <li><input type = "radio" name = "normal" id = "thirdCheck"/><label htmlFor = "thirdCheck">편의점 방문 픽업</label></li>
                         </ul>
                     </Method>
                 </tr>
