@@ -38,7 +38,8 @@ const JoinAcution = (props) => {
                 alert('입찰 금액을 확인해주세요')
             } else {
                 setBalanceCheck(prev => !prev)
-                Router.push('/ship')
+                alert('입찰 되었습니다')
+                // 입찰하고 어떻게 처리할지...
             }
         }
     }
@@ -132,8 +133,6 @@ const AuctionForm = Styled.div`
         font-size: 20px;
         font-weight: bold;
     }
-
-
     .joinAuction{
         width: 100%;
         height: auto;
