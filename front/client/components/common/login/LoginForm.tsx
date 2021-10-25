@@ -1,13 +1,53 @@
 import Styled from 'styled-components'
 import ModalBackground from '../ModalBackground'
+import { Button } from "react-bootstrap"
+import { connect } from 'react-redux'
+import React from 'react'
+import Link from 'next/link'
 
-
-
-
+declare global {
+    interface Window {
+        klaytn: any;
+    }
+}
 
 const LoginForm = (props) =>{
+    const [clicked, setClicked] = React.useState(false)
+    const [kaikasAddress, setKaikasAddress] = React.useState('')
+  
+    const kaikasLogin = async () => {
+      await window.klaytn.enable()
+  
+      const klaytnAddress = window.klaytn.selectedAddress
+      setKaikasAddress(klaytnAddress)
 
-    
+  
+      window.klaytn.on('accountsChanged', () => {
+        const klaytnAddress = window.klaytn.selectedAddress
+        console.log('account changed!', klaytnAddress)
+        setKaikasAddress(klaytnAddress)
+
+      })
+  
+  
+    }
+  
+    const onClick = () => {
+      if(!window.klaytn) {
+        return
+      }
+      setClicked(true)
+  
+      kaikasLogin()
+    }
+  
+    if (kaikasAddress.length > 0) {
+      return (<p>kaikas 주소: {kaikasAddress}</p>)
+    }
+  
+  
+
+
     return(
         <ModalBackground>
             <LoginFormWrapper closeLogin={props.closeLogin}>
@@ -15,8 +55,8 @@ const LoginForm = (props) =>{
                 <ul>
                     <li>로그인</li>
                     <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
-                    <li>Kaikas로그인</li>
-                    <li>사용중인 지갑이 없으신가요? <span> kaikas다운로드</span></li>
+                    <li><Button onClick = {onClick}>Kaikas로그인</Button></li>
+                    <li>사용중인 지갑이 없으신가요? <span><Astyle href = "https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi">kaikas다운로드</Astyle></span></li>
                 </ul>
             </LoginFormWrapper>
         </ModalBackground>
@@ -84,4 +124,8 @@ const LoginFormWrapper = Styled.div`
     }
 
 
+`
+
+const Astyle = Styled.a`
+    text-decoration:none;
 `

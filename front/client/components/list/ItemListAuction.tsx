@@ -81,7 +81,7 @@ const ItemListAuction = () => {
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
                     <NFTOneImg>
-                        <img></img>
+                        <img alt="nft사진"></img>
                     </NFTOneImg>
                 </NFTOne>
                 <NFTOne>
