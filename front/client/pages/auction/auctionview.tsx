@@ -1,6 +1,6 @@
-import BackBtn from "../components/common/BackBtn"
-import NFTPic from "../components/view/NFTPic"
-import NFTAuction from "../components/view/auction/NFTAuction"
+import BackBtn from "../../components/common/BackBtn"
+import NFTPic from "../../components/view/NFTPic"
+import NFTAuction from "../../components/view/auction/NFTAuction"
 
 const AuctionView = () =>{
     return(
