@@ -59,7 +59,7 @@ const JoinAcution = (props) => {
                         </div>
                         <div className="orderContentImage">
                             <div>
-                                <img alt="상품 작은 이미지" />
+                                <img alt="상품 이미지" />
                             </div>
                         </div>
                         <div className="orderTotalPrice">
