@@ -74,9 +74,11 @@ const ItemListSell = () => {
     const nameList: JSX.Element[] = Arr.map((ele) =>
         <NFTFourList>
             <NFT>
-                <NFTImg>
-                    <div><img src={require('../../src/지도.jpg').default} /></div>
-                </NFTImg>
+                <Link href = "/sell/view">
+                    <NFTImg>
+                        <div><img src={require('../../src/지도.jpg').default} /></div>
+                    </NFTImg>
+                </Link>
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
@@ -146,7 +148,6 @@ const ItemListSell = () => {
                 cnt0++;
                 setCount(cnt0)
                 if (cnt0 > 50) {
-
                     return setCount(50)
                 }
 
@@ -176,7 +177,6 @@ const ItemListSell = () => {
                     <div>
                         <ul>
                             {nameList}
-
                         </ul>
                     </div>
                 </div>
@@ -244,6 +244,7 @@ const NFTImg = Styled.div`
     background:#bbb;
     width:200px;
     height:200px;
+    cursor:pointer;
 `
 
 const NFTOne = Styled.ul`
@@ -310,6 +311,7 @@ const MoreNFT = Styled.div`
     margin:0 auto;
     margin-bottom:120px;
     margin-top:50px;
+    cursor:pointer;
     &:hover{
         background:#bbb;
         color:white;

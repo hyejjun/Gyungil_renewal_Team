@@ -112,6 +112,7 @@ const MyProfile = Styled.div`
     padding:10px;
     border-box:box-sizing;
     margin:0 auto;
+    cursor:pointer;
 
 `
 const MyNft = Styled.div`
@@ -142,9 +143,10 @@ float:left;
 `
 const Menu1 = Styled.div`
     font-size:20px;
-&:hover{
-    color:#055fec;
-}
+    cursor:pointer;
+    &:hover{
+        color:#055fec;
+    }
 `
 
 const SelectBoxHeader = Styled.div`

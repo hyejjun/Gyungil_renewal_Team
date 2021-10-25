@@ -23,12 +23,12 @@ const MyNFTManage = () => {
                     <div>           
                         <span>
                             <ul>
-                                <li>NFT 삭제</li>
-                                <li>해당 NFT를 삭제할 수 있습니다. <br/> 삭제 요청이 완료되면 취소할 수 없으니 주의하기 바랍니다.</li>
+                                <li>NFT 판매</li>
+                                <li>해당 NFT를 판매할 수 있습니다. <br/> 판메 요청이 승인되면 거래가 시작되오니 주의하기 바랍니다.</li>
                             </ul>
                         </span>
                         <span>
-                            <button>삭제하기</button>
+                            <button>판매하기</button>
                         </span>
                     </div>
                 </MyNFTDelOrSell>         

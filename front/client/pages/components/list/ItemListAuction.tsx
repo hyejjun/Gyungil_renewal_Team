@@ -65,9 +65,11 @@ const ItemListAuction = () => {
     const nameList: JSX.Element[] = Arr.map((ele) =>
         <NFTFourList>
             <NFT>
-                <NFTImg>
-                    <div><img src={require('../../src/지도.jpg').default} /></div>
-                </NFTImg>
+                <Link href = "/auction/auctionview">
+                    <NFTImg>
+                        <div><img src={require('../../src/지도.jpg').default} /></div>
+                    </NFTImg>
+                </Link>
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
@@ -233,6 +235,7 @@ const NFTImg = Styled.div`
     background:#bbb;
     width:200px;
     height:200px;
+    cursor:pointer;
 `
 
 const NFTOne = Styled.ul`
@@ -299,6 +302,7 @@ const MoreNFT = Styled.div`
     margin:0 auto;
     margin-bottom:120px;
     margin-top:50px;
+    cursor:pointer;
     &:hover{
         background:#bbb;
         color:white;
