@@ -33,7 +33,7 @@ const AddItemComponent = ({
     return(
         <>
             {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
-            {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}
+            {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}    
             <TopWrapper>
                 <LeftWrapper> 
                     <BigTitle>
@@ -89,21 +89,21 @@ const AddItemComponent = ({
                     </SectionWrapper>
                 </LeftWrapper>
                 <RightWrapper>  
-                        <SmallTitle>
-                            미리보기
-                        </SmallTitle>
-                        <PreviewWrappper>
-                            <PreviewContent/>
-                        </PreviewWrappper>
-                        <PreviewBottomWrapper>
-                            <PreviewBottomTitle>NFT 이름</PreviewBottomTitle>
-                            <SmallerTextDesc>Created by {userId}</SmallerTextDesc>
-                            <ProfileImg>{/* 프로필 이미지*/}</ProfileImg>
-                        </PreviewBottomWrapper>
-                        <DescText>
-                            * 영상을 업로드한 경우, 이미지에 마우스를 가져다 대면 영상 미리보기로 변경됩니다.
-                        </DescText>
-                    </RightWrapper>
+                    <SmallTitle>
+                        미리보기
+                    </SmallTitle>
+                    <PreviewWrappper>
+                        <PreviewContent/>
+                    </PreviewWrappper>
+                    <PreviewBottomWrapper>
+                        <PreviewBottomTitle>NFT 이름</PreviewBottomTitle>
+                        <SmallerTextDesc>Created by {userId}</SmallerTextDesc>
+                        <ProfileImg></ProfileImg>
+                    </PreviewBottomWrapper>
+                    <DescText>
+                        * 영상을 업로드한 경우, 이미지에 마우스를 가져다 대면 영상 미리보기로 변경됩니다.
+                    </DescText>
+                </RightWrapper>
             </TopWrapper>
             <Agreement
             ifAgreed = {ifAgreed}
@@ -112,7 +112,8 @@ const AddItemComponent = ({
             
                 <LeftBtn onClick={()=>{cancelNftCh()}}>취소</LeftBtn>
                 <RightBtn onClick={()=>{createNftCh()}}>NFT 발행하기<br/>(오늘{n}개 발행 가능)</RightBtn>
-            </BottomBtnWrapper>           
+            </BottomBtnWrapper>       
+
         </>
     )
 }
