@@ -3,6 +3,7 @@ import Styled from 'styled-components';
 import Router from 'next/router';
 import React,{useState} from 'react';
 import { DonutLargeOutlined } from '@mui/icons-material';
+import ModalBackground from './common/ModalBackground';
 
 
 
@@ -11,14 +12,16 @@ const RequireLogin = (props) => {
 
 
     return(
-        <RequireLoginWrapper flag={props.flag}>
-            <div><p>로그인이 필요합니다.</p></div>
-            <div><p>계속하려면 로그인을 해주세요</p></div>
-            <div>
-                <span onClick={props.openBtn}>취소</span>
-                <span onClick={props.loginOpenBtn}>로그인</span>
-            </div>
-        </RequireLoginWrapper>
+        <ModalBackground>
+            <RequireLoginWrapper flag={props.flag}>
+                <div><p>로그인이 필요합니다.</p></div>
+                <div><p>계속하려면 로그인을 해주세요</p></div>
+                <div>
+                    <span onClick={props.openBtn}>취소</span>
+                    <span onClick={props.loginOpenBtn}>로그인</span>
+                </div>
+            </RequireLoginWrapper>
+        </ModalBackground>
     )
 }
 

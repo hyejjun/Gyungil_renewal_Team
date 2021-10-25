@@ -8,6 +8,7 @@ import NeedCert from './login/NeedCert';
 import Link from 'next/link';
 import AddItemComponent from '../item/AddItemComponent';
 
+
 const MenuBar = () => {
     const [loginState,setLoginState] = useState<boolean>(false)
     const [flag,setFlag] = useState<boolean>(false)
@@ -30,45 +31,36 @@ const MenuBar = () => {
         setLogin(prev=>!prev)
     }
 
-
     return (
         <>            
                 {
                     flag
-                    ?
-                    <ModalBackground>                     
+                    ?                 
                         <RequireLogin flag={flag} openBtn={requireOpenBtn} loginOpenBtn={loginOpenBtn}/>
-                        {/* <LoginForm/> */}
-                        {/* <NeedCert/> */}     
-                        
-                    </ModalBackground>
-                    
-                    // :<></>
+                        //{/* <LoginForm/> */}
+                        //{/* <NeedCert/> */}     
                     :   Login
                         ?
-                        <ModalBackground>
-                            <LoginForm closeLogin={Login} closeLoginBtn={closeLoginForm} />
-                        </ModalBackground>
-                        
+                            <LoginForm closeLogin={Login} closeLoginBtn={closeLoginForm} />          
                         :<></>
-                    
                 }
             <MenubarWrapper>
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
-                    {/* <li onClick={()=>createBtn()}>발행하기</li> */}
-                    {loginState?<li onClick={()=>createBtn()}><Link href="/item/additem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
-                    {loginState?<li><Link href="/user/mynftall"><a>나의 NFT</a></Link></li>:<li></li>}
-                    <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
+                    {loginState?<li onClick={()=>createBtn()}><Link href="/item/addItem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
+                    {loginState?<Link href="/user/mynftall"><a>나의NFT</a></Link>:<li onClick={()=>{loginClick()}}>Login</li>}
+
                 </ul>
                 
             </MenubarWrapper>
+
         </>
     )
 }
 
 export default MenuBar
+
 
 const MenubarWrapper = Styled.div`
     display:none;
@@ -80,9 +72,10 @@ const MenubarWrapper = Styled.div`
     justify-content:space-around;
     align-items: stretch;
     border-bottom:2px solid rgba(20,30,40,.08);
-    font-size:17px;
+    font-size:16px;
     font-weight:550;
     line-height:30px;
+
     span{
         padding-top:14px;
         margin-right:400px;
@@ -91,23 +84,22 @@ const MenubarWrapper = Styled.div`
         list-style:none;
         float:left;
     }
-    ul>li{
+    ul>li, a{
         margin-right:40px;
-        color:#6c757d;
+        color:rgba(0,0,0,.5);;
     }
-    ul>li:hover{
+    ul>li:hover, a:hover{
         color:#343a40;
     }
-    ul>li:nth-child(1) a{
-        color:#6c757d;
+    ul a:hover{
+        color:#1e73fa;
+        border-bottom: 4px solid #1e73fa;
+        padding-bottom:31px;
     }
-    ul>li:nth-child(1) a:hover{
-        color:#343a40;
-    }
-    ul>li:nth-child(4){
+    ul>li:nth-child(3){
         width:60px;
         text-align:center;
-        padding:11px;
+        padding:13px;
         padding-top:7px;
         margin-bottom:3px;
         line-height:15px;
@@ -115,8 +107,9 @@ const MenubarWrapper = Styled.div`
         background-color:#007bff;
         border-radius:5%;
         color:#fff;
+        margin-left:15px;
     }
-    ul>li:nth-child(4):hover{
+    ul>li:nth-child(3):hover{
         background-color:#1e73fa;
     }
     a{
