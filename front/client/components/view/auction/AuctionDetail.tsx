@@ -1,10 +1,18 @@
 import Styled from 'styled-components'
 import { useState } from 'react';
+import { BuyBtnCSS } from '../sell/NFTdetail';
+import JoinAcution from './JoinAuction';
 
 const AuctionDetail = () => {
     const [num, setNum] = useState<number>(5);
     const [price, setPrice] = useState<number>(0.15);
     const [limitTime, setlimitTime] = useState<number>(5);
+
+    const [openAuction, setOpenAuction] = useState<boolean>(false);
+    const auctionOpen = () => {
+        setOpenAuction(prev => !prev)
+    }
+
     return (
         <>
             <AuctionDetailWrap>
@@ -18,6 +26,12 @@ const AuctionDetail = () => {
                     <li>{price}ETH</li>
                     <li>{limitTime}분 전</li>
                 </ul>
+                <BtnWrap>
+                    <BuyBtnCSS className="auctionBtn" onClick={auctionOpen}>
+                        <button>경매 참여</button>
+                    </BuyBtnCSS>
+                    <JoinAcution openAuction={openAuction} auctionOpen={auctionOpen}/>
+                </BtnWrap>
             </AuctionDetailWrap>
         </>
     )
@@ -49,5 +63,19 @@ const AuctionDetailWrap = Styled.div`
             font-size : 20px;
             font-weight : bold;
         }
+    }
+`
+
+const BtnWrap = Styled.div`
+    width: 100%;
+    padding: 2% 2% 2% 55%;
+    box-sizing: border-box;
+
+    .auctionBtn{
+
+    }
+
+    .auctionBtn > button{
+        font-size : 20px;
     }
 `
