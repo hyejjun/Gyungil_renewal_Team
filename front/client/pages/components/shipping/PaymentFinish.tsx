@@ -134,7 +134,8 @@ const SubmitBtn = Styled.button`
     height:50px;
     color:grey;
     font-size:18px;
-    display:inline-block
+    display:inline-block;
+    cursor:pointer;
     &:hover{
         color:black;
     }
