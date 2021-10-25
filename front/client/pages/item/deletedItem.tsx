@@ -9,5 +9,5 @@ const DeletedItem = () =>{
         <DeletedItemComponent/>
     )
 }
-// BigTitle, DescText, Button import
+
 export default DeletedItem
