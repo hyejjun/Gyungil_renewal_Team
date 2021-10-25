@@ -72,6 +72,7 @@ const ItemListSell = () => {
 
 
     const nameList: JSX.Element[] = Arr.map((ele) =>
+    <React.Fragment key={ele.id}>
         <NFTFourList>
             <NFT>
                 <Link href = "/sell/view">
@@ -103,34 +104,35 @@ const ItemListSell = () => {
                 </NFTOne>
             </NFT>
         </NFTFourList>
+    </React.Fragment>
     );
 
     const handleClick = (): void => {
         setArr(
             Arr.concat(        
                 {
-                    id: 7,
+                    id: 9,
                     subject: 'adsg',
                     artist: 'daminal',
                     Like: 5,
                     alert: '신고하기'
                 },
                 {
-                    id: 8,
+                    id: 10,
                     subject: 'asdgsdg',
                     artist: 'daminal',
                     Like: 5,
                     alert: '신고하기'
                 },
                 {
-                    id: 7,
+                    id: 11,
                     subject: 'adsg',
                     artist: 'daminal',
                     Like: 5,
                     alert: '신고하기'
                 },
                 {
-                    id: 8,
+                    id: 12,
                     subject: 'asdgsdg',
                     artist: 'daminal',
                     Like: 5,
@@ -224,8 +226,6 @@ const NFTComponent = Styled.div`
     background:#FAFAFA;
     padding:0px 50px;
     box-sizing:border-box;
-
-
 `
 const NFTFourList = Styled.ul`
     display:inline-block;
