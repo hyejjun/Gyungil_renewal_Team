@@ -3,6 +3,8 @@ import Styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close';
 import Link from 'next/link'
 import { ModalWrapper, OrderTitle, OrderContent, OrderForm, OrderBtn } from "../sell/Order";
+import useInput from "../../../hooks/useInput";
+
 
 const JoinAcution = (props) => {
     const [checked, setChecked] = useState<boolean>(false);                 // 동의 확인
@@ -21,6 +23,10 @@ const JoinAcution = (props) => {
     const lowBalance = () => {
         alert('잔액을 확인해주세요')
     }
+
+    const auctionPrice = useInput('')
+
+    console.log(auctionPrice);
 
     return (
         <>
@@ -51,7 +57,7 @@ const JoinAcution = (props) => {
                         <div className="joinAuction">
                             <div>입찰가</div>
                             <div>
-                                <input type="number" min={0}/> ETH
+                                <input type="text" min={0} {...auctionPrice}/> ETH
                             </div>
                         </div>
                         <div className="orderAgreement">
