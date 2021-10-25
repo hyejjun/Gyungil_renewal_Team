@@ -1,32 +1,35 @@
 import Link from 'next/link';
 import Styled from 'styled-components';
 
+
+
+
 const Footer = () => {
     return(
         <FooterWrapper>
             <div id="topInFooter">
                 <span>Azit Gallery</span>
                 <span>
-                    <p><Link href="/feedback"><a>Send FeedBack</a></Link></p>
-                    <p><Link href="/"><a>contect us</a></Link></p>
-                    <p><Link href="/"><a>english</a></Link></p>
+                    <p><Link href="/feedback"><a>의견 남기기</a></Link></p>
+                    <p><Link href="/"><a>문의하기</a></Link></p>
+                    <p><Link href="/"><a>한국어</a></Link></p>
                 </span>
             </div>
             <div>
                 <div>
                     <ul>
-                        <li>Copyright © 2021 GroundX. All rights reserved.</li>
-                        <li>Privacy Policy</li>
-                        <li>Terms of Service</li>
-                        <li>Operation Policy</li>
+                        <li>Copyright © 2021 GroundX. All rights reserved&nbsp;&nbsp;|</li>
+                        <li>&nbsp;&nbsp;개인정보처리방침&nbsp;&nbsp;|</li>
+                        <li>&nbsp;&nbsp;서비스 이용 약관&nbsp;&nbsp;|</li>
+                        <li>&nbsp;&nbsp;서비스 운영정책</li>
                     </ul>
                 </div>
                 <br/>
                 <div>
                     <ul>
-                        <li>GroundX Company Registration Number : 356-88-00968</li>
-                        <li>CEO : Jaesun Han</li>
-                        <li>11 Teheran-ro 98-gil, Gangnam-gu, Seoul, Republic of Korea</li>
+                        <li>그라운드엑스 사업자등록번호 : 356-88-00968  &nbsp;&nbsp;| </li>
+                        <li> &nbsp; &nbsp;대표이사 : 한재선 &nbsp;| </li>
+                        <li>&nbsp;&nbsp;서울특별시 강남구 테헤란로98길(대치동) 11 EG빌딩</li>
                     </ul>
 
                 </div>
@@ -43,7 +46,8 @@ const FooterWrapper = Styled.div`
     width:100%;
     height:240px;
     background-color:#141e28;
-    box-sizing:border-box;   
+    box-sizing:border-box;
+    cursor:pointer;
     a,li, span {
         color:#fff;
     }
@@ -62,19 +66,38 @@ const FooterWrapper = Styled.div`
     #topInFooter>span:nth-child(2)>p a{
         margin-right:30px;
         text-decoration:none;
-        font-size:20px;
         background-color:#141e28;
+        border: 1px solid #aab4be;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 10px 24px;
+        height: 48px;
+        font-size: 16px;
+        line-height: 28px;
+        margin-right: 16px;
+        display: inline-block;
+        font-weight: 400;
+    }
+    #topInFooter>span:nth-child(2)>p a:hover{
+        background-color:rgba(255, 255, 255,0.22);
+        color:#ffffff;
+
+
     }
     #topInFooter>span:nth-child(2)>p{   
         display:inline;
     }
     div:nth-child(2){
-        margin-left:40px;
-        margin-top:60px
+        margin-left:75px;
+        margin-top:40px;
     }
     div:nth-child(2)>div>ul>li{
         color:rgba(45,55,65,80);
         float:left;
+        color: hsla(0,0%,100%,.4);
+        font-size: 14px;
+        font-weight:400;
+        line-height: 22px;
     }
 
 `

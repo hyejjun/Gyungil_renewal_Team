@@ -3,23 +3,6 @@ import React,{useEffect} from 'react'
 import Link from 'next/link'
 
 const User = () => {
-    useEffect(() => {
-        document.body.style.cssText = `
-          position: fixed; 
-          top: -${window.scrollY}px;
-          overflow-y: scroll;
-          width: 100%;`;
-        return () => {
-          const scrollY = document.body.style.top;
-          document.body.style.cssText = '';
-          window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
-        };
-      }, []);
-    
-    
-    const ApplyBtn = () => {
-        console.log('test')
-    }
     return(
         <UserWrapper>
             <div>
@@ -38,8 +21,9 @@ const User = () => {
                         <p>이메일주소</p>
                         <p>{/*email account*/}algml9603@mgail.com</p>
                     </li>
-                    <li onClick={()=>{ApplyBtn()}}><Link href="/"><a>판매 신청</a></Link></li>
+                    <li><Link href="/"><a>판매 신청</a></Link></li>
                     <li>
+                        <span><Link href="/user/edit"><a>프로필 편집</a></Link></span>
                         <span>회원탈퇴</span>
                     </li>
                 </ul>
@@ -113,7 +97,7 @@ const UserWrapper = Styled.div`
         margin-bottom:40px; 
     }
 
-    li:nth-child(5) span{
+    li:nth-child(5) span, li:nth-child(5) a{
         width:100px;
         height:40px;
         padding:10px;
