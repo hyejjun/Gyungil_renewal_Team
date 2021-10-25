@@ -6,6 +6,12 @@ const Modal = ({children}) => {
     return(
             <CancelNftWrapper>
                 {children}
+                {/* <div>NFT 발행을 취소할까요?</div>
+                <div>입력한 정보는 따로 저장되지 않습니다.</div>
+                <div>
+                    <span>아니요</span>
+                    <span>예</span>
+                </div> */}
             </CancelNftWrapper>
     )
 }
@@ -40,7 +46,9 @@ const CancelNftWrapper = Styled.div`
         font-weight:520;
     }
     div:nth-child(3)>span{
-        padding:10px 10px;
+        width:110px;
+        height:37px;
+        padding:8px;
         vertical-align:middle;
         font-weight: 400;
         font-size: 1rem;
@@ -51,6 +59,7 @@ const CancelNftWrapper = Styled.div`
     div:nth-child(3)>span:nth-child(1){
         background-color: #e1f0ff;
         color: #1e73fa;
+        margin-right:5px;
     }
     div:nth-child(3)>span:nth-child(2){
         color: #fff;
