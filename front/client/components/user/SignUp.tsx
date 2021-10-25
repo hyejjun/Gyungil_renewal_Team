@@ -2,8 +2,11 @@
 
 import Styled from 'styled-components'
 import Link from 'next/link'
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import useInput from '../../hooks/useInput'
+import SucJoin from './SucJoin'
+import { setUncaughtExceptionCaptureCallback } from 'process'
+import Router from 'next/router'
 
 const SignUp = () => {
 
@@ -15,11 +18,14 @@ const SignUp = () => {
     const nickName = useInput('')
     const email = useInput('')
 
-
-   
+    const [joinState,setJoinState] = useState<boolean>(false)
+    const sucJoin = () => {
+        setJoinState(prev=>!prev)        
+    }
 
     return (
         <>
+        {joinState?<SucJoin/>:<></>}
             <Css>
                 <div className="layout">
                     <div className="signUpContainer">
@@ -138,7 +144,8 @@ const SignUp = () => {
                             <div className="devider"></div>
                             <div className="btn3">
                                 <a className="cancelBtn">취소</a>
-                                <button type="button" className="signUpBtn Btn">회원가입</button>
+                                <button type="button" className="signUpBtn Btn" onClick={()=>{sucJoin()}}>회원가입</button>
+                                
                             </div>
                         </form>
                     </div>
