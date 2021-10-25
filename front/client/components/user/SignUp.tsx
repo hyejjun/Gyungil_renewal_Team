@@ -3,21 +3,45 @@
 import Styled from 'styled-components'
 import Link from 'next/link'
 import { useState } from 'react'
-import useInput from '../hooks/useInput'
+import useInput from '../../hooks/useInput'
 
 const SignUp = () => {
 
-    let [nickName, setNickName] = useState<string>('');
-    let [wallet, setWallet] = useState<string>('');
-    let [email, setEmail] = useState<string>('');
-
+    const [nickNameChk, setNickNameChk] = useState<string>('');
+    const [emailChk, setEmailChk] = useState<string>('');
+    const [nickNameErr, setNickNameErr] = useState<boolean>(false);
     
     const nickName = useInput('')
-    const wallet = useInput('')
     const email = useInput('')
 
 
-    console.log(nickName);
+    const change = e => {
+        const val = e.target.value
+        setNickNameChk(val)
+
+        
+    }
+
+    const handleNickNameChk = e => {
+        if(nickNameChk === ''){
+            setNickNameErr(false)           
+        }
+    }
+
+    const change2 = e => {
+        const val = e.target.value
+        setEmailChk(val);
+    } 
+
+
+
+
+
+    const check = () =>{
+        if(nickNameChk === ''){
+            setNickNameErr(false)           
+        }
+    }
 
 
 
@@ -74,7 +98,7 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td className="textLeft">
-                                            <input type="text" className="InputBox" {...nickName} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요." />
+                                            <input type="text" className="InputBox" value={nickNameChk} name="nickName" id="nickName" onMouseOut={handleNickNameChk} onChange={change} placeholder="닉네임을 입력해주세요." />
                                         </td>
                                     </tr>
 
@@ -103,7 +127,7 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" className="InputBox" {...email} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            <input type="text" className="InputBox" value={emailChk} name="email" onChange={change2} placeholder="이메일 주소를 입력해주세요." />
                                         </td>
                                     </tr>
                                     <tr>
@@ -331,6 +355,10 @@ svg:hover{
 .imageUp{
     width: 100%;
     display:none;
+}
+
+.error{
+    color:red;
 }
 
 
