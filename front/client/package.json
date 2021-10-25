@@ -25,9 +25,11 @@
     "next": "^11.1.2",
     "next-compose-plugins": "^2.2.1",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0",
     "react-daum-postcode": "^3.0.0",
     "react-dom": "^17.0.2",
     "react-lock-scroll": "^0.1.8",
+    "react-redux": "^7.2.5",
     "styled-components": "^5.3.3",
     "web3": "^1.6.0"
   },
