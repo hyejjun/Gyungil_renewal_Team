@@ -16,9 +16,7 @@ const SignUp = () => {
     const email = useInput('')
 
 
-    console.log(nickName);
-
-
+   
 
     return (
         <>
@@ -37,8 +35,8 @@ const SignUp = () => {
                             viewBox="0 0 120 120" 
                             fill="none" 
                             xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="60" cy="60" r="60" fill="white" fill-opacity="0.8" className="circle"></circle>
-                                <path fill-rule="evenodd" clip-rule="evenodd" 
+                                <circle cx="60" cy="60" r="60" fill="white" fillOpacity="0.8" className="circle"></circle>
+                                <path fillRule="evenodd" clipRule="evenodd" 
                                 d="M57 50C56.6656 50 56.3534 50.1671 56.1679 50.4453L54.4648 
                                 53H51C50.2044 53 49.4413 53.3161 48.8787 53.8787C48.3161 
                                 54.4413 48 55.2044 48 56V67C48 67.7957 48.3161 68.5587 48.8787 
@@ -54,11 +52,11 @@ const SignUp = () => {
                             </div>
                             </div>
 
-                            <table width="100%;" className="marginTop">
+                            <table className="marginTop width100">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <table width="100%;">
+                                            <table className="width100">
                                                 <tbody>
                                                     <tr>
                                                         <td className="textLeft pageSubtitleBold">닉네임</td>
@@ -69,7 +67,7 @@ const SignUp = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="10px;"></td>
+                                        <td className="height10"></td>
                                     </tr>
                                     <tr>
                                         <td className="textLeft">
@@ -78,13 +76,13 @@ const SignUp = () => {
                                     </tr>
 
                                     <tr>
-                                        <td height="42px;"></td>
+                                        <td className="height42"></td>
                                     </tr>
                                     <tr>
                                         <td className="textLeft pageSubtitleBold">지갑 주소</td>
                                     </tr>
                                     <tr>
-                                        <td height="10px;"></td>
+                                        <td className="height10"></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -92,13 +90,13 @@ const SignUp = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="42px;"></td>
+                                        <td className="height42"></td>
                                     </tr>
                                     <tr>
                                         <td className="textLeft pageSubtitleBold">이메일 주소</td>
                                     </tr>
                                     <tr>
-                                        <td height="10px;"></td>
+                                        <td className="height10"></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -106,7 +104,7 @@ const SignUp = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td height="48px;"></td>
+                                        <td className="height42"></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -330,6 +328,22 @@ svg:hover{
 .imageUp{
     width: 100%;
     display:none;
+}
+
+.error{
+    color:red;
+}
+
+.height42{
+    height:42px;
+}
+
+.height10{
+    height:10px;
+}
+
+.width100{
+    width:100%;
 }
 
 
