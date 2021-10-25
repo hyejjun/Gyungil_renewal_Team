@@ -59,6 +59,7 @@ const MenuBar = () => {
                     <li><Link href="/"><a>탐색하기</a></Link></li>
                     {/* <li onClick={()=>createBtn()}>발행하기</li> */}
                     {loginState?<li onClick={()=>createBtn()}><Link href="/item/addItem"><a>발행하기</a></Link></li>:<li onClick={()=>createBtn()}>발행하기</li>}
+                    {loginState?<li><Link href="/user/MyNftAll"><a>나의 NFT</a></Link></li>:<li></li>}
                     <li onClick={()=>loginClick()}>{loginState?"Logout":"Login"}</li>
                 </ul>
                 
@@ -103,7 +104,7 @@ const MenubarWrapper = Styled.div`
     ul>li:nth-child(1) a:hover{
         color:#343a40;
     }
-    ul>li:nth-child(3){
+    ul>li:nth-child(4){
         width:60px;
         text-align:center;
         padding:11px;
@@ -115,7 +116,7 @@ const MenubarWrapper = Styled.div`
         border-radius:5%;
         color:#fff;
     }
-    ul>li:nth-child(3):hover{
+    ul>li:nth-child(4):hover{
         background-color:#1e73fa;
     }
     a{
