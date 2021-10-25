@@ -135,7 +135,7 @@ const Address = Styled.td`
 const AddressFind = Styled.button`
     margin-left:20px;
     color:grey;
-
+    cursor:pointer;
     padding:6px;
     box-sizing:border-box;
     height:35px;
@@ -165,8 +165,8 @@ const SubmitBtn = Styled.button`
     height:50px;
     color:grey;
     font-size:18px;
-    display:inline-block
-    margin:40px auto;
+    display:inline-block;
+    cursor:pointer;
     &:hover{
         color:black;
     }
