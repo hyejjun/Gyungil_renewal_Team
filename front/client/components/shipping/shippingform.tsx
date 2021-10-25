@@ -4,7 +4,7 @@ import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import Link from 'next/link';
 
-const shippingfrom = () => {
+const Shippingfrom = () => {
 
     const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
     const [address,setaddress] = useState<string>(' ')
@@ -86,7 +86,7 @@ const shippingfrom = () => {
     )
 }
 
-export default shippingfrom
+export default Shippingfrom
 
 const Table = Styled.table`
 

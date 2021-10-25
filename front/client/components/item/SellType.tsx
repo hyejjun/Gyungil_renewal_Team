@@ -1,17 +1,7 @@
 import Styled from 'styled-components';
 import React, { useState } from "react";
 
-const SellType = () =>{
-    const [ifSell, setifSell] = useState<boolean>(true);
-    const [extension, setExtension] = useState<boolean>(true);
-
-    const sellToggle = (value:boolean) => {
-        setifSell(value)
-    }
-
-    const extensionToggle = (value:boolean) => {
-        setExtension(value)
-    }
+const SellType = ({ifSell, extension, sellToggle, extensionToggle}) =>{
 
     const ChkSell = () => {
         return(
@@ -47,20 +37,20 @@ const SellType = () =>{
                     <SmallTitle>경매 종료 시간</SmallTitle>
                     <input type = "time"></input>
                     <Desc>새로운 경매 입찰자가 생기면 경매 종료 시간을 5분 연장할 수 있습니다.</Desc>
-                        </SellAucWrapper> 
+                </SellAucWrapper> 
 
-                    <RadioWrapper>
+                <RadioWrapper>
                     <input type = "radio" id = "extOn" value="1"
                     onChange = {()=>extensionToggle(true)} 
                     checked = {extension == true ? true : false}
                     />
-                     <label htmlFor = "extOn">연장</label>
-                     <input type = "radio" id = "extOff" value="1"
+                    <label htmlFor = "extOn">연장</label>
+                    <input type = "radio" id = "extOff" value="1"
                     onChange = {()=>extensionToggle(false)} 
                     checked = {extension == true ? false : true}
                     />
-                     <label htmlFor = "extOff">연장하지 않음</label>
-                     </RadioWrapper>
+                    <label htmlFor = "extOff">연장하지 않음</label>
+                </RadioWrapper>
             </>
             }
         </>
@@ -98,7 +88,6 @@ const Desc = Styled.div`
     width: 500px;
     margin-top: 10px;
     margin-bottom: 10px;
-
 `
 
 const SmallTitle = Styled.div`
