@@ -19,14 +19,19 @@ const shippingfrom = () => {
         setIsPopupOpen(false)
     }
 
+    const ComfirmContent = () => {
+
+
+    }
+
     return (
         <>  
         <ShipWrap>
             <HeadLine>Recipient Info</HeadLine>
             <Table>
                 <tr>
-                    <HeadTd>주문인</HeadTd>
-                    <ContentTd><InputName type = "text" /></ContentTd>
+                    <HeadTd id = "Person">주문인</HeadTd>
+                    <ContentTd><label htmlFor = "Person"><InputName type = "text"/></label></ContentTd>
                 </tr>
                 <tr>
                     <HeadTd>수령인</HeadTd>
@@ -73,7 +78,7 @@ const shippingfrom = () => {
                     <ContentTd><Memo type = "text" placeholder = "배송 시 요청사항을 입력해주세요"/></ContentTd>
                 </tr>
                 <tr>
-                    <Center><Link href = "/PaymentEnd"><a><SubmitBtn>주문 완료</SubmitBtn></a></Link></Center>
+                    <Center><Link href = "/PaymentEnd"><a><SubmitBtn onClick = {ComfirmContent}>주문 완료</SubmitBtn></a></Link></Center>
                 </tr>
             </Table>
         </ShipWrap>
@@ -160,7 +165,7 @@ const Center = Styled.td`
     margin: 60px auto;
 `
 
-const SubmitBtn = Styled.button`
+const SubmitBtn = Styled.submit`
     width: 160px;
     height:50px;
     color:grey;
