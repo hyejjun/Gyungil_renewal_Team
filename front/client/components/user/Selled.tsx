@@ -52,7 +52,7 @@ const Selled = () => {
                 <Line></Line>
                 <NFTOne>
                     <NFTOneList>
-                        <Link href = "/sell/view"><NFTSubject>{ele.subject}</NFTSubject></Link>     
+                        <NFTSubject>{ele.subject}</NFTSubject>
                         {/* 여기 a 빠졌는데 동작되는 이유.. a 추가하면 오류남 */}
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
@@ -104,6 +104,8 @@ const NFTImg = Styled.div`
     background:#bbb;
     width:200px;
     height:200px;
+    cursor:pointer;
+    
 `
 
 const NFTOne = Styled.ul`

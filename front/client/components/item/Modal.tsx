@@ -45,7 +45,7 @@ const CancelNftWrapper = Styled.div`
         font-weight: 400;
         font-size: 1rem;
         line-height: 1.75;
-        border-radius: .25rem;
+        border-radius: .25rem;  
         box-sizing: border-box;
     }
     div:nth-child(3)>span:nth-child(1){

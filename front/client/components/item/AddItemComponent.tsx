@@ -10,7 +10,7 @@ const AddItemComponent = () => {
 
     return(
         <>
-        <TopWrapper>
+            <TopWrapper>
                 <LeftWrapper> 
                     <BigTitle>
                         새로운 NFT 발행하기
@@ -55,21 +55,21 @@ const AddItemComponent = () => {
                     </SectionWrapper>
                 </LeftWrapper>
                 <RightWrapper>  
-                    <SmallTitle>
-                        미리보기
-                    </SmallTitle>
-                    <PreviewWrappper>
-                        <PreviewContent/>
-                    </PreviewWrappper>
-                    <PreviewBottomWrapper>
-                        <PreviewBottomTitle>NFT 이름</PreviewBottomTitle>
-                        <SmallerTextDesc>Created by {loggedInUser}</SmallerTextDesc>
-                        <ProfileImg>{/* 프로필 이미지*/}</ProfileImg>
-                    </PreviewBottomWrapper>
-                    <DescText>
-                        * 영상을 업로드한 경우, 이미지에 마우스를 가져다 대면 영상 미리보기로 변경됩니다.
-                    </DescText>
-                </RightWrapper>
+                        <SmallTitle>
+                            미리보기
+                        </SmallTitle>
+                        <PreviewWrappper>
+                            <PreviewContent/>
+                        </PreviewWrappper>
+                        <PreviewBottomWrapper>
+                            <PreviewBottomTitle>NFT 이름</PreviewBottomTitle>
+                            <SmallerTextDesc>Created by {loggedInUser}</SmallerTextDesc>
+                            <ProfileImg>{/* 프로필 이미지*/}</ProfileImg>
+                        </PreviewBottomWrapper>
+                        <DescText>
+                            * 영상을 업로드한 경우, 이미지에 마우스를 가져다 대면 영상 미리보기로 변경됩니다.
+                        </DescText>
+                    </RightWrapper>
             </TopWrapper>
             <SectionWrapper>
                 <Line/>

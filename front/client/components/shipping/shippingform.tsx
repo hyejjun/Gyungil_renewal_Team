@@ -62,9 +62,9 @@ const shippingfrom = () => {
                     <HeadTd>배송방법</HeadTd>
                     <Method>
                         <ul>
-                            <li><input type = "radio" name = "normal" />택배</li>
-                            <li><input type = "radio" name = "normal"/>우체국 택배</li>
-                            <li><input type = "radio" name = "normal"/>편의점 방문 픽업</li>
+                            <li><input type = "radio" name = "normal" id = "firstCheck"/><label htmlFor = "firstCheck">택배</label></li>
+                            <li><input type = "radio" name = "normal" id = "secondCheck"/><label htmlFor = "secondCheck">우체국 택배</label></li>
+                            <li><input type = "radio" name = "normal" id = "thirdCheck"/><label htmlFor = "thirdCheck">편의점 방문 픽업</label></li>
                         </ul>
                     </Method>
                 </tr>
@@ -135,7 +135,7 @@ const Address = Styled.td`
 const AddressFind = Styled.button`
     margin-left:20px;
     color:grey;
-
+    cursor:pointer;
     padding:6px;
     box-sizing:border-box;
     height:35px;
@@ -165,8 +165,8 @@ const SubmitBtn = Styled.button`
     height:50px;
     color:grey;
     font-size:18px;
-    display:inline-block
-    margin:40px auto;
+    display:inline-block;
+    cursor:pointer;
     &:hover{
         color:black;
     }

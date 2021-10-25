@@ -66,6 +66,7 @@ const SellBtn = Styled.button`
     height:70px;
     font-size:22px;
     border-radius:5px;
+    cursor:pointer;
     &:hover{
         background:white;
         color:#055fec;
