@@ -3,25 +3,26 @@ import React, { useState } from "react";
 
 const SellType = () =>{
     const [ifSell, setifSell] = useState<boolean>(true);
+    const [extension, setExtension] = useState<boolean>(true);
 
-    const sellOn = (e) => {
-        setifSell(true)
+    const sellToggle = (value:boolean) => {
+        setifSell(value)
     }
 
-    const aucOn = (e) => {
-        setifSell(false)
+    const extensionToggle = (value:boolean) => {
+        setExtension(value)
     }
 
     const ChkSell = () => {
         return(
             <RadioWrapper>
                 <input type = "radio" id = "sell" value="1"
-                onChange = {sellOn} 
+                onChange = {()=>sellToggle(true)} 
                 checked = {ifSell == true ? true : false}
                 />
                 <label htmlFor = "sell">일반 판매</label>
                 <input type = "radio" id = "auc" value="2"
-                onChange = {aucOn}
+                onChange = {()=>sellToggle(false)}
                 checked = {ifSell == true ? false : true}
                 />
                 <label htmlFor = "auc">경매</label>
@@ -35,14 +36,32 @@ const SellType = () =>{
             {ifSell 
             ? 
                 <SellAucWrapper>
+                    <SmallTitle>판매 가격</SmallTitle>
                     <input type="text" placeholder="판매가를 입력하세요."/>
                 </SellAucWrapper>
             :  
+            <>
                 <SellAucWrapper>
+                    <SmallTitle>경매 시작 가격</SmallTitle>
                     <input type="text" placeholder="경매 시작가를 입력하세요."/>
+                    <SmallTitle>경매 종료 시간</SmallTitle>
                     <input type = "time"></input>
-                </SellAucWrapper> 
-            
+                    <Desc>새로운 경매 입찰자가 생기면 경매 종료 시간을 5분 연장할 수 있습니다.</Desc>
+                        </SellAucWrapper> 
+
+                    <RadioWrapper>
+                    <input type = "radio" id = "extOn" value="1"
+                    onChange = {()=>extensionToggle(true)} 
+                    checked = {extension == true ? true : false}
+                    />
+                     <label htmlFor = "extOn">연장</label>
+                     <input type = "radio" id = "extOff" value="1"
+                    onChange = {()=>extensionToggle(false)} 
+                    checked = {extension == true ? false : true}
+                    />
+                     <label htmlFor = "extOff">연장하지 않음</label>
+                     </RadioWrapper>
+            </>
             }
         </>
     )
@@ -71,4 +90,20 @@ const SellAucWrapper = Styled.div`
         height: 30px;
         font-size: 25px;
     }
+`
+
+const Desc = Styled.div`
+    color:gray;
+    font-size:16px;
+    width: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+`
+
+const SmallTitle = Styled.div`
+    color:#2d3741; 
+    font-size:20px;
+    margin-top:20px;
+    margin-bottom: 20px;
 `
