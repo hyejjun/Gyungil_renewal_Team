@@ -15,7 +15,7 @@ const JoinAcution = (props) => {
     const unCheckedClick = () => {
         alert('동의란을 확인해주세요')
     }
-    
+
     const { 
         maxPrice, 
         yourBalance, 
@@ -24,7 +24,7 @@ const JoinAcution = (props) => {
         setBalance, 
         setBalanceCheck, 
         lowBalance 
-    } = props.defaultValue
+    } = props.auctionValue
 
 
     return (

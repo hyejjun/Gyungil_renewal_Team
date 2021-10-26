@@ -38,13 +38,13 @@ const AuctionDetail = () => {
                 setBalanceCheck(prev => !prev)
                 alert('입찰 되었습니다')
                 // 입찰하고 어떻게 처리할지...
-
-                
+                setAuctionPrice(0)
+                window.location.reload();
             }
         }
     }
 
-    const defalutValue = {
+    const auctionValue = {
         maxPrice,
         yourBalance,
         setAuctionPrice,
@@ -71,7 +71,7 @@ const AuctionDetail = () => {
                     <BuyBtnCSS className="auctionBtn" onClick={auctionOpen}>
                         <button>경매 참여</button>
                     </BuyBtnCSS>
-                    <JoinAcution openAuction={openAuction} auctionOpen={auctionOpen} defaultValue={defalutValue}/>
+                    <JoinAcution openAuction={openAuction} auctionOpen={auctionOpen} auctionValue={auctionValue}/>
                 </BtnWrap>
             </AuctionDetailWrap>
         </>
