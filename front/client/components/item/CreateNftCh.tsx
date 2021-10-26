@@ -23,7 +23,7 @@ const CreateNftCh = (props) => {
                     <div>발행하시는 NFT에 대한 <br/> 모든 책임을 본인에게 있습니다.</div>
                     <div>
                         <span onClick={props.closeBtn}>아니요</span>
-                        <span onClick={()=>{openSucNftBtn()}}>예</span>
+                        <span onClick={(e)=>{openSucNftBtn(); props.handleSubmit(e)}}>예</span>
                     </div>
                     </ModalForm>
                 }                

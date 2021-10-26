@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const ItemListSell = () => {
+    let [loading, setLoading] = useState<boolean>(true)
+
     let [count,setCount] = useState<number>(0)
     interface ArrEle {
         id: number,
@@ -142,11 +144,8 @@ const ItemListSell = () => {
         );
       };
     useEffect(() => {
-
         let cnt0: number = 0;
-
-        counterFn();
-
+        
         function counterFn() {
             let id0 = setInterval(count0Fn, 55);
             function count0Fn() {
@@ -158,7 +157,9 @@ const ItemListSell = () => {
 
             }
         }
+        counterFn();
 
+        return () => setLoading(false);
 
     }, [])
 
@@ -204,6 +205,7 @@ const PictureNumberNotice = Styled.div`
     float:left;
     margin-bottom:50px;
     clear:both;
+    cursor : default;
 `
 const SelectBox = Styled.select`
     display:inline-block;
@@ -241,7 +243,7 @@ const NFT = Styled.li`
     box-sizing:border-box;
     padding:19px;
     margin-bottom:20px;
-    box-shadow:3px 3px 10px #bbb;
+    &:hover{box-shadow:3px 3px 10px #bbb;}
 `
 const NFTImg = Styled.div`
     background:#bbb;

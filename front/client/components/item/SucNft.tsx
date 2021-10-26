@@ -1,5 +1,4 @@
 import React,{useState} from 'react'
-import Styled from 'styled-components'
 import ModalForm from '../common/ModalForm'
 import Link from 'next/link'
 
@@ -13,8 +12,6 @@ const SucNft = (props)=>{
                         <span id="rightBtn" ><Link href="/user/mynftall"><a>NFT확인</a></Link></span>
                     </div>
                 </ModalForm>
-  
-
     )
 }
 

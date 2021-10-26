@@ -1,8 +1,7 @@
 import Styled from 'styled-components';
-import React, { useState } from "react";
+import React from "react";
 
 const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChange}) =>{
-
     const ChkSell = () => {
         return(
             <RadioWrapper>
@@ -24,34 +23,33 @@ const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChan
         <>
             <ChkSell />
             {ifSell 
-            ? 
-                <SellAucWrapper>
-                    <SmallTitle>판매 가격</SmallTitle>
-                    <input type="text" placeholder="판매가를 입력하세요." onChange ={(e)=>handleTxtChange(e, "price")}/>
-                </SellAucWrapper>
-            :  
-            <>
-                <SellAucWrapper>
-                    <SmallTitle>경매 시작 가격</SmallTitle>
-                    <input type="text" placeholder="경매 시작가를 입력하세요."/>
-                    <SmallTitle>경매 종료 시간</SmallTitle>
-                    <input type = "time"></input>
-                    <Desc>새로운 경매 입찰자가 생기면 경매 종료 시간을 5분 연장할 수 있습니다.</Desc>
-                </SellAucWrapper> 
-
-                <RadioWrapper>
-                    <input type = "radio" id = "extOn" value="1"
-                    onChange = {()=>extensionToggle(true)} 
-                    checked = {extension == true ? true : false}
-                    />
-                    <label htmlFor = "extOn">연장</label>
-                    <input type = "radio" id = "extOff" value="1"
-                    onChange = {()=>extensionToggle(false)} 
-                    checked = {extension == true ? false : true}
-                    />
-                    <label htmlFor = "extOff">연장하지 않음</label>
-                </RadioWrapper>
-            </>
+                ? 
+                    <SellAucWrapper>
+                        <SmallTitle>판매 가격</SmallTitle>
+                        <input type="text" placeholder="판매가를 입력하세요." onChange ={(e)=>handleTxtChange(e, "price")}/>
+                    </SellAucWrapper>
+                :  
+                <>
+                    <SellAucWrapper>
+                        <SmallTitle>경매 시작 가격</SmallTitle>
+                        <input type="text" placeholder="경매 시작가를 입력하세요." onChange = {(e)=>handleTxtChange(e, "aucPrice")}/>
+                        <SmallTitle>경매 종료 시간</SmallTitle>
+                        <input type = "datetime-local" onChange = {(e)=>handleTxtChange(e, "aucTime")}/>
+                        <Desc>새로운 경매 입찰자가 생기면 경매 종료 시간을 5분 연장할 수 있습니다.</Desc>
+                    </SellAucWrapper> 
+                    <RadioWrapper>
+                        <input type = "radio" id = "extOn" value="1"
+                        onChange = {()=>extensionToggle(true)} 
+                        checked = {extension == true ? true : false}
+                        />
+                        <label htmlFor = "extOn">연장</label>
+                        <input type = "radio" id = "extOff" value="1"
+                        onChange = {()=>extensionToggle(false)} 
+                        checked = {extension == true ? false : true}
+                        />
+                        <label htmlFor = "extOff">연장하지 않음</label>
+                    </RadioWrapper>
+                </>
             }
         </>
     )
