@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import Styled from 'styled-components'
 import ModalForm from '../common/ModalForm'
-import ModalBackground from '../common/ModalBackground'
 import Link from 'next/link'
 
 const SucNft = (props)=>{
@@ -21,9 +20,4 @@ const SucNft = (props)=>{
 
 export default SucNft
 
-const SizeWrapper = Styled.div`
-    margin-left:-175px;
-    margin-top:-99px;
 
-    
-`

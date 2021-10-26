@@ -11,7 +11,7 @@ const CreateNftCh = (props) => {
     }
 
     return(
-        <SizeWrapper>
+        <>
             <ModalBackground>
                 {
                     sucNft
@@ -26,31 +26,12 @@ const CreateNftCh = (props) => {
                         <span onClick={()=>{openSucNftBtn()}}>예</span>
                     </div>
                     </ModalForm>
-                }  
-               
+                }                
             </ModalBackground>
-        </SizeWrapper>
+        </>
 
 
     )
 }
 
 export default CreateNftCh
-
-const SizeWrapper = Styled.div`
-    margin-left:-175px;
-    margin-top:-99px;
-    span a{
-        background-color:#e1f0ff;   
-        color:#1e73fa;
-        font-weight:500;
-    }
-    #rightBtn a{
-        background-color:#1e73fa;
-        color:#e1f0ff;   
-        font-weight:500;
-        
-    }
-
-
-`

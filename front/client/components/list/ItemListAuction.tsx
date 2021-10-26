@@ -69,7 +69,7 @@ const ItemListAuction = () => {
                     <a>
                         <NFTImg>
                             {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
-                            <div><img alt="경매nft사진" /></div>
+                            <div><img/></div>
                         </NFTImg>
                     </a>
                 </Link>
@@ -81,7 +81,7 @@ const ItemListAuction = () => {
                         <NFTartist>{ele.artist}</NFTartist>
                     </NFTOneList>
                     <NFTOneImg>
-                        <img alt="nft사진"></img>
+                        <img></img>
                     </NFTOneImg>
                 </NFTOne>
                 <NFTOne>
