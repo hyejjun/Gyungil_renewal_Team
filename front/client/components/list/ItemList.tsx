@@ -92,7 +92,7 @@ margin-bottom:70px;
 const Menu1 = Styled.div`
     font-size:24px;
     cursor:pointer;
-&:hover{
-    color:#055fec;
-}
+    &:hover{
+        color:#055fec;
+    }
 `
