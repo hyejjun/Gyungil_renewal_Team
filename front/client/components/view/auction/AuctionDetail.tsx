@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BuyBtnCSS } from '../sell/NFTdetail';
 import JoinAcution from './JoinAuction';
 
@@ -11,6 +11,47 @@ const AuctionDetail = () => {
     const [openAuction, setOpenAuction] = useState<boolean>(false);
     const auctionOpen = () => {
         setOpenAuction(prev => !prev)
+    }
+
+    /* props로 전달할 값 */
+    const [auctionPrice, setAuctionPrice] = useState<number>(0);
+    const priceChange = (e) => {
+        setAuctionPrice(e.target.value)
+    }
+
+    const maxPrice = 0.6;           // useSelector 로 maxprice
+    const yourBalance = 0.7;        // 이걸 나중에 useSelector 로 가져올거임
+    const [balacne, setBalance] = useState<number>(0);
+    const [balanceCheck, setBalanceCheck] = useState<boolean>(false);       // 잔액확인
+
+    useEffect (()=>{
+        setBalance(yourBalance)
+    },[])
+
+    const lowBalance = () => {
+        if (balacne <= maxPrice){
+            alert('잔액을 확인해주세요')
+        }else{
+            if(auctionPrice <= maxPrice || auctionPrice > yourBalance){
+                alert('입찰 금액을 확인해주세요')
+            } else {
+                setBalanceCheck(prev => !prev)
+                alert('입찰 되었습니다')
+                // 입찰하고 어떻게 처리할지...
+                setAuctionPrice(0)
+                window.location.reload();
+            }
+        }
+    }
+
+    const auctionValue = {
+        maxPrice,
+        yourBalance,
+        setAuctionPrice,
+        priceChange,
+        setBalance,
+        setBalanceCheck,
+        lowBalance
     }
 
     return (
@@ -30,7 +71,7 @@ const AuctionDetail = () => {
                     <BuyBtnCSS className="auctionBtn" onClick={auctionOpen}>
                         <button>경매 참여</button>
                     </BuyBtnCSS>
-                    <JoinAcution openAuction={openAuction} auctionOpen={auctionOpen}/>
+                    <JoinAcution openAuction={openAuction} auctionOpen={auctionOpen} auctionValue={auctionValue}/>
                 </BtnWrap>
             </AuctionDetailWrap>
         </>

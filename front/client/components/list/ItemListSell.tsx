@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const ItemListSell = () => {
+    let [loading, setLoading] = useState<boolean>(true)
+
     let [count,setCount] = useState<number>(0)
     interface ArrEle {
         id: number,
@@ -142,11 +144,8 @@ const ItemListSell = () => {
         );
       };
     useEffect(() => {
-
         let cnt0: number = 0;
-
-        counterFn();
-
+        
         function counterFn() {
             let id0 = setInterval(count0Fn, 55);
             function count0Fn() {
@@ -158,7 +157,9 @@ const ItemListSell = () => {
 
             }
         }
+        counterFn();
 
+        return () => setLoading(false);
 
     }, [])
 

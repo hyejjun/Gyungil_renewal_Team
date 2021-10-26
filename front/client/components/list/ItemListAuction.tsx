@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const ItemListAuction = () => {
-    let [count,setCount] = useState<number>(0)
+    let [loading, setLoading] = useState<boolean>(true)
+    let [count, setCount] = useState<number>(0)
 
     interface ArrEle {
         id: number,
@@ -19,7 +20,8 @@ const ItemListAuction = () => {
             artist: 'daminal',
             Like: 0,
         },
-        {   id: 2,
+        {
+            id: 2,
             subject: 'adsfdsf',
             artist: 'daminal',
             Like: 5,
@@ -60,45 +62,47 @@ const ItemListAuction = () => {
             artist: 'daminal',
             Like: 5,
         },
-      ]);
+    ]);
 
     const nameList: JSX.Element[] = Arr.map((ele) =>
-        <NFTFourList>
-            <NFT>
-                <Link href = "/auction/auctionview">
-                    <a>
-                        <NFTImg>
-                            {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
-                            <div><img/></div>
-                        </NFTImg>
-                    </a>
-                </Link>
-                <Line></Line>
-                <NFTOne>
-                    <NFTOneList>
-                        <Link href = "/auction/auctionview"><AStyle><NFTSubject>{ele.subject}</NFTSubject></AStyle></Link>
-                        {/* <NFTSubject>{ele.subject}</NFTSubject> */}
-                        <NFTartist>{ele.artist}</NFTartist>
-                    </NFTOneList>
-                    <NFTOneImg>
-                        <img></img>
-                    </NFTOneImg>
-                </NFTOne>
-                <NFTOne>
-                    <NFTOneList>
-                        <NFTSubject>@ {ele.Like}</NFTSubject>
-                    </NFTOneList>
-                    <NFTDeclaration>
-                        <NFTSubject>* * *</NFTSubject>
-                    </NFTDeclaration>
-                </NFTOne>
-            </NFT>
-        </NFTFourList>
+        <React.Fragment key={ele.id}>
+            <NFTFourList>
+                <NFT>
+                    <Link href="/auction/auctionview">
+                        <a>
+                            <NFTImg>
+                                {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
+                                <div><img /></div>
+                            </NFTImg>
+                        </a>
+                    </Link>
+                    <Line></Line>
+                    <NFTOne>
+                        <NFTOneList>
+                            <Link href="/auction/auctionview"><AStyle><NFTSubject>{ele.subject}</NFTSubject></AStyle></Link>
+                            {/* <NFTSubject>{ele.subject}</NFTSubject> */}
+                            <NFTartist>{ele.artist}</NFTartist>
+                        </NFTOneList>
+                        <NFTOneImg>
+                            <img></img>
+                        </NFTOneImg>
+                    </NFTOne>
+                    <NFTOne>
+                        <NFTOneList>
+                            <NFTSubject>@ {ele.Like}</NFTSubject>
+                        </NFTOneList>
+                        <NFTDeclaration>
+                            <NFTSubject>* * *</NFTSubject>
+                        </NFTDeclaration>
+                    </NFTOne>
+                </NFT>
+            </NFTFourList>
+        </React.Fragment>
     );
 
     const handleClick = (): void => {
         setArr(
-            Arr.concat(        
+            Arr.concat(
                 {
                     id: 7,
                     subject: 'adsg',
@@ -125,7 +129,7 @@ const ItemListAuction = () => {
                 }
             ),
         );
-      };
+    };
 
 
     useEffect(() => {
@@ -147,6 +151,7 @@ const ItemListAuction = () => {
             }
         }
 
+        return () => setLoading(false);
 
     }, [])
 
@@ -175,7 +180,7 @@ const ItemListAuction = () => {
                     </div>
                 </div>
             </NFTComponent>
-            <MoreNFT onClick = {handleClick}>more</MoreNFT>
+            <MoreNFT onClick={handleClick}>more</MoreNFT>
         </>
     )
 }
