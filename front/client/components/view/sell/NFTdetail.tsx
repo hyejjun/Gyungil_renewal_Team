@@ -15,6 +15,26 @@ const NFTdetail = ({children}) => {
         <>
             <NFTdetailWrap>
                 <NFTBuy>
+                    <select>
+                        <option>
+                            SIZE
+                        </option>
+                        <option>
+                            XL
+                        </option>
+                        <option>
+                            L
+                        </option>
+                        <option>
+                            M
+                        </option>
+                        <option>
+                            S
+                        </option>
+                        <option>
+                            XS
+                        </option>
+                    </select>
                     <Like/>
                     <BuyBtnCSS onClick={orderOpen}>
                         <button>{children}</button>
@@ -36,11 +56,22 @@ const NFTdetailWrap = Styled.div`
 `
 
 const NFTBuy = Styled.div`
+    
     width: 100%;
     height: 60px;
     display: flex;
     padding-left: 65%;
     box-sizing: border-box;
+
+    & > select {
+        margin-right:10px;
+        width:72px;
+        font-size:22px;
+        
+    }
+
+
+    
 `
 
 export const BuyBtnCSS = Styled.span`
