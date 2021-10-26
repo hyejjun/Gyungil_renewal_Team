@@ -3,6 +3,7 @@ import ModalBackground from '../ModalBackground'
 import { connect } from 'react-redux'
 import React from 'react'
 import Link from 'next/link'
+import Caver from 'caver-js'
 
 declare global {
     interface Window {
