@@ -15,13 +15,14 @@ const SignUp = () => {
     // let [email, setEmail] = useState<string>('');
 
     
-    const nickName = useInput('')
-    const email = useInput('')
+    const [email, onChangeEmail] = useInput('');
+    const [nickName, onChangeNickname] = useInput('');
 
     const [joinState,setJoinState] = useState<boolean>(false)
     const sucJoin = () => {
         setJoinState(prev=>!prev)        
     }
+
 
     return (
         <>
