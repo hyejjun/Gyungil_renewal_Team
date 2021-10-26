@@ -4,7 +4,7 @@ import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
 import WebLayout from '../layout/WebLayout'
 import MyNft from './MyNFT'
-
+import Category from '../common/Category'
 
 const ItemList = () => {
 
@@ -18,7 +18,7 @@ const ItemList = () => {
     }
 
     return (
-        <>
+        <>  <Category/>
             <MyNft />
             <MenuBar>
                 <Menu>
