@@ -6,9 +6,14 @@ import { useEffect } from 'react'
 
 
 const test = () => {
-
+    interface Variable {
+        test:Object;
+    }
+    const initialState : Variable = {
+        test:{}
+    }
     const test = useSelector((state:RootState )=> state.user)
-   
+    console.log(test)
         const dispatch = useDispatch()
         useEffect(() => {
             dispatch(UserLogin_REQUEST({test:'testtttt'}))
