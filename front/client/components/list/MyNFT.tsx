@@ -14,7 +14,7 @@ const MyNFT = ()=>{
                     <Link href = "/item/additem"><a><SellBtn>NFT 발행하기</SellBtn></a></Link>
                 </Menu>
                 {/* <MenuImg><img src = {require('../../src/지도.jpg')} /></MenuImg> */}
-                <MenuImg> <img alt="사진" /> </MenuImg>
+                <MenuImg> <img /> </MenuImg>
             </MyNFTAll>
             <Line></Line>
         </>

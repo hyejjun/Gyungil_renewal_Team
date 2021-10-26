@@ -1,4 +1,3 @@
-// view 페이지에서 NFT 설명 넣는 곳
 import React, { useState } from "react";
 import Styled from 'styled-components'
 import Order from "./Order";
@@ -67,4 +66,3 @@ export const BuyBtnCSS = Styled.span`
     }
 
 ` 
-

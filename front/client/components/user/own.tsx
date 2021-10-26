@@ -48,7 +48,7 @@ const Own = () => {
             <NFT>
                 <NFTImg>
                     {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
-                    <div><img alt="nft사진" /></div>
+                    <div><img/></div>
                 </NFTImg>
                 <Line></Line>
                 <NFTOne>

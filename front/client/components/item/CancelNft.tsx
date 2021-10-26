@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const CancelNft = (props)=>{
     return(
-        <SizeWrapper>
+        <>
             <ModalBackground>
                 <ModalForm>
                     <div><p>NFT 발행을 취소할까요?</p></div>
@@ -16,14 +16,9 @@ const CancelNft = (props)=>{
                     </div>
                 </ModalForm>
             </ModalBackground>
-        </SizeWrapper>
+        </>
     )
 }
 
 export default CancelNft
 
-const SizeWrapper = Styled.div`
-    margin-left:-175px;
-    margin-top:-99px;
-    
-`

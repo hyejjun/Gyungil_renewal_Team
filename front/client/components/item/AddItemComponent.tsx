@@ -8,7 +8,8 @@ import CancelNft from './CancelNft';
 const AddItemComponent = ({
     userId, n, ifSell, extension, 
     sellToggle, extensionToggle,
-    agreed, agreeed, ifAgreed
+    ifAgreed,
+    handleTxtChange
 }) => {
 
     // 임의의 값으로 추후 설정요
@@ -31,9 +32,11 @@ const AddItemComponent = ({
 
     return(
         <>
-            {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
+        {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
             {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}
+           
             <TopWrapper>
+                   
                 <LeftWrapper> 
                     <BigTitle>
                         새로운 NFT 발행하기
@@ -66,6 +69,7 @@ const AddItemComponent = ({
                                 extension = {extension}
                                 sellToggle = {sellToggle}
                                 extensionToggle = {extensionToggle}
+                                handleTxtChange = {handleTxtChange}
                             />
                         </SectionWrapper>
                     </SectionWrapper>
@@ -73,13 +77,17 @@ const AddItemComponent = ({
                         <SmallTitle>
                             이름
                         </SmallTitle>
-                        <InputBox/>
+                        <InputBox
+                            onChange = {(e)=>handleTxtChange("name")}
+                        />
                     </SectionWrapper>
                     <SectionWrapper>
                         <SmallTitle>
                             설명
                         </SmallTitle>
-                        <TextBox />
+                        <TextBox
+                         onChange = {(e)=>handleTxtChange("desc")}
+                        />
                     </SectionWrapper>
                 </LeftWrapper>
                 <RightWrapper>  
@@ -100,18 +108,16 @@ const AddItemComponent = ({
                     </RightWrapper>
             </TopWrapper>
             <Agreement
-            agreed = {agreed}
-            agreeed = {agreeed}
             ifAgreed = {ifAgreed}
             />
             <BottomBtnWrapper>
             
                 <LeftBtn onClick={()=>{cancelNftCh()}}>취소</LeftBtn>
                 <RightBtn onClick={()=>{createNftCh()}}>NFT 발행하기<br/>(오늘{n}개 발행 가능)</RightBtn>
-            </BottomBtnWrapper>
-            
-            
-            
+            </BottomBtnWrapper>    
+
+
+           
         </>
     )
 }
