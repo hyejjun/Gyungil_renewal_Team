@@ -11,10 +11,6 @@ const AddItemComponent = ({
     ifAgreed,
     handleTxtChange
 }) => {
-
-    // 임의의 값으로 추후 설정요
-    useState<boolean>(false);
-
     const [nftCreateState,setnftCreateState] = useState<boolean>(false);
     const createNftCh = () => {
         setnftCreateState(prev=>!prev)
@@ -28,21 +24,16 @@ const AddItemComponent = ({
         setnftCreateState(false);
     }
     
-
-
     return(
         <>
-        {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
+            {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
             {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}
-           
             <TopWrapper>
-                   
                 <LeftWrapper> 
                     <BigTitle>
                         새로운 NFT 발행하기
                     </BigTitle>
                     <SectionWrapper>
-
                         <SmallTitle>
                             파일 업로드
                         </SmallTitle>
@@ -54,7 +45,6 @@ const AddItemComponent = ({
                         <UploadWrapper>
                             <BlueButton>파일 선택</BlueButton>
                         </UploadWrapper>
-
                     </SectionWrapper>
                     <SectionWrapper>
                         <SectionWrapper>
@@ -91,45 +81,40 @@ const AddItemComponent = ({
                     </SectionWrapper>
                 </LeftWrapper>
                 <RightWrapper>  
-                        <SmallTitle>
-                            미리보기
-                        </SmallTitle>
-                        <PreviewWrappper>
-                            <PreviewContent/>
-                        </PreviewWrappper>
-                        <PreviewBottomWrapper>
-                            <PreviewBottomTitle>NFT 이름</PreviewBottomTitle>
-                            <SmallerTextDesc>Created by {userId}</SmallerTextDesc>
-                            <ProfileImg>{/* 프로필 이미지*/}</ProfileImg>
-                        </PreviewBottomWrapper>
-                        <DescText>
-                            * 영상을 업로드한 경우, 이미지에 마우스를 가져다 대면 영상 미리보기로 변경됩니다.
-                        </DescText>
-                    </RightWrapper>
+                    <SmallTitle>
+                        미리보기
+                    </SmallTitle>
+                    <PreviewWrappper>
+                        <PreviewContent/>
+                    </PreviewWrappper>
+                    <PreviewBottomWrapper>
+                        <PreviewBottomTitle>NFT 이름</PreviewBottomTitle>
+                        <SmallerTextDesc>Created by {userId}</SmallerTextDesc>
+                        <ProfileImg>{/* 프로필 이미지*/}</ProfileImg>
+                    </PreviewBottomWrapper>
+                    <DescText>
+                        * 영상을 업로드한 경우, 이미지에 마우스를 가져다 대면 영상 미리보기로 변경됩니다.
+                    </DescText>
+                </RightWrapper>
             </TopWrapper>
             <Agreement
             ifAgreed = {ifAgreed}
             />
             <BottomBtnWrapper>
-            
                 <LeftBtn onClick={()=>{cancelNftCh()}}>취소</LeftBtn>
                 <RightBtn onClick={()=>{createNftCh()}}>NFT 발행하기<br/>(오늘{n}개 발행 가능)</RightBtn>
             </BottomBtnWrapper>    
-
-
-           
         </>
     )
 }
 
 export default AddItemComponent
 
-
-const TopWrapper = Styled.div` //
+const TopWrapper = Styled.div`
         display: flex;
-    `
+`
 
-const LeftWrapper = Styled.div` //
+const LeftWrapper = Styled.div`
 width:700px;
 margin-right: 65px;
 `
@@ -139,7 +124,7 @@ width:300px;
 margin-left:65px;
 `
 
-const SectionWrapper = Styled.div` //
+const SectionWrapper = Styled.div`
     margin-bottom: 50px;
     display: block;
 `
@@ -152,11 +137,11 @@ const UploadWrapper = Styled.div`
     position: relative;
 `
 
-const BigTitle = Styled.h3` //
+const BigTitle = Styled.h3`
     font-size:42px;
 `
 
-const SmallTitle = Styled.h4` //
+const SmallTitle = Styled.h4`
     margin-top: 30px;
     font-size:24px;
     margin-bottom:20px;
