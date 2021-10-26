@@ -32,9 +32,11 @@ const AddItemComponent = ({
 
     return(
         <>
-            {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
+        {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
             {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}
+           
             <TopWrapper>
+                   
                 <LeftWrapper> 
                     <BigTitle>
                         새로운 NFT 발행하기
@@ -112,7 +114,10 @@ const AddItemComponent = ({
             
                 <LeftBtn onClick={()=>{cancelNftCh()}}>취소</LeftBtn>
                 <RightBtn onClick={()=>{createNftCh()}}>NFT 발행하기<br/>(오늘{n}개 발행 가능)</RightBtn>
-            </BottomBtnWrapper>           
+            </BottomBtnWrapper>    
+
+
+           
         </>
     )
 }
