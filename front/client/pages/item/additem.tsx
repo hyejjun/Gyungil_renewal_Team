@@ -1,33 +1,51 @@
-import React, { useEffect, useState } from "react";
-import AddItemComponent from '../../components/item/AddItemComponent';
-import useInput from '../../hooks/useInput'
+import React, { useEffect, useState } from "react"
+import AddItemComponent from '../../components/item/AddItemComponent'
 
 const addItem = () =>{
-    const [userId, setUserId] = useState<string>('dfassf');
+    const [userId, setUserId] = useState<string>('dfassf')
     const [n, setN] = useState<number>(10)
 
     const [ifSell, setifSell] = useState<boolean>(true);
-    const [extension, setExtension] = useState<boolean>(true);
+    const [extension, setExtension] = useState<boolean>(true)
 
     const [agreed, setAgreed] = useState<Array<boolean>>([false,false])
     const [allAgreed, setAllAgreed] = useState<boolean>(false)
 
-    const [file, setNamsetFile] = useState<string>('') // -> 바꿔야 함
+    const [file, setFile] = useState<string>('') // -> 바꿔야 함
     const [price, setPrice] = useState<string>('')
     const [name, setName] = useState<string>('')
     const [desc, setDesc] = useState<string>('')
+    const [aucPrice, setAucPrice] = useState<number>()
+    const [aucTime, setAucTime] = useState<any>('')
     
-    const handleTxtChange = (e) => {
-        let item = "ffff"
-        console.log(e.target.value)
+    function handleTxtChange(e:any, item:string){
+        let {value} = e.target
+
         if(item == "file"){
-            console.log("file")
-        } else if(item=="price"){
-            console.log("price")
-        } else if(item=="name"){
-            console.log("name")
+            setFile(value)
+        } else if(item == "price"){
+            if(isNaN(value)!==false){
+                alert('숫자만 입력해주세요.')
+                // 이유는 알 수 없으나 value로 하면 문자 입력 시 값이 들어가서
+                // e.target.value로 설정
+                e.target.value=price
+            }else {
+            setPrice(value)
+            }
+        } else if(item == "name"){
+            setName(value)
         } else if(item == "desc"){
-            console.log("desc")
+            setDesc(value)
+        } else if(item == "aucPrice"){
+            if(isNaN(value)!==false){
+                alert('숫자만 입력해주세요.')
+                // 이유는 알 수 없으나 value로 하면 문자 입력 시 값이 들어가서
+                // e.target.value로 설정
+                e.target.value=price
+            }
+            setAucPrice(value)
+        } else if(item == "aucTime"){
+            setAucTime(value)
         }
     }
 
@@ -45,6 +63,32 @@ const addItem = () =>{
         } else if(value === 2){
             setAgreed([agreed[0],!agreed[1]])
         }
+    }
+
+    const handleConfirm = () => {
+        if(allAgreed === false){ //미동의시
+            alert('모든 항목에 동의해주세요.')
+            return false
+        }
+        else if((ifSell === true &&
+                (
+                // file==='' &&
+               name=='' || desc=='')) ||
+                (ifSell === false &&
+                (
+                // file==='' ||
+                name=='' ||desc=='' ||aucPrice==undefined ||aucTime==''))
+            ){
+                alert('모든 칸을 입력해주세요.')
+                return false
+        } else{
+            return true
+        }
+    }
+
+    function handleSubmit (){ 
+        console.log(file,price,name,desc)
+        console.log(file, name,desc,aucPrice,aucTime,extension)
     }
 
     useEffect(()=>{
@@ -67,8 +111,10 @@ const addItem = () =>{
         extensionToggle = {extensionToggle}
         // 동의란 컴포넌트용
         ifAgreed = {ifAgreed}
-
+        //input onChange 위함
         handleTxtChange = {handleTxtChange}
+        handleSubmit = {handleSubmit}
+        handleConfirm = {handleConfirm}
         />
 
     )

@@ -1,9 +1,8 @@
 import Styled from 'styled-components';
-import React, { useState } from "react";
-
+import React from "react";
 
 const DeletedItemComponent = () =>{
-    const [text, setText] = useState<string>("자바스크립트");
+
     return(
         <>
             <DeletedItemWrapper> 
@@ -35,8 +34,8 @@ const SmallTitle = Styled.h4`
 `
 
 const DescText = Styled.div`
-color:gray;
-font-size:16px;
+    color:gray;
+    font-size:16px;
 `
 
 const BlueButton = Styled.button`   
