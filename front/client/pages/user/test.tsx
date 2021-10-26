@@ -11,7 +11,7 @@ const test = () => {
    
         const dispatch = useDispatch()
         useEffect(() => {
-            dispatch(UserLogin_REQUEST({test1:'test'}))
+            dispatch(UserLogin_REQUEST({test:'testtttt'}))
         }, [])
     
     return(
