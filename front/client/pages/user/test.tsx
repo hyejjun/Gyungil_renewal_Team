@@ -1,22 +1,17 @@
 import Btn from "../../components/common/Btn"
 import { useDispatch, useSelector } from "react-redux"
-import {UserLogin_REQUEST } from "../../reducers/user"
-import { ConstructionOutlined } from "@mui/icons-material"
+import { UserLogin_REQUEST } from "../../reducers/user"
 import { RootState } from "../../reducers"
 import { useEffect } from 'react'
 
 
 const test = () => {
-    
-    
-    
-    // dispatch(UserLogin_REQUEST({data:'algml'})) 
+
     const test = useSelector((state:RootState )=> state.user)
-    
-    console.log(test.data)    
+   
         const dispatch = useDispatch()
         useEffect(() => {
-            dispatch(UserLogin_REQUEST({test1:'test'}))
+            dispatch(UserLogin_REQUEST({test:'testtttt'}))
         }, [])
     
     return(

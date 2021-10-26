@@ -116,12 +116,13 @@ function loginAPI(data){
 }
 
 function* login(action){
-    let result = yield call(loginAPI,action.data)
+    let result = yield call(loginAPI,action)
 
     if (result.login_info == undefined) {
                 yield put({
                     type: 'USER_LOGIN_SUCCESS',
-                    data: 'OK',
+                    data:result,
+                    test:result,
                     user_info:result
                 })
             } else {
