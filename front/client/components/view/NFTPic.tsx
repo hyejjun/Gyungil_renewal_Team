@@ -17,7 +17,6 @@ const NFTpic = Styled.div`
     width: 600px;
     height: 500px;
     margin : 0 auto;
-    /* background-color: rgb(255, 255, 255); */
 
     & > img {
         width : 100%;
