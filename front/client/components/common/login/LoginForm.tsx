@@ -11,7 +11,7 @@ declare global {
     }
 }
 
-const LoginForm = (props) =>{
+const LoginForm = async (props) =>{
     const [clicked, setClicked] = React.useState(false)
     const [kaikasAddress, setKaikasAddress] = React.useState('')
   
@@ -22,11 +22,10 @@ const LoginForm = (props) =>{
       setKaikasAddress(klaytnAddress)
 
   
-      window.klaytn.on('accountsChanged', () => {
+      window.klaytn.on('accountsChanged', async () => {
         const klaytnAddress = window.klaytn.selectedAddress
         console.log('account changed!', klaytnAddress)
         setKaikasAddress(klaytnAddress)
-
       })
   
   
