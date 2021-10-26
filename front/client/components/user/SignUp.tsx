@@ -6,17 +6,8 @@ import { useState } from 'react'
 import useInput from '../../hooks/useInput'
 
 const SignUp = () => {
-
-    // let [nickName, setNickName] = useState<string>('');
-    // let [wallet, setWallet] = useState<string>('');
-    // let [email, setEmail] = useState<string>('');
-
-    
-    const nickName = useInput('')
-    const email = useInput('')
-
-
-   
+    const [email, onChangeEmail] = useInput('');
+    const [nickName, onChangeNickname] = useInput('');
 
     return (
         <>
