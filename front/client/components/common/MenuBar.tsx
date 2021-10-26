@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useLayoutEffect} from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Styled from 'styled-components';
 import { setFlagsFromString } from 'v8';
 import ModalBackground from './ModalBackground';
@@ -10,51 +10,50 @@ import AddItemComponent from '../item/AddItemComponent';
 
 
 const MenuBar = () => {
-    const [loginState,setLoginState] = useState<boolean>(false)
-    const [flag,setFlag] = useState<boolean>(false)
-    const [Login,setLogin] = useState<boolean>(false)
+    const [loginState, setLoginState] = useState<boolean>(false)
+    const [flag, setFlag] = useState<boolean>(false)
+    const [Login, setLogin] = useState<boolean>(false)
     const loginClick = () => {
-        loginState?setLoginState(false):setLoginState(true);
+        loginState ? setLoginState(false) : setLoginState(true);
         setLogin(true)
     }
     const createBtn = () => {
-        loginState==true?setFlag(false):setFlag(true)
+        loginState == true ? setFlag(false) : setFlag(true)
     }
     const requireOpenBtn = () => {
-        setFlag(prev=>!prev)
+        setFlag(prev => !prev)
     }
     const loginOpenBtn = () => {
-        setFlag(prev=>!prev)
-        setLogin(prev=>!prev)
+        setFlag(prev => !prev)
+        setLogin(prev => !prev)
     }
     const closeLoginForm = () => {
-        setLogin(prev=>!prev)
+        setLogin(prev => !prev)
     }
 
     return (
-        <>            
-                {
-                    flag
-                    ?                 
-                        <RequireLogin flag={flag} openBtn={requireOpenBtn} loginOpenBtn={loginOpenBtn}/>
-                        //{/* <LoginForm/> */}
-                        //{/* <NeedCert/> */}     
-                    :   Login
+        <>
+            {
+                flag
+                    ?
+                    <RequireLogin flag={flag} openBtn={requireOpenBtn} loginOpenBtn={loginOpenBtn} />
+                    //{/* <LoginForm/> */}
+                    //{/* <NeedCert/> */}     
+                    : Login
                         ?
-                            <LoginForm closeLogin={Login} closeLoginBtn={closeLoginForm} />          
-                        :<></>
-                }
+                        <LoginForm closeLogin={Login} closeLoginBtn={closeLoginForm} />
+                        : <></>
+            }
             <MenubarWrapper>
                 <span><Link href="/"><a>Azit Gallery</a></Link></span>
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
-                    {loginState?<LOG onClick={()=>createBtn()}><Link href="/item/additem"><a>발행하기</a></Link></LOG>:<LOG onClick={()=>createBtn()}>발행하기</LOG>}
-                    {loginState?<LOG><Link href="/user/mynftall"><a>나의NFT</a></Link></LOG>:<LOG></LOG>}
-                    {loginState?<LOG onClick={()=>{loginClick()}}>LogOut</LOG>:<LOG onClick={()=>{loginClick()}}>Login</LOG>}
+                    {loginState ? <LOG onClick={() => createBtn()}><Link href="/item/additem"><a>발행하기</a></Link></LOG> : <LOG onClick={() => createBtn()}>발행하기</LOG>}
+                    {loginState ? <LOG><Link href="/user/mynftall"><a>나의NFT</a></Link></LOG> : <LOG></LOG>}
+                    {loginState ? <LOG onClick={() => { loginClick() }}>LogOut</LOG> : <LOG onClick={() => { loginClick() }}>Login</LOG>}
 
 
                 </ul>
-                
             </MenubarWrapper>
 
         </>
@@ -65,11 +64,10 @@ export default MenuBar
 
 
 const MenubarWrapper = Styled.div`
-    display:none;
     box-sizing:border-box;
-    height:85px;
+    height:90px;
+    padding: 1.4% 0;
     display:flex;
-    padding-top:23px;
     flex-direction:row;
     justify-content:space-around;
     align-items: stretch;
@@ -78,8 +76,12 @@ const MenubarWrapper = Styled.div`
     font-weight:550;
     line-height:30px;
 
+    & > div {
+        width : 1300px;
+        height : auto;
+    }
+
     span{
-        padding-top:14px;
         margin-right:400px;
     }
     ul li {
