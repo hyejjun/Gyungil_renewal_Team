@@ -15,6 +15,8 @@ const addItem = () =>{
     const [price, setPrice] = useState<string>('')
     const [name, setName] = useState<string>('')
     const [desc, setDesc] = useState<string>('')
+    const [aucPrice, setAucPrice] = useState<number>()
+    const [aucTime, setAucTime] = useState<any>('')
     
     function handleTxtChange(e:any, item:string){
         let {value} = e.target
@@ -34,6 +36,16 @@ const addItem = () =>{
             setName(value)
         } else if(item == "desc"){
             setDesc(value)
+        } else if(item == "aucPrice"){
+            if(isNaN(value)!==false){
+                alert('숫자만 입력해주세요.')
+                // 이유는 알 수 없으나 value로 하면 문자 입력 시 값이 들어가서
+                // e.target.value로 설정
+                e.target.value=price
+            }
+            setAucPrice(value)
+        } else if(item == "aucTime"){
+            setAucTime(value)
         }
     }
 

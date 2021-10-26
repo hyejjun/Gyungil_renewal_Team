@@ -32,9 +32,9 @@ const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChan
                 <>
                     <SellAucWrapper>
                         <SmallTitle>경매 시작 가격</SmallTitle>
-                        <input type="text" placeholder="경매 시작가를 입력하세요."/>
+                        <input type="text" placeholder="경매 시작가를 입력하세요." onChange = {(e)=>handleTxtChange(e, "aucPrice")}/>
                         <SmallTitle>경매 종료 시간</SmallTitle>
-                        <input type = "time"></input>
+                        <input type = "datetime-local" onChange = {(e)=>handleTxtChange(e, "aucTime")}/>
                         <Desc>새로운 경매 입찰자가 생기면 경매 종료 시간을 5분 연장할 수 있습니다.</Desc>
                     </SellAucWrapper> 
                     <RadioWrapper>
