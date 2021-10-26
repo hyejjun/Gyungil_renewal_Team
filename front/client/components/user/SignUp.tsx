@@ -10,13 +10,61 @@ import Router from 'next/router'
 
 const SignUp = () => {
 
-    // let [nickName, setNickName] = useState<string>('');
-    // let [wallet, setWallet] = useState<string>('');
-    // let [email, setEmail] = useState<string>('');
+    const [nickName, setNickName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [nickErr, setNickErr] = useState<boolean>(false); 
+    const [nickLength5Err, setNickLength5Err] = useState<boolean>(false); 
+    const [nickSignErr, setNickSignErr] = useState<boolean>(false); 
+    
+    const [emailErr, setEmailErr] = useState<boolean>(false); 
+
+    console.log(nickName,"<-----", email );
+
+    const nickChk1 = e => {
+        const value = e.target.value;
+        setNickName(value);
+        setNickErr(value === "");
+        setNickLength5Err(value.length < 5 && value.length >0);
+        
+        const chkk = () => {
+        let chk = [",","?","=","`","~","!","@","#","$","%","^","&","*","(",")","<",">","/","*"]
+        let chkTrue = 0;
+        for( let i=0;i< chk.length;i++){
+            if(value.indexOf(chk[i]) != -1) {
+                chkTrue=1;
+            }
+        }
+        if(chkTrue !==0){
+            return true;
+        }
+        }
+        setNickSignErr(chkk() === true)
+    }    
+
+    const nickChk2 = () => {
+        let chk = ["a","b","c"]
+        let chkTrue = 0;
+        for( let i=0;i< chk.length;i++){
+            if(nickName.indexOf(chk[i]) != -1) {
+                chkTrue=1;
+            }
+        }
+        if(chkTrue !==0){
+            return true;
+        }
+    }
+
+    const change2 = e => {
+        const value = e.target.value;
+        setEmail(value);
+        setEmailErr(value === "");
+    }
 
     
-    const [email, onChangeEmail] = useInput('');
-    const [nickName, onChangeNickname] = useInput('');
+    
+    const submit = e => {
+
+    }
 
     const [joinState,setJoinState] = useState<boolean>(false)
     const sucJoin = () => {
@@ -30,7 +78,7 @@ const SignUp = () => {
             <Css>
                 <div className="layout">
                     <div className="signUpContainer">
-                        <form>
+                        <form onSubmit={submit}>
                             <div className="title">회원가입</div>
                             <div className="image5">
                             <div className="image4 textCenter">
@@ -78,7 +126,10 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td className="textLeft">
-                                            <input type="text" className="InputBox" {...nickName} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요." />
+                                            <input type="text" className="InputBox" value={nickName} onChange={nickChk1} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요." />
+                                            { nickErr ? <div className="error">닉네임을 입력해주세요.</div> : <></>}
+                                            { nickLength5Err ? <div className="error">닉네임을 5자 이상으로 입력해주세요.</div> : <></>}                                           
+                                            { nickSignErr ? <div className="error">닉네임은 한글, 영문 대소문자, 숫자, 특수기호(_),(-),(.)만 입력 가능합니다.</div> : <></>}
                                         </td>
                                     </tr>
 
@@ -107,7 +158,8 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" className="InputBox" {...email} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            <input type="text" className="InputBox" value={email} onChange={change2} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            { emailErr ? <div className="error">이메일 주소를 입력해주세요.</div> : <></>}
                                         </td>
                                     </tr>
                                     <tr>
@@ -339,7 +391,9 @@ svg:hover{
 }
 
 .error{
-    color:red;
+    color:#dc3545;
+    font-size:12px;
+    margin-top: 4px;
 }
 
 .height42{
