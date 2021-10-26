@@ -25,8 +25,10 @@ export default MyNFT
 
 const MyNFTAll = Styled.ul`
     height:480px;
+    cursor : default;
     
 `
+
 const Menu = Styled.li`
 color:#2d3741;
 font-size:24px;
