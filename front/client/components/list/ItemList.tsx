@@ -70,6 +70,7 @@ const Input = Styled.input`
     display:inline-block;
     height:30px;
     width:500px;
+    font-size:18px;
 `
 const SearchBox = Styled.div`
     float:left;

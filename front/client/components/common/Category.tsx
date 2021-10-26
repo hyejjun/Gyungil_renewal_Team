@@ -6,8 +6,8 @@ import React, {useState} from 'react'
 
 const Category = () => {
 
-    const [gender,setgender] = useState(true)
-    const [List,setList] = useState(true)
+    const [gender,setgender] = useState(false)
+    const [List,setList] = useState(false)
 
     const handlegender = () => {
         setgender(prev => !prev)
@@ -62,7 +62,7 @@ const CategoryWrapper = Styled.div`
     z-index:3px;
     position:absolute;
     float:left;
-    top:520px;
+    top:540px;
     height:600px;
     width:300px;
     left:0px;
