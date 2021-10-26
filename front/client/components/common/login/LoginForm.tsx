@@ -1,6 +1,5 @@
 import Styled from 'styled-components'
 import ModalBackground from '../ModalBackground'
-import { Button } from "react-bootstrap"
 import { connect } from 'react-redux'
 import React from 'react'
 import Link from 'next/link'
@@ -22,15 +21,13 @@ const LoginForm = (props) =>{
       const klaytnAddress = window.klaytn.selectedAddress
       setKaikasAddress(klaytnAddress)
 
-  
       window.klaytn.on('accountsChanged', () => {
         const klaytnAddress = window.klaytn.selectedAddress
         console.log('account changed!', klaytnAddress)
         setKaikasAddress(klaytnAddress)
-
+        
       })
-  
-  
+
     }
   
     const onClick = () => {
@@ -157,4 +154,8 @@ const LoginFormWrapper = Styled.div`
 
 const Astyle = Styled.a`
     text-decoration:none;
+`
+
+const Login = Styled.li`
+    font-size:15px; 
 `

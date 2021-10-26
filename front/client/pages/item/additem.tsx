@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import AddItemComponent from '../../components/item/AddItemComponent';
+import React, { useEffect, useState } from "react"
+import AddItemComponent from '../../components/item/AddItemComponent'
 
 const addItem = () =>{
-    const [userId, setUserId] = useState<string>('dfassf');
+    const [userId, setUserId] = useState<string>('dfassf')
     const [n, setN] = useState<number>(10)
 
     const [ifSell, setifSell] = useState<boolean>(true);
-    const [extension, setExtension] = useState<boolean>(true);
+    const [extension, setExtension] = useState<boolean>(true)
 
     const [agreed, setAgreed] = useState<Array<boolean>>([false,false])
     const [allAgreed, setAllAgreed] = useState<boolean>(false)
@@ -65,6 +65,32 @@ const addItem = () =>{
         }
     }
 
+    const handleConfirm = () => {
+        if(allAgreed === false){ //미동의시
+            alert('모든 항목에 동의해주세요.')
+            return false
+        }
+        else if((ifSell === true &&
+                (
+                // file==='' &&
+               name=='' || desc=='')) ||
+                (ifSell === false &&
+                (
+                // file==='' ||
+                name=='' ||desc=='' ||aucPrice==undefined ||aucTime==''))
+            ){
+                alert('모든 칸을 입력해주세요.')
+                return false
+        } else{
+            return true
+        }
+    }
+
+    function handleSubmit (){ 
+        console.log(file,price,name,desc)
+        console.log(file, name,desc,aucPrice,aucTime,extension)
+    }
+
     useEffect(()=>{
         if(agreed[0] === true && agreed[1] === true){
             setAllAgreed(true)
@@ -87,6 +113,8 @@ const addItem = () =>{
         ifAgreed = {ifAgreed}
         //input onChange 위함
         handleTxtChange = {handleTxtChange}
+        handleSubmit = {handleSubmit}
+        handleConfirm = {handleConfirm}
         />
 
     )
