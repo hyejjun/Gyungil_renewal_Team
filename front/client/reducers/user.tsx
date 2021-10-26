@@ -213,9 +213,9 @@
 
 export interface User {
     loadding:boolean;
-    data:any;
-    payload:any;
-    error:any;
+    data:Array<string | number>;
+    payload:Object;
+    error:string;
 
 }
 

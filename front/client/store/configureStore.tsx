@@ -78,7 +78,7 @@ const bindMiddleware = (middleware:Middleware[]):StoreEnhancer => {
     return applyMiddleware(...middleware);
 }
 
-const makeStore: MakeStore<any> = () => {
+const makeStore: MakeStore<Object> = () => {
     const sagaMiddleware = createSagaMiddleware();
     const middlewares = [sagaMiddleware];
 
@@ -87,4 +87,4 @@ const makeStore: MakeStore<any> = () => {
     return store
 }
 
-export const wrapper = createWrapper<any>(makeStore, { debug: true });
+export const wrapper = createWrapper<Object>(makeStore, { debug: true });
