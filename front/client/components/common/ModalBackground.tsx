@@ -36,6 +36,8 @@ const ModalBackgroundWrppaer = Styled.div`
     background-color:rgba(0, 0, 0, 0.6);
     display:flex;
     justify-content: center;
+    top:0;
+    left:0;
     /* #logo{
         color:white;
         margin-top:150px;
