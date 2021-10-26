@@ -14,7 +14,7 @@ const ModalForm = ({children},props) => {
 export default ModalForm 
 
 const FormWrapper = Styled.div`
-    z-index:5000000000;
+    z-index:999;
     box-sizing:border-box;
     width:350px;
     height:220px;
@@ -38,21 +38,25 @@ const FormWrapper = Styled.div`
         color:white;
     }
     div:nth-child(1) p{
+        cursor : default;
         font-weight:900;
         font-size:17.5px;
         padding-bottom:20px;
     }
     div:nth-child(2) p{
+        cursor : default;
         font-size:14.5px;
         color:#6c757d;
         margin-bottom:35px;
     }
     div:nth-child(3){
+        cursor : pointer;
         margin-top:15px;
         display:flex;
         justify-content:center;
     }
     div:nth-child(3)>span{
+        cursor : pointer;
         width:110px;
         height:37px;
         margin-left:2px;
