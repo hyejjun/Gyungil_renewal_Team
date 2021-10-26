@@ -1,32 +1,34 @@
-import Styled from 'styled-components';
-import React, { useState } from "react";
-import SellType from './SellType';
-import Agreement from './Agreement';
-import CreateNftCh from './CreateNftCh';
-import CancelNft from './CancelNft';
+import Styled from 'styled-components'
+import React, { useState } from "react"
+import SellType from './SellType'
+import Agreement from './Agreement'
+import CreateNftCh from './CreateNftCh'
+import CancelNft from './CancelNft'
 
 const AddItemComponent = ({
     userId, n, ifSell, extension, 
     sellToggle, extensionToggle,
     ifAgreed,
-    handleTxtChange
+    handleTxtChange, handleSubmit, handleConfirm
 }) => {
     const [nftCreateState,setnftCreateState] = useState<boolean>(false);
     const createNftCh = () => {
-        setnftCreateState(prev=>!prev)
+        if(handleConfirm() === true){
+            setnftCreateState(prev=>!prev)
+        } 
     }
     const [cancelNft,setcancelNft] = useState<boolean>(false);
     const cancelNftCh = () => {
         setcancelNft(prev=>!prev)
     }
     const closeBtn = () => {
-        setcancelNft(false);
-        setnftCreateState(false);
+        setcancelNft(false)
+        setnftCreateState(false)
     }
     
     return(
         <>
-            {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn}/> :<></> }
+            {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn} handleSubmit = {handleSubmit}/> :<></> }
             {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}
             <TopWrapper>
                 <LeftWrapper> 
