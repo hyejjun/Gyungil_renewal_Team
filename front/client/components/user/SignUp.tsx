@@ -12,11 +12,16 @@ const SignUp = () => {
 
     const [nickName, setNickName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
+
     const [nickErr, setNickErr] = useState<boolean>(false); 
     const [nickLength5Err, setNickLength5Err] = useState<boolean>(false); 
     const [nickSignErr, setNickSignErr] = useState<boolean>(false); 
-    
+
     const [emailErr, setEmailErr] = useState<boolean>(false); 
+
+    const [checked1,setChecked1] = useState(false);
+    const [checked2,setChecked2] = useState(false);
+    const [checked3,setChecked3] = useState(false);
 
     console.log(nickName,"<-----", email );
 
@@ -41,19 +46,6 @@ const SignUp = () => {
         setNickSignErr(chkk() === true)
     }    
 
-    const nickChk2 = () => {
-        let chk = ["a","b","c"]
-        let chkTrue = 0;
-        for( let i=0;i< chk.length;i++){
-            if(nickName.indexOf(chk[i]) != -1) {
-                chkTrue=1;
-            }
-        }
-        if(chkTrue !==0){
-            return true;
-        }
-    }
-
     const change2 = e => {
         const value = e.target.value;
         setEmail(value);
@@ -61,7 +53,19 @@ const SignUp = () => {
     }
 
     
-    
+    const handleChecked1 = () => {
+        setChecked1(!checked1);
+       
+    }
+    const handleChecked2 = () => {
+        setChecked2(!checked2)
+        
+    }
+    const handleChecked3 = () => {
+        setChecked3(!checked3)
+      
+    }
+
     const submit = e => {
 
     }
@@ -158,7 +162,7 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" className="InputBox" value={email} onChange={change2} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            <input type="email" className="InputBox" value={email} onChange={change2} name="email" placeholder="이메일 주소를 입력해주세요." />
                                             { emailErr ? <div className="error">이메일 주소를 입력해주세요.</div> : <></>}
                                         </td>
                                     </tr>
@@ -169,7 +173,7 @@ const SignUp = () => {
                                         <td>
                                             <div>
                                                 <div className="mBottom">
-                                                    <label className="chkFont"><input type="checkbox" id="agree1" /> 만 19세 이상입니다.</label>
+                                                    <label className="chkFont"><input type="checkbox" checked={checked1} onChange={handleChecked1} id="agree1" /> 만 19세 이상입니다.</label>
                                                 </div>
                                             </div>
                                         </td>
@@ -178,7 +182,7 @@ const SignUp = () => {
                                         <td>
                                             <div>
                                                 <div className="mBottom">
-                                                    <label className="chkFont"><input type="checkbox" id="agree2" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine"> 서비스 이용약관</a>에 동의합니다.</label>
+                                                    <label className="chkFont"><input type="checkbox" checked={checked2} onChange={handleChecked2} id="agree2" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine"> 서비스 이용약관</a>에 동의합니다.</label>
                                                 </div>
                                             </div>
                                         </td>
@@ -187,7 +191,7 @@ const SignUp = () => {
                                         <td>
                                             <div>
                                                 <div className="mBottom">
-                                                    <label className="chkFont"><input type="checkbox" id="agree3" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine">개인정보 수집 및 이용</a>에 동의합니다.</label>
+                                                    <label className="chkFont"><input type="checkbox" checked={checked3} onChange={handleChecked3} id="agree3" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine">개인정보 수집 및 이용</a>에 동의합니다.</label>
                                                 </div>
                                             </div>
                                         </td>
