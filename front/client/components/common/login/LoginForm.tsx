@@ -1,6 +1,5 @@
 import Styled from 'styled-components'
 import ModalBackground from '../ModalBackground'
-import { Button } from "react-bootstrap"
 import { connect } from 'react-redux'
 import React from 'react'
 import Link from 'next/link'
@@ -21,15 +20,13 @@ const LoginForm = (props) =>{
       const klaytnAddress = window.klaytn.selectedAddress
       setKaikasAddress(klaytnAddress)
 
-  
       window.klaytn.on('accountsChanged', () => {
         const klaytnAddress = window.klaytn.selectedAddress
         console.log('account changed!', klaytnAddress)
         setKaikasAddress(klaytnAddress)
-
+        
       })
-  
-  
+
     }
   
     const onClick = () => {
@@ -55,7 +52,7 @@ const LoginForm = (props) =>{
                 <ul>
                     <li>로그인</li>
                     <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
-                    <li><Button onClick = {onClick}>Kaikas로그인</Button></li>
+                    <Login onClick = {onClick}>Kaikas로그인</Login>
                     <li>사용중인 지갑이 없으신가요? <span><Astyle href = "https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi">kaikas다운로드</Astyle></span></li>
                 </ul>
             </LoginFormWrapper>
@@ -128,4 +125,8 @@ const LoginFormWrapper = Styled.div`
 
 const Astyle = Styled.a`
     text-decoration:none;
+`
+
+const Login = Styled.li`
+    font-size:15px; 
 `
