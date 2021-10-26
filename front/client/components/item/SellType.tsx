@@ -27,7 +27,7 @@ const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChan
             ? 
                 <SellAucWrapper>
                     <SmallTitle>판매 가격</SmallTitle>
-                    <input type="text" placeholder="판매가를 입력하세요." onChange ={handleTxtChange}/>
+                    <input type="text" placeholder="판매가를 입력하세요." onChange ={(e)=>handleTxtChange(e, "price")}/>
                 </SellAucWrapper>
             :  
             <>
