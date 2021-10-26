@@ -120,12 +120,9 @@ const LoginFormWrapper = Styled.div`
     }
     ul>li:nth-child(3){
         width:240px;
-        height:50px;
+        height:60px;
         margin:auto;
-        /* line-height:50px;
-        background-color:white;
-        border:1px solid black; */
-        margin-bottom:20px;   
+        margin-bottom:35px;   
     }
     ul>li:nth-child(4)>span{
         border-bottom:1px solid black;

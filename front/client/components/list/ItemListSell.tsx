@@ -205,6 +205,7 @@ const PictureNumberNotice = Styled.div`
     float:left;
     margin-bottom:50px;
     clear:both;
+    cursor : default;
 `
 const SelectBox = Styled.select`
     display:inline-block;
