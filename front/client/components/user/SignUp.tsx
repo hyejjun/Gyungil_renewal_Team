@@ -41,27 +41,12 @@ const SignUp = () => {
         setNickSignErr(chkk() === true)
     }    
 
-    const nickChk2 = () => {
-        let chk = ["a","b","c"]
-        let chkTrue = 0;
-        for( let i=0;i< chk.length;i++){
-            if(nickName.indexOf(chk[i]) != -1) {
-                chkTrue=1;
-            }
-        }
-        if(chkTrue !==0){
-            return true;
-        }
-    }
-
     const change2 = e => {
         const value = e.target.value;
         setEmail(value);
         setEmailErr(value === "");
     }
 
-    
-    
     const submit = e => {
 
     }
