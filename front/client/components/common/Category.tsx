@@ -2,23 +2,21 @@ import Link from 'next/link';
 import Styled from 'styled-components';
 import React, { useState } from 'react'
 
-
-
 const Category = (props) => {
-    const { gender, List, handlegender, handleList } = props.CategoryState
-
+    const { genderTab, List, genderTabOpen, handleList, selectGender, genderSelect } = props.CategoryState
+    
     return (
         <CategoryWrapper>
             <H3>전체 카테고리</H3>
-            <Ul>
+            <Ul flag={genderSelect}>
                 <Line></Line>
-                <Subject onClick={handlegender}>성별</Subject>
+                <Subject onClick={genderTabOpen}>성별</Subject>
                 <Line></Line>
-                {gender == true ?
+                {genderTab == true ?
                     <>
-                        <LI>여성복</LI>
-                        <LI>남성복</LI>
-                        <LI>아동복</LI>
+                        <LI onClick={() => { selectGender(1) }} className="female" >여성복</LI>
+                        <LI onClick={() => { selectGender(2) }} className="male" >남성복</LI>
+                        <LI onClick={() => { selectGender(3) }} className="child" >아동복</LI>
                     </>
                     :
                     <li></li>
@@ -68,6 +66,26 @@ const Line = Styled.li`
     margin-bottom:10px;
 `
 
+const Ul = Styled.ul`
+    .female{
+        color: ${props => (props.flag == 1 ? '#000000' : '#777')};
+        font-weight: ${props => (props.flag == 1 ? 'bold' : 'none')};
+        text-decoration : ${props => (props.flag == 1 ? 'underline' : 'none')};
+    }
+
+    .male{
+        color: ${props => (props.flag == 2 ? '#000000' : '#777')};
+        font-weight: ${props => (props.flag == 2 ? 'bold' : 'none')};
+        text-decoration : ${props => (props.flag == 2 ? 'underline' : 'none')};
+    }
+
+    .child{
+        color: ${props => (props.flag == 3 ? '#000000' : '#777')};
+        font-weight: ${props => (props.flag == 3 ? 'bold' : 'none')};
+        text-decoration : ${props => (props.flag == 3 ? 'underline' : 'none')};
+    }
+`
+
 const LI = Styled.li`
     height: 40px;
     font-size: 14px;
@@ -78,19 +96,5 @@ const LI = Styled.li`
     cursor : pointer;
     &:hover{
         color:black
-    }
-`
-const LastLi = Styled.li`
-    margin-bottom:30px;
-    color:grey;
-    &:hover{
-        color:black
-        border-bottom : 1px solid black;
-    }
-`
-
-const Ul = Styled.ul`
-    &:hover{
-       
     }
 `
