@@ -34,7 +34,7 @@ const Own = () => {
             alert: '신고하기'
         },
         {
-            id: 3,
+            id: 4,
             subject: 'adsff',
             artist: 'daminal',
             Like: 5,
@@ -44,33 +44,35 @@ const Own = () => {
 
 
     const nameList: JSX.Element[] = Arr.map((ele) =>
-        <NFTFourList>
-            <NFT>
-                <NFTImg>
-                    {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
-                    <div><img/></div>
-                </NFTImg>
-                <Line></Line>
-                <NFTOne>
-                    <NFTOneList>
-                        <NFTSubject>{ele.subject}</NFTSubject>
-                        {/* 여기 a 빠졌는데 동작되는 이유.. a 추가하면 오류남 */}
-                        <NFTartist>{ele.artist}</NFTartist>
-                    </NFTOneList>
-                    <NFTOneImg>
-                        <img></img>
-                    </NFTOneImg>
-                </NFTOne>
-                <NFTOne>
-                    <NFTOneList>
-                        <NFTSubject>@ {ele.Like}</NFTSubject>
-                    </NFTOneList>
-                    <NFTDeclaration>
-                        <NFTSubject>* * *</NFTSubject>
-                    </NFTDeclaration>
-                </NFTOne>
-            </NFT>
-        </NFTFourList>
+        <React.Fragment key={ele.id}>
+            <NFTFourList>
+                <NFT>
+                    <NFTImg>
+                        {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
+                        <div><img/></div>
+                    </NFTImg>
+                    <Line></Line>
+                    <NFTOne>
+                        <NFTOneList>
+                            <NFTSubject>{ele.subject}</NFTSubject>
+                            {/* 여기 a 빠졌는데 동작되는 이유.. a 추가하면 오류남 */}
+                            <NFTartist>{ele.artist}</NFTartist>
+                        </NFTOneList>
+                        <NFTOneImg>
+                            <img></img>
+                        </NFTOneImg>
+                    </NFTOne>
+                    <NFTOne>
+                        <NFTOneList>
+                            <NFTSubject>@ {ele.Like}</NFTSubject>
+                        </NFTOneList>
+                        <NFTDeclaration>
+                            <NFTSubject>* * *</NFTSubject>
+                        </NFTDeclaration>
+                    </NFTOne>
+                </NFT>
+            </NFTFourList>
+        </React.Fragment>
     );
 
     return (
