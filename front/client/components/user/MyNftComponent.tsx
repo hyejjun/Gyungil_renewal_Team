@@ -11,6 +11,7 @@ const MyNftComponent = () => {
 
     const [tabBtn, settabBtn] = useState<number>(1);
     const user = useSelector((state:RootState) => state.user);
+    console.log(user)
 
     const btn1 = () => {
         settabBtn(1);
@@ -25,7 +26,7 @@ const MyNftComponent = () => {
 
     return(
         <>  
-            <MyInfo>
+            <MyInfo> 
                 {/* <MyIMG><img src = {require('../../src/지도.jpg')}/></MyIMG> */}
                 <MyIMG> <img alt="이미지" /> </MyIMG>
                 <MyName>원금회복</MyName>

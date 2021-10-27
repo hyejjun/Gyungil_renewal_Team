@@ -25,10 +25,10 @@ export const USER_LOGIN_REQUEST  = "USER_LOGIN_REQUEST" as const;
 const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS" as const;
 const USER_LOGIN_ERROR = "USER_LOGIN_ERROR" as const;
 
-export const UserLogin_REQUEST = (payload) => {
+export const UserLogin_REQUEST = (UserAddress) => {
     return{
         type:USER_LOGIN_REQUEST,
-        data:payload,
+        data:UserAddress,
         test:'test'
     }
 }
@@ -55,7 +55,7 @@ const reducer = (state:{}=initialState, action:UserAction) => {
         case USER_LOGIN_REQUEST:
             return{
                 ...state,
-                UserAddress:action.payload
+                UserAddress:action.data
             }
         case USER_LOGIN_SUCCESS:
             return{
