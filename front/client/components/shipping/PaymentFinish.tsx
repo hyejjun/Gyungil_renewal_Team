@@ -1,12 +1,13 @@
 import Styled from 'styled-components'
 import React, { useState } from 'react'
 import Link from 'next/link';
+import DeliveryForm from './deliveryForm';
 
 const PaymentFinish = () => {
 
     return (
         <>
-            <ShipWrap>
+             {/* <ShipWrap>
                 <HeadLine>Shipping Notice</HeadLine>
                 <H5>배송 정보</H5>
                 <Table>
@@ -77,8 +78,14 @@ const PaymentFinish = () => {
                         </tr>
                     </tbody>
                 </Table>
+            </ShipWrap>  */}
+            {/* <ShipWrap> */}
+            <ShipWrap>
+                <DeliveryForm/>
             </ShipWrap>
+                {/* <DeliveryForm/> */}
             <Center><Link href="/"><a><SubmitBtn>메인 으로</SubmitBtn></a></Link></Center>
+            {/* </ShipWrap> */}
         </>
     )
 }
