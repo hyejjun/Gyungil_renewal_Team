@@ -86,9 +86,10 @@ const addItem = () =>{
         }
     }
 
-    function handleSubmit (){ 
-        console.log(file,price,name,desc)
-        console.log(file, name,desc,aucPrice,aucTime,extension)
+    function handleSubmit(){ 
+        // axios같은거로 나중에 처리
+        console.log(file, price, name, desc)
+        console.log(file, name, desc, aucPrice, aucTime, extension)
     }
 
     useEffect(()=>{

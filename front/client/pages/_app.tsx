@@ -2,7 +2,6 @@
 import type { AppProps /*, AppContext */ } from 'next/app'
 import './test.css'
 import WebLayout from '../components/layout/WebLayout'
-import {useStore} from 'react-redux'
 import { wrapper } from '../store/configureStore'
 
 

@@ -10,13 +10,65 @@ import Router from 'next/router'
 
 const SignUp = () => {
 
-    // let [nickName, setNickName] = useState<string>('');
-    // let [wallet, setWallet] = useState<string>('');
-    // let [email, setEmail] = useState<string>('');
+    const [nickName, setNickName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+
+    const [nickErr, setNickErr] = useState<boolean>(false); 
+    const [nickLength5Err, setNickLength5Err] = useState<boolean>(false); 
+    const [nickSignErr, setNickSignErr] = useState<boolean>(false); 
+
+    const [emailErr, setEmailErr] = useState<boolean>(false); 
+
+    const [checked1,setChecked1] = useState(false);
+    const [checked2,setChecked2] = useState(false);
+    const [checked3,setChecked3] = useState(false);
+
+    console.log(nickName,"<-----", email );
+
+    const nickChk1 = e => {
+        const value = e.target.value;
+        setNickName(value);
+        setNickErr(value === "");
+        setNickLength5Err(value.length < 5 && value.length >0);
+        
+        const chkk = () => {
+        let chk = [",","?","=","`","~","!","@","#","$","%","^","&","*","(",")","<",">","/","*"]
+        let chkTrue = 0;
+        for( let i=0;i< chk.length;i++){
+            if(value.indexOf(chk[i]) != -1) {
+                chkTrue=1;
+            }
+        }
+        if(chkTrue !==0){
+            return true;
+        }
+        }
+        setNickSignErr(chkk() === true)
+    }    
+
+    const change2 = e => {
+        const value = e.target.value;
+        setEmail(value);
+        setEmailErr(value === "");
+    }
 
     
-    const [email, onChangeEmail] = useInput('');
-    const [nickName, onChangeNickname] = useInput('');
+    const handleChecked1 = () => {
+        setChecked1(!checked1);
+       
+    }
+    const handleChecked2 = () => {
+        setChecked2(!checked2)
+        
+    }
+    const handleChecked3 = () => {
+        setChecked3(!checked3)
+      
+    }
+
+    const submit = e => {
+
+    }
 
     const [joinState,setJoinState] = useState<boolean>(false)
     const sucJoin = () => {
@@ -30,7 +82,7 @@ const SignUp = () => {
             <Css>
                 <div className="layout">
                     <div className="signUpContainer">
-                        <form>
+                        <form onSubmit={submit}>
                             <div className="title">회원가입</div>
                             <div className="image5">
                             <div className="image4 textCenter">
@@ -78,7 +130,10 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td className="textLeft">
-                                            <input type="text" className="InputBox" {...nickName} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요." />
+                                            <input type="text" className="InputBox" value={nickName} onChange={nickChk1} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요." />
+                                            { nickErr ? <div className="error">닉네임을 입력해주세요.</div> : <></>}
+                                            { nickLength5Err ? <div className="error">닉네임을 5자 이상으로 입력해주세요.</div> : <></>}                                           
+                                            { nickSignErr ? <div className="error">닉네임은 한글, 영문 대소문자, 숫자, 특수기호(_),(-),(.)만 입력 가능합니다.</div> : <></>}
                                         </td>
                                     </tr>
 
@@ -107,7 +162,8 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" className="InputBox" {...email} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            <input type="email" className="InputBox" value={email} onChange={change2} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            { emailErr ? <div className="error">이메일 주소를 입력해주세요.</div> : <></>}
                                         </td>
                                     </tr>
                                     <tr>
@@ -117,7 +173,7 @@ const SignUp = () => {
                                         <td>
                                             <div>
                                                 <div className="mBottom">
-                                                    <label className="chkFont"><input type="checkbox" id="agree1" /> 만 19세 이상입니다.</label>
+                                                    <label className="chkFont"><input type="checkbox" checked={checked1} onChange={handleChecked1} id="agree1" /> 만 19세 이상입니다.</label>
                                                 </div>
                                             </div>
                                         </td>
@@ -126,7 +182,7 @@ const SignUp = () => {
                                         <td>
                                             <div>
                                                 <div className="mBottom">
-                                                    <label className="chkFont"><input type="checkbox" id="agree2" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine"> 서비스 이용약관</a>에 동의합니다.</label>
+                                                    <label className="chkFont"><input type="checkbox" checked={checked2} onChange={handleChecked2} id="agree2" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine"> 서비스 이용약관</a>에 동의합니다.</label>
                                                 </div>
                                             </div>
                                         </td>
@@ -135,7 +191,7 @@ const SignUp = () => {
                                         <td>
                                             <div>
                                                 <div className="mBottom">
-                                                    <label className="chkFont"><input type="checkbox" id="agree3" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine">개인정보 수집 및 이용</a>에 동의합니다.</label>
+                                                    <label className="chkFont"><input type="checkbox" checked={checked3} onChange={handleChecked3} id="agree3" /> (필수) <a target="_blank" href="http://naver.com" rel="noreferrer" className="underLine">개인정보 수집 및 이용</a>에 동의합니다.</label>
                                                 </div>
                                             </div>
                                         </td>
@@ -339,7 +395,9 @@ svg:hover{
 }
 
 .error{
-    color:red;
+    color:#dc3545;
+    font-size:12px;
+    margin-top: 4px;
 }
 
 .height42{
