@@ -8,6 +8,7 @@ contract Mortal {
     /* 컨트랙트에서 자금을 회수하는 함수 */
     function kill() public payable { if (msg.sender == owner) selfdestruct(owner); }
 }
+
 contract KlaytnGreeter is Mortal {
     /* 문자열 타입의 변수 greeting 정의 */
     string greeting;
