@@ -24,8 +24,6 @@ const ItemListAuction = (props) => {
         AStyle,
     } = ItemListCSS
 
-    const { gender, List, handlegender, handleList } = props.CategoryState
-
     let [loading, setLoading] = useState<boolean>(true)
     let [count, setCount] = useState<number>(0)
 
@@ -184,17 +182,17 @@ const ItemListAuction = (props) => {
                 <PictureNumberNotice>
                     전체 NFT 리스트 (총 {count}개 발행됨)
                 </PictureNumberNotice>
-                <SelectBox>
-                    <SelectOption>
+                <SelectBox onChange={props.selectChange}>
+                    <SelectOption value="auction_recent">
                         최근 발행 순
                     </SelectOption>
-                    <SelectOption>
+                    <SelectOption value="auction_likes">
                         좋아요 순
                     </SelectOption>
                 </SelectBox>
             </div>
             <NFTComponent>
-                <Category CategoryState={props.CategoryState}/>
+                <Category CategoryState={props.CategoryState} />
                 <div>
                     <div>
                         <ul>

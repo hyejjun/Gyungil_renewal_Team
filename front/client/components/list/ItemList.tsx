@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
 import MyNft from './MyNFT'
+import { Input, Button } from '@mui/material'
 
 const ItemList = () => {
 
@@ -16,24 +17,39 @@ const ItemList = () => {
     }
 
 
-    const [gender, setgender] = useState(false)
-    const [List, setList] = useState(false)
+    const [genderTab, setGenderTab] = useState<boolean>(false);
+    const [List, setList] = useState<boolean>(false);
 
-    const handlegender = () => {
-        setgender(prev => !prev)
+    const genderTabOpen = () => {
+        setGenderTab(prev => !prev)
     }
 
     const handleList = () => {
         setList(prev => !prev)
     }
 
-    const CategoryState = {
-        gender,
-        List,
-        handlegender,
-        handleList
+    // 0 미선택 1 여성복 2 남성복 3 아동복
+    const [genderSelect, setGenderSelect] = useState<number>(0);
+
+    const selectGender = (num) => {
+        setGenderSelect(num)
     }
 
+    const CategoryState = {
+        genderTab,
+        List,
+        genderTabOpen,
+        handleList,
+        genderSelect,
+        selectGender,
+    }
+
+    const [select, setSelect] = useState<string>('')
+
+    const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = event.target.value;
+        setSelect(value);
+    };
 
     return (
         <>
@@ -49,21 +65,21 @@ const ItemList = () => {
                     <AuctionTab onClick={btn2} flag={tabBtn}>경매</AuctionTab>
                 </Menu>
                 <Search>
-                    <SearchBox>
-                        <Input type="text" placeholder="상품을 검색하세요" />
-                    </SearchBox>
-                    <SearchBox>
-                        <SearchClick>
-                            ?
-                        </SearchClick>
-                    </SearchBox>
+                    <SearchInner>
+                        <SearchBox>
+                            <Input placeholder="상품 검색" />
+                        </SearchBox>
+                        <SearchBox>
+                            <Button variant="outlined">검색</Button>
+                        </SearchBox>
+                    </SearchInner>
                 </Search>
             </MenuBar>
             <div>
                 {
                     tabBtn === 1
-                        ? <ItemListSell CategoryState={CategoryState}/>
-                        : <ItemListAuction CategoryState={CategoryState}/>
+                        ? <ItemListSell CategoryState={CategoryState} selectChange={selectChange}/>
+                        : <ItemListAuction CategoryState={CategoryState} selectChange={selectChange}/>
                 }
             </div>
 
@@ -90,48 +106,34 @@ const Menu = Styled.li`
 const Search = Styled.li`
     float:right;
 `
-const Input = Styled.input`
-    display:inline-block;
-    height:30px;
-    width:500px;
-    font-size:18px;
-`
-const SearchBox = Styled.div`
-    float:left;
+
+const SearchInner = Styled.div`
+    display : flex;
+    gap : 10px;
 `
 
-const SearchClick = Styled.div`
-    height:34px;
-    width:40px;
-    border:1px solid black;
-    text-align:center;
-    padding:2px;
-    box-sizing:border-box;
-    font-size:20px;
+const SearchBox = Styled.div`
+    & > button {
+        line-height: 1.5;
+    }
 `
+
 const MenuBar = Styled.ul`
     clear:both;
     height: 100px;
-`
-const Menu1 = Styled.div`
-    font-size:24px;
-    cursor:pointer;
-    &:hover{
-        color:#055fec;
-    }
 `
 
 const SellTab = Styled.div`
     cursor:pointer;
     font-size: 23px;
-    color: ${props=>(props.flag == 1? '#000000b3' : '#a0a0a0b3')};
-    font-weight: ${props=>(props.flag == 1? 'bold' : 'none')};
+    color: ${props => (props.flag == 1 ? '#000000b3' : '#a0a0a0b3')};
+    font-weight: ${props => (props.flag == 1 ? 'bold' : 'none')};
 `
 
 const AuctionTab = Styled.div`
     cursor:pointer;
     font-size: 23px;
-    color:  ${props=>(props.flag == 2? '#000000b3' : '#a0a0a0b3')};
-    font-weight: ${props=>(props.flag == 2? 'bold' : 'none')};
+    color:  ${props => (props.flag == 2 ? '#000000b3' : '#a0a0a0b3')};
+    font-weight: ${props => (props.flag == 2 ? 'bold' : 'none')};
 
 `
