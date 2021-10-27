@@ -6,7 +6,7 @@ import Link from 'next/link'
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react"
-import { USER_LOGIN_REQUEST } from "../../../reducers/user";
+import { UserLogin_REQUEST } from "../../../reducers/user";
 import { RootState } from "../../../reducers"
        
 declare global {
@@ -26,8 +26,8 @@ const LoginForm = (props) =>{
   
       const klaytnAddress = window.klaytn.selectedAddress
       setKaikasAddress(klaytnAddress)
-      dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
-
+      //dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
+      dispatch(UserLogin_REQUEST({klaytnAddress}))
       window.klaytn.on('accountsChanged', () => {
         const klaytnAddress = window.klaytn.selectedAddress
         console.log('account changed!', klaytnAddress)
