@@ -9,7 +9,7 @@ const AddItemComponent = ({
     userId, n, ifSell, extension, 
     sellToggle, extensionToggle,
     ifAgreed,
-    handleTxtChange, handleSubmit, handleConfirm
+    handleTxtChange, handleSubmit, handleConfirm,
 }) => {
     const [nftCreateState,setnftCreateState] = useState<boolean>(false);
     const createNftCh = () => {

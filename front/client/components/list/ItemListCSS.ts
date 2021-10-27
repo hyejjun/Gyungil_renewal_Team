@@ -100,10 +100,12 @@ const NFTDeclaration = Styled.li`
 `
 const NFTSubject = Styled.div`
     font-weight:bold;
+    cursor: pointer;
 `
 
 const NFTartist = Styled.div`
-     color:#bbb;
+    color:#bbb;
+    cursor: default;
 
 `
 const Line = Styled.div`

@@ -4,6 +4,7 @@ import Order from "./Order";
 import NFTexplanation from "../NFTexplanation";
 import Like from "../../common/Like";
 import NFTTitle from "../NFTTitle";
+import SizeSelect from "../SizeSelect";
 
 const NFTdetail = ({children}) => {
     const [open, setOpen] = useState<boolean>(false);
@@ -15,26 +16,7 @@ const NFTdetail = ({children}) => {
         <>
             <NFTdetailWrap>
                 <NFTBuy>
-                    <select>
-                        <option>
-                            SIZE
-                        </option>
-                        <option>
-                            XL
-                        </option>
-                        <option>
-                            L
-                        </option>
-                        <option>
-                            M
-                        </option>
-                        <option>
-                            S
-                        </option>
-                        <option>
-                            XS
-                        </option>
-                    </select>
+                    <SizeSelect/>
                     <Like/>
                     <BuyBtnCSS onClick={orderOpen}>
                         <button>{children}</button>
@@ -63,15 +45,6 @@ const NFTBuy = Styled.div`
     padding-left: 65%;
     box-sizing: border-box;
 
-    & > select {
-        margin-right:10px;
-        width:72px;
-        font-size:22px;
-        
-    }
-
-
-    
 `
 
 export const BuyBtnCSS = Styled.span`

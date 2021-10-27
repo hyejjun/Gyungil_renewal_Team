@@ -45,9 +45,15 @@ const addItem = () =>{
             }
             setAucPrice(value)
         } else if(item == "aucTime"){
-            setAucTime(value)
+            if(new Date(value)>new Date()){
+                setAucTime(value)
+            } else{
+                alert('현재보다 과거의 시간으로 설정할 수 없습니다.')
+                e.target.value = aucTime
+            }
         }
     }
+
 
     const sellToggle = (value:boolean) => {
         setifSell(value)
@@ -99,7 +105,7 @@ const addItem = () =>{
             setAllAgreed(false)
         }
     },[agreed])
-   
+
     return(
         <AddItemComponent 
         // 상품 등록 페이지
@@ -116,6 +122,7 @@ const addItem = () =>{
         handleTxtChange = {handleTxtChange}
         handleSubmit = {handleSubmit}
         handleConfirm = {handleConfirm}
+
         />
 
     )

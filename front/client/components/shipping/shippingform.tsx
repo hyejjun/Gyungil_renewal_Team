@@ -69,6 +69,12 @@ const Shippingfrom = () => {
                             </Address>
                         </tr>
                         <tr>
+                            <HeadTd>상세 주소</HeadTd>
+                            <ContentTd>
+                                <InputStyle/>
+                            </ContentTd>
+                        </tr>
+                        <tr>
                             <HeadTd>우편 번호</HeadTd>
                             <Address>{postNumber}</Address>
                         </tr>
