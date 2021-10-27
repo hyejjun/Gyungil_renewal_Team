@@ -13,8 +13,7 @@ function* login(action){
                     type: 'USER_LOGIN_SUCCESS',
                     data:result,
                     test:result,
-                    user_info:result,
-                    UserAddress:result
+                    user_info:result
                 })
             } else {
                 yield put({
