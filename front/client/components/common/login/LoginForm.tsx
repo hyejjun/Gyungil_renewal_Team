@@ -8,7 +8,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react"
 import { UserLogin_REQUEST } from "../../../reducers/user";
 import { RootState } from "../../../reducers"
-       
+
+
 declare global {
     interface Window {
         klaytn: any;
@@ -20,21 +21,21 @@ const LoginForm = (props) =>{
     const [kaikasAddress, setKaikasAddress] = React.useState('')
     const UserAddress = useSelector((state:RootState) => state.user);
     const dispatch = useDispatch()
-    
+
     const kaikasLogin = async () => {
       await window.klaytn.enable()
   
       const klaytnAddress = window.klaytn.selectedAddress
       setKaikasAddress(klaytnAddress)
       //dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
-      dispatch(UserLogin_REQUEST({klaytnAddress}))
-      window.klaytn.on('accountsChanged', () => {
-        const klaytnAddress = window.klaytn.selectedAddress
-        console.log('account changed!', klaytnAddress)
-        setKaikasAddress(klaytnAddress)
-        console.log(klaytnAddress)
+      dispatch(UserLogin_REQUEST(klaytnAddress))
 
-      })
+    //   window.klaytn.on('accountsChanged', () => {
+    //     const klaytnAddress = window.klaytn.selectedAddress
+    //     console.log('account changed!', klaytnAddress)
+    //     setKaikasAddress(klaytnAddress)
+    //     console.log(klaytnAddress)
+
 
     }
   
@@ -45,6 +46,7 @@ const LoginForm = (props) =>{
       setClicked(true)
   
       kaikasLogin()
+
     }
   
     if (kaikasAddress.length > 0) {
@@ -61,7 +63,7 @@ const LoginForm = (props) =>{
                 <ul>
                     <li>로그인</li>
                     <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
-                    <li><button onClick = {onClick} className="kaikasBtn">Kaikas로그인</button></li>
+                    <li><Link href = "/signup"><button onClick = {onClick} className="kaikasBtn">Kaikas로그인</button></Link></li>
                     <li>사용중인 지갑이 없으신가요? <span><Astyle href = "https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi">kaikas다운로드</Astyle></span></li>
                 </ul>
             </LoginFormWrapper>

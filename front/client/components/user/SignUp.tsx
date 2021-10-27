@@ -5,8 +5,10 @@ import Link from 'next/link'
 import React,{ useState } from 'react'
 import useInput from '../../hooks/useInput'
 import SucJoin from './SucJoin'
+import { useSelector, useDispatch } from 'react-redux'
 import { setUncaughtExceptionCaptureCallback } from 'process'
 import Router from 'next/router'
+import { RootState } from "../../reducers"
 
 const SignUp = () => {
 
@@ -22,6 +24,7 @@ const SignUp = () => {
     const [checked1,setChecked1] = useState(false);
     const [checked2,setChecked2] = useState(false);
     const [checked3,setChecked3] = useState(false);
+    const user = useSelector((state:RootState) => state.user);
 
     console.log(nickName,"<-----", email );
 
@@ -148,7 +151,7 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" className="InputBox" readOnly value="0x880cbdb6ebaa129564ce9e7278561645f4e2d7eb" />
+                                            <input type="text" className="InputBox" readOnly value={user.UserAddress} />
                                         </td>
                                     </tr>
                                     <tr>

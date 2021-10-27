@@ -5,7 +5,6 @@ import WebLayout from '../components/layout/WebLayout'
 import { wrapper } from '../store/configureStore'
 
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   
   return (

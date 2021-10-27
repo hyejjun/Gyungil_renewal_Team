@@ -55,7 +55,7 @@ const reducer = (state:State=initialState, action:UserAction) => {
         case USER_LOGIN_REQUEST:
             return{
                 ...state,
-                data:action.data
+                UserAddress:action.data
             }
         case USER_LOGIN_SUCCESS:
             return{
