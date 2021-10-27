@@ -1,28 +1,18 @@
-const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
-const privateKey = "0xc85895b05b9f40872e744884dc835078f5c744e1a8202775c1002a5046a14807" // Enter your private key;
+// truffle.js config for klaytn.
+const PrivateKeyConnector = require('connect-privkey-to-provider')
+const NETWORK_ID = '1001'
+const GASLIMIT = '20000000'
+const URL = 'https://api.baobab.klaytn.net:8651'
+const PRIVATE_KEY = '0xc85895b05b9f40872e744884dc835078f5c744e1a8202775c1002a5046a14807' // 싱글 따옴표 안에 자신의 프라이빗 키 입력하세요.
+
+// 스마트 컨트랙트를 배포할 수 있는 간단한 기본 설정
 module.exports = {
-  networks: {
-    development: {
-      host: "localhost",
-      port: 8651,
-      network_id: "*" // Match any network id
-    },
-    testnet: {
-      provider: () => new HDWalletProvider(privateKey, "https://kaikas.baobab.klaytn.net:8651/"),
-      network_id: '1001', //Klaytn baobab testnet's network id
-      gas: '8500000',
-      gasPrice: null
-    },
-    mainnet: {
-      provider: () => new HDWalletProvider(privateKey, "https://kaikas.cypress.klaytn.net:8651/"),
-      network_id: '8217', //Klaytn mainnet's network id
-      gas: '8500000',
-      gasPrice: null
+    networks: {
+        klaytn: {
+            provider: new PrivateKeyConnector(PRIVATE_KEY, URL),
+            network_id: NETWORK_ID,
+            gas: GASLIMIT,
+            gasPrice: null,
+        }
     }
-  },
-  compilers: {
-    solc: {
-      version: "0.5.6"
-    }
-  }
-};
+}
