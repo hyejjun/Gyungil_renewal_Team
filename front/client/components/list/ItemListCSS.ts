@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 
 const PictureNumberNotice = Styled.div`
     color:#2d3741;
-    font-size:24px;
+    font-size:19px;
     font-weight:bold;
     display:inline-block;
     text-decoration:none;
