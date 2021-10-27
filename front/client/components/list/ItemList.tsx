@@ -16,22 +16,31 @@ const ItemList = () => {
     }
 
 
-    const [gender, setgender] = useState(false)
-    const [List, setList] = useState(false)
+    const [genderTab, setGenderTab] = useState<boolean>(false);
+    const [List, setList] = useState<boolean>(false);
 
-    const handlegender = () => {
-        setgender(prev => !prev)
+    const genderTabOpen = () => {
+        setGenderTab(prev => !prev)
     }
 
     const handleList = () => {
         setList(prev => !prev)
     }
 
+    // 0 미선택 1 여성복 2 남성복 3 아동복
+    const [genderSelect, setGenderSelect] = useState<number>(0);
+
+    const selectGender = (num) => {
+        setGenderSelect(num)
+    }
+
     const CategoryState = {
-        gender,
+        genderTab,
         List,
-        handlegender,
-        handleList
+        genderTabOpen,
+        handleList,
+        genderSelect,
+        selectGender
     }
 
 
@@ -62,8 +71,8 @@ const ItemList = () => {
             <div>
                 {
                     tabBtn === 1
-                        ? <ItemListSell CategoryState={CategoryState}/>
-                        : <ItemListAuction CategoryState={CategoryState}/>
+                        ? <ItemListSell CategoryState={CategoryState} />
+                        : <ItemListAuction CategoryState={CategoryState} />
                 }
             </div>
 
@@ -124,14 +133,14 @@ const Menu1 = Styled.div`
 const SellTab = Styled.div`
     cursor:pointer;
     font-size: 23px;
-    color: ${props=>(props.flag == 1? '#000000b3' : '#a0a0a0b3')};
-    font-weight: ${props=>(props.flag == 1? 'bold' : 'none')};
+    color: ${props => (props.flag == 1 ? '#000000b3' : '#a0a0a0b3')};
+    font-weight: ${props => (props.flag == 1 ? 'bold' : 'none')};
 `
 
 const AuctionTab = Styled.div`
     cursor:pointer;
     font-size: 23px;
-    color:  ${props=>(props.flag == 2? '#000000b3' : '#a0a0a0b3')};
-    font-weight: ${props=>(props.flag == 2? 'bold' : 'none')};
+    color:  ${props => (props.flag == 2 ? '#000000b3' : '#a0a0a0b3')};
+    font-weight: ${props => (props.flag == 2 ? 'bold' : 'none')};
 
 `
