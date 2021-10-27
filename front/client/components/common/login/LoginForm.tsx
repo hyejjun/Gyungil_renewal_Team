@@ -8,7 +8,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react"
 import { UserLogin_REQUEST } from "../../../reducers/user";
 import { RootState } from "../../../reducers"
-       
+
+
 declare global {
     interface Window {
         klaytn: any;
@@ -26,9 +27,10 @@ const LoginForm = (props) =>{
   
       const klaytnAddress = window.klaytn.selectedAddress
       setKaikasAddress(klaytnAddress)
-    //   dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
+
       dispatch(UserLogin_REQUEST(klaytnAddress))
-    //   window.location.href="/signup"
+
+      const caver = new Cav(window.klaytn)
 
 
     }
