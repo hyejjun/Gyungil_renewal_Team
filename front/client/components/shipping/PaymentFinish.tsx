@@ -1,12 +1,17 @@
 import Styled from 'styled-components'
 import React, { useState } from 'react'
 import Link from 'next/link';
+import DeliveryImg from './DeliveryImg';
+import DeliveryForm from './DeliveryForm';
+import OrderInfo from './OrderInfo'
+import DeliveryInfo from './DeliveryInfo';
+import ProductInfo from './ProductInfo';
+import Btn from '../common/Btn';
 
 const PaymentFinish = () => {
-
     return (
         <>
-            <ShipWrap>
+             {/* <ShipWrap>
                 <HeadLine>Shipping Notice</HeadLine>
                 <H5>배송 정보</H5>
                 <Table>
@@ -77,8 +82,21 @@ const PaymentFinish = () => {
                         </tr>
                     </tbody>
                 </Table>
+            </ShipWrap>  */}
+            {/* <ShipWrap> */}
+            <ShipWrap>
+                <DeliveryImg/>
+                <br/><br/><br/><br/>
+                <OrderInfo/>
+                <br/>
+                <DeliveryInfo/>
+                <br/>
+                <ProductInfo/>
+
             </ShipWrap>
-            <Center><Link href="/"><a><SubmitBtn>메인 으로</SubmitBtn></a></Link></Center>
+                {/* <DeliveryForm/> */}
+            <Link href="/"><a><Btn>메인으로</Btn></a></Link>
+            {/* </ShipWrap> */}
         </>
     )
 }
@@ -86,53 +104,56 @@ const PaymentFinish = () => {
 export default PaymentFinish
 
 const ShipWrap = Styled.div`
-    margin:60px 0px 80px 60px;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    margin:60px 0px 40px 60px;
 `
-const Table = Styled.table`
-    margin-bottom:60px;
-    border:1px solid grey;
-`
+// const Table = Styled.table`
+//     margin-bottom:60px;
+//     border:1px solid grey;
+// `
 
-const HeadLine = Styled.h3`
-    font-size:38px;
-    margin-bottom:60px;
-`
+// const HeadLine = Styled.h3`
+//     font-size:38px;
+//     margin-bottom:60px;
+// `
 
-const TwoTd = Styled.td`
-    font-size:18px;
-    width:120px;
-    height:55px;
-    border:1px solid grey;
-    text-align:center;
-    background:#bbb;
-    color:white;
-`
+// const TwoTd = Styled.td`
+//     font-size:18px;
+//     width:120px;
+//     height:55px;
+//     border:1px solid grey;
+//     text-align:center;
+//     background:#bbb;
+//     color:white;
+// `
 
-const TwoTdContent = Styled.td`
-    width:400px;
-    height:55px;
-    border:1px solid grey;
-    box-sizing:border-box;
-    padding:7px;
-    font-size:18px;
-`
+// const TwoTdContent = Styled.td`
+//     width:400px;
+//     height:55px;
+//     border:1px solid grey;
+//     box-sizing:border-box;
+//     padding:7px;
+//     font-size:18px;
+// `
 
-const OneTd = Styled.td`
-    width:400px;
-    border:1px solid grey;
-    padding:9px;
-    font-size:18px;
-`
+// const OneTd = Styled.td`
+//     width:400px;
+//     border:1px solid grey;
+//     padding:9px;
+//     font-size:18px;
+// `
 
-const H5 = Styled.h3`
-    font-size:22px;
-    margin-bottom:15px;
-`
+// const H5 = Styled.h3`
+//     font-size:22px;
+//     margin-bottom:15px;
+// `
 
 const Center = Styled.div`
     width: 160px;
-    display:inline-block;
-    margin: 10px 0px 50px 60px;
+    display:flex;
+    margin: 10px 0px 50px 60px;   
 `
 
 const SubmitBtn = Styled.button`
