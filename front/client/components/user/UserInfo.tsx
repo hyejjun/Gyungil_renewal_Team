@@ -1,32 +1,39 @@
 import Styled from 'styled-components'
 import React,{useEffect} from 'react'
 import Link from 'next/link'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 
 const User = () => {
     return(
         <UserWrapper>
             <div>
                 <p>나의 프로필</p>
-                <p></p>
-                <ul>
-                    <li>
-                        <p>닉네임</p>
-                        <p>{/*nickname*/}Mihee</p>
-                    </li>
-                    <li>
-                        <p>지갑주소</p>
-                        <p>{/*wallet account*/}0x2618f9B36086912B479bA6A6FFF6ABCfCC035482</p>
-                    </li>
-                    <li>
-                        <p>이메일주소</p>
-                        <p>{/*email account*/}algml9603@mgail.com</p>
-                    </li>
-                    <li><Link href="/"><a>판매 신청</a></Link></li>
-                    <li>
-                        <span><Link href="/user/edit"><a>프로필 편집</a></Link></span>
-                        <span>회원탈퇴</span>
-                    </li>
-                </ul>
+                <p><AccountCircleIcon/></p>
+                <span>
+                    <ul>
+                        <li>
+                            <p>닉네임</p>
+                            <p>&nbsp;{/*nickname*/}Mihee</p>
+                        </li>
+                        <li>
+                            <p>지갑주소</p>
+                            <p>&nbsp;{/*wallet account*/}0x2618f9B36086912B479bA6A6FFF6ABCfCC035482</p>
+                        </li>
+                        <li>
+                            <p>
+                                이메일주소
+                                <span><VerifiedUserIcon/>인증완료</span>
+                            </p>
+                            <p>&nbsp;{/*email account*/}algml9603@mgail.com</p>
+                        </li>
+                        <li><Link href="/"><a>판매 신청</a></Link></li>
+                        <li>
+                            <button><Link href="/user/edit"><a>프로필편집</a></Link></button>
+                            <button>회원탈퇴</button>
+                        </li>
+                    </ul>
+                </span>
             </div>        
         </UserWrapper>
     )
@@ -43,33 +50,111 @@ const UserWrapper = Styled.div`
     border-radius:2%;
     a{
         text-decoration:none;
-        background-color:#b3d7ff;
         font-weight:500;
     }
     div{
        width:100%;
        height:480px;
-       //background-color:#e6f2ff;
        padding-top:40px;
-       padding-left:80px;
        align-items: stretch;
-       border:5px solid #e6f2ff;
        margin-left:-60px;
     }
     div>p:nth-child(1){
-        font-size:20px;
-        font-weight:600;
+        font-size:35px;
+        font-weight:700;
+        color: rgba(45,55,65,.9);
         margin-bottom:30px;
     }
     div>p:nth-child(2){
         width:90px;
         height:90px;
-        background-color:#b3d7ff;
         float:left;
         margin-top:8px;
-        margin-right:30px;
+        margin-right:120px;
         margin-bottom:300px;
         line-height:center;
+    }
+    div>p:nth-child(2)>svg{
+        width:140px;
+        height:140px;
+        cursor: pointer;
+        margin-left:15px;
+    }
+    li{
+        margin-bottom:27px;
+    }
+    div>span>ul>li>p:nth-child(1){
+        line-height:28px;
+        font-weight: 600;
+        font-size: 20px;
+        color: #2d3741;
+        vertical-align: middle;
+        margin-bottom:7px;
+    }
+    div>span>ul>li>p:nth-child(1)>span{
+        margin-left:10px;
+        font-size:14px;
+        font-weight:300x;
+        color:blue;
+    }
+    div>span>ul>li>p:nth-child(1)>span>svg{
+        color:blue;
+        width:16x;
+        height:16px;
+    }
+    div>span>ul>li>p:nth-child(2){
+        font-size: 15px;
+        line-height: 28px;
+        color: #2d3741;
+        border-spacing: 2px;
+        font-weight: 360;
+    }
+    div>span>ul>li:nth-child(4){
+        margin-top:40px;
+        margin-left:30px;
+    }
+
+    div>span>ul>li:nth-child(4) a{
+        //border:1px solid rgba(45,55,65,.9);
+        padding:10px 15px 10px 15px;
+        border-radius:5%;
+        background-color:rgba(239, 239, 239,0.2);
+    }
+    div>span>ul>li:nth-child(5){
+        margin-top:40px;
+    }
+    div>span>ul>li:nth-child(5)>button{
+        box-sizing:border-box;
+        border:1px solid #e1f0ff;
+        border-radius: .25rem;
+        padding: 12px 24px;
+        height: 50px;
+        display: inline-block;
+        margin-right:10px;
+        font-weight: 800;
+        text-align: center;
+        vertical-align: middle;
+        background-color: #e1f0ff;
+    }
+    div>span>ul>li:nth-child(5)>button:nth-child(1) a{
+        background-color: #e1f0ff;
+        color: #1e73fa;
+        font-weight: 800;
+    }
+    div>span>ul>li:nth-child(5)>button:nth-child(1) :hover{
+        opacity:0.8;
+    }
+    div>span>ul>li:nth-child(5)>button:nth-child(2) :hover{
+        opacity:1;
+    }
+    div>span>ul>li:nth-child(5)>button:nth-child(2) {
+        background-color:#1e73fa;
+        opacity:0.9;
+        color: #e1f0ff;
+    }
+
+    /* ul{
+        margin-left:80px;
     }
     li{
         margin-bottom:20px;
@@ -87,13 +172,13 @@ const UserWrapper = Styled.div`
         margin-bottom:50px;
     }   
     li:nth-child(4){
-        width:100px;
-        height:45px;
+        width:120px;
+        height:42px;
         line-height:43px;
         margin-left:120px;
         text-align:center;
-        background-color:#b3d7ff;
-        border-radius:2%;
+        border:1px solid black;
+        border-radius:4%;
         margin-bottom:40px; 
     }
 
@@ -107,7 +192,7 @@ const UserWrapper = Styled.div`
         font-size:12px;
         font-weight:600;
     
-    }
+    } */
 
 
 
