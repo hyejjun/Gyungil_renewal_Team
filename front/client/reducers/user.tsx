@@ -49,11 +49,7 @@ type UserAction =
 | ReturnType<typeof UserLogin_ERROR>
 
 
-<<<<<<< HEAD
-const reducer = (state:User=initialState, action:UserAction) => {
-=======
 const reducer = (state:{}=initialState, action:UserAction) => {
->>>>>>> a92ff4509e2c9173d57347f240af7852bd2c38f1
     switch (action.type){
         case USER_LOGIN_REQUEST:
             return{
@@ -63,13 +59,8 @@ const reducer = (state:{}=initialState, action:UserAction) => {
         case USER_LOGIN_SUCCESS:
             return{
                 ...state,
-<<<<<<< HEAD
-                UserAddress:action.data
-
-=======
                 data:action.data,
                 data1:action.data
->>>>>>> a92ff4509e2c9173d57347f240af7852bd2c38f1
             }
             
         case USER_LOGIN_ERROR:
