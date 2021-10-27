@@ -4,10 +4,15 @@ import Link from 'next/link'
 import Own from './own'
 import Selled from './Selled'
 import Notselled from './NotSelled'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from "../../reducers"
+import {State} from "../../reducers/user"
 
 const MyNftComponent = () => {
 
     const [tabBtn, settabBtn] = useState<number>(1);
+    const user:State = useSelector((state:RootState) => state.user);
+    console.log(user.UserAddress)
 
     const btn1 = () => {
         settabBtn(1);
@@ -26,7 +31,7 @@ const MyNftComponent = () => {
                 {/* <MyIMG><img src = {require('../../src/지도.jpg')}/></MyIMG> */}
                 <MyIMG> <img alt="이미지" /> </MyIMG>
                 <MyName>원금회복</MyName>
-                <MyAddress>0x454asdf5454324ewqf3dsf</MyAddress>
+                <MyAddress></MyAddress>
                 <Link href = "/user/user"><AStyle><MyProfile>프로필 편집</MyProfile></AStyle></Link>
 
             </MyInfo>

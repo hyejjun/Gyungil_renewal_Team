@@ -1,10 +1,12 @@
 import {combineReducers} from 'redux'
 import user from './user'
+import reducer from './user'
 import {initialState} from './user'
 import {AnyAction} from 'redux';
 import {HYDRATE} from 'next-redux-wrapper';
 import {persistStore, persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
+import {State} from '../reducers/user'
 
 const persistConfig = {
     key: 'nextjs',
@@ -13,16 +15,16 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    index:(state : {} = initialState,action:AnyAction)=>{
+    index:(state:State = initialState,action:AnyAction)=>{
         switch (action.type){
             case HYDRATE:
-                return {...state, ...action.payload};
+                return {...state, ...action};
             default :
-                return state
+                return {state, action}
         }
 
     },
-    user
+    user 
 })
 
 export default persistReducer(persistConfig, rootReducer);
