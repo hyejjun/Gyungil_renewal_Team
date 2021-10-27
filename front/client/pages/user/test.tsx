@@ -1,34 +1,29 @@
 import Btn from "../../components/common/Btn"
 import { useDispatch, useSelector } from "react-redux"
-import {UserLogin_REQUEST } from "../../reducers/user"
-import { ConstructionOutlined } from "@mui/icons-material"
+import { UserLogin_REQUEST } from "../../reducers/user"
 import { RootState } from "../../reducers"
 import { useEffect } from 'react'
+import InvoiceForm from "../../components/shipping/InvoiceForm"
 
 
 const test = () => {
-    
-    
-    
-    // dispatch(UserLogin_REQUEST({data:'algml'})) 
+    interface Variable {
+        test:Object;
+    }
+    const initialState : Variable = {
+        test:{}
+    }
     const test = useSelector((state:RootState )=> state.user)
-    
-    console.log(test.data)    
+    console.log(test)
         const dispatch = useDispatch()
         useEffect(() => {
-            dispatch(UserLogin_REQUEST({test1:'test'}))
+            dispatch(UserLogin_REQUEST({test:'testtttt'}))
         }, [])
     
     return(
-        <Btn>
-                <div><p>로그인이 필요합니다.</p></div>
-                <div><p>계속하려면 로그인을 해주세요</p></div>
-                <div>
-                    <span>취소</span>
-                    <span>로그인</span>
-                    
-                </div>
-        </Btn>
+        <>
+            <InvoiceForm/>
+        </>
     )
 }
 

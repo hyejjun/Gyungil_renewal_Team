@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import Link from 'next/link';
+import InputStyle from '../common/InputStyled';
 
 const Shippingfrom = () => {
 
@@ -27,24 +28,32 @@ const Shippingfrom = () => {
     return (
         <>
             <ShipWrap>
-                <HeadLine>Recipient Info</HeadLine>
+                <HeadLine>주문 정보</HeadLine>
                 <Table>
                     <tbody>
                         <tr>
                             <HeadTd id="Person">주문인</HeadTd>
-                            <ContentTd><label htmlFor="Person"><InputName type="text" /></label></ContentTd>
+                            <ContentTd>
+                                <InputStyle/>
+                            </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>수령인</HeadTd>
-                            <ContentTd><InputName type="text" /></ContentTd>
+                            <ContentTd>
+                                <InputStyle/>
+                            </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>휴대전화</HeadTd>
-                            <ContentTd><InputPhone type="text" />   -   <InputPhone type="text" />   -   <InputPhone type="text" /></ContentTd>
+                            <ContentTd>
+                                <InputStyle/>
+                            </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>이메일</HeadTd>
-                            <ContentTd><InputEmail type="text" />    @   <InputEmail type="text" /></ContentTd>
+                            <ContentTd>
+                                <InputStyle/>
+                            </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>주소</HeadTd>
@@ -58,6 +67,12 @@ const Shippingfrom = () => {
                                     )}
                                 </div>
                             </Address>
+                        </tr>
+                        <tr>
+                            <HeadTd>상세 주소</HeadTd>
+                            <ContentTd>
+                                <InputStyle/>
+                            </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>우편 번호</HeadTd>
@@ -75,13 +90,13 @@ const Shippingfrom = () => {
                         </tr>
                         <tr>
                             <HeadTd>배송 메모</HeadTd>
-                            <ContentTd><Memo type="text" placeholder="배송 시 요청사항을 입력해주세요" /></ContentTd>
-                        </tr>
-                        <tr>
-                            <Center><Link href="/paymentend"><a><SubmitBtn>주문 완료</SubmitBtn></a></Link></Center>
+                            <ContentTd><div><input type="text" placeholder="배송 시 요청사항을 입력해주세요"/></div></ContentTd>
                         </tr>
                     </tbody>
                 </Table>
+                <ShipSubmit>
+                    <Link href="/paymentend"><a><SubmitBtn>주문 완료</SubmitBtn></a></Link>
+                </ShipSubmit>
             </ShipWrap>
         </>
     )
@@ -90,55 +105,39 @@ const Shippingfrom = () => {
 export default Shippingfrom
 
 const Table = Styled.table`
-    box-sizing:border-box;
-    padding:3px;
-    margin-left:90px;
     margin-top:60px;
+    width: 60%;
+    border-collapse: collapse;
+
+    th, td {
+        height : 100px;
+    }
 `
+
 const ShipWrap = Styled.div`
-    margin:60px 0px 80px 180px;
+    
 `
-const HeadLine = Styled.h3`
-    font-size:38px;
-    margin-bottom:30px;
+const HeadLine = Styled.div`
+    font-size:30px;
+    font-weight : bold;
+    color: rgb(21 21 21 / 70%);
 `
 const HeadTd = Styled.td`
     width:200px;
     height:40px;
-    font-size:20px;
-    border:1px solid grey;
     box-sizing:border-box;
     padding:7px;
-    
-`
-const InputName = Styled.input`
-    width:350px;
-    height:30px;
-`
-
-const InputPhone = Styled.input`
-    width:102px;
-    height:30px;
-`
-
-const InputEmail = Styled.input`
-    width:160px;
-    height:30px;
-    
-`
-
-const Memo = Styled.input`
-    height:37px;
-    width:350px;
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(45,55,65,.7);
+    cursor : default;
 `
 
 const Address = Styled.td`
     font-size:19px;
-    border:1px solid grey;
 `
 
 const AddressFind = Styled.button`
-    margin-left:20px;
     color:grey;
     cursor:pointer;
     padding:6px;
@@ -152,25 +151,57 @@ const AddressFind = Styled.button`
 const Method = Styled.td`
     height:100px;
     line-height:30px;
-    border:1px solid grey;
 `
 
 const ContentTd = Styled.td`
-     border:1px solid grey;
+    & > div {
+        cursor: text;
+        display: flex;
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        border: 1px solid rgb(229, 232, 235);
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+    
+    & > div > input,
+    & > div > label,
+    & > div > label>input{
+        width : 100%;
+        font-size: 20px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        
+    }
+     
 `
+const ShipSubmit = Styled.div`
+    width: 100%;
+    height: 130px;
+    padding: 3% 0;
+    box-sizing: border-box;
 
-const Center = Styled.td`
-    width: 160px;
-    display:inline-block;
-    margin: 60px auto;
+    & > a {
+        float : right;
+    }
 `
 
 const SubmitBtn = Styled.button`
     width: 160px;
     height:50px;
     color:grey;
-    font-size:18px;
+    font-size: 16px;
     display:inline-block;
+    color: grey;
+    border: 1px solid #aab4be;
+    border-radius: 4px;
+    padding: 10px 24px;
+    box-sizing: border-box;
+    line-height: 28px;
+    margin-right: 16px;
+    font-weight: 400;
     cursor:pointer;
     &:hover{
         color:black;

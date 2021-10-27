@@ -1,110 +1,100 @@
 import Link from 'next/link';
 import Styled from 'styled-components';
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-
-
-const Category = () => {
-
-    const [gender,setgender] = useState(false)
-    const [List,setList] = useState(false)
-
-    const handlegender = () => {
-        setgender(prev => !prev)
-    }
-
-    const handleList = () => {
-        setList(prev => !prev)
-    }
-
-    return(
-            <CategoryWrapper>
-                <H3>Category</H3>
-
-                <Ul>
-                    <Line></Line>
-                    <Subject onClick = {handlegender}>성별</Subject>
-                    <Line></Line>
-                    { gender == true ?
+const Category = (props) => {
+    const { genderTab, List, genderTabOpen, handleList, selectGender, genderSelect } = props.CategoryState
+    
+    return (
+        <CategoryWrapper>
+            <H3>전체 카테고리</H3>
+            <Ul flag={genderSelect}>
+                <Line></Line>
+                <Subject onClick={genderTabOpen}>성별</Subject>
+                <Line></Line>
+                {genderTab == true ?
                     <>
-                        <LI>여성복</LI>
-                        <LI>남성복</LI>
-                        <LastLi>아동복</LastLi>
+                        <LI onClick={() => { selectGender(1) }} className="female" >여성복</LI>
+                        <LI onClick={() => { selectGender(2) }} className="male" >남성복</LI>
+                        <LI onClick={() => { selectGender(3) }} className="child" >아동복</LI>
                     </>
-                        :
-                        <li></li>
-                    }
-                </Ul>
-                <Ul>
-                    <Line></Line>
-                    <Subject onClick = {handleList}>여분</Subject>
-                    <Line></Line>
-                    { List == true ?
+                    :
+                    <li></li>
+                }
+            </Ul>
+            <Ul>
+                <Line></Line>
+                <Subject onClick={handleList}>여분</Subject>
+                <Line></Line>
+                {List == true ?
                     <>
                         <LI>리스트</LI>
                         <LI>리스트</LI>
-                        <LastLi>리스트</LastLi>
+                        <LI>리스트</LI>
                     </>
-                        :
-                        <li></li>
-                    }
-                </Ul>
-            </CategoryWrapper>
+                    :
+                    <li></li>
+                }
+            </Ul>
+        </CategoryWrapper>
     )
 }
 
 export default Category
 
 const CategoryWrapper = Styled.div`
-    width:200px;
-    box-sizing:border-box;
-    padding:25px;
-    z-index:3px;
-    position:absolute;
-    float:left;
-    top:540px;
-    height:600px;
-    width:300px;
-    left:0px;
+    width: 20%;
+    height: auto;
+    /* background: yellow; */
+    display : inline-block;
 `
 const H3 = Styled.div`
-    font-size:30px;
+    font-size: 18px;
     margin-bottom:20px;
-    margin-top:20px;
+    cursor : default;
 `
 
 const Subject = Styled.li`
-    font-size:20px;
+    font-size: 15px;
     margin-bottom:8px;
-
+    cursor : pointer;
 `
 
 const Line = Styled.li`
     height:2px;
     background:#bbb;
     margin-bottom:10px;
-    width:300px;
-`
-
-const LI = Styled.li`
-    color:grey;
-    &:hover{
-        color:black
-    }
-`
-const LastLi = Styled.li`
-    margin-bottom:30px;
-    color:grey;
-    &:hover{
-        color:black
-    }
 `
 
 const Ul = Styled.ul`
-    & > li{
-        line-height:25px;
+    .female{
+        color: ${props => (props.flag == 1 ? '#000000' : '#777')};
+        font-weight: ${props => (props.flag == 1 ? 'bold' : 'none')};
+        text-decoration : ${props => (props.flag == 1 ? 'underline' : 'none')};
     }
+
+    .male{
+        color: ${props => (props.flag == 2 ? '#000000' : '#777')};
+        font-weight: ${props => (props.flag == 2 ? 'bold' : 'none')};
+        text-decoration : ${props => (props.flag == 2 ? 'underline' : 'none')};
+    }
+
+    .child{
+        color: ${props => (props.flag == 3 ? '#000000' : '#777')};
+        font-weight: ${props => (props.flag == 3 ? 'bold' : 'none')};
+        text-decoration : ${props => (props.flag == 3 ? 'underline' : 'none')};
+    }
+`
+
+const LI = Styled.li`
+    height: 40px;
+    font-size: 14px;
+    line-height: 29px;
+    letter-spacing: -1px;
+    color: #777;
+    padding-bottom: 10px;
+    cursor : pointer;
     &:hover{
-       
+        color:black
     }
 `

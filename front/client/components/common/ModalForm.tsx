@@ -8,7 +8,6 @@ const ModalForm = ({children},props) => {
             </FormWrapper>
         </>
     )
-
 }
 
 export default ModalForm 
