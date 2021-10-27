@@ -27,11 +27,11 @@ const MyNftComponent = () => {
 
     return(
         <>  
-            <MyInfo>
+            <MyInfo> 
                 {/* <MyIMG><img src = {require('../../src/지도.jpg')}/></MyIMG> */}
                 <MyIMG> <img alt="이미지" /> </MyIMG>
                 <MyName>원금회복</MyName>
-                <MyAddress></MyAddress>
+                <MyAddress>{user.UserAddress}</MyAddress>
                 <Link href = "/user/user"><AStyle><MyProfile>프로필 편집</MyProfile></AStyle></Link>
 
             </MyInfo>

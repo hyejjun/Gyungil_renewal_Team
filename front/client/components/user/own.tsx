@@ -89,7 +89,7 @@ export default Own
 const NFTFourList = Styled.ul`
     display:inline-block;
     list-style:none;
-    margin-right:20px;
+    margin-right:18px;
     margin-left:11px;
     
 `
