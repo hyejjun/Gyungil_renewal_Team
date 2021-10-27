@@ -1,55 +1,45 @@
 import Link from 'next/link';
 import Styled from 'styled-components';
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 
 
-const Category = () => {
+const Category = (props) => {
+    const { gender, List, handlegender, handleList } = props.CategoryState
+    
+    return (
+        <CategoryWrapper>
+            <H3>Category</H3>
 
-    const [gender,setgender] = useState(false)
-    const [List,setList] = useState(false)
-
-    const handlegender = () => {
-        setgender(prev => !prev)
-    }
-
-    const handleList = () => {
-        setList(prev => !prev)
-    }
-
-    return(
-            <CategoryWrapper>
-                <H3>Category</H3>
-
-                <Ul>
-                    <Line></Line>
-                    <Subject onClick = {handlegender}>성별</Subject>
-                    <Line></Line>
-                    { gender == true ?
+            <Ul>
+                <Line></Line>
+                <Subject onClick={handlegender}>성별</Subject>
+                <Line></Line>
+                {gender == true ?
                     <>
                         <LI>여성복</LI>
                         <LI>남성복</LI>
                         <LastLi>아동복</LastLi>
                     </>
-                        :
-                        <li></li>
-                    }
-                </Ul>
-                <Ul>
-                    <Line></Line>
-                    <Subject onClick = {handleList}>여분</Subject>
-                    <Line></Line>
-                    { List == true ?
+                    :
+                    <li></li>
+                }
+            </Ul>
+            <Ul>
+                <Line></Line>
+                <Subject onClick={handleList}>여분</Subject>
+                <Line></Line>
+                {List == true ?
                     <>
                         <LI>리스트</LI>
                         <LI>리스트</LI>
                         <LastLi>리스트</LastLi>
                     </>
-                        :
-                        <li></li>
-                    }
-                </Ul>
-            </CategoryWrapper>
+                    :
+                    <li></li>
+                }
+            </Ul>
+        </CategoryWrapper>
     )
 }
 

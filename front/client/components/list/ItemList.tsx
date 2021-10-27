@@ -17,8 +17,27 @@ const ItemList = () => {
         settabBtn(2);
     }
 
+    const [gender,setgender] = useState(false)
+    const [List,setList] = useState(false)
+
+    const handlegender = () => {
+        setgender(prev => !prev)
+    }
+
+    const handleList = () => {
+        setList(prev => !prev)
+    }
+
+    const CategoryState = {
+        gender,
+        List,
+        handlegender,
+        handleList
+    }
+
+
     return (
-        <>  <Category/>
+        <>  <Category CategoryState={CategoryState}/>
             <MyNft />
             <MenuBar>
                 <Menu>
