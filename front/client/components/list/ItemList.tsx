@@ -17,8 +17,9 @@ const ItemList = () => {
         settabBtn(2);
     }
 
-    const [gender,setgender] = useState(false)
-    const [List,setList] = useState(false)
+
+    const [gender, setgender] = useState(false)
+    const [List, setList] = useState(false)
 
     const handlegender = () => {
         setgender(prev => !prev)
@@ -37,7 +38,7 @@ const ItemList = () => {
 
 
     return (
-        <>  <Category CategoryState={CategoryState}/>
+        <>
             <MyNft />
             <MenuBar>
                 <Menu>
@@ -51,22 +52,24 @@ const ItemList = () => {
                 </Menu>
                 <Search>
                     <SearchBox>
-                        <Input type = "text" placeholder = "상품을 검색하세요"/>
+                        <Input type="text" placeholder="상품을 검색하세요" />
                     </SearchBox>
                     <SearchBox>
                         <SearchClick>
-                        ?
+                            ?
                         </SearchClick>
                     </SearchBox>
                 </Search>
             </MenuBar>
             <div>
+                {/* <Category CategoryState={CategoryState} /> */}
                 {
                     tabBtn === 1
-                        ? <ItemListSell />
-                        : <ItemListAuction />
+                        ? <ItemListSell CategoryState={CategoryState}/>
+                        : <ItemListAuction CategoryState={CategoryState}/>
                 }
             </div>
+
         </>
     )
 }

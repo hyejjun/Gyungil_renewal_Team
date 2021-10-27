@@ -1,8 +1,11 @@
 import Styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Category from '../common/Category'
 
-const ItemListAuction = () => {
+const ItemListAuction = (props) => {
+    const { gender, List, handlegender, handleList } = props.CategoryState
+
     let [loading, setLoading] = useState<boolean>(true)
     let [count, setCount] = useState<number>(0)
 
@@ -171,11 +174,11 @@ const ItemListAuction = () => {
                 </SelectBox>
             </div>
             <NFTComponent>
+                <Category CategoryState={props.CategoryState}/>
                 <div>
                     <div>
                         <ul>
                             {nameList}
-
                         </ul>
                     </div>
                 </div>
@@ -194,7 +197,6 @@ const PictureNumberNotice = Styled.div`
     display:inline-block;
     text-decoration:none;
     list-style:none;
-    margin-left:40px;
     float:left;
     margin-bottom:50px;
     clear:both;
@@ -216,12 +218,16 @@ const SelectOption = Styled.option`
 `
 const NFTComponent = Styled.div`
     clear:both;
-    margin-top:100px;
     background:#FAFAFA;
-    padding:0px 50px;
     box-sizing:border-box;
+    display : flex;
 
-
+    & > div:nth-child(2){
+        display : inline-block;
+        width : 80%;
+        padding-left: 10%;
+        box-sizing: border-box;
+    }
 `
 const NFTFourList = Styled.ul`
     display:inline-block;

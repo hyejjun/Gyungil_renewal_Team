@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 
 const Category = (props) => {
     const { gender, List, handlegender, handleList } = props.CategoryState
-    
+
     return (
         <CategoryWrapper>
             <H3>Category</H3>
@@ -46,16 +46,10 @@ const Category = (props) => {
 export default Category
 
 const CategoryWrapper = Styled.div`
-    width:200px;
-    box-sizing:border-box;
-    padding:25px;
-    z-index:3px;
-    position:absolute;
-    float:left;
-    top:540px;
-    height:600px;
-    width:300px;
-    left:0px;
+    width: 20%;
+    height: 300px;
+    background: yellow;
+    display : inline-block;
 `
 const H3 = Styled.div`
     font-size:30px;
