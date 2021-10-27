@@ -85,6 +85,12 @@ const ItemListAuction = (props) => {
             artist: 'daminal',
             Like: 5,
         },
+        {
+            id: 9,
+            subject: 'asdgsdg',
+            artist: 'daminal',
+            Like: 5,
+        },
     ]);
 
     const nameList: JSX.Element[] = Arr.map((ele) =>
@@ -144,12 +150,6 @@ const ItemListAuction = (props) => {
                     artist: 'daminal',
                     Like: 5,
                 },
-                {
-                    id: 8,
-                    subject: 'asdgsdg',
-                    artist: 'daminal',
-                    Like: 5,
-                }
             ),
         );
     };

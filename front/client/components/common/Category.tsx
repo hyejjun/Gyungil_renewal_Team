@@ -9,8 +9,7 @@ const Category = (props) => {
 
     return (
         <CategoryWrapper>
-            <H3>Category</H3>
-
+            <H3>전체 카테고리</H3>
             <Ul>
                 <Line></Line>
                 <Subject onClick={handlegender}>성별</Subject>
@@ -19,7 +18,7 @@ const Category = (props) => {
                     <>
                         <LI>여성복</LI>
                         <LI>남성복</LI>
-                        <LastLi>아동복</LastLi>
+                        <LI>아동복</LI>
                     </>
                     :
                     <li></li>
@@ -33,7 +32,7 @@ const Category = (props) => {
                     <>
                         <LI>리스트</LI>
                         <LI>리스트</LI>
-                        <LastLi>리스트</LastLi>
+                        <LI>리스트</LI>
                     </>
                     :
                     <li></li>
@@ -48,16 +47,17 @@ export default Category
 const CategoryWrapper = Styled.div`
     width: 20%;
     height: auto;
-    background: yellow;
+    /* background: yellow; */
     display : inline-block;
 `
 const H3 = Styled.div`
-    font-size:30px;
+    font-size: 18px;
     margin-bottom:20px;
+    cursor : default;
 `
 
 const Subject = Styled.li`
-    font-size:20px;
+    font-size: 15px;
     margin-bottom:8px;
     cursor : pointer;
 `
@@ -69,7 +69,13 @@ const Line = Styled.li`
 `
 
 const LI = Styled.li`
-    color:grey;
+    height: 40px;
+    font-size: 14px;
+    line-height: 29px;
+    letter-spacing: -1px;
+    color: #777;
+    padding-bottom: 10px;
+    cursor : pointer;
     &:hover{
         color:black
     }
@@ -79,13 +85,11 @@ const LastLi = Styled.li`
     color:grey;
     &:hover{
         color:black
+        border-bottom : 1px solid black;
     }
 `
 
 const Ul = Styled.ul`
-    & > li{
-        line-height:25px;
-    }
     &:hover{
        
     }
