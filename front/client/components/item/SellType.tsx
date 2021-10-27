@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 import React from "react";
 
-const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChange}) =>{
+const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChange, handleCurrency}) =>{
     const ChkSell = () => {
         return(
             <RadioWrapper>
@@ -27,14 +27,22 @@ const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChan
                     <SellAucWrapper>
                         <SmallTitle>판매 가격</SmallTitle>
                         <input type="text" placeholder="판매가를 입력하세요." onChange ={(e)=>handleTxtChange(e, "price")}/>
+                        <select onChange = {handleCurrency}>
+                            <option value = "won">원화</option>
+                            <option value = "ether">이더리움</option>
+                        </select>
                     </SellAucWrapper>
                 :  
                 <>
                     <SellAucWrapper>
                         <SmallTitle>경매 시작 가격</SmallTitle>
                         <input type="text" placeholder="경매 시작가를 입력하세요." onChange = {(e)=>handleTxtChange(e, "aucPrice")}/>
+                        <select onChange = {handleCurrency}>
+                            <option value = "won">원화</option>
+                            <option value = "ether">이더리움</option>
+                        </select>
                         <SmallTitle>경매 종료 시간</SmallTitle>
-                        <input type = "datetime-local" onChange = {(e)=>handleTxtChange(e, "aucTime")}/>
+                        <input type = "datetime-local" onChange = {(e)=>handleTxtChange(e, "aucTime")} className = "dateTimeLocal"/>
                         <Desc>새로운 경매 입찰자가 생기면 경매 종료 시간을 5분 연장할 수 있습니다.</Desc>
                     </SellAucWrapper> 
                     <RadioWrapper>
@@ -70,13 +78,27 @@ const RadioWrapper = Styled.div`
 `
 
 const SellAucWrapper = Styled.div`
-    width: 400px;
+    width: 1000px;
     input{
         margin-top: 20px;
+        margin-right: 20px;
         display: block;
-        width: 690px;
+        width: 400px;
         height: 30px;
         font-size: 25px;
+        width:400px;
+        float: left;
+    }
+    select{
+        margin-top: 40px;
+        display: block;
+        width: 200px;
+        height: 34px;
+        font-size: 25px;
+    }
+    .dateTimeLocal{
+        margin-right: 400px;
+        margin-bottom: 20px;
     }
 `
 
@@ -86,6 +108,7 @@ const Desc = Styled.div`
     width: 500px;
     margin-top: 10px;
     margin-bottom: 10px;
+
 `
 
 const SmallTitle = Styled.div`
