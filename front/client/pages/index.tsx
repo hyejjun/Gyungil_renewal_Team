@@ -7,7 +7,6 @@ export default function Home() {
 
   return (
     <>
-    <Link href="/signup"><a>임시 회원가입</a></Link>
     <div className="container">
       <div>
 

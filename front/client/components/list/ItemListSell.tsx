@@ -70,6 +70,13 @@ const ItemListSell = () => {
             Like: 5,
             alert: '신고하기'
         },
+        {
+            id: 8,
+            subject: 'asdgsdg',
+            artist: 'daminal',
+            Like: 5,
+            alert: '신고하기'
+        },
       ]);
 
 
@@ -133,13 +140,7 @@ const ItemListSell = () => {
                     Like: 5,
                     alert: '신고하기'
                 },
-                {
-                    id: 12,
-                    subject: 'asdgsdg',
-                    artist: 'daminal',
-                    Like: 5,
-                    alert: '신고하기'
-                }
+
             ),
         );
       };
