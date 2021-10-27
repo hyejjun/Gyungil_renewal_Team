@@ -57,18 +57,18 @@ const addItem = () =>{
         } else{
             setFile(files)
             setFileBase([])
-            for(var i=0;i<e.target.files.length;i++){
-            if (e.target.files[i]) {
-              let reader = new FileReader()
-              reader.readAsDataURL(e.target.files[i])
-              reader.onloadend = () => {
-                const base64 = reader.result
-                if (base64) {
-                var base64Sub = base64.toString()
-                setFileBase(imgBase64 => [...imgBase64, base64Sub]);
-
+            for(var i=0;i<files.length;i++){
+                if (files[i]) {
+                let reader = new FileReader()
+                reader.readAsDataURL(files[i])
+                reader.onloadend = () => {
+                    const base64 = reader.result
+                    console.log(base64)
+                    if (base64) {
+                        let base64Sub = base64.toString()
+                        setFileBase(imgBase64 => [...imgBase64, base64Sub]);
+                    }
                 }
-              }
             }
           }
         }
