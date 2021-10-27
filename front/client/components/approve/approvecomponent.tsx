@@ -1,30 +1,7 @@
 import Styled from 'styled-components'
 import React, { useState } from 'react'
 
-const ItemList = () => {
-
-
-
-    const [checkedItems, setCheckedItems] = useState();
-
-    const checkedItemHandler = (id, isChecked) => {
-        if (isChecked) {
-          checkedItems.add(id);
-          setCheckedItems(checkedItems);
-        } else if (!isChecked && checkedItems.has(id)) {
-          checkedItems.delete(id);
-          setCheckedItems(checkedItems);
-        }
-      };
-
-      const [bChecked, setChecked] = useState(false);
-
-    const checkHandler = ({ target }) => {
-    setChecked(!bChecked);
-    checkedItemHandler(issue.id, target.checked);
-    };
-
-
+const approvecomponent = () => {
 
     interface ArrEle {
         Num : string,
@@ -61,13 +38,31 @@ const ItemList = () => {
       ]);
 
 
-    const nameList: JSX.Element[] = Arr.map((ele) =>
-        <tr>
-            <td>epiteom</td>
-            <td>2021-10-27</td>
-            <td>대기중</td>
-            <td><input type = "checkbox"/></td>
-        </tr>
+    const nameList: JSX.Element[] = Arr.map((ele, id) =>{
+
+        const Arr = `Arr${String(id+1)}`
+        const PullArr = () => {
+
+            var result = confirm("kyc 인증을 하겠습니까?");
+            if(result){
+                alert("인증되었습니다");
+                document.querySelector(`.Arr${id+1}`).innerHTML = '승인됨'
+          
+            }else{
+                alert("반려되었습니다");
+                document.querySelector(`.Arr${id+1}`).innerHTML = '반려됨'
+               
+            }
+
+        }
+        return(
+            <tr>
+                <td>epiteom</td>
+                <td>2021-10-27</td>
+                <td className = {Arr}>대기중</td>
+                <td><BTN onClick = {PullArr}>승인</BTN></td>
+            </tr>
+        )}
     )
 
     return (
@@ -81,15 +76,15 @@ const ItemList = () => {
                     <TdHead>승인확인</TdHead>
                 </tr>
                 {nameList}
-                <tr><input type="button" checked={bChecked} onChange={(e) => checkHandler(e)} /></tr>
             </tbody>
+
         </Table>
 
         </>
     )
 }
 
-export default ItemList
+export default approvecomponent
 
 const Table = Styled.table`
     width:800px;
@@ -105,27 +100,18 @@ const TdHead = Styled.td`
     font-size:25px;
 `
 
-const TdApprove = Styled.td`
-    color:blue;
-`
-
-const TdCancel = Styled.td`
-    color:red;
-`
-
-const TdWait = Styled.td`
-    color:grey;
-`
-
-const Button = Styled.button`
+const BTN = Styled.div`
     font-size:20px;
+    font-weight:bold;
     border:1px solid #bbb;
-    background:white;
-    padding:3px;
-    box-sizing:border-box;
+    width:80px;
+    margin:0 auto;
+    height:30px;
+    text-align:center;
+    padding:0px 0px 50px 0px;
     &:hover{
         color:white;
         background:#bbb;
-        border:1px solid white;
     }
+
 `

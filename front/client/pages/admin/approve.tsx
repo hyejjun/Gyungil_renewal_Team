@@ -1,7 +1,7 @@
 import ApproveComponent from '../../components/approve/approvecomponent'
 
 
-const View = () => {
+const approve = () => {
     return (
         <>
             <ApproveComponent />
@@ -9,4 +9,4 @@ const View = () => {
     )
 }
 
-export default View
+export default approve
