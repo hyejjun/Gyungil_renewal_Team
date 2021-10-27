@@ -2,9 +2,7 @@ import Styled from 'styled-components'
 import React, { useState } from 'react'
 import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
-import WebLayout from '../layout/WebLayout'
 import MyNft from './MyNFT'
-import Category from '../common/Category'
 
 const ItemList = () => {
 
@@ -17,26 +15,46 @@ const ItemList = () => {
         settabBtn(2);
     }
 
+
+    const [gender, setgender] = useState(false)
+    const [List, setList] = useState(false)
+
+    const handlegender = () => {
+        setgender(prev => !prev)
+    }
+
+    const handleList = () => {
+        setList(prev => !prev)
+    }
+
+    const CategoryState = {
+        gender,
+        List,
+        handlegender,
+        handleList
+    }
+
+
     return (
-        <>  <Category/>
+        <>
             <MyNft />
             <MenuBar>
                 <Menu>
-                    <Menu1 onClick={btn1}>판매</Menu1>
+                    <SellTab onClick={btn1} flag={tabBtn}>판매</SellTab>
                 </Menu>
                 <Menu>
-                    <Menu1>|</Menu1>
+                    <div className="bar">|</div>
                 </Menu>
                 <Menu>
-                    <Menu1 onClick={btn2}>경매</Menu1>
+                    <AuctionTab onClick={btn2} flag={tabBtn}>경매</AuctionTab>
                 </Menu>
                 <Search>
                     <SearchBox>
-                        <Input type = "text" placeholder = "상품을 검색하세요"/>
+                        <Input type="text" placeholder="상품을 검색하세요" />
                     </SearchBox>
                     <SearchBox>
                         <SearchClick>
-                        ?
+                            ?
                         </SearchClick>
                     </SearchBox>
                 </Search>
@@ -44,10 +62,11 @@ const ItemList = () => {
             <div>
                 {
                     tabBtn === 1
-                        ? <ItemListSell />
-                        : <ItemListAuction />
+                        ? <ItemListSell CategoryState={CategoryState}/>
+                        : <ItemListAuction CategoryState={CategoryState}/>
                 }
             </div>
+
         </>
     )
 }
@@ -55,12 +74,17 @@ const ItemList = () => {
 export default ItemList
 
 const Menu = Styled.li`
-color:#2d3741;
-display:inline-block;
-text-decoration:none;
-list-style:none;
-margin-right:20px;
-float:left;
+    color:#2d3741;
+    display:inline-block;
+    text-decoration:none;
+    list-style:none;
+    margin-right:20px;
+    float:left;
+
+    .bar {
+        cursor : default;
+        font-size: 20px;
+    }
 `
 
 const Search = Styled.li`
@@ -86,8 +110,8 @@ const SearchClick = Styled.div`
     font-size:20px;
 `
 const MenuBar = Styled.ul`
-clear:both;
-margin-bottom:70px;
+    clear:both;
+    height: 100px;
 `
 const Menu1 = Styled.div`
     font-size:24px;
@@ -95,4 +119,19 @@ const Menu1 = Styled.div`
     &:hover{
         color:#055fec;
     }
+`
+
+const SellTab = Styled.div`
+    cursor:pointer;
+    font-size: 23px;
+    color: ${props=>(props.flag == 1? '#000000b3' : '#a0a0a0b3')};
+    font-weight: ${props=>(props.flag == 1? 'bold' : 'none')};
+`
+
+const AuctionTab = Styled.div`
+    cursor:pointer;
+    font-size: 23px;
+    color:  ${props=>(props.flag == 2? '#000000b3' : '#a0a0a0b3')};
+    font-weight: ${props=>(props.flag == 2? 'bold' : 'none')};
+
 `
