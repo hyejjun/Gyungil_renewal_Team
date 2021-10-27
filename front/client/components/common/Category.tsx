@@ -47,27 +47,25 @@ export default Category
 
 const CategoryWrapper = Styled.div`
     width: 20%;
-    height: 300px;
+    height: auto;
     background: yellow;
     display : inline-block;
 `
 const H3 = Styled.div`
     font-size:30px;
     margin-bottom:20px;
-    margin-top:20px;
 `
 
 const Subject = Styled.li`
     font-size:20px;
     margin-bottom:8px;
-
+    cursor : pointer;
 `
 
 const Line = Styled.li`
     height:2px;
     background:#bbb;
     margin-bottom:10px;
-    width:300px;
 `
 
 const LI = Styled.li`
