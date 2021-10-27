@@ -10,7 +10,7 @@ import { RootState } from "../../reducers"
 const MyNftComponent = () => {
 
     const [tabBtn, settabBtn] = useState<number>(1);
-    const UserAddress = useSelector((state:RootState) => state.user);
+    const user = useSelector((state:RootState) => state.user);
 
     const btn1 = () => {
         settabBtn(1);
@@ -29,7 +29,7 @@ const MyNftComponent = () => {
                 {/* <MyIMG><img src = {require('../../src/지도.jpg')}/></MyIMG> */}
                 <MyIMG> <img alt="이미지" /> </MyIMG>
                 <MyName>원금회복</MyName>
-                <MyAddress>{UserAddress.UserAddress}</MyAddress>
+                <MyAddress>{user.UserAddress}</MyAddress>
                 <Link href = "/user/user"><AStyle><MyProfile>프로필 편집</MyProfile></AStyle></Link>
 
             </MyInfo>

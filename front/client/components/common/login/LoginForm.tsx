@@ -6,7 +6,7 @@ import Link from 'next/link'
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react"
-import { UserLogin_SUCCESS } from "../../../reducers/user";
+import { USER_LOGIN_REQUEST } from "../../../reducers/user";
 import { RootState } from "../../../reducers"
        
 declare global {
@@ -19,20 +19,21 @@ const LoginForm = (props) =>{
     const [clicked, setClicked] = React.useState(false)
     const [kaikasAddress, setKaikasAddress] = React.useState('')
     const UserAddress = useSelector((state:RootState) => state.user);
-    console.log(UserAddress)
-    console.log(UserAddress.UserAddress)
-    console.log(kaikasAddress)
+    const dispatch = useDispatch()
+    
     const kaikasLogin = async () => {
       await window.klaytn.enable()
   
       const klaytnAddress = window.klaytn.selectedAddress
       setKaikasAddress(klaytnAddress)
+      dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
 
       window.klaytn.on('accountsChanged', () => {
         const klaytnAddress = window.klaytn.selectedAddress
         console.log('account changed!', klaytnAddress)
         setKaikasAddress(klaytnAddress)
-        
+        console.log(klaytnAddress)
+
       })
 
     }
@@ -47,7 +48,7 @@ const LoginForm = (props) =>{
     }
   
     if (kaikasAddress.length > 0) {
-      return (<p>kaikas 주소: {kaikasAddress}</p>)
+      return (<div></div>)
     }
   
   

@@ -8,18 +8,20 @@ export interface State {
     data:Array<string | number | Object>;
     payload:Object;
     error:string;
+    UserAddress:string;
 }
 
 export const initialState : State = {
     loadding:false,
     data:[],
     payload:{},
-    error:''
+    error:'',
+    UserAddress:'kaikasAddress'
 };
 
 
 
-const USER_LOGIN_REQUEST  = "USER_LOGIN_REQUEST" as const;
+export const USER_LOGIN_REQUEST  = "USER_LOGIN_REQUEST" as const;
 const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS" as const;
 const USER_LOGIN_ERROR = "USER_LOGIN_ERROR" as const;
 
@@ -33,7 +35,6 @@ export const UserLogin_REQUEST = (payload) => {
 export const UserLogin_SUCCESS = (klaytnAddress) => {
     return{
         type:USER_LOGIN_SUCCESS,
-        data:klaytnAddress
     }
 }
 export const UserLogin_ERROR = (error) => {
@@ -54,13 +55,11 @@ const reducer = (state:{}=initialState, action:UserAction) => {
         case USER_LOGIN_REQUEST:
             return{
                 ...state,
-                data:action.data,
+                UserAddress:action.payload
             }
         case USER_LOGIN_SUCCESS:
             return{
                 ...state,
-                data:action.data,
-                data1:action.data
             }
             
         case USER_LOGIN_ERROR:
