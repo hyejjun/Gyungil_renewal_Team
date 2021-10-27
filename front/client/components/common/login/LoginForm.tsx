@@ -30,8 +30,6 @@ const LoginForm = (props) =>{
 
       dispatch(UserLogin_REQUEST(klaytnAddress))
 
-      const caver = new Cav(window.klaytn)
-
 
     }
   
