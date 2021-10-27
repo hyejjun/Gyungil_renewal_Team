@@ -21,12 +21,18 @@ const SelectBox = Styled.select`
     padding:3px 7px;
     box-sizing:border-box;
     font-size:16px;
+    border : 1px solid #bbb;
+    border-radius : 4px;
+
+    &:focus {
+        outline : none;
+    }
 `
 const SelectOption = Styled.option`
     color:black;
     display:inline-block;
     padding:5px;
-
+    border : 1px solid #bbb;
 `
 const NFTComponent = Styled.div`
     clear:both;

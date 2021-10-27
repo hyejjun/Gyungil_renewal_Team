@@ -15,7 +15,7 @@ const NFTPic = () => {
 export default NFTPic
 
 const NFTpic = Styled.div`
-    background : yellow;
+    /* background : yellow; */
     width : 1200px;
     height: 500px;
     margin : 0 auto;
