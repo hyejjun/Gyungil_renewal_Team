@@ -12,13 +12,13 @@ const addItem = () =>{
 
     const [file, setFile] = useState<Array<string>>([])
     const [fileBase, setFileBase] = useState<Array<string>>([])
-    const [currency, setCurrency] = useState<string>('')
+    const [currency, setCurrency] = useState<string>('won')
     const [price, setPrice] = useState<string>('')
     const [name, setName] = useState<string>('')
     const [desc, setDesc] = useState<string>('')
     const [aucPrice, setAucPrice] = useState<string>('')
     const [aucTime, setAucTime] = useState<any>('')
-    
+
     function handleTxtChange(e:any, item:string){
         let {value} = e.target
         if(item == "file"){
@@ -52,25 +52,36 @@ const addItem = () =>{
 
     const fileChange = (e) => {
         let {files} = e.target
-        if(files.length>5){
-            alert('한 번에 올릴 수 있는 파일 갯수는 최대 5개입니다.')
+        if(files.length+file.length>10){ //추후 수정
+            alert('한 번에 올릴 수 있는 파일 갯수는 최대 10개입니다.')
         } else{
-            setFile(files)
-            setFileBase([])
-            for(var i=0;i<files.length;i++){
+            for(let i=0;i<files.length;i++){
                 if (files[i]) {
-                let reader = new FileReader()
-                reader.readAsDataURL(files[i])
-                reader.onloadend = () => {
-                    const base64 = reader.result
-                    console.log(base64)
-                    if (base64) {
-                        let base64Sub = base64.toString()
-                        setFileBase(imgBase64 => [...imgBase64, base64Sub]);
+                    setFile(newFile => [...newFile, files[i]])
+                    let reader = new FileReader()
+                    reader.readAsDataURL(files[i])
+                    reader.onloadend = () => {
+                        const base64 = reader.result
+                        if (base64) {
+                            let base64Sub = base64.toString()
+                            setFileBase(imgBase64 => [...imgBase64, base64Sub])
+                        }
                     }
                 }
             }
-          }
+        }
+    }
+
+    function deleteFile(key){
+        if(confirm('정말 삭제하시겠습니까?')){
+            let newFileArray = [...file]
+            let newFileBaseArray = [...fileBase]
+            newFileArray.splice(key,1)
+            newFileBaseArray.splice(key,1)
+            setFile(newFileArray)
+            setFileBase(newFileBaseArray)
+        } else{
+            console.log('취소')
         }
     }
 
@@ -96,42 +107,34 @@ const addItem = () =>{
     }
 
     const handleConfirm = () => {
-        if(allAgreed === false){ //미동의시
+        if(agreed[0] !== true || agreed[1] !== true){ //미동의시
             alert('모든 항목에 동의해주세요.')
             return false
         }
         else if((ifSell === true &&
-                ( // 나중에 file 컴포넌트 완성되면 설정하기
-                
-               name=='' || desc=='' || price == '')) ||
+                (name=='' || desc=='' || price == '')) ||
                 (ifSell === false &&
-                (
-
-                name=='' ||desc=='' ||aucPrice=='' ||aucTime==''))
-            ){
+                (name=='' ||desc=='' ||aucPrice=='' ||aucTime==''))){
                 alert('모든 칸을 입력해주세요.')
                 return false
         } else if(file.length == 0 ){
-            alert('파일을 첨부해주세요.')
-            return false
+                alert('파일을 첨부해주세요.')
+                return false
         }else{
-            return true
+                return true
         }
     }
 
-    function handleSubmit(){ 
+    const handleSubmit = () => { 
         // axios같은거로 나중에 처리
-        console.log(file.length, price, currency, name, desc)
-        console.log(file.length, name, desc, aucPrice, currency, aucTime, extension)
+        console.log(file, price, currency, name, desc)
+        console.log(file, name, desc, aucPrice, currency, aucTime, extension)
     }
 
-    useEffect(()=>{
-        if(agreed[0] === true && agreed[1] === true){
-            setAllAgreed(true)
-        } else {
-            setAllAgreed(false)
-        }
-    },[agreed])
+    const resetState = () => {
+        window.location.reload() 
+    }
+
 
     return(
         <AddItemComponent 
@@ -151,6 +154,9 @@ const addItem = () =>{
         fileChange = {fileChange}
         fileBase = {fileBase}
         handleCurrency = {handleCurrency}
+        deleteFile = {deleteFile}
+        // 발행 후 초기화
+        resetState = {resetState}
         />
 
     )

@@ -21,11 +21,17 @@ const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChan
 
     return(
         <>
+            <SmallTitle>
+                즉시 판매 / 경매
+            </SmallTitle>
+            <DescText>
+                판매 유형을 선택해주세요. 
+            </DescText>
             <ChkSell />
             {ifSell 
                 ? 
                     <SellAucWrapper>
-                        <SmallTitle>판매 가격</SmallTitle>
+                        <SmallerTitle>판매 가격</SmallerTitle>
                         <input type="text" placeholder="판매가를 입력하세요." onChange ={(e)=>handleTxtChange(e, "price")}/>
                         <select onChange = {handleCurrency}>
                             <option value = "won">원화</option>
@@ -35,13 +41,13 @@ const SellType = ({ifSell, extension, sellToggle, extensionToggle, handleTxtChan
                 :  
                 <>
                     <SellAucWrapper>
-                        <SmallTitle>경매 시작 가격</SmallTitle>
+                        <SmallerTitle>경매 시작 가격</SmallerTitle>
                         <input type="text" placeholder="경매 시작가를 입력하세요." onChange = {(e)=>handleTxtChange(e, "aucPrice")}/>
                         <select onChange = {handleCurrency}>
                             <option value = "won">원화</option>
                             <option value = "ether">이더리움</option>
                         </select>
-                        <SmallTitle>경매 종료 시간</SmallTitle>
+                        <SmallerTitle>경매 종료 시간</SmallerTitle>
                         <input type = "datetime-local" onChange = {(e)=>handleTxtChange(e, "aucTime")} className = "dateTimeLocal"/>
                         <Desc>새로운 경매 입찰자가 생기면 경매 종료 시간을 5분 연장할 수 있습니다.</Desc>
                     </SellAucWrapper> 
@@ -111,9 +117,20 @@ const Desc = Styled.div`
 
 `
 
-const SmallTitle = Styled.div`
+const SmallTitle = Styled.h4`
+    margin-top: 30px;
+    font-size:24px;
+    margin-bottom:20px;
+`
+
+const SmallerTitle = Styled.div`
     color:#2d3741; 
     font-size:20px;
     margin-top:20px;
     margin-bottom: 20px;
+`
+
+const DescText = Styled.div`
+    color:gray;
+    font-size:16px;
 `
