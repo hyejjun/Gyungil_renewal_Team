@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import Link from 'next/link';
-import InputStyle from '../common/InputStyled';
 import useInput from '../../hooks/useInput';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -11,31 +10,47 @@ import Button from '@mui/material/Button';
 
 
 const Shippingfrom = () => {
+    // @ 주소 찾는 창
     const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
 
-    // 팝업창 열기
+    // @ 팝업창 열기
     const openPostCode = () => {
         setIsPopupOpen(true)
     }
 
-    // 팝업창 닫기
+    // @ 팝업창 닫기
     const closePostCode = () => {
         setIsPopupOpen(false)
     }
 
+    // @ 주문자
     const [orderer, onChangeOrderer] = useInput('')
+    
+    // @ 수신자
     const [receiver, onChangeReceiver] = useInput('')
+    
+    // @ 전화번호
     const [phoneNum, onChangePhoneNum] = useInput('')
+    
+    // @ 주소
     const [address, setaddress] = useState<string>(' ')
+    
+    // @ 우편번호
     const [postNumber, setpostNumber] = useState<string>(' ')
+    
+    // @ 자세한 주소
     const [addressDetail, onChangeAddressDetail] = useInput('')
+    
+    // @ 배송 메모
     const [memo, onChangeMemo] = useInput('')
 
+    // @ 택배 / 우체국 택배 / 편의점 픽업
     const [inputStatus, setInputStatus] = useState<string>('택배')
     const handleClickRadioButton = (radioBtnName) => {
         setInputStatus(radioBtnName)  
     }
 
+    // @ dispatch 할 때 보내줄 data 들
     const shippingData = {
         orderer,
         receiver,
