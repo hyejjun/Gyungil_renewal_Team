@@ -26,18 +26,10 @@ function* login(action){
     
 }
 
-function* SellerAdminSaga(){
-    const result = yield call(axios.post,`http://localhost:4000/user/SellerAdmin`)
-    yield put({
-        type:'SELLER_ADMIN_SUCCESS',
-        verify:true
-    })
-    
-}
 
 function* watchUser(){
     yield takeLatest('USER_LOGIN_REQUEST',login)
-    yield takeLatest('SELLER_ADMIN_SUCCESS',SellerAdminSaga)
+
 }
 
 export default function* userSaga(){

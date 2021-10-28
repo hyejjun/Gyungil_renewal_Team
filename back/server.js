@@ -42,7 +42,15 @@ server.listen(PORT,()=>{
     console.log(`server listening on port ${PORT}`)
 })
 
-io.sockets.on('connection',socket=>{
-    console.log('connected')
+// io.sockets.on('connection',socket=>{
+//     console.log('connected')
+// const mongoose = require('mongose')
 
-})
+// const 
+
+
+// app.get('/',(req,res)=>{
+//     res.send('나오니?')
+// })
+
+// })

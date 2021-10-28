@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import AddItemComponent from '../../components/item/AddItemComponent'
 
 const addItem = () =>{
-    const [userId, setUserId] = useState<string>('dfassf')
     const [n, setN] = useState<number>(10)
 
     const [ifSell, setifSell] = useState<boolean>(true);
@@ -11,23 +10,22 @@ const addItem = () =>{
     const [agreed, setAgreed] = useState<Array<boolean>>([false,false])
     const [allAgreed, setAllAgreed] = useState<boolean>(false)
 
-    const [file, setFile] = useState<string>('') // -> 바꿔야 함
+    const [file, setFile] = useState<Array<string>>([])
+    const [fileBase, setFileBase] = useState<Array<string>>([])
+    const [currency, setCurrency] = useState<string>('won')
     const [price, setPrice] = useState<string>('')
     const [name, setName] = useState<string>('')
     const [desc, setDesc] = useState<string>('')
-    const [aucPrice, setAucPrice] = useState<number>()
+    const [aucPrice, setAucPrice] = useState<string>('')
     const [aucTime, setAucTime] = useState<any>('')
-    
+    console.log(name,'이름')
     function handleTxtChange(e:any, item:string){
         let {value} = e.target
-
         if(item == "file"){
             setFile(value)
         } else if(item == "price"){
             if(isNaN(value)!==false){
                 alert('숫자만 입력해주세요.')
-                // 이유는 알 수 없으나 value로 하면 문자 입력 시 값이 들어가서
-                // e.target.value로 설정
                 e.target.value=price
             }else {
             setPrice(value)
@@ -39,8 +37,6 @@ const addItem = () =>{
         } else if(item == "aucPrice"){
             if(isNaN(value)!==false){
                 alert('숫자만 입력해주세요.')
-                // 이유는 알 수 없으나 value로 하면 문자 입력 시 값이 들어가서
-                // e.target.value로 설정
                 e.target.value=price
             }
             setAucPrice(value)
@@ -54,6 +50,40 @@ const addItem = () =>{
         }
     }
 
+    const fileChange = (e) => {
+        let {files} = e.target
+        if(files.length+file.length>10){ //추후 수정
+            alert('한 번에 올릴 수 있는 파일 갯수는 최대 10개입니다.')
+        } else{
+            for(let i=0;i<files.length;i++){
+                if (files[i]) {
+                    setFile(newFile => [...newFile, files[i]])
+                    let reader = new FileReader()
+                    reader.readAsDataURL(files[i])
+                    reader.onloadend = () => {
+                        const base64 = reader.result
+                        if (base64) {
+                            let base64Sub = base64.toString()
+                            setFileBase(imgBase64 => [...imgBase64, base64Sub])
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function deleteFile(key){
+        if(confirm('정말 삭제하시겠습니까?')){
+            let newFileArray = [...file]
+            let newFileBaseArray = [...fileBase]
+            newFileArray.splice(key,1)
+            newFileBaseArray.splice(key,1)
+            setFile(newFileArray)
+            setFileBase(newFileBaseArray)
+        } else{
+            console.log('취소')
+        }
+    }
 
     const sellToggle = (value:boolean) => {
         setifSell(value)
@@ -71,45 +101,49 @@ const addItem = () =>{
         }
     }
 
+    const handleCurrency = (e) => {
+        let {value} = e.target
+            setCurrency(value)
+    }
+
     const handleConfirm = () => {
-        if(allAgreed === false){ //미동의시
+        if(agreed[0] !== true || agreed[1] !== true){ //미동의시
             alert('모든 항목에 동의해주세요.')
             return false
         }
         else if((ifSell === true &&
-                (
-                // file==='' &&
-               name=='' || desc=='')) ||
+                ( // 나중에 file 컴포넌트 완성되면 설정하기
+                
+               name=='' || desc=='' || price == '')) ||
                 (ifSell === false &&
                 (
-                // file==='' ||
-                name=='' ||desc=='' ||aucPrice==undefined ||aucTime==''))
+
+                name=='' ||desc=='' ||aucPrice=='' ||aucTime==''))
             ){
                 alert('모든 칸을 입력해주세요.')
                 return false
-        } else{
+        } else if(file.length == 0 ){
+            alert('파일을 첨부해주세요.')
+            return false
+        }else{
             return true
         }
     }
 
-    function handleSubmit(){ 
+    const handleSubmit = () => { 
         // axios같은거로 나중에 처리
-        console.log(file, price, name, desc)
-        console.log(file, name, desc, aucPrice, aucTime, extension)
+        console.log(file.length, price, currency, name, desc)
+        console.log(file.length, name, desc, aucPrice, currency, aucTime, extension)
     }
 
-    useEffect(()=>{
-        if(agreed[0] === true && agreed[1] === true){
-            setAllAgreed(true)
-        } else {
-            setAllAgreed(false)
-        }
-    },[agreed])
+    const resetState = () => {
+        window.location.reload() 
+    }
+
 
     return(
         <AddItemComponent 
         // 상품 등록 페이지
-        userId = {userId}
         n = {n}
         // 판매/경매 컴포넌트용
         ifSell = {ifSell} 
@@ -122,7 +156,12 @@ const addItem = () =>{
         handleTxtChange = {handleTxtChange}
         handleSubmit = {handleSubmit}
         handleConfirm = {handleConfirm}
-
+        fileChange = {fileChange}
+        fileBase = {fileBase}
+        handleCurrency = {handleCurrency}
+        deleteFile = {deleteFile}
+        // 발행 후 초기화
+        resetState = {resetState}
         />
 
     )

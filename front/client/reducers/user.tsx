@@ -9,6 +9,7 @@ export interface State {
     payload:{};
     error:string;
     UserAddress:string;
+    verify:boolean;
 }
 
 export const initialState : State = {
@@ -16,7 +17,8 @@ export const initialState : State = {
     data:[],
     payload:{},
     error:'',
-    UserAddress:'kaikasAddress'
+    UserAddress:'kaikasAddress',
+    verify:false,
 };
 
 
@@ -53,10 +55,10 @@ export const SellerAdmin_REQUEST = (error) => {
     }
 }
 
-export const SellerAdmin_BACK = (error) => {
+export const SellerAdmin_BACK = (verify) => {
     return{
         type:SELLER_ADMIN_BACK,
-        error:error
+        verify:verify
     }
 }
 type UserAction = 
@@ -92,7 +94,7 @@ const reducer = (state:State=initialState, action:UserAction) => {
         case SELLER_ADMIN_BACK:
             return{
                 ...state,
-                error:'바뀜'
+                verify:action.verify
             }
         default:
             return state;

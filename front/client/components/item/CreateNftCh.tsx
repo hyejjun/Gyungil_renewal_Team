@@ -16,7 +16,7 @@ const CreateNftCh = (props) => {
                 {
                     sucNft
                     ?
-                    <SucNft flag={sucNft} closeBtn={openSucNftBtn} test={props.closeBtn}/>                    
+                    <SucNft flag={sucNft} closeBtn={openSucNftBtn} test={props.closeBtn} resetState = {props.resetState}/>                    
                     :
                     <ModalForm>
                     <div><p>NFT를 발행하시겠습니까?</p></div>

@@ -32,11 +32,6 @@ const LoginForm = (props) =>{
       //dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
       dispatch(UserLogin_REQUEST(klaytnAddress))
 
-    //   window.klaytn.on('accountsChanged', () => {
-    //     const klaytnAddress = window.klaytn.selectedAddress
-    //     console.log('account changed!', klaytnAddress)
-    //     setKaikasAddress(klaytnAddress)
-    //     console.log(klaytnAddress)
 
 
     }
