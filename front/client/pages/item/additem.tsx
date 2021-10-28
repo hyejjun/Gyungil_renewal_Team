@@ -52,25 +52,36 @@ const addItem = () =>{
 
     const fileChange = (e) => {
         let {files} = e.target
-        if(files.length>5){
-            alert('한 번에 올릴 수 있는 파일 갯수는 최대 5개입니다.')
+        if(files.length+file.length>10){ //추후 수정
+            alert('한 번에 올릴 수 있는 파일 갯수는 최대 10개입니다.')
         } else{
-            setFile(files)
-            setFileBase([])
-            for(var i=0;i<files.length;i++){
+            for(let i=0;i<files.length;i++){
                 if (files[i]) {
-                let reader = new FileReader()
-                reader.readAsDataURL(files[i])
-                reader.onloadend = () => {
-                    const base64 = reader.result
-                    console.log(base64)
-                    if (base64) {
-                        let base64Sub = base64.toString()
-                        setFileBase(imgBase64 => [...imgBase64, base64Sub]);
+                    setFile(newFile => [...newFile, files[i]])
+                    let reader = new FileReader()
+                    reader.readAsDataURL(files[i])
+                    reader.onloadend = () => {
+                        const base64 = reader.result
+                        if (base64) {
+                            let base64Sub = base64.toString()
+                            setFileBase(imgBase64 => [...imgBase64, base64Sub])
+                        }
                     }
                 }
             }
-          }
+        }
+    }
+
+    function deleteFile(key){
+        if(confirm('정말 삭제하시겠습니까?')){
+            let newFileArray = [...file]
+            let newFileBaseArray = [...fileBase]
+            newFileArray.splice(key,1)
+            newFileBaseArray.splice(key,1)
+            setFile(newFileArray)
+            setFileBase(newFileBaseArray)
+        } else{
+            console.log('취소')
         }
     }
 
@@ -151,6 +162,7 @@ const addItem = () =>{
         fileChange = {fileChange}
         fileBase = {fileBase}
         handleCurrency = {handleCurrency}
+        deleteFile = {deleteFile}
         />
 
     )
