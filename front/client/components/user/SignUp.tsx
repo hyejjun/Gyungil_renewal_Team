@@ -20,7 +20,7 @@ const SignUp = () => {
     const [nickSignErr, setNickSignErr] = useState<boolean>(false); 
 
     const [emailErr, setEmailErr] = useState<boolean>(true); 
-
+    const [email2Err, setEmail2Err] = useState<boolean>(true)
     const [checked1,setChecked1] = useState<boolean>(false);
     const [checked2,setChecked2] = useState<boolean>(false);
     const [checked3,setChecked3] = useState<boolean>(false);
@@ -56,6 +56,11 @@ const SignUp = () => {
         setEmailErr(value === "");
     }
 
+    const checkEmail = (e) => {
+        var regExp = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+        console.log('이메일 유효성검사 :: ', regExp.test(e.target.value) )
+        setEmail2Err(regExp.test(e.target.value));
+    }
     
     const handleChecked1 = e => {
         setChecked1(!checked1);
@@ -69,17 +74,15 @@ const SignUp = () => {
         setChecked3(!checked3);
     }
 
-    const submit = e => {
-
-    }
-    console.log(nickErr);
+    
 
     const [joinState,setJoinState] = useState<boolean>(false)
     const sucJoin = () => {
         if(nickErr === true || 
             nickLength3Err === true || 
             nickSignErr === true ||
-            emailErr === true 
+            emailErr === true ||
+            email2Err !== true
             ){
             alert("내용입력해주세요.")
         }else if(checked1 !== true || 
@@ -101,7 +104,7 @@ const SignUp = () => {
             <Css>
                 <div className="layout">
                     <div className="signUpContainer">
-                        <form onSubmit={submit}>
+                        <form>
                             <div className="title">회원가입</div>
                             <div className="image5">
                             <div className="image4 textCenter">
@@ -181,8 +184,9 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="email" className="InputBox" value={email} onChange={change2} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            <input type="email" className="InputBox" value={email} onChange={change2} onBlur={checkEmail} name="email" placeholder="이메일 주소를 입력해주세요." />
                                             { emailErr ? <div className="error">이메일 주소를 입력해주세요.</div> : <></>}
+                                            { email2Err ? <></>  : <div className="error">유효한 이메일 주소가 아닙니다. 이메일 주소를 다시 확인해주세요.</div>}
                                         </td>
                                     </tr>
                                     <tr>
@@ -249,7 +253,7 @@ const Css = Styled.div`
 
 .signUpContainer{
     width: 560px;
-    height: 970px;
+    height: 100%;
     padding: 80px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
