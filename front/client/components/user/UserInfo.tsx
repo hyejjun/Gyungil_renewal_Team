@@ -3,8 +3,18 @@ import React,{useEffect} from 'react'
 import Link from 'next/link'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import { SellerAdmin_REQUEST } from '../../reducers/user'
+import { RootState } from "../../reducers"
+import { useSelector, useDispatch } from 'react-redux'
 
 const User = () => {
+    const dispatch = useDispatch()
+
+    const SellerAdmin = () => {
+        alert('인증을 위해서 이메일을 확인해주세요')
+        dispatch(SellerAdmin_REQUEST(undefined))
+    }
+    const user = useSelector((state:RootState) => state.user);
     return(
         <UserWrapper>
             <div>
@@ -14,7 +24,7 @@ const User = () => {
                     <ul>
                         <li>
                             <p>닉네임</p>
-                            <p>&nbsp;{/*nickname*/}Mihee</p>
+                            <p>&nbsp;{/*nickname*/}{user.error}</p>
                         </li>
                         <li>
                             <p>지갑주소</p>
@@ -23,11 +33,16 @@ const User = () => {
                         <li>
                             <p>
                                 이메일주소
-                                <span><VerifiedUserIcon/>인증완료</span>
+                                {
+                                    user.verify == true
+                                    ?   <span><VerifiedUserIcon/>인증완료</span>
+                                    :   <span></span>
+                                }
+                                
                             </p>
                             <p>&nbsp;{/*email account*/}algml9603@mgail.com</p>
                         </li>
-                        <li><Link href="/"><a>판매 신청</a></Link></li>
+                        <li onClick = {SellerAdmin}>판매 신청</li>
                         <li>
                             <button><Link href="/user/edit"><a>프로필편집</a></Link></button>
                             <button>회원탈퇴</button>
