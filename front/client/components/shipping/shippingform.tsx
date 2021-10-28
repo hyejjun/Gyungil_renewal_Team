@@ -4,6 +4,11 @@ import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import Link from 'next/link';
 import InputStyle from '../common/InputStyled';
+import useInput from '../../hooks/useInput';
+import { TextField } from '@mui/material';
+import Button from '@mui/material/Button';
+
+
 
 const Shippingfrom = () => {
 
@@ -25,6 +30,13 @@ const Shippingfrom = () => {
 
     }
 
+    const [orderer, onChangeOrderer] = useInput('')
+    const [receiver, onChangeReceiver] = useInput('')
+    const [phoneNum, onChangePhoneNum] = useInput('')
+    const [addressDetail, onChangeAddressDetail] = useInput('')
+    const [memo, onChangeMemo] = useInput('')
+    
+
     return (
         <>
             <ShipWrap>
@@ -34,31 +46,27 @@ const Shippingfrom = () => {
                         <tr>
                             <HeadTd id="Person">주문인</HeadTd>
                             <ContentTd>
-                                <InputStyle/>
+                                <TextField id="standard-basic" variant="standard" value={orderer} onChange={onChangeOrderer}/>
                             </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>수령인</HeadTd>
                             <ContentTd>
-                                <InputStyle/>
+                                <TextField id="standard-basic" variant="standard" value={receiver} onChange={onChangeReceiver}/>
                             </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>휴대전화</HeadTd>
                             <ContentTd>
-                                <InputStyle/>
-                            </ContentTd>
-                        </tr>
-                        <tr>
-                            <HeadTd>이메일</HeadTd>
-                            <ContentTd>
-                                <InputStyle/>
+                                <TextField id="standard-basic" variant="standard" value={phoneNum} onChange={onChangePhoneNum}/>
                             </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>주소</HeadTd>
                             <Address>{address}
-                                <AddressFind type='button' onClick={openPostCode}>주소 찾기</AddressFind>
+                                <Button variant="outlined" size="medium" onClick={openPostCode}>
+                                    주소 찾기
+                                </Button>
                                 <div id='popupDom'>
                                     {isPopupOpen && (
                                         <PopupDom>
@@ -71,7 +79,7 @@ const Shippingfrom = () => {
                         <tr>
                             <HeadTd>상세 주소</HeadTd>
                             <ContentTd>
-                                <InputStyle/>
+                                <TextField id="standard-basic" variant="standard" value={addressDetail} onChange={onChangeAddressDetail}/>
                             </ContentTd>
                         </tr>
                         <tr>
@@ -90,12 +98,18 @@ const Shippingfrom = () => {
                         </tr>
                         <tr>
                             <HeadTd>배송 메모</HeadTd>
-                            <ContentTd><div><input type="text" placeholder="배송 시 요청사항을 입력해주세요"/></div></ContentTd>
+                            <ContentTd>
+                                <TextField id="standard-basic" variant="standard" placeholder="배송 시 요청사항을 입력해주세요" value={memo} onChange={onChangeMemo}/>
+                            </ContentTd>
                         </tr>
                     </tbody>
                 </Table>
                 <ShipSubmit>
-                    <Link href="/paymentend"><a><SubmitBtn>주문 완료</SubmitBtn></a></Link>
+                    <Link href="/paymentend"><a>
+                        <Button variant="outlined" size="large">
+                            주문 완료
+                        </Button>
+                    </a></Link>
                 </ShipSubmit>
             </ShipWrap>
         </>
@@ -135,6 +149,10 @@ const HeadTd = Styled.td`
 
 const Address = Styled.td`
     font-size:19px;
+    & > button {
+        border: 1px solid rgb(145 145 145);
+        color : rgb(145 145 145);
+    }
 `
 
 const AddressFind = Styled.button`
@@ -154,27 +172,14 @@ const Method = Styled.td`
 `
 
 const ContentTd = Styled.td`
-    & > div {
-        cursor: text;
-        display: flex;
-        background-color: rgb(255, 255, 255);
-        border-radius: 10px;
-        border: 1px solid rgb(229, 232, 235);
-        width: 100%;
-        padding: 12px;
-        box-sizing: border-box;
+    & >div>div> input {
+        width: 500px;
+    }
+
+    & >div>div> input::after{
+        border : none;
     }
     
-    & > div > input,
-    & > div > label,
-    & > div > label>input{
-        width : 100%;
-        font-size: 20px;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        
-    }
      
 `
 const ShipSubmit = Styled.div`
@@ -185,6 +190,13 @@ const ShipSubmit = Styled.div`
 
     & > a {
         float : right;
+    }
+
+    & > a > button {
+        width : 200px;
+        height : 50px;
+        border: 1px solid rgb(145 145 145);
+        color : rgb(145 145 145);
     }
 `
 
