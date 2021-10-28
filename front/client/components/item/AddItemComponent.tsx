@@ -11,7 +11,7 @@ const AddItemComponent = ({
     sellToggle, extensionToggle, ifAgreed,
     handleTxtChange, handleSubmit, handleConfirm,
     fileChange, fileBase, handleCurrency,
-    deleteFile,
+    deleteFile, resetState
     }) => {
 
     const [nftCreateState,setnftCreateState] = useState<boolean>(false);
@@ -31,7 +31,13 @@ const AddItemComponent = ({
     
     return(
         <>
-            {nftCreateState ? < CreateNftCh flag={nftCreateState} closeBtn={closeBtn} handleSubmit = {handleSubmit}/> :<></> }
+            {nftCreateState 
+            ? < CreateNftCh 
+                flag={nftCreateState} 
+                closeBtn={closeBtn} 
+                handleSubmit = {handleSubmit}
+                resetState = {resetState}
+                /> :<></> }
             {cancelNft ? < CancelNft flag={cancelNft} closeBtn={closeBtn}/> :<></>}
             <TopWrapper> 
                 <BigTitle>

@@ -12,13 +12,13 @@ const addItem = () =>{
 
     const [file, setFile] = useState<Array<string>>([])
     const [fileBase, setFileBase] = useState<Array<string>>([])
-    const [currency, setCurrency] = useState<string>('')
+    const [currency, setCurrency] = useState<string>('won')
     const [price, setPrice] = useState<string>('')
     const [name, setName] = useState<string>('')
     const [desc, setDesc] = useState<string>('')
     const [aucPrice, setAucPrice] = useState<string>('')
     const [aucTime, setAucTime] = useState<any>('')
-    
+    console.log(name,'이름')
     function handleTxtChange(e:any, item:string){
         let {value} = e.target
         if(item == "file"){
@@ -107,7 +107,7 @@ const addItem = () =>{
     }
 
     const handleConfirm = () => {
-        if(allAgreed === false){ //미동의시
+        if(agreed[0] !== true || agreed[1] !== true){ //미동의시
             alert('모든 항목에 동의해주세요.')
             return false
         }
@@ -130,19 +130,16 @@ const addItem = () =>{
         }
     }
 
-    function handleSubmit(){ 
+    const handleSubmit = () => { 
         // axios같은거로 나중에 처리
         console.log(file.length, price, currency, name, desc)
         console.log(file.length, name, desc, aucPrice, currency, aucTime, extension)
     }
 
-    useEffect(()=>{
-        if(agreed[0] === true && agreed[1] === true){
-            setAllAgreed(true)
-        } else {
-            setAllAgreed(false)
-        }
-    },[agreed])
+    const resetState = () => {
+        window.location.reload() 
+    }
+
 
     return(
         <AddItemComponent 
@@ -163,6 +160,8 @@ const addItem = () =>{
         fileBase = {fileBase}
         handleCurrency = {handleCurrency}
         deleteFile = {deleteFile}
+        // 발행 후 초기화
+        resetState = {resetState}
         />
 
     )
