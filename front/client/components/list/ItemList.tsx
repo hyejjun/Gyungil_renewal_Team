@@ -4,9 +4,12 @@ import ItemListSell from './ItemListSell'
 import ItemListAuction from './ItemListAuction'
 import MyNft from './MyNFT'
 import { Input, Button } from '@mui/material'
+import useInput from '../../hooks/useInput'
+import SearchBar from './SearchBar'
 
 const ItemList = () => {
 
+    // @ 판매 경매 선택 버튼
     const [tabBtn, settabBtn] = useState<number>(1);
 
     const btn1 = () => {
@@ -16,7 +19,7 @@ const ItemList = () => {
         settabBtn(2);
     }
 
-
+    // @ 성별 탭
     const [genderTab, setGenderTab] = useState<boolean>(false);
     const [List, setList] = useState<boolean>(false);
 
@@ -28,7 +31,7 @@ const ItemList = () => {
         setList(prev => !prev)
     }
 
-    // 0 미선택 1 여성복 2 남성복 3 아동복
+    // @ 0 미선택 1 여성복 2 남성복 3 아동복
     const [genderSelect, setGenderSelect] = useState<number>(0);
 
     const selectGender = (num) => {
@@ -44,12 +47,18 @@ const ItemList = () => {
         selectGender,
     }
 
+    // @ 최근 발행순 좋아요 순 선택
     const [select, setSelect] = useState<string>('')
 
     const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
         setSelect(value);
     };
+
+    // @ 검색창
+    const [search, onChangeSearch] = useInput('')
+    
+    
 
     return (
         <>
@@ -64,16 +73,7 @@ const ItemList = () => {
                 <Menu>
                     <AuctionTab onClick={btn2} flag={tabBtn}>경매</AuctionTab>
                 </Menu>
-                <Search>
-                    <SearchInner>
-                        <SearchBox>
-                            <Input placeholder="상품 검색" />
-                        </SearchBox>
-                        <SearchBox>
-                            <Button variant="outlined">검색</Button>
-                        </SearchBox>
-                    </SearchInner>
-                </Search>
+                <SearchBar search={search} onChangeSearch={onChangeSearch}/>
             </MenuBar>
             <div>
                 {
@@ -100,21 +100,6 @@ const Menu = Styled.li`
     .bar {
         cursor : default;
         font-size: 20px;
-    }
-`
-
-const Search = Styled.li`
-    float:right;
-`
-
-const SearchInner = Styled.div`
-    display : flex;
-    gap : 10px;
-`
-
-const SearchBox = Styled.div`
-    & > button {
-        line-height: 1.5;
     }
 `
 
