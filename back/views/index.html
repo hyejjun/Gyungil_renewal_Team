@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input {
+            display: block;
+            height:50px;
+            width: 600px;
+            /* background-color: red; */
+            padding: 50px;
+        }
+        .shown {
+            display:block; 
+            height:100px;
+            width: 600px;
+            /* background-color: blue; */
+            padding: 50px;
+        }
+
+        .oneLine {
+            width: 600px;
+            height: 30px;
+            margin: 10px auto 10px auto;
+            /* background-color: lightblue; */
+        }
+
+        .printName {
+            float: left;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class = "input">
+        Name<input type = "text" class = "nameInput">
+        How much <input type = "text" class = "txtInput">
+        <button class = "btn">제출</button>
+        <div class = "aucPrice"> </div>
+    </div>
+    <div class = "shown">
+        <div class = "oneLine">
+            <div class = "printName"> 이름 </div>
+            <div class = "printPrice"> 가격</div>
+        </div>
+    </div>
+</body>
+<!-- <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+ -->
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script type= "text/javascript" src="/index.js"></script>
+</html>

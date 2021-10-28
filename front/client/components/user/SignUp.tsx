@@ -21,18 +21,21 @@ const SignUp = () => {
 
     const [emailErr, setEmailErr] = useState<boolean>(false); 
 
-    const [checked1,setChecked1] = useState(false);
-    const [checked2,setChecked2] = useState(false);
-    const [checked3,setChecked3] = useState(false);
+    const [checked1,setChecked1] = useState<boolean>(false);
+    const [checked1Err,setChecked1Err] = useState<boolean>(false);
+    const [checked2,setChecked2] = useState<boolean>(false);
+    const [checked2Err,setChecked2Err] = useState<boolean>(false);
+    const [checked3,setChecked3] = useState<boolean>(false);
+    const [checked3Err,setChecked3Err] = useState<boolean>(false);
 
     const user = useSelector((state:RootState) => state.user);
-
 
     const nickChk1 = e => {
         const value = e.target.value;
         setNickName(value);
         setNickErr(value === "");
         setNickLength5Err(value.length < 5 && value.length >0);
+        
         
         const chkk = () => {
         let chk = [",","?","=","`","~","!","@","#","$","%","^","&","*","(",")","<",">","/","*"]
@@ -56,17 +59,22 @@ const SignUp = () => {
     }
 
     
-    const handleChecked1 = () => {
+    const handleChecked1 = e => {
+        const value = e.target.value;
+        console.log(value);
         setChecked1(!checked1);
 }
     
-    const handleChecked2 = () => {
-        setChecked2(!checked2)
+    const handleChecked2 = e => {
+        const value = e.target.value;
+        setChecked2(!checked2);
+        setChecked2Err(value)
         
     }
-    const handleChecked3 = () => {
-        setChecked3(!checked3)
-      
+    const handleChecked3 = e => {
+        const value = e.target.value;
+        setChecked3(!checked3);
+        setChecked3Err(value)
     }
 
     const submit = e => {
@@ -75,12 +83,12 @@ const SignUp = () => {
 
     const [joinState,setJoinState] = useState<boolean>(false)
     const sucJoin = () => {
-
-        if(nickErr === false){
-            nickChk1(false)
-        }else{
-        setJoinState(prev=>!prev)        
-        }
+        if(nickErr === true
+            ){
+                setJoinState(prev=>!prev)        
+            }else{
+                alert("내용입력해주세요.")
+            }
     }
 
 
