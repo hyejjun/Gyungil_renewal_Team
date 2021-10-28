@@ -9,10 +9,10 @@ import { useEffect } from "react"
 import { UserLogin_REQUEST } from "../../../reducers/user";
 import { RootState } from "../../../reducers"
 
-
 declare global {
     interface Window {
         klaytn: any;
+        caver: any;
     }
 }
 
@@ -31,6 +31,10 @@ const LoginForm = (props) =>{
       setKaikasAddress(AddressArr)
       //dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
       dispatch(UserLogin_REQUEST(klaytnAddress))
+
+      const account = window.klaytn.selectedAddress
+      const message = 'Login User'
+      const signedMessage = await window.caver.klay.sign(message, account)
 
 
 
