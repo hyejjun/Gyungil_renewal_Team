@@ -1,8 +1,12 @@
 import Styled from 'styled-components'
 import React, { useState } from 'react'
+import { SellerAdminAccess_REQUEST } from '../../reducers/user'
+import { SellerAdminDeny_REQUEST } from '../../reducers/user'
+import { useSelector, useDispatch } from 'react-redux'
 
 const approvecomponent = () => {
 
+    const dispatch = useDispatch()
     interface ArrEle {
         Num : string,
         Num2 : string,
@@ -47,11 +51,11 @@ const approvecomponent = () => {
             if(result){
                 alert("인증되었습니다");
                 document.querySelector(`.Arr${id+1}`).innerHTML = '승인됨'
-          
+                dispatch(SellerAdminAccess_REQUEST(undefined))
             }else{
                 alert("반려되었습니다");
                 document.querySelector(`.Arr${id+1}`).innerHTML = '반려됨'
-               
+                dispatch(SellerAdminDeny_REQUEST(undefined))
             }
 
         }

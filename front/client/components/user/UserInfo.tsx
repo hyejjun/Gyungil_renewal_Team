@@ -34,9 +34,16 @@ const User = () => {
                             <p>
                                 이메일주소
                                 {
-                                    user.verify == true
+                                    user.verify == 0
                                     ?   <span><VerifiedUserIcon/>인증완료</span>
-                                    :   <span></span>
+                                    :   ( user.verify == 1
+                                            ? <span>대기중</span>
+                                            : (
+                                                user.verify == 2
+                                                ? <span>반려됨</span>
+                                                : <span></span>
+                                            )
+                                        )
                                 }
                                 
                             </p>
