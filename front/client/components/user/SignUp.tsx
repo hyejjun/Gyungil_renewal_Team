@@ -15,18 +15,15 @@ const SignUp = () => {
     const [nickName, setNickName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
 
-    const [nickErr, setNickErr] = useState<boolean>(false); 
-    const [nickLength5Err, setNickLength5Err] = useState<boolean>(false); 
+    const [nickErr, setNickErr] = useState<boolean>(true); 
+    const [nickLength3Err, setNickLength3Err] = useState<boolean>(false); 
     const [nickSignErr, setNickSignErr] = useState<boolean>(false); 
 
-    const [emailErr, setEmailErr] = useState<boolean>(false); 
-
+    const [emailErr, setEmailErr] = useState<boolean>(true); 
+    const [email2Err, setEmail2Err] = useState<boolean>(true)
     const [checked1,setChecked1] = useState<boolean>(false);
-    const [checked1Err,setChecked1Err] = useState<boolean>(false);
     const [checked2,setChecked2] = useState<boolean>(false);
-    const [checked2Err,setChecked2Err] = useState<boolean>(false);
     const [checked3,setChecked3] = useState<boolean>(false);
-    const [checked3Err,setChecked3Err] = useState<boolean>(false);
 
     const user = useSelector((state:RootState) => state.user);
 
@@ -34,7 +31,8 @@ const SignUp = () => {
         const value = e.target.value;
         setNickName(value);
         setNickErr(value === "");
-        setNickLength5Err(value.length < 5 && value.length >0);
+        setNickLength3Err(value.length < 3 && value.length >0 || value.length > 20 );
+        // setNickLength5Err(value.length < 5 && value.length >0);
         
         
         const chkk = () => {
@@ -50,7 +48,7 @@ const SignUp = () => {
         }
         }
         setNickSignErr(chkk() === true)
-    }    
+    }   
 
     const change2 = e => {
         const value = e.target.value;
@@ -58,37 +56,45 @@ const SignUp = () => {
         setEmailErr(value === "");
     }
 
+    const checkEmail = (e) => {
+        var regExp = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+        console.log('이메일 유효성검사 :: ', regExp.test(e.target.value) )
+        setEmail2Err(regExp.test(e.target.value));
+    }
     
     const handleChecked1 = e => {
-        const value = e.target.value;
-        console.log(value);
         setChecked1(!checked1);
 }
     
     const handleChecked2 = e => {
-        const value = e.target.value;
         setChecked2(!checked2);
-        setChecked2Err(value)
         
     }
     const handleChecked3 = e => {
-        const value = e.target.value;
         setChecked3(!checked3);
-        setChecked3Err(value)
     }
 
-    const submit = e => {
-
-    }
+    
 
     const [joinState,setJoinState] = useState<boolean>(false)
     const sucJoin = () => {
-        if(nickErr === true
+        if(nickErr === true || 
+            nickLength3Err === true || 
+            nickSignErr === true ||
+            emailErr === true ||
+            email2Err !== true
             ){
-                setJoinState(prev=>!prev)        
-            }else{
-                alert("내용입력해주세요.")
-            }
+            alert("내용입력해주세요.")
+        }else if(checked1 !== true || 
+            checked2 !== true || 
+            checked3 !== true){
+            alert("필수 동의사항에 체크해주세요.")
+        }else{
+            setJoinState(prev=>!prev)        
+        }
+        if(checked1 !== true || checked2 !== true || checked3 !== true){
+            // alert("필수 동의사항에 체크해주세요.")
+        }
     }
 
 
@@ -98,7 +104,7 @@ const SignUp = () => {
             <Css>
                 <div className="layout">
                     <div className="signUpContainer">
-                        <form onSubmit={submit}>
+                        <form>
                             <div className="title">회원가입</div>
                             <div className="image5">
                             <div className="image4 textCenter">
@@ -146,9 +152,9 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td className="textLeft">
-                                            <input type="text" className="InputBox" value={nickName} onChange={nickChk1} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요." />
+                                            <input type="text" className="InputBox" value={nickName} onChange={nickChk1} name="nickName" id="nickName" placeholder="닉네임을 입력해주세요."/> 
                                             { nickErr ? <div className="error">닉네임을 입력해주세요.</div> : <></>}
-                                            { nickLength5Err ? <div className="error">닉네임을 5자 이상으로 입력해주세요.</div> : <></>}                                           
+                                            { nickLength3Err ? <div className="error">닉네임을 3자 이상, 20글자 이하로 입력해주세요.</div> : <></>}                                           
                                             { nickSignErr ? <div className="error">닉네임은 한글, 영문 대소문자, 숫자, 특수기호(_),(-),(.)만 입력 가능합니다.</div> : <></>}
                                         </td>
                                     </tr>
@@ -178,8 +184,9 @@ const SignUp = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="email" className="InputBox" value={email} onChange={change2} name="email" placeholder="이메일 주소를 입력해주세요." />
+                                            <input type="email" className="InputBox" value={email} onChange={change2} onBlur={checkEmail} name="email" placeholder="이메일 주소를 입력해주세요." />
                                             { emailErr ? <div className="error">이메일 주소를 입력해주세요.</div> : <></>}
+                                            { email2Err ? <></>  : <div className="error">유효한 이메일 주소가 아닙니다. 이메일 주소를 다시 확인해주세요.</div>}
                                         </td>
                                     </tr>
                                     <tr>
@@ -246,7 +253,7 @@ const Css = Styled.div`
 
 .signUpContainer{
     width: 560px;
-    height: 970px;
+    height: 100%;
     padding: 80px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
