@@ -105,6 +105,7 @@ const SellAucWrapper = Styled.div`
     .dateTimeLocal{
         margin-right: 400px;
         margin-bottom: 20px;
+        width:430px;
     }
 `
 
