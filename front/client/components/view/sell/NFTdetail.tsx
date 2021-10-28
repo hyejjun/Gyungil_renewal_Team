@@ -7,6 +7,7 @@ import NFTTitle from "../NFTTitle";
 import SizeSelect from "../SizeSelect";
 
 const NFTdetail = ({children}) => {
+    
     const [open, setOpen] = useState<boolean>(false);
     const orderOpen = () => {
         setOpen(prev => !prev)

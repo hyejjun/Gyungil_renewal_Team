@@ -32,6 +32,7 @@ const ItemListAuction = (props) => {
         subject: string,
         artist: string,
         Like: number,
+        url: string
     }
 
     const [Arr, setArr] = React.useState<ArrEle[]>([
@@ -40,54 +41,63 @@ const ItemListAuction = (props) => {
             subject: 'adsfds',
             artist: 'daminal',
             Like: 0,
+            url:'auction/1'
         },
         {
             id: 2,
             subject: 'adsfdsf',
             artist: 'daminal',
             Like: 5,
+            url:'auction/2'
         },
         {
             id: 3,
             subject: 'adsff',
             artist: 'daminal',
             Like: 5,
+            url:'auction/3'
         },
         {
             id: 4,
             subject: 'adsg',
             artist: 'daminal',
             Like: 5,
+            url:'auction/4'
         },
         {
             id: 5,
             subject: 'adg',
             artist: 'daminal',
             Like: 5,
+            url:'auction/5'
         },
         {
             id: 6,
             subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
+            url:'auction/6'
         },
         {
             id: 7,
             subject: 'adsg',
             artist: 'daminal',
             Like: 5,
+            url:'auction/7'
         },
         {
             id: 8,
             subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
+            url:'auction/8'
         },
         {
             id: 9,
             subject: 'asdgsdg',
             artist: 'daminal',
             Like: 5,
+            url:'auction/9'
         },
     ]);
 
@@ -95,7 +105,7 @@ const ItemListAuction = (props) => {
         <React.Fragment key={ele.id}>
             <NFTFourList>
                 <NFT>
-                    <Link href="/auction/auctionview">
+                    <Link href= {ele.url}>
                         <a>
                             <NFTImg>
                                 {/* <div><img src={require('../../src/지도.jpg').default} /></div> */}
@@ -135,18 +145,21 @@ const ItemListAuction = (props) => {
                     subject: 'adsg',
                     artist: 'daminal',
                     Like: 5,
+                    url:'auction/9'
                 },
                 {
                     id: 8,
                     subject: 'asdgsdg',
                     artist: 'daminal',
                     Like: 5,
+                    url:'auction/9'
                 },
                 {
                     id: 7,
                     subject: 'adsg',
                     artist: 'daminal',
                     Like: 5,
+                    url:'auction/9'
                 },
             ),
         );
