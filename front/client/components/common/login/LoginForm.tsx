@@ -39,35 +39,35 @@ const LoginForm = (props) =>{
 
 
     }
-  
+
     const onClick = () => {
-      if(!window.klaytn) {
-        return
-      }
-      setClicked(true)
-  
-      kaikasLogin()
+        if (!window.klaytn) {
+            return
+        }
+        setClicked(true)
+
+        kaikasLogin()
 
     }
-  
-    if (kaikasAddress.length > 0) {
 
+    if (kaikasAddress.length > 0) {
       return (<div></div>)
       
     }
-  
-  
 
 
-    return(
+
+
+
+    return (
         <ModalBackground>
             <LoginFormWrapper closeLogin={props.closeLogin}>
-                <div onClick={props.closeLoginBtn}><CloseIcon/></div>
+                <div onClick={props.closeLoginBtn}><CloseIcon /></div>
                 <ul>
                     <li>로그인</li>
-                    <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br/>아래 지갑 중 사용할 지갑을 선택해주세요</li>
-                    <li><Link href = "/signup"><button onClick = {onClick} className="kaikasBtn">Kaikas로그인</button></Link></li>
-                    <li>사용중인 지갑이 없으신가요? <span><Astyle href = "https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi">kaikas다운로드</Astyle></span></li>
+                    <li>지갑을 이용하여 AzitGallery에 로그인합니다.<br />아래 지갑 중 사용할 지갑을 선택해주세요</li>
+                    <li><Link href="/signup"><button onClick={onClick} className="kaikasBtn">Kaikas로그인</button></Link></li>
+                    <li>사용중인 지갑이 없으신가요? <span><Astyle href="https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi">kaikas다운로드</Astyle></span></li>
                 </ul>
             </LoginFormWrapper>
         </ModalBackground>
@@ -81,7 +81,7 @@ export default LoginForm
 
 
 const LoginFormWrapper = Styled.div`
-    display: ${(props)=>(props.closeLogin?"block":"none")} 
+    display: ${(props) => (props.closeLogin ? "block" : "none")} 
     box-sizing:border-box;
     position:absolute;
     width:410px;

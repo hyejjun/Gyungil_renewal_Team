@@ -2,7 +2,7 @@
 
 import Styled from 'styled-components'
 import Link from 'next/link'
-
+import Button from '@mui/material/Button';
 
 const MyNFT = ()=>{
     return(
@@ -11,7 +11,10 @@ const MyNFT = ()=>{
                 <Menu>
                     <MenuH3>나만의 NFT를 발행해보세요</MenuH3>
                     <div>KrafterSpace에서는 누구나 쉽고 간편하게<br/>NFT를 발행하고 관리할 수 있어요.</div>
-                    <Link href = "/item/additem"><a><SellBtn>NFT 발행하기</SellBtn></a></Link>
+                    <Link href = "/item/additem"><a>
+                        <Button variant="contained" size="large">NFT 발행하기</Button>
+                        {/* <SellBtn>NFT 발행하기</SellBtn> */}
+                    </a></Link>
                 </Menu>
                 {/* <MenuImg><img src = {require('../../src/지도.jpg')} /></MenuImg> */}
                 <MenuImg> <img /> </MenuImg>
@@ -30,13 +33,23 @@ const MyNFTAll = Styled.ul`
 `
 
 const Menu = Styled.li`
-color:#2d3741;
-font-size:24px;
-display:inline-block;
-text-decoration:none;
-list-style:none;
-margin-right:20px;
-float:left;
+    color:#2d3741;
+    font-size:24px;
+    display:inline-block;
+    text-decoration:none;
+    list-style:none;
+    margin-right:20px;
+    float:left;
+
+    & > a {
+        margin-top:100px;
+        display : inline-block;
+    }
+    & > a > button {
+        width : 200px;
+        height : 50px;
+        
+    }
 
 `
 
@@ -77,6 +90,7 @@ const SellBtn = Styled.button`
 
     }
 `
+
 const Line = Styled.div`
     background:#bbb;
     margin-top:20px;
