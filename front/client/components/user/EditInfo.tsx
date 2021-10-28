@@ -1,30 +1,62 @@
 import Styled from 'styled-components'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+import { useState } from 'react';
+import useInput from '../../hooks/useInput';
+import { TextField } from '@mui/material';
+import Router from 'next/router';
 
 const EditInfo = () => {
-    return(
+    // @ useSelector 로 닉네임과 이메일 가져옴
+    // const user:State = useSelector((state:RootState) => state.user); 이런식으로
+    // 가라데이터
+    const currentNickName = '안녕'
+    const currentEmail = 'hello@gmail.com'
+
+    // @ 닉네임
+    const [nickName, setNickname] = useInput(currentNickName)
+
+    // @ 이메일
+    const [email, setEmail] = useInput(currentEmail)
+
+    // @ 수정된 닉네임과 이메일
+    const modifiedMyData = {
+        nickName,
+        email
+    }
+    // @ 변경사항 저장
+    const editMypage = () => {
+        // 여기서 dispatch 보내고
+        alert('수정 되었습니다')
+        Router.push('/user/user')
+    }
+
+
+    return (
         <>
             <EditInfoWrapper>
                 <div>프로필편집</div>
                 <div>
-                    <span><AccountCircleIcon/></span>
+                    <span><AccountCircleIcon /></span>
                     <span>
                         <ul>
                             <li>
                                 <span>닉네임</span>
                                 <span>* 5~20자의 한글, 영문 대소문자, 숫자, 특수기호(_),(-),(.)만 사용 가능합니다.</span>
                             </li>
-                            <li>mihee</li>
-                            <br/>
+                            <li>
+                                <TextField value={nickName} onChange={setNickname} />
+                            </li>
+                            <br />
                             <li><span>이메일주소</span></li>
-                            <li>algml9603@gmail.com</li>
+                            <li>
+                                <TextField value={email} onChange={setEmail} />
+                            </li>
                         </ul>
                     </span>
                 </div>
                 <div>
                     <button>취소</button>
-                    <button>변경사항저장</button>
+                    <button onClick={editMypage}>변경사항저장</button>
                 </div>
 
             </EditInfoWrapper>
@@ -36,27 +68,20 @@ export default EditInfo
 
 
 const EditInfoWrapper = Styled.div`
-    width:750x;
-    max-width: 1304px;
-    height:750px;
-    padding-right: 12px;
-    padding-left: 150px;
+    width:1200px;
+    height:700px;
     box-sizing:border-box;
-    display: block;
-    justify-content:center
+    justify-content:center;
     font-size:14px;
     color: rgba(45,55,65,.7);
     font-weight: 400;
     line-height: 1.75;
-    text-align: left;
-    margin-top:100px;
+
+
     div:nth-child(1){
         display: flex;
-        font-size: 36px;
-        font-weight: 700;
-        line-height: 48px;
-        color: #2d3741;
         vertical-align: bottom;
+        font-size : 19px;
     }
     div:nth-child(2) svg{
         width:140px;
@@ -68,10 +93,10 @@ const EditInfoWrapper = Styled.div`
     div:nth-child(2){
         display:flex;
         width:1200px;
-        height:237px;
-        padding-left:56px;
+        height: auto;
         margin-top:30px;
         box-sizing:border-box;
+        padding: 0 13%;
     }
     div:nth-child(2)>span>ul>li>span:nth-child(1){
         display: table-cell;
@@ -92,12 +117,13 @@ const EditInfoWrapper = Styled.div`
     }
     div li:nth-child(2), div li:nth-child(5){
         margin-top:15px;
-        border:1px solid rgba(20, 30, 40, 0.1);
         padding-left:10px;
     }
     div:nth-child(3){
-        margin-top:40px;
-        text-align:center;
+        width: 1200px;
+        text-align: right;
+        padding: 20% 5% 0 0;
+        box-sizing: border-box;
     }
     div button{
         box-sizing:border-box;
@@ -113,10 +139,12 @@ const EditInfoWrapper = Styled.div`
     }
     div button:nth-child(1){
         background-color: #e1f0ff;
-        color: #1e73fa
+        color: #1e73fa;
+        cursor : pointer;
     }
     div button:nth-child(2){
         color: #e1f0ff;
-        background-color: #1e73fa
+        background-color: #1e73fa;
+        cursor : pointer;
     }
 `

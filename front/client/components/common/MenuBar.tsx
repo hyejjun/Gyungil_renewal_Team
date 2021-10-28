@@ -91,7 +91,9 @@ const MenubarWrapper = Styled.div`
     }
     ul>li, a{
         margin-right:20px;
-        color:rgba(0,0,0,.5);;
+        color:rgba(0,0,0,.5);
+        background: #fafafa;
+
     }
     ul>li:hover, a:hover{
         color:#343a40;
