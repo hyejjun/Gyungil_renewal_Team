@@ -18,7 +18,7 @@ const addItem = () =>{
     const [desc, setDesc] = useState<string>('')
     const [aucPrice, setAucPrice] = useState<string>('')
     const [aucTime, setAucTime] = useState<any>('')
-    console.log(name,'이름')
+
     function handleTxtChange(e:any, item:string){
         let {value} = e.target
         if(item == "file"){
@@ -112,28 +112,23 @@ const addItem = () =>{
             return false
         }
         else if((ifSell === true &&
-                ( // 나중에 file 컴포넌트 완성되면 설정하기
-                
-               name=='' || desc=='' || price == '')) ||
+                (name=='' || desc=='' || price == '')) ||
                 (ifSell === false &&
-                (
-
-                name=='' ||desc=='' ||aucPrice=='' ||aucTime==''))
-            ){
+                (name=='' ||desc=='' ||aucPrice=='' ||aucTime==''))){
                 alert('모든 칸을 입력해주세요.')
                 return false
         } else if(file.length == 0 ){
-            alert('파일을 첨부해주세요.')
-            return false
+                alert('파일을 첨부해주세요.')
+                return false
         }else{
-            return true
+                return true
         }
     }
 
     const handleSubmit = () => { 
         // axios같은거로 나중에 처리
-        console.log(file.length, price, currency, name, desc)
-        console.log(file.length, name, desc, aucPrice, currency, aucTime, extension)
+        console.log(file, price, currency, name, desc)
+        console.log(file, name, desc, aucPrice, currency, aucTime, extension)
     }
 
     const resetState = () => {

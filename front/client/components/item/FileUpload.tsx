@@ -21,14 +21,12 @@ const FileUpload = ({fileChange, fileBase, deleteFile}) =>{
             <PrevWrapper>
                 {fileBase.map((item, key) => {
                     return(
-                        <ImageContent>
+                        <ImageContent key = {key}>
                             <img
                                 src={item}
-                                alt="First slide"
-                                key={key}
+                                // alt="First slide"
                             />
                             <CloseButton
-                                key = {`${key}btn`}
                                 onClick = {()=>{deleteFile(key)}}
                             >&#10006;</CloseButton>
                         </ImageContent>
