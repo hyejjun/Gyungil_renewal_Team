@@ -16,18 +16,21 @@ declare global {
     }
 }
 
-const LoginForm = (props) => {
-    const [clicked, setClicked] = React.useState(false)
-    const [kaikasAddress, setKaikasAddress] = React.useState('')
-    const UserAddress = useSelector((state: RootState) => state.user);
+const LoginForm = (props) =>{
+    const [clicked, setClicked] = React.useState<boolean>(false)
+    const [kaikasAddress, setKaikasAddress] = React.useState<string[]>([])
+    const UserAddress = useSelector((state:RootState) => state.user);
     const dispatch = useDispatch()
 
     const kaikasLogin = async () => {
-        await window.klaytn.enable()
-
-        const klaytnAddress = window.klaytn.selectedAddress
-        setKaikasAddress(klaytnAddress)
-        dispatch(UserLogin_REQUEST(klaytnAddress))
+      await window.klaytn.enable()
+  
+      const klaytnAddress = window.klaytn.selectedAddress
+      let AddressArr = []
+      AddressArr.push(klaytnAddress)
+      setKaikasAddress(AddressArr)
+      //dispatch({type:USER_LOGIN_REQUEST,payload:klaytnAddress})
+      dispatch(UserLogin_REQUEST(klaytnAddress))
 
 
 
@@ -44,7 +47,8 @@ const LoginForm = (props) => {
     }
 
     if (kaikasAddress.length > 0) {
-        return (<div></div>)
+      return (<div></div>)
+      
     }
 
 

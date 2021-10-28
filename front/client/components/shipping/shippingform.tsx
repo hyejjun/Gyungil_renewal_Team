@@ -11,10 +11,8 @@ import Button from '@mui/material/Button';
 
 
 const Shippingfrom = () => {
-
     const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
-    const [address, setaddress] = useState<string>(' ')
-    const [postNumber, setpostNumber] = useState<string>(' ')
+
     // 팝업창 열기
     const openPostCode = () => {
         setIsPopupOpen(true)
@@ -25,18 +23,35 @@ const Shippingfrom = () => {
         setIsPopupOpen(false)
     }
 
-    const ComfirmContent = () => {
-
-
-    }
-
     const [orderer, onChangeOrderer] = useInput('')
     const [receiver, onChangeReceiver] = useInput('')
     const [phoneNum, onChangePhoneNum] = useInput('')
+    const [address, setaddress] = useState<string>(' ')
+    const [postNumber, setpostNumber] = useState<string>(' ')
     const [addressDetail, onChangeAddressDetail] = useInput('')
     const [memo, onChangeMemo] = useInput('')
-    
 
+    const [inputStatus, setInputStatus] = useState<string>('택배')
+    const handleClickRadioButton = (radioBtnName) => {
+        setInputStatus(radioBtnName)  
+    }
+
+    const shippingData = {
+        orderer,
+        receiver,
+        phoneNum,
+        address,
+        postNumber,
+        addressDetail,
+        memo,
+        inputStatus
+    }
+
+    const handelSubmit = ()=>{
+        // 여기서 dispatch로 날리고
+        console.log(shippingData);
+    }
+    
     return (
         <>
             <ShipWrap>
@@ -46,19 +61,19 @@ const Shippingfrom = () => {
                         <tr>
                             <HeadTd id="Person">주문인</HeadTd>
                             <ContentTd>
-                                <TextField id="standard-basic" variant="standard" value={orderer} onChange={onChangeOrderer}/>
+                                <TextField id="standard-basic" variant="standard" value={orderer} onChange={onChangeOrderer} />
                             </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>수령인</HeadTd>
                             <ContentTd>
-                                <TextField id="standard-basic" variant="standard" value={receiver} onChange={onChangeReceiver}/>
+                                <TextField id="standard-basic" variant="standard" value={receiver} onChange={onChangeReceiver} />
                             </ContentTd>
                         </tr>
                         <tr>
                             <HeadTd>휴대전화</HeadTd>
                             <ContentTd>
-                                <TextField id="standard-basic" variant="standard" value={phoneNum} onChange={onChangePhoneNum}/>
+                                <TextField id="standard-basic" variant="standard" value={phoneNum} onChange={onChangePhoneNum} />
                             </ContentTd>
                         </tr>
                         <tr>
@@ -79,7 +94,7 @@ const Shippingfrom = () => {
                         <tr>
                             <HeadTd>상세 주소</HeadTd>
                             <ContentTd>
-                                <TextField id="standard-basic" variant="standard" value={addressDetail} onChange={onChangeAddressDetail}/>
+                                <TextField id="standard-basic" variant="standard" value={addressDetail} onChange={onChangeAddressDetail} />
                             </ContentTd>
                         </tr>
                         <tr>
@@ -90,23 +105,23 @@ const Shippingfrom = () => {
                             <HeadTd>배송방법</HeadTd>
                             <Method>
                                 <ul>
-                                    <li><input type="radio" name="normal" id="firstCheck" /><label htmlFor="firstCheck">택배</label></li>
-                                    <li><input type="radio" name="normal" id="secondCheck" /><label htmlFor="secondCheck">우체국 택배</label></li>
-                                    <li><input type="radio" name="normal" id="thirdCheck" /><label htmlFor="thirdCheck">편의점 방문 픽업</label></li>
+                                    <li><input type="radio" name="normal" id="firstCheck" value="택배" defaultChecked onClick={() => handleClickRadioButton('택배')}/><label htmlFor="firstCheck">택배</label></li>
+                                    <li><input type="radio" name="normal" id="secondCheck" value="우체국택배" onClick={() => handleClickRadioButton('우체국')}/><label htmlFor="secondCheck">우체국 택배</label></li>
+                                    <li><input type="radio" name="normal" id="thirdCheck" value="편의점방문"  onClick={() => handleClickRadioButton('편의점')}/><label htmlFor="thirdCheck">편의점 방문 픽업</label></li>
                                 </ul>
                             </Method>
                         </tr>
                         <tr>
                             <HeadTd>배송 메모</HeadTd>
                             <ContentTd>
-                                <TextField id="standard-basic" variant="standard" placeholder="배송 시 요청사항을 입력해주세요" value={memo} onChange={onChangeMemo}/>
+                                <TextField id="standard-basic" variant="standard" placeholder="배송 시 요청사항을 입력해주세요" value={memo} onChange={onChangeMemo} />
                             </ContentTd>
                         </tr>
                     </tbody>
                 </Table>
                 <ShipSubmit>
                     <Link href="/paymentend"><a>
-                        <Button variant="outlined" size="large">
+                        <Button variant="outlined" size="large" onClick={handelSubmit}>
                             주문 완료
                         </Button>
                     </a></Link>
