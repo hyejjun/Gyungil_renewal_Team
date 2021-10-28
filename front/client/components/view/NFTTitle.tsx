@@ -1,6 +1,7 @@
 import Styled from 'styled-components'
 
 const NFTTitle = ()=>{
+    
     return(
         <>
             <NFTTitleWrap>
