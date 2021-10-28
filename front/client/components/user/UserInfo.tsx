@@ -33,8 +33,12 @@ const User = () => {
                         <li>
                             <p>
                                 이메일주소
-                                <span>
-                                    <VerifiedUserIcon/>인증완료</span>
+                                {
+                                    user.verify == true
+                                    ?   <span><VerifiedUserIcon/>인증완료</span>
+                                    :   <span></span>
+                                }
+                                
                             </p>
                             <p>&nbsp;{/*email account*/}algml9603@mgail.com</p>
                         </li>

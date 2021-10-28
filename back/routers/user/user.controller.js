@@ -14,7 +14,7 @@ let SellerAdmin = async (req,res) => {
         }
     });
 
-    let url = `http://localhost:3000/user/user`;
+    let url = `http://localhost:3000/admin/approveBTN`;
     let options = {
         from: 'simbianartist@gmail.com',
         to:'simbianartist@gmail.com',//임시로, 나중에는 body에서 가져오게끔
@@ -27,6 +27,7 @@ let SellerAdmin = async (req,res) => {
             console.log(err)
         } else {
             console.log('email has been successfully sent.');
+
         }
         transporter.close();
     })

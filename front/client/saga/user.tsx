@@ -28,10 +28,12 @@ function* login(action){
 
 function* SellerAdminSaga(){
     const result = yield call(axios.post,`http://localhost:4000/user/SellerAdmin`)
-    yield put({
-        type:'SELLER_ADMIN_SUCCESS',
-        verify:true
-    })
+
+        yield put({
+            type:'SELLER_ADMIN_BACK',
+            verify:true
+        })        
+
     
 }
 

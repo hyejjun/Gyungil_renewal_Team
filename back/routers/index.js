@@ -6,4 +6,5 @@ const userRouter = require('./user/index')
 router.use('/', mainRouter)
 router.use('/user', userRouter)
 
+
 module.exports = router

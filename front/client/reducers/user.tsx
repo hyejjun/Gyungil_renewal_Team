@@ -55,10 +55,9 @@ export const SellerAdmin_REQUEST = (error) => {
     }
 }
 
-export const SellerAdmin_BACK = (verify) => {
+export const SellerAdmin_BACK = () => {
     return{
         type:SELLER_ADMIN_BACK,
-        verify:verify
     }
 }
 type UserAction = 
@@ -94,7 +93,7 @@ const reducer = (state:State=initialState, action:UserAction) => {
         case SELLER_ADMIN_BACK:
             return{
                 ...state,
-                verify:action.verify
+                verify:true
             }
         default:
             return state;
