@@ -12,10 +12,10 @@ const ItemList = () => {
     // @ 판매 경매 선택 버튼
     const [tabBtn, settabBtn] = useState<number>(1);
 
-    const btn1 = () => {
+    const sellBtn = () => {
         settabBtn(1);
     }
-    const btn2 = () => {
+    const auctionBtn = () => {
         settabBtn(2);
     }
 
@@ -58,6 +58,14 @@ const ItemList = () => {
     // @ 검색창
     const [search, onChangeSearch] = useInput('')
     
+
+    // @ axios 통신 시 보내야 할 데이터들
+    const sendData = {
+        tabBtn,                         // @ 판매 or 경매 
+        genderSelect,                   // @ 0 미선택 1 여성복 2 남성복 3 아동복
+        select,                         // @ 최근 발행순 좋아요 순 선택
+        search                          // @ 검색창
+    }
     
 
     return (
@@ -65,13 +73,13 @@ const ItemList = () => {
             <MyNft />
             <MenuBar>
                 <Menu>
-                    <SellTab onClick={btn1} flag={tabBtn}>판매</SellTab>
+                    <SellTab onClick={sellBtn} flag={tabBtn}>판매</SellTab>
                 </Menu>
                 <Menu>
                     <div className="bar">|</div>
                 </Menu>
                 <Menu>
-                    <AuctionTab onClick={btn2} flag={tabBtn}>경매</AuctionTab>
+                    <AuctionTab onClick={auctionBtn} flag={tabBtn}>경매</AuctionTab>
                 </Menu>
                 <SearchBar search={search} onChangeSearch={onChangeSearch}/>
             </MenuBar>
