@@ -34,7 +34,7 @@
                 <label for="modify_subject_img">이미지:</label>
                 <input type="file" accept="image/*" id="modify_subject_img" name="img" onchange="setThumbnail(event);"><br>
                 <div id="thumbnail">
-                  <img src="http://localhost:3000/{{result.image}}" alt="과목이미지">
+                  <img src="http://localhost:3001/{{result.image}}" alt="과목이미지">
                 </div>
                 <input type="hidden" name="origin_image" value="{{result.image}}">
                 <input type="file" accept="image/*" name="img" onchange="setThumbnail(event);"><br>

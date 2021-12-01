@@ -134,7 +134,7 @@ async function destroy_curr(){
    //true
    let id =  this.event.path[0].dataset.idx;
   let tr = this.event.path[0].parentNode.parentNode; 
-   let url = 'http://localhost:3000/admin/curriculum/curr/destroy'
+   let url = 'http://localhost:3001/admin/curriculum/curr/destroy'
    let options = {
      method: 'POST',
      headers: {

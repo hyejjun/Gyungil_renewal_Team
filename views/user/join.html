@@ -106,7 +106,7 @@
 
         //아이디 중복
         async function userid_check() {
-            let idData = await axios.get(`http://localhost:3000/user/id_check?userid=${userid.value}`)
+            let idData = await axios.get(`http://localhost:3001/user/id_check?userid=${userid.value}`)
 
             let login_flag = idData.data.login;
 

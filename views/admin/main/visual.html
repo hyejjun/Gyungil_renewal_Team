@@ -29,7 +29,7 @@
             {% for item in result %}
             <tr>
               <td><input type="hidden" value="{{item.id}}"></td>
-              <td><div><img src="http://localhost:3000/{{item.image}}"alt="슬라이드 이미지" width="400" height="300"></div></td>
+              <td><div><img src="http://localhost:3001/{{item.image}}"alt="슬라이드 이미지" width="400" height="300"></div></td>
               <td><div><a href=`{{item.link}}`>{{item.link}}</a></div></td>
               {% if item.show==1 %}
               <td><input type="checkbox" checked onclick="check()"></td>
