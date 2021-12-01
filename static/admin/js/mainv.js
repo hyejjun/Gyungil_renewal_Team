@@ -7,7 +7,7 @@ async function check(){
     show=0; 
   }
 
-  let url = 'http://localhost:3001/admin/main/visual/update/show'
+  let url = 'http://localhost:3000/admin/main/visual/update/show'
   let options = {
     method: 'POST',
     headers: {
@@ -34,7 +34,7 @@ async function link_update(id){
   }
   else if(this.event.path[0].value=="등록"){ 
     let update_link = document.querySelector('#update_link').value;
-    let url = 'http://localhost:3001/admin/main/visual/update/link'
+    let url = 'http://localhost:3000/admin/main/visual/update/link'
 
     let options = {
       method: 'POST',
@@ -59,7 +59,7 @@ async function destroy(id){
   if(confirm('정말삭제하시겠습니까?')){
 
     const li = this.event.path[0].parentNode.parentNode; 
-    let url = 'http://localhost:3001/admin/main/visual/destroy'
+    let url = 'http://localhost:3000/admin/main/visual/destroy'
     let options = {
       method: 'POST',
       headers: {

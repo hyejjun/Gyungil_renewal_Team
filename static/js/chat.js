@@ -14,7 +14,7 @@ socketChat();
   socket.on("connect", () => {
   
     let id = socket.id; 
-    let url = 'http://localhost:3001/admin/consult/chat/start'
+    let url = 'http://localhost:3000/admin/consult/chat/start'
     let options = {
     method: 'post',
     headers: {
@@ -59,7 +59,7 @@ chatBtn.addEventListener('click', () => {
 
 
 // async function getChatRoom() {
-// let url = 'http://localhost:3001/chat';
+// let url = 'http://localhost:3000/chat';
 // let options = { method: 'GET' }
 // let response = await fetch(url, options);
 // let result = await response.text();
@@ -87,7 +87,7 @@ const chatSend = document.querySelector('#chatSend');
 async function send() {
   const msg = document.querySelector('#msg');
 
-  let url = 'http://localhost:3001/chat/get';
+  let url = 'http://localhost:3000/chat/get';
   let options = { method: 'GET' }
   let response = await fetch(url, options);
   let userid = await response.json();

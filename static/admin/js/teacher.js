@@ -7,7 +7,7 @@ async function check(id){
     show=0; 
   }
 
-  let url = 'http://localhost:3001/admin/info/teacher/show'
+  let url = 'http://localhost:3000/admin/info/teacher/show'
   let options = {
     method: 'POST',
     headers: {
