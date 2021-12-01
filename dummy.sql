@@ -608,10 +608,10 @@ CREATE TABLE IF NOT EXISTS `main_visual` (
 -- 테이블 데이터 gyungil.main_visual:~4 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `main_visual` DISABLE KEYS */;
 INSERT INTO `main_visual` (`id`, `image`, `link`, `show`) VALUES
-	(2, 'visual1.png', 'http://localhost:3000/community/ki_story/view?page=1&id=946', 1),
-	(3, 'visual2.png', 'http://localhost:3000/community/ki_story/view?page=1&id=947', 1),
-	(4, 'visual3.png', 'http://localhost:3000/community/ki_story/view?page=1&id=949&num=35', 1),
-	(5, 'visual4.png', 'http://localhost:3000/community/ki_story/view?page=1&id=948&num=34', 1);
+	(2, 'visual1.png', 'http://13.209.126.185:3000/community/ki_story/view?page=1&id=946', 1),
+	(3, 'visual2.png', 'http://13.209.126.185:3000/community/ki_story/view?page=1&id=947', 1),
+	(4, 'visual3.png', 'http://13.209.126.185:3000/community/ki_story/view?page=1&id=949&num=35', 1),
+	(5, 'visual4.png', 'http://13.209.126.185:3000/community/ki_story/view?page=1&id=948&num=34', 1);
 /*!40000 ALTER TABLE `main_visual` ENABLE KEYS */;
 
 -- 테이블 gyungil.portfolio 구조 내보내기
@@ -700,14 +700,14 @@ CREATE TABLE IF NOT EXISTS `thumbnail` (
 -- 테이블 데이터 gyungil.thumbnail:~8 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `thumbnail` DISABLE KEYS */;
 INSERT INTO `thumbnail` (`id`, `board_id`, `image`) VALUES
-	(13, 825, 'http://localhost:3000/1624858597876.png'),
-	(14, 833, 'http://localhost:3000/1624923594743.png'),
-	(15, 834, 'http://localhost:3000/1624923699314.png'),
-	(16, 835, 'http://localhost:3000/1624923734129.png'),
-	(17, 836, 'http://localhost:3000/1624923845488.jpg'),
-	(18, 837, 'http://localhost:3000/1624923869948.png'),
-	(19, 838, 'http://localhost:3000/1624923901435.jpg'),
-	(20, 839, 'http://localhost:3000/1624923971050.png');
+	(13, 825, 'http://13.209.126.185:3000/1624858597876.png'),
+	(14, 833, 'http://13.209.126.185:3000/1624923594743.png'),
+	(15, 834, 'http://13.209.126.185:3000/1624923699314.png'),
+	(16, 835, 'http://13.209.126.185:3000/1624923734129.png'),
+	(17, 836, 'http://13.209.126.185:3000/1624923845488.jpg'),
+	(18, 837, 'http://13.209.126.185:3000/1624923869948.png'),
+	(19, 838, 'http://13.209.126.185:3000/1624923901435.jpg'),
+	(20, 839, 'http://13.209.126.185:3000/1624923971050.png');
 /*!40000 ALTER TABLE `thumbnail` ENABLE KEYS */;
 
 -- 테이블 gyungil.users 구조 내보내기

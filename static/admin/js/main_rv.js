@@ -47,7 +47,7 @@ function select_review() {
 async function update_mainrv() {
   if (confirm('수정된 내용을 메인페이지에 적용시키시겠습니까?')) {
     let reviewArr = select_review();
-    let url = 'http://localhost:3000/admin/main/review/update'
+    let url = 'http://13.209.126.185:3000/admin/main/review/update'
     let options = {
       method: 'POST',
       headers: {

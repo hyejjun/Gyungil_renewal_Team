@@ -11,7 +11,7 @@ secret = CXwWERMGYPr2kGmHfyBFmEows1RPuH36
 const kakao = {
     clientID: "951a56f043d3a8f6dc927444486f364c",
     clientSecret: "CXwWERMGYPr2kGmHfyBFmEows1RPuH36",
-    redirectUri: "http://localhost:3000/auth/kakao/callback"
+    redirectUri: "http://13.209.126.185:3000/auth/kakao/callback"
 }
 
 let kakao_login = (req, res) => {

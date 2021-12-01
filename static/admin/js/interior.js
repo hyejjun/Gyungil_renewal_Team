@@ -7,7 +7,7 @@ async function check(){
     show=0; 
   }
 
-  let url = 'http://localhost:3000/admin/info/interior/update'
+  let url = 'http://13.209.126.185:3000/admin/info/interior/update'
   let options = {
     method: 'POST',
     headers: {
@@ -26,7 +26,7 @@ async function check(){
 async function destroy(){ 
   let id = this.event.path[0].parentNode.parentNode.childNodes[1].value;
   const li = this.event.path[0].parentNode.parentNode; 
-  let url = 'http://localhost:3000/admin/info/interior/destroy'
+  let url = 'http://13.209.126.185:3000/admin/info/interior/destroy'
   let options = {
     method: 'POST',
     headers: {

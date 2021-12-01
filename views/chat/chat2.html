@@ -69,7 +69,7 @@
     const name = username.value;
     const age = userage.value; 
     id = socket.id;
-    let url = 'http://localhost:3000/chat/request'
+    let url = 'http://13.209.126.185:3000/chat/request'
     let options = {
       method: 'POST',
       headers: {
@@ -129,7 +129,7 @@
 window.addEventListener("unload", () => {
   let data = new FormData(); 
   data.append('data',id); 
-  window.navigator.sendBeacon("http://localhost:3000/chat/end",data); 
+  window.navigator.sendBeacon("http://13.209.126.185:3000/chat/end",data); 
 }, false);
   
 

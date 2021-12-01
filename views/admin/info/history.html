@@ -88,7 +88,7 @@
         let id= this.name;
         let update_year = document.querySelector('#update_year').value;
         let update_content = document.querySelector('#update_content').value;
-        let url = 'http://localhost:3000/admin/info/updatehistory'
+        let url = 'http://13.209.126.185:3000/admin/info/updatehistory'
         let options = {
           method: 'POST',
           headers: {
@@ -118,7 +118,7 @@
     async function destroy_history(){
       let id = this.name;
       let target =this.parentNode.parentNode; 
-      let url = 'http://localhost:3000/admin/info/dlthistory'
+      let url = 'http://13.209.126.185:3000/admin/info/dlthistory'
       let options = {
             method: 'POST',
             headers: {

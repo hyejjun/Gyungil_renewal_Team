@@ -74,7 +74,7 @@ let create_article = async (req, res) => {
   let type = boardType[board_name][1];
   let { thumbnailroute } = req.body;
   if (thumbnailroute == 'image') {
-    thumbnail = 'http://localhost:3000/' + req.file.filename;
+    thumbnail = 'http://13.209.126.185:3000/' + req.file.filename;
   } else {
     thumbnail = req.body.thumbnail;
   }
@@ -167,7 +167,7 @@ let update_article = async (req, res) => {
   
   let thumbnail;
   if (req.file != undefined) { //이미지일때. 
-    thumbnail = 'http://localhost:3000/' + req.file.filename;
+    thumbnail = 'http://13.209.126.185:3000/' + req.file.filename;
   } else if (req.body.thumbnail != '') { //유튜브일때..
     thumbnail = req.body.thumbnail;
   }

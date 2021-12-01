@@ -34,7 +34,7 @@
         <div id='visual'>
             <ul id="main_slideBox">
                 {% for item in visual %}
-                <li class="slide"><a href="{{item.link}}"><img src="http://localhost:3000/{{item.image}}"
+                <li class="slide"><a href="{{item.link}}"><img src="http://13.209.126.185:3000/{{item.image}}"
                             alt="메인비주얼 이미지"></a></li>
                 {% endfor %}
             </ul>
@@ -55,8 +55,8 @@
                 <ul>
                     {% for item in curr %}
                     <li class="card">
-                        <img src="http://localhost:3000/{{item.image}}" alt="교육과정이미지">
-                        <a href="http://localhost:3000/curriculum/curriculum_view?id={{item.id}}">{{item.name}}</a>
+                        <img src="http://13.209.126.185:3000/{{item.image}}" alt="교육과정이미지">
+                        <a href="http://13.209.126.185:3000/curriculum/curriculum_view?id={{item.id}}">{{item.name}}</a>
                     </li>
                     {% endfor %}
 

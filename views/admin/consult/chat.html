@@ -125,7 +125,7 @@ socket.on('test',datas=>{
 
 */
 async function wait_consult(){
-  let url = 'http://localhost:3000/admin/consult/chat/wait'
+  let url = 'http://13.209.126.185:3000/admin/consult/chat/wait'
   let options = {
     method: 'get',
   }
@@ -146,7 +146,7 @@ async function wait_consult(){
 /* 현재 상담 중인 클라이언트를 확인*/
 async function now_consult(){
   let id = socket.id; 
-  let url = 'http://localhost:3000/admin/consult/chat/consulting'
+  let url = 'http://13.209.126.185:3000/admin/consult/chat/consulting'
   let options = {
     method: 'post',
     headers: {
@@ -195,7 +195,7 @@ async function startChat(id,name){
 
   let consultant_id = socket.id; 
   client_id = id;
-  let url = 'http://localhost:3000/admin/consult/chat/start'
+  let url = 'http://13.209.126.185:3000/admin/consult/chat/start'
   let options = {
     method: 'post',
     headers: {
@@ -224,7 +224,7 @@ async function startChat(id,name){
  배열에서 해당 클라이언트의 정보를 지움.
 */
 async function endChat(id){
-  let url = 'http://localhost:3000/admin/consult/chat/end'
+  let url = 'http://13.209.126.185:3000/admin/consult/chat/end'
   let options = {
     method: 'post',
     headers: {
