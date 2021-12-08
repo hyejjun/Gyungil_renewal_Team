@@ -7,7 +7,7 @@
 https://www.youtube.com/watch?v=EMQzpivW4eg
 
 ## 팀 구성 
-김동철, 윤세호 
+김동철, 윤세호, 이혜준 
 
 ## 사용기술 <br>
 HTML CSS Node.js Axios ExpressJS Sequelize.js Socket.IO 
